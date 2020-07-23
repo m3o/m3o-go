@@ -1,6 +1,6 @@
 # M3O Go Client
 
-By default the client connects to api.micro.mu/client
+By default the client connects to api.m3o.com/client
 
 ```go
 package main
