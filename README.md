@@ -9,7 +9,7 @@ import (
     "fmt"
     "os"
 
-    "github.com/micro/clients/go/client"
+    "github.com/m3o/m3o-go/client"
 )
 
 type Request struct {
