@@ -1,4 +1,4 @@
-# Go Micro Client
+# M3O Go Client
 
 By default the client connects to api.micro.mu/client
 
