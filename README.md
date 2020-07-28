@@ -1,6 +1,6 @@
-# Go Micro Client
+# M3O Go Client
 
-By default the client connects to api.micro.mu/client
+By default the client connects to api.m3o.com/client
 
 ```go
 package main
@@ -9,7 +9,7 @@ import (
     "fmt"
     "os"
 
-    "github.com/micro/clients/go/client"
+    "github.com/m3o/m3o-go/client"
 )
 
 type Request struct {

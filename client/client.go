@@ -16,7 +16,7 @@ const (
 	// local address for api
 	localAddress = "http://localhost:8080/"
 	// public address for api
-	liveAddress = "https://api.micro.mu/"
+	liveAddress = "https://api.m3o.com/"
 )
 
 // Options of the Client
