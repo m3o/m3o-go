@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+package example.otp;
+option go_package = "github.com/m3o/m3o-go-examples/otp/proto;otp";
+
+service OTP {
+  rpc Send(SendRequest) returns (SendResponse);
+  rpc Verify(VerifyRequest) returns (VerifyResponse);
+}
+
+message SendRequest {
+  string phone_number = 1;
+}
+
+message SendResponse {}
+
+message VerifyRequest {
+  string phone_number = 1;
+  string code = 2;
+}
+
+message VerifyResponse {}
