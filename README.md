@@ -65,7 +65,7 @@ package main
 import (
 	"fmt"
 
-	"github.com/micro/clients/go/client"
+	"github.com/m3o/m3o-go/client"
 )
 
 type Request struct {
