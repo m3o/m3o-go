@@ -33,12 +33,14 @@ func main() {
    	req := &Request{
 		Name: "John",
 	}
+	
 	var rsp Response
 
 	if err := c.Call("helloworld", "call", req, &rsp); err != nil {
 		fmt.Println(err)
 		return
 	}
+	
 	fmt.Println(rsp)
 }
 ```
