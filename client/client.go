@@ -69,13 +69,21 @@ func NewClient(options *Options) *Client {
 	ret.options = Options{
 		Address: liveAddress,
 	}
+
+	// no options provided
+	if options == nil {
+		return ret
+	}
+
 	if options.Token != "" {
 		ret.options.Token = options.Token
 	}
-	if options != nil && options.Local {
+
+	if options.Local {
 		ret.options.Address = localAddress
 		ret.options.Local = true
 	}
+
 	return ret
 }
 
