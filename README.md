@@ -43,18 +43,6 @@ func main() {
 }
 ```
 
-If you want to access your local micro:
-
-```go
-    c := client.NewClient(client.Options{Local: true})
-```
-
-You can also set the api address explicitly:
-
-```go
-    c := client.NewClient(client.Options{Address: "https://api.yourdomain.com"})
-```
-
 ## Streaming
 
 The client supports streaming
@@ -76,9 +64,16 @@ type Response struct {
 	Count string `json:"count"`
 }
 
-func main() {
-	c := client.NewClient(&client.Options{Local: true})
+var (
+	token, _ = os.Getenv("TOKEN")
+)
 
+func main() {
+	c := client.NewClient(nil)
+
+	// set your api token
+	c.SetToken(token)
+	
 	stream, err := c.Stream("streams", "subscribe", Request{Count: "10"})
 	if err != nil {
 		fmt.Println(err)
