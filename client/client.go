@@ -3,7 +3,7 @@ package client
 import (
 	"bytes"
 	"encoding/json"
-	"fmt"
+	"errors"
 	"io/ioutil"
 	"net/http"
 	"net/url"
@@ -123,7 +123,9 @@ func (client *Client) Call(service, endpoint string, request, response interface
 	if err != nil {
 		return err
 	}
-	fmt.Println(string(body))
+	if !(resp.StatusCode >= 200 && resp.StatusCode < 300) {
+		return errors.New(string(body))
+	}
 	return unmarshalResponse(body, response)
 }
 
