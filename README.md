@@ -1,6 +1,8 @@
 # M3O Go Client
 
-By default the client connects to api.m3o.com
+This is the Go client to access APIs on the M3O Platform
+
+## Usage
 
 ```go
 package main
