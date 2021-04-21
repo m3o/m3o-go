@@ -2,8 +2,8 @@ package client
 
 import (
 	"bytes"
-	"encoding/base64"
 	"encoding/json"
+	"errors"
 	"io/ioutil"
 	"net/http"
 	"net/url"
@@ -66,15 +66,15 @@ type Stream struct {
 // NewClient returns a generic micro client that connects to live by default
 func NewClient(options *Options) *Client {
 	ret := new(Client)
-	if options != nil {
-		ret.options = *options
-	} else {
-		ret.options = Options{
-			Address: liveAddress,
-		}
+	ret.options = Options{
+		Address: liveAddress,
+	}
+	if options.Token != "" {
+		ret.options.Token = options.Token
 	}
 	if options != nil && options.Local {
 		ret.options.Address = localAddress
+		ret.options.Local = true
 	}
 	return ret
 }
@@ -93,7 +93,7 @@ func (client *Client) Call(service, endpoint string, request, response interface
 		return err
 	}
 	// TODO: make optional
-	uri.Path = "/client"
+	uri.Path = "/v1/" + service + "/" + endpoint
 
 	b, err := marshalRequest(service, endpoint, request)
 	if err != nil {
@@ -107,7 +107,7 @@ func (client *Client) Call(service, endpoint string, request, response interface
 
 	// set the token if it exists
 	if len(client.options.Token) > 0 {
-		req.Header.Set("Authorization", "Bearer " + client.options.Token)
+		req.Header.Set("Authorization", "Bearer "+client.options.Token)
 	}
 
 	req.Header.Set("Content-Type", "application/json")
@@ -122,6 +122,9 @@ func (client *Client) Call(service, endpoint string, request, response interface
 	body, err := ioutil.ReadAll(resp.Body)
 	if err != nil {
 		return err
+	}
+	if !(resp.StatusCode >= 200 && resp.StatusCode < 300) {
+		return errors.New(string(body))
 	}
 	return unmarshalResponse(body, response)
 }
@@ -147,7 +150,7 @@ func (client *Client) Stream(service, endpoint string, request interface{}) (*St
 	header := make(http.Header)
 	// set the token if it exists
 	if len(client.options.Token) > 0 {
-		header.Set("Authorization", "Bearer " + client.options.Token)
+		header.Set("Authorization", "Bearer "+client.options.Token)
 	}
 	header.Set("Content-Type", "application/json")
 
@@ -183,25 +186,9 @@ func (s *Stream) Send(v interface{}) error {
 }
 
 func marshalRequest(service, endpoint string, v interface{}) ([]byte, error) {
-	b, err := json.Marshal(v)
-	if err != nil {
-		return nil, err
-	}
-	return json.Marshal(&Request{
-		Service:  service,
-		Endpoint: endpoint,
-		Body:     base64.StdEncoding.EncodeToString(b),
-	})
+	return json.Marshal(v)
 }
 
 func unmarshalResponse(body []byte, v interface{}) error {
-	rsp := new(Response)
-	if err := json.Unmarshal(body, rsp); err != nil {
-		return err
-	}
-	b, err := base64.StdEncoding.DecodeString(rsp.Body)
-	if err != nil {
-		return err
-	}
-	return json.Unmarshal(b, v)
+	return json.Unmarshal(body, &v)
 }

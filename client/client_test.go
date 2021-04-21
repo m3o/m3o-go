@@ -1,22 +1,20 @@
 package client
 
-import "testing"
-
-type req struct {
-	Name string `json:"name"`
-}
-
-type rsp struct {
-	Msg string `json:"msg"`
-}
+import (
+	"os"
+	"testing"
+)
 
 func TestBasicCall(t *testing.T) {
-	response := rsp{}
-	if err := NewClient(nil).Call("go.micro.srv.greeter", "Say.Hello", req{Name: "John"}, &response); err != nil {
-		t.Fail()
+	response := map[string]interface{}{}
+	if err := NewClient(&Options{
+		Token: os.Getenv("TOKEN"),
+	}).Call("groups", "list", map[string]interface{}{
+		"memberId": "random",
+	}, &response); err != nil {
+		t.Fatal(err)
 	}
-	if response.Msg != "Hello John" {
-		t.Logf("Message is not as expected: %v", response.Msg)
-		t.Fail()
+	if len(response) > 0 {
+		t.Fatal(len(response))
 	}
 }
