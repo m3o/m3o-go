@@ -1,6 +1,8 @@
 # M3O Go Client
 
-By default the client connects to api.m3o.com/client
+This is the Go client to access APIs on the M3O Platform
+
+## Usage
 
 ```go
 package main
@@ -33,26 +35,16 @@ func main() {
    	req := &Request{
 		Name: "John",
 	}
+	
 	var rsp Response
 
-	if err := c.Call("greeter", "Say.Hello", req, &rsp); err != nil {
+	if err := c.Call("helloworld", "call", req, &rsp); err != nil {
 		fmt.Println(err)
 		return
 	}
+	
 	fmt.Println(rsp)
 }
-```
-
-If you want to access your local micro:
-
-```go
-    c := client.NewClient(client.Options{Local: true})
-```
-
-You can also set the api address explicitly:
-
-```go
-    c := client.NewClient(client.Options{Address: "https://api.yourdomain.com/client"})
 ```
 
 ## Streaming
@@ -76,10 +68,17 @@ type Response struct {
 	Count string `json:"count"`
 }
 
-func main() {
-	c := client.NewClient(&client.Options{Local: true})
+var (
+	token, _ = os.Getenv("TOKEN")
+)
 
-	stream, err := c.Stream("example", "Streamer.ServerStream", Request{Count: "10"})
+func main() {
+	c := client.NewClient(nil)
+
+	// set your api token
+	c.SetToken(token)
+	
+	stream, err := c.Stream("streams", "subscribe", Request{Count: "10"})
 	if err != nil {
 		fmt.Println(err)
 		return
