@@ -92,7 +92,8 @@ func (client *Client) Call(service, endpoint string, request, response interface
 	if err != nil {
 		return err
 	}
-	// TODO: make optional
+
+	// set the url to go through the v1 api
 	uri.Path = "/v1/" + service + "/" + endpoint
 
 	b, err := marshalRequest(service, endpoint, request)
@@ -140,8 +141,9 @@ func (client *Client) Stream(service, endpoint string, request interface{}) (*St
 	if err != nil {
 		return nil, err
 	}
-	// TODO: make optional
-	uri.Path = "/client/stream"
+
+	// set the url to go through the v1 api
+	uri.Path = "/v1/" + service + "/" + endpoint
 
 	// replace http with websocket
 	uri.Scheme = strings.Replace(uri.Scheme, "http", "ws", 1)
