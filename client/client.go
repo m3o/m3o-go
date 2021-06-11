@@ -8,6 +8,7 @@ import (
 	"net/http"
 	"net/url"
 	"strings"
+	"time"
 
 	"github.com/gorilla/websocket"
 )
@@ -29,6 +30,8 @@ type Options struct {
 	Address string
 	// Helper flag to help users connect to the default local address
 	Local bool
+	// set a timeout
+	Timeout time.Duration
 }
 
 // Request is the request of the generic `api-client` call
@@ -84,12 +87,21 @@ func NewClient(options *Options) *Client {
 		ret.options.Local = true
 	}
 
+	if options.Timeout > 0 {
+		ret.options.Timeout = options.Timeout
+	}
+
 	return ret
 }
 
 // SetToken sets the api auth token
 func (client *Client) SetToken(t string) {
 	client.options.Token = t
+}
+
+// SetTimeout sets the http client's timeout
+func (client *Client) SetTimeout(d time.Duration) {
+	client.options.Timeout = d
 }
 
 // Call enables you to access any endpoint of any service on Micro
@@ -121,7 +133,11 @@ func (client *Client) Call(service, endpoint string, request, response interface
 
 	req.Header.Set("Content-Type", "application/json")
 
-	httpClient := &http.Client{}
+	// if user didn't specify Timeout the default is 0 i.e no timeout
+	httpClient := &http.Client{
+		Timeout: client.options.Timeout,
+	}
+
 	resp, err := httpClient.Do(req)
 	if err != nil {
 		return err
