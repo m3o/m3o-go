@@ -87,6 +87,10 @@ func NewClient(options *Options) *Client {
 		ret.options.Local = true
 	}
 
+	if options.Timeout > 0 {
+		ret.options.Timeout = options.Timeout
+	}
+
 	return ret
 }
 
