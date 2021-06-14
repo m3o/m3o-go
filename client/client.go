@@ -154,6 +154,94 @@ func (client *Client) Call(service, endpoint string, request, response interface
 	return unmarshalResponse(body, response)
 }
 
+// DisbatchAll disbatchs all calls in order, highest priority first
+func (client *Client) DisbatchAll(cos *CallObjects) *CallObjects {
+
+	// Sort Priority
+	cos.SortPriority()
+
+	for !cos.Empty() {
+		ok, co := cos.Get()
+		if ok {
+			req, err := CreateRequest(co, client)
+			if err != nil {
+				cos.RS = append(cos.RS, CallObjectResponse{
+					Priority: co.Priority,
+					Service:  co.Service,
+					Endpoint: co.Endpoint,
+					Request:  co.Request,
+					Response: nil,
+					Err:      err,
+				})
+
+				return cos
+			}
+
+			// if user didn't specify Timeout the default is 0 i.e no timeout
+			httpClient := &http.Client{
+				Timeout: client.options.Timeout,
+			}
+
+			resp, err := httpClient.Do(req)
+			if err != nil {
+				cos.RS = append(cos.RS, CallObjectResponse{
+					Priority: co.Priority,
+					Service:  co.Service,
+					Endpoint: co.Endpoint,
+					Request:  co.Request,
+					Response: nil,
+					Err:      err,
+				})
+
+				return cos
+			}
+
+			defer resp.Body.Close()
+
+			body, err := ioutil.ReadAll(resp.Body)
+			if err != nil {
+				cos.RS = append(cos.RS, CallObjectResponse{
+					Priority: co.Priority,
+					Service:  co.Service,
+					Endpoint: co.Endpoint,
+					Request:  co.Request,
+					Response: nil,
+					Err:      err,
+				})
+
+				return cos
+			}
+
+			if !(resp.StatusCode >= 200 && resp.StatusCode < 300) {
+				cos.RS = append(cos.RS, CallObjectResponse{
+					Priority: co.Priority,
+					Service:  co.Service,
+					Endpoint: co.Endpoint,
+					Request:  co.Request,
+					Response: nil,
+					Err:      errors.New(string(body)),
+				})
+
+				return cos
+			}
+
+			var response interface{}
+			unmarshalResponse(body, &response)
+
+			cos.RS = append(cos.RS, CallObjectResponse{
+				Priority: co.Priority,
+				Service:  co.Service,
+				Endpoint: co.Endpoint,
+				Request:  co.Request,
+				Response: response,
+				Err:      nil,
+			})
+		}
+	}
+
+	return cos
+}
+
 // Stream enables the ability to stream via websockets
 func (client *Client) Stream(service, endpoint string, request interface{}) (*Stream, error) {
 	b, err := marshalRequest(service, endpoint, request)
