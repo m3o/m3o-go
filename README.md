@@ -1,4 +1,6 @@
-# M3O Go Client
+# M3O Go Client [![godoc](https://godoc.org/github.com/m3o/m3o-go?status.svg)](https://godoc.org/github.com/m3o/m3o-go)
+[![Go Report Card](https://goreportcard.com/badge/github.com/m3o/m3o-go)](https://goreportcard.com/report/github.com/m3o/m3o-go)
+[![Apache 2.0 License](https://img.shields.io/github/license/m3o/m3o-go)](https://github.com/m3o/m3o-go/blob/master/LICENSE)
 
 This is the Go client to access APIs on the M3O Platform
 
