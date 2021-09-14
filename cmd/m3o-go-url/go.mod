@@ -1,4 +1,4 @@
-module github.com/m3o-go/cmd/m3o-go-url
+module github.com/m3o/m3o-go/cmd/m3o-go-url
 
 go 1.13
 
