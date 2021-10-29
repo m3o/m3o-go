@@ -4,6 +4,115 @@ An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/User/api](http
 
 Endpoints:
 
+## Update
+
+Update the account username or email
+
+
+[https://m3o.com/user/api#Update](https://m3o.com/user/api#Update)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"github.com/go.m3o.com/user"
+)
+
+// Update the account username or email
+func UpdateAnAccount() {
+	userService := user.NewUserService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := userService.Update(&user.UpdateRequest{
+		Email: "joeotheremail@example.com",
+Id: "usrid-1",
+
+	})
+	fmt.Println(rsp, err)
+}
+```
+## Read
+
+Read an account by id, username or email. Only one need to be specified.
+
+
+[https://m3o.com/user/api#Read](https://m3o.com/user/api#Read)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"github.com/go.m3o.com/user"
+)
+
+// Read an account by id, username or email. Only one need to be specified.
+func ReadAnAccountById() {
+	userService := user.NewUserService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := userService.Read(&user.ReadRequest{
+		Id: "usrid-1",
+
+	})
+	fmt.Println(rsp, err)
+}
+```
+## Read
+
+Read an account by id, username or email. Only one need to be specified.
+
+
+[https://m3o.com/user/api#Read](https://m3o.com/user/api#Read)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"github.com/go.m3o.com/user"
+)
+
+// Read an account by id, username or email. Only one need to be specified.
+func ReadAccountByUsernameOrEmail() {
+	userService := user.NewUserService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := userService.Read(&user.ReadRequest{
+		Username: "usrname-1",
+
+	})
+	fmt.Println(rsp, err)
+}
+```
+## Read
+
+Read an account by id, username or email. Only one need to be specified.
+
+
+[https://m3o.com/user/api#Read](https://m3o.com/user/api#Read)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"github.com/go.m3o.com/user"
+)
+
+// Read an account by id, username or email. Only one need to be specified.
+func ReadAccountByEmail() {
+	userService := user.NewUserService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := userService.Read(&user.ReadRequest{
+		Email: "joe@example.com",
+
+	})
+	fmt.Println(rsp, err)
+}
+```
 ## SendVerificationEmail
 
 Send a verification email
@@ -50,12 +159,12 @@ Please verify your email by clicking this link: $micro_verification_link`,
 	fmt.Println(rsp, err)
 }
 ```
-## VerifyEmail
+## Logout
 
-Verify the email address of an account from a token sent in an email to the user.
+Logout a user account
 
 
-[https://m3o.com/user/api#VerifyEmail](https://m3o.com/user/api#VerifyEmail)
+[https://m3o.com/user/api#Logout](https://m3o.com/user/api#Logout)
 
 ```go
 package example
@@ -67,11 +176,11 @@ import(
 	"github.com/go.m3o.com/user"
 )
 
-// Verify the email address of an account from a token sent in an email to the user.
-func VerifyEmail() {
+// Logout a user account
+func LogAuserOut() {
 	userService := user.NewUserService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := userService.VerifyEmail(&user.VerifyEmailRequest{
-		Token: "t2323t232t",
+	rsp, err := userService.Logout(&user.LogoutRequest{
+		SessionId: "sds34s34s34-s34s34-s43s43s34-s4s34s",
 
 	})
 	fmt.Println(rsp, err)
@@ -164,34 +273,6 @@ Username: "usrname-1",
 	fmt.Println(rsp, err)
 }
 ```
-## Update
-
-Update the account username or email
-
-
-[https://m3o.com/user/api#Update](https://m3o.com/user/api#Update)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"github.com/go.m3o.com/user"
-)
-
-// Update the account username or email
-func UpdateAnAccount() {
-	userService := user.NewUserService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := userService.Update(&user.UpdateRequest{
-		Email: "joeotheremail@example.com",
-Id: "usrid-1",
-
-	})
-	fmt.Println(rsp, err)
-}
-```
 ## UpdatePassword
 
 Update the account password
@@ -221,39 +302,12 @@ OldPassword: "mySecretPass123",
 	fmt.Println(rsp, err)
 }
 ```
-## Read
+## VerifyEmail
 
-Read an account by id, username or email. Only one need to be specified.
-
-
-[https://m3o.com/user/api#Read](https://m3o.com/user/api#Read)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"github.com/go.m3o.com/user"
-)
-
-// Read an account by id, username or email. Only one need to be specified.
-func ReadAnAccountById() {
-	userService := user.NewUserService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := userService.Read(&user.ReadRequest{
-		Id: "usrid-1",
-
-	})
-	fmt.Println(rsp, err)
-}
-```
-## Read
-
-Read an account by id, username or email. Only one need to be specified.
+Verify the email address of an account from a token sent in an email to the user.
 
 
-[https://m3o.com/user/api#Read](https://m3o.com/user/api#Read)
+[https://m3o.com/user/api#VerifyEmail](https://m3o.com/user/api#VerifyEmail)
 
 ```go
 package example
@@ -265,38 +319,11 @@ import(
 	"github.com/go.m3o.com/user"
 )
 
-// Read an account by id, username or email. Only one need to be specified.
-func ReadAccountByUsernameOrEmail() {
+// Verify the email address of an account from a token sent in an email to the user.
+func VerifyEmail() {
 	userService := user.NewUserService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := userService.Read(&user.ReadRequest{
-		Username: "usrname-1",
-
-	})
-	fmt.Println(rsp, err)
-}
-```
-## Read
-
-Read an account by id, username or email. Only one need to be specified.
-
-
-[https://m3o.com/user/api#Read](https://m3o.com/user/api#Read)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"github.com/go.m3o.com/user"
-)
-
-// Read an account by id, username or email. Only one need to be specified.
-func ReadAccountByEmail() {
-	userService := user.NewUserService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := userService.Read(&user.ReadRequest{
-		Email: "joe@example.com",
+	rsp, err := userService.VerifyEmail(&user.VerifyEmailRequest{
+		Token: "t2323t232t",
 
 	})
 	fmt.Println(rsp, err)
@@ -324,33 +351,6 @@ func DeleteUserAccount() {
 	userService := user.NewUserService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := userService.Delete(&user.DeleteRequest{
 		Id: "fdf34f34f34-f34f34-f43f43f34-f4f34f",
-
-	})
-	fmt.Println(rsp, err)
-}
-```
-## Logout
-
-Logout a user account
-
-
-[https://m3o.com/user/api#Logout](https://m3o.com/user/api#Logout)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"github.com/go.m3o.com/user"
-)
-
-// Logout a user account
-func LogAuserOut() {
-	userService := user.NewUserService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := userService.Logout(&user.LogoutRequest{
-		SessionId: "sds34s34s34-s34s34-s43s43s34-s4s34s",
 
 	})
 	fmt.Println(rsp, err)
