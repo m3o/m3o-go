@@ -4,6 +4,34 @@ An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/File/api](http
 
 Endpoints:
 
+## Read
+
+Read a file by path
+
+
+[https://m3o.com/file/api#Read](https://m3o.com/file/api#Read)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/file"
+)
+
+// Read a file by path
+func ReadFile() {
+	fileService := file.NewFileService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := fileService.Read(&file.ReadRequest{
+		Path: "/document/text-files/file.txt",
+Project: "examples",
+
+	})
+	fmt.Println(rsp, err)
+}
+```
 ## Save
 
 Save a file
@@ -83,34 +111,6 @@ import(
 func DeleteFile() {
 	fileService := file.NewFileService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := fileService.Delete(&file.DeleteRequest{
-		Path: "/document/text-files/file.txt",
-Project: "examples",
-
-	})
-	fmt.Println(rsp, err)
-}
-```
-## Read
-
-Read a file by path
-
-
-[https://m3o.com/file/api#Read](https://m3o.com/file/api#Read)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/file"
-)
-
-// Read a file by path
-func ReadFile() {
-	fileService := file.NewFileService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := fileService.Read(&file.ReadRequest{
 		Path: "/document/text-files/file.txt",
 Project: "examples",
 
