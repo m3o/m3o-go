@@ -4,6 +4,59 @@ An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/Twitter/api](h
 
 Endpoints:
 
+## Trends
+
+Get the current global trending topics
+
+
+[https://m3o.com/twitter/api#Trends](https://m3o.com/twitter/api#Trends)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"github.com/go.m3o.com/twitter"
+)
+
+// Get the current global trending topics
+func GetTheCurrentGlobalTrendingTopics() {
+	twitterService := twitter.NewTwitterService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := twitterService.Trends(&twitter.TrendsRequest{
+		
+	})
+	fmt.Println(rsp, err)
+}
+```
+## User
+
+Get a user's twitter profile
+
+
+[https://m3o.com/twitter/api#User](https://m3o.com/twitter/api#User)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"github.com/go.m3o.com/twitter"
+)
+
+// Get a user's twitter profile
+func GetAusersTwitterProfile() {
+	twitterService := twitter.NewTwitterService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := twitterService.User(&twitter.UserRequest{
+		Username: "crufter",
+
+	})
+	fmt.Println(rsp, err)
+}
+```
 ## Timeline
 
 Get the timeline for a given user
@@ -54,59 +107,6 @@ func SearchForTweets() {
 	twitterService := twitter.NewTwitterService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := twitterService.Search(&twitter.SearchRequest{
 		Query: "cats",
-
-	})
-	fmt.Println(rsp, err)
-}
-```
-## Trends
-
-Get the current global trending topics
-
-
-[https://m3o.com/twitter/api#Trends](https://m3o.com/twitter/api#Trends)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"github.com/go.m3o.com/twitter"
-)
-
-// Get the current global trending topics
-func GetTheCurrentGlobalTrendingTopics() {
-	twitterService := twitter.NewTwitterService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := twitterService.Trends(&twitter.TrendsRequest{
-		
-	})
-	fmt.Println(rsp, err)
-}
-```
-## User
-
-Get a user's twitter profile
-
-
-[https://m3o.com/twitter/api#User](https://m3o.com/twitter/api#User)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"github.com/go.m3o.com/twitter"
-)
-
-// Get a user's twitter profile
-func GetAusersTwitterProfile() {
-	twitterService := twitter.NewTwitterService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := twitterService.User(&twitter.UserRequest{
-		Username: "crufter",
 
 	})
 	fmt.Println(rsp, err)
