@@ -4,6 +4,33 @@ An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/File/api](http
 
 Endpoints:
 
+## List
+
+List files by their project and optionally a path.
+
+
+[https://m3o.com/file/api#List](https://m3o.com/file/api#List)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"github.com/go.m3o.com/file"
+)
+
+// List files by their project and optionally a path.
+func ListFiles() {
+	fileService := file.NewFileService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := fileService.List(&file.ListRequest{
+		Project: "examples",
+
+	})
+	fmt.Println(rsp, err)
+}
+```
 ## Delete
 
 Delete a file by project name/path
@@ -86,33 +113,6 @@ func SaveFile() {
 			Path: "/document/text-files/file.txt",
 	Project: "examples",
 	},
-
-	})
-	fmt.Println(rsp, err)
-}
-```
-## List
-
-List files by their project and optionally a path.
-
-
-[https://m3o.com/file/api#List](https://m3o.com/file/api#List)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"github.com/go.m3o.com/file"
-)
-
-// List files by their project and optionally a path.
-func ListFiles() {
-	fileService := file.NewFileService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := fileService.List(&file.ListRequest{
-		Project: "examples",
 
 	})
 	fmt.Println(rsp, err)
