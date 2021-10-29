@@ -4,33 +4,6 @@ An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/Notes/api](htt
 
 Endpoints:
 
-## Subscribe
-
-Specify the note to events
-
-
-[https://m3o.com/notes/api#Subscribe](https://m3o.com/notes/api#Subscribe)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/notes"
-)
-
-// Specify the note to events
-func SubscribeToEvents() {
-	notesService := notes.NewNotesService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := notesService.Subscribe(&notes.SubscribeRequest{
-		Id: "63c0cdf8-2121-11ec-a881-0242e36f037a",
-
-	})
-	fmt.Println(rsp, err)
-}
-```
 ## Create
 
 Create a new note
@@ -164,6 +137,33 @@ import(
 func DeleteAnote() {
 	notesService := notes.NewNotesService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := notesService.Delete(&notes.DeleteRequest{
+		Id: "63c0cdf8-2121-11ec-a881-0242e36f037a",
+
+	})
+	fmt.Println(rsp, err)
+}
+```
+## Subscribe
+
+Specify the note to events
+
+
+[https://m3o.com/notes/api#Subscribe](https://m3o.com/notes/api#Subscribe)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/notes"
+)
+
+// Specify the note to events
+func SubscribeToEvents() {
+	notesService := notes.NewNotesService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := notesService.Subscribe(&notes.SubscribeRequest{
 		Id: "63c0cdf8-2121-11ec-a881-0242e36f037a",
 
 	})
