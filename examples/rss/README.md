@@ -4,33 +4,6 @@ An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/Rss/api](https
 
 Endpoints:
 
-## Remove
-
-Remove an RSS feed by name
-
-
-[https://m3o.com/rss/api#Remove](https://m3o.com/rss/api#Remove)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"github.com/go.m3o.com/rss"
-)
-
-// Remove an RSS feed by name
-func RemoveAfeed() {
-	rssService := rss.NewRssService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := rssService.Remove(&rss.RemoveRequest{
-		Name: "bbc",
-
-	})
-	fmt.Println(rsp, err)
-}
-```
 ## Add
 
 Add a new RSS feed with a name, url, and category
@@ -109,6 +82,33 @@ func ListRssFeeds() {
 	rssService := rss.NewRssService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := rssService.List(&rss.ListRequest{
 		
+	})
+	fmt.Println(rsp, err)
+}
+```
+## Remove
+
+Remove an RSS feed by name
+
+
+[https://m3o.com/rss/api#Remove](https://m3o.com/rss/api#Remove)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"github.com/go.m3o.com/rss"
+)
+
+// Remove an RSS feed by name
+func RemoveAfeed() {
+	rssService := rss.NewRssService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := rssService.Remove(&rss.RemoveRequest{
+		Name: "bbc",
+
 	})
 	fmt.Println(rsp, err)
 }
