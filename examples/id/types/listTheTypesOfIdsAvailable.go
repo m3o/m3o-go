@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/go.m3o.com/id"
+	"go.m3o.com/id"
 )
 
 // List the types of IDs available. No query params needed.

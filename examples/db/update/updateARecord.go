@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/go.m3o.com/db"
+	"go.m3o.com/db"
 )
 
 // Update a record in the database. Include an "id" in the record to update.

@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/go.m3o.com/rss"
+	"go.m3o.com/rss"
 )
 
 // List the saved RSS fields

@@ -18,7 +18,7 @@ import(
 	"fmt"
 	"os"
 
-	"github.com/go.m3o.com/prayer"
+	"go.m3o.com/prayer"
 )
 
 // Get the prayer (salah) times for a location on a given date

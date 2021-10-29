@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/go.m3o.com/otp"
+	"go.m3o.com/otp"
 )
 
 // Generate an OTP (one time pass) code

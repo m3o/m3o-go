@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/go.m3o.com/rss"
+	"go.m3o.com/rss"
 )
 
 // Get an RSS feed by name. If no name is given, all feeds are returned. Default limit is 25 entries.

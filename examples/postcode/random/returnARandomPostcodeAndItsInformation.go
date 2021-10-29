@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/go.m3o.com/postcode"
+	"go.m3o.com/postcode"
 )
 
 // Return a random postcode and its related info

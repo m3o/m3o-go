@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/go.m3o.com/twitter"
+	"go.m3o.com/twitter"
 )
 
 // Get a user's twitter profile

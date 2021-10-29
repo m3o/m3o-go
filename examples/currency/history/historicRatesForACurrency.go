@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/go.m3o.com/currency"
+	"go.m3o.com/currency"
 )
 
 // Returns the historic rates for a currency on a given date

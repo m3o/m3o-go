@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/go.m3o.com/google"
+	"go.m3o.com/google"
 )
 
 // Search for videos on Google

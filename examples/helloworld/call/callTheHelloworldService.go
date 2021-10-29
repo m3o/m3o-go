@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/go.m3o.com/helloworld"
+	"go.m3o.com/helloworld"
 )
 
 // Call returns a personalised "Hello $name" response

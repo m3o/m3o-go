@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/go.m3o.com/image"
+	"go.m3o.com/image"
 )
 
 // Upload an image by either sending a base64 encoded image to this endpoint or a URL.

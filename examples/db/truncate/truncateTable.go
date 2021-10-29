@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/go.m3o.com/db"
+	"go.m3o.com/db"
 )
 
 // Truncate the records in a table

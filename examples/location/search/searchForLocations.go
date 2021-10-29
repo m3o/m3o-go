@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/go.m3o.com/location"
+	"go.m3o.com/location"
 )
 
 // Search for entities in a given radius

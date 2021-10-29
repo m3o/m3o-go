@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/go.m3o.com/forex"
+	"go.m3o.com/forex"
 )
 
 // Get the latest quote for the forex

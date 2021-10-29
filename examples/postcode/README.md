@@ -18,7 +18,7 @@ import(
 	"fmt"
 	"os"
 
-	"github.com/go.m3o.com/postcode"
+	"go.m3o.com/postcode"
 )
 
 // Lookup a postcode to retrieve the related region, county, etc
@@ -45,7 +45,7 @@ import(
 	"fmt"
 	"os"
 
-	"github.com/go.m3o.com/postcode"
+	"go.m3o.com/postcode"
 )
 
 // Return a random postcode and its related info
@@ -71,7 +71,7 @@ import(
 	"fmt"
 	"os"
 
-	"github.com/go.m3o.com/postcode"
+	"go.m3o.com/postcode"
 )
 
 // Validate a postcode.

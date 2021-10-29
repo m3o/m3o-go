@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/go.m3o.com/postcode"
+	"go.m3o.com/postcode"
 )
 
 // Lookup a postcode to retrieve the related region, county, etc

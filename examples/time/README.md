@@ -18,7 +18,7 @@ import(
 	"fmt"
 	"os"
 
-	"github.com/go.m3o.com/time"
+	"go.m3o.com/time"
 )
 
 // Get the current time
@@ -44,7 +44,7 @@ import(
 	"fmt"
 	"os"
 
-	"github.com/go.m3o.com/time"
+	"go.m3o.com/time"
 )
 
 // Get the timezone info for a specific location

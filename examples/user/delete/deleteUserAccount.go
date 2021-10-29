@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/go.m3o.com/user"
+	"go.m3o.com/user"
 )
 
 // Delete an account by id

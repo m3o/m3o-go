@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/go.m3o.com/evchargers"
+	"go.m3o.com/evchargers"
 )
 
 // Retrieve reference data as used by this API and in conjunction with the Search endpoint

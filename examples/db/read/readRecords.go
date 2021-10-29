@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/go.m3o.com/db"
+	"go.m3o.com/db"
 )
 
 // Read data from a table. Lookup can be by ID or via querying any field in the record.

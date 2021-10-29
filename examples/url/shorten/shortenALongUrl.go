@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/go.m3o.com/url"
+	"go.m3o.com/url"
 )
 
 // Shortens a destination URL and returns a full short URL.

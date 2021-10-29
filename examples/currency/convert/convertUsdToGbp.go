@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/go.m3o.com/currency"
+	"go.m3o.com/currency"
 )
 
 // Convert returns the currency conversion rate between two pairs e.g USD/GBP

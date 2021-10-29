@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/go.m3o.com/routing"
+	"go.m3o.com/routing"
 )
 
 // Turn by turn directions from a start point to an end point including maneuvers and bearings

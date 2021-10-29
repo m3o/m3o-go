@@ -18,7 +18,7 @@ import(
 	"fmt"
 	"os"
 
-	"github.com/go.m3o.com/function"
+	"go.m3o.com/function"
 )
 
 // Deploy a group of functions
@@ -49,7 +49,7 @@ import(
 	"fmt"
 	"os"
 
-	"github.com/go.m3o.com/function"
+	"go.m3o.com/function"
 )
 
 // Call a function by name
@@ -78,7 +78,7 @@ import(
 	"fmt"
 	"os"
 
-	"github.com/go.m3o.com/function"
+	"go.m3o.com/function"
 )
 
 // List all the deployed functions
@@ -104,7 +104,7 @@ import(
 	"fmt"
 	"os"
 
-	"github.com/go.m3o.com/function"
+	"go.m3o.com/function"
 )
 
 // Delete a function by name
@@ -132,7 +132,7 @@ import(
 	"fmt"
 	"os"
 
-	"github.com/go.m3o.com/function"
+	"go.m3o.com/function"
 )
 
 // Get the info for a deployed function

@@ -18,7 +18,7 @@ import(
 	"fmt"
 	"os"
 
-	"github.com/go.m3o.com/thumbnail"
+	"go.m3o.com/thumbnail"
 )
 
 // Create a thumbnail screenshot by passing in a url, height and width

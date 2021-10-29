@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/go.m3o.com/url"
+	"go.m3o.com/url"
 )
 
 // List information on all the shortened URLs that you have created

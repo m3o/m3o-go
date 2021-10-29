@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/go.m3o.com/user"
+	"go.m3o.com/user"
 )
 
 // Read a session by the session id. In the event it has expired or is not found and error is returned.

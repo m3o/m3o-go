@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/go.m3o.com/location"
+	"go.m3o.com/location"
 )
 
 // Read an entity by its ID

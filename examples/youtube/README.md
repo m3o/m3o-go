@@ -18,7 +18,7 @@ import(
 	"fmt"
 	"os"
 
-	"github.com/go.m3o.com/youtube"
+	"go.m3o.com/youtube"
 )
 
 // Search for videos on YouTube

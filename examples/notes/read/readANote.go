@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/go.m3o.com/notes"
+	"go.m3o.com/notes"
 )
 
 // Read a note

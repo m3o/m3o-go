@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/go.m3o.com/stock"
+	"go.m3o.com/stock"
 )
 
 // Get the historic order book and each trade by timestamp

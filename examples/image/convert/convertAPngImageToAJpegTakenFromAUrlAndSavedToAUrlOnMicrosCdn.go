@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/go.m3o.com/image"
+	"go.m3o.com/image"
 )
 
 // Convert an image from one format (jpeg, png etc.) to an other either on the fly (from base64 to base64),

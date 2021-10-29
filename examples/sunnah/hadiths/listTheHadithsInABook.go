@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/go.m3o.com/sunnah"
+	"go.m3o.com/sunnah"
 )
 
 // Hadiths returns a list of hadiths and their corresponding text for a

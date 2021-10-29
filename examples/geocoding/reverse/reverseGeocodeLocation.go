@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/go.m3o.com/geocoding"
+	"go.m3o.com/geocoding"
 )
 
 // Reverse lookup an address from gps coordinates

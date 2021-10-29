@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/go.m3o.com/forex"
+	"go.m3o.com/forex"
 )
 
 // Returns the data for the previous close

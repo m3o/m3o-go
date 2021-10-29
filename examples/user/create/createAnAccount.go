@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/go.m3o.com/user"
+	"go.m3o.com/user"
 )
 
 // Create a new user account. The email address and username for the account must be unique.

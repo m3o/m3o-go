@@ -18,7 +18,7 @@ import(
 	"fmt"
 	"os"
 
-	"github.com/go.m3o.com/routing"
+	"go.m3o.com/routing"
 )
 
 // Get the eta for a route from origin to destination. The eta is an estimated time based on car routes
@@ -52,7 +52,7 @@ import(
 	"fmt"
 	"os"
 
-	"github.com/go.m3o.com/routing"
+	"go.m3o.com/routing"
 )
 
 // Turn by turn directions from a start point to an end point including maneuvers and bearings
@@ -86,7 +86,7 @@ import(
 	"fmt"
 	"os"
 
-	"github.com/go.m3o.com/routing"
+	"go.m3o.com/routing"
 )
 
 // Retrieve a route as a simple list of gps points along with total distance and estimated duration

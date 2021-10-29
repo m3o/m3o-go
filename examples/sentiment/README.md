@@ -18,7 +18,7 @@ import(
 	"fmt"
 	"os"
 
-	"github.com/go.m3o.com/sentiment"
+	"go.m3o.com/sentiment"
 )
 
 // Analyze and score a piece of text

@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/go.m3o.com/emoji"
+	"go.m3o.com/emoji"
 )
 
 // Send an emoji to anyone via SMS. Messages are sent in the form '<message> Sent from <from>'

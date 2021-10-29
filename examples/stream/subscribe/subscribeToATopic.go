@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/go.m3o.com/stream"
+	"go.m3o.com/stream"
 )
 
 // Subscribe to messages for a given topic.

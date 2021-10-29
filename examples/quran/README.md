@@ -18,7 +18,7 @@ import(
 	"fmt"
 	"os"
 
-	"github.com/go.m3o.com/quran"
+	"go.m3o.com/quran"
 )
 
 // List the Chapters (surahs) of the Quran
@@ -45,7 +45,7 @@ import(
 	"fmt"
 	"os"
 
-	"github.com/go.m3o.com/quran"
+	"go.m3o.com/quran"
 )
 
 // Get a summary for a given chapter (surah)
@@ -74,7 +74,7 @@ import(
 	"fmt"
 	"os"
 
-	"github.com/go.m3o.com/quran"
+	"go.m3o.com/quran"
 )
 
 // Lookup the verses (ayahs) for a chapter including
@@ -103,7 +103,7 @@ import(
 	"fmt"
 	"os"
 
-	"github.com/go.m3o.com/quran"
+	"go.m3o.com/quran"
 )
 
 // Search the Quran for any form of query or questions

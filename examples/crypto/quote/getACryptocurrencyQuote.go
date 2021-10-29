@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/go.m3o.com/crypto"
+	"go.m3o.com/crypto"
 )
 
 // Get the last quote for a given crypto ticker

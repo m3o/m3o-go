@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/go.m3o.com/stock"
+	"go.m3o.com/stock"
 )
 
 // Get the last price for a given stock ticker

@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/go.m3o.com/vehicle"
+	"go.m3o.com/vehicle"
 )
 
 // Lookup a UK vehicle by it's registration number

@@ -18,7 +18,7 @@ import(
 	"fmt"
 	"os"
 
-	"github.com/go.m3o.com/address"
+	"go.m3o.com/address"
 )
 
 // Lookup a list of UK addresses by postcode

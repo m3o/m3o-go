@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/go.m3o.com/helloworld"
+	"go.m3o.com/helloworld"
 )
 
 // Stream returns a stream of "Hello $name" responses

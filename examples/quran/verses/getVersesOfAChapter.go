@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/go.m3o.com/quran"
+	"go.m3o.com/quran"
 )
 
 // Lookup the verses (ayahs) for a chapter including

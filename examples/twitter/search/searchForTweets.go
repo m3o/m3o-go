@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/go.m3o.com/twitter"
+	"go.m3o.com/twitter"
 )
 
 // Search for tweets with a simple query

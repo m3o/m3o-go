@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/go.m3o.com/currency"
+	"go.m3o.com/currency"
 )
 
 // Rates returns the currency rates for a given code e.g USD

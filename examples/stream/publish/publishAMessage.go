@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/go.m3o.com/stream"
+	"go.m3o.com/stream"
 )
 
 // Publish a message to the stream. Specify a topic to group messages for a specific topic.

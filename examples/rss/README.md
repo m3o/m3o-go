@@ -4,35 +4,6 @@ An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/Rss/api](https
 
 Endpoints:
 
-## Add
-
-Add a new RSS feed with a name, url, and category
-
-
-[https://m3o.com/rss/api#Add](https://m3o.com/rss/api#Add)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"github.com/go.m3o.com/rss"
-)
-
-// Add a new RSS feed with a name, url, and category
-func AddAnewFeed() {
-	rssService := rss.NewRssService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := rssService.Add(&rss.AddRequest{
-		Category: "news",
-Name: "bbc",
-Url: "http://feeds.bbci.co.uk/news/rss.xml",
-
-	})
-	fmt.Println(rsp, err)
-}
-```
 ## Feed
 
 Get an RSS feed by name. If no name is given, all feeds are returned. Default limit is 25 entries.
@@ -47,7 +18,7 @@ import(
 	"fmt"
 	"os"
 
-	"github.com/go.m3o.com/rss"
+	"go.m3o.com/rss"
 )
 
 // Get an RSS feed by name. If no name is given, all feeds are returned. Default limit is 25 entries.
@@ -74,7 +45,7 @@ import(
 	"fmt"
 	"os"
 
-	"github.com/go.m3o.com/rss"
+	"go.m3o.com/rss"
 )
 
 // List the saved RSS fields
@@ -100,7 +71,7 @@ import(
 	"fmt"
 	"os"
 
-	"github.com/go.m3o.com/rss"
+	"go.m3o.com/rss"
 )
 
 // Remove an RSS feed by name
@@ -108,6 +79,35 @@ func RemoveAfeed() {
 	rssService := rss.NewRssService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := rssService.Remove(&rss.RemoveRequest{
 		Name: "bbc",
+
+	})
+	fmt.Println(rsp, err)
+}
+```
+## Add
+
+Add a new RSS feed with a name, url, and category
+
+
+[https://m3o.com/rss/api#Add](https://m3o.com/rss/api#Add)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/rss"
+)
+
+// Add a new RSS feed with a name, url, and category
+func AddAnewFeed() {
+	rssService := rss.NewRssService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := rssService.Add(&rss.AddRequest{
+		Category: "news",
+Name: "bbc",
+Url: "http://feeds.bbci.co.uk/news/rss.xml",
 
 	})
 	fmt.Println(rsp, err)

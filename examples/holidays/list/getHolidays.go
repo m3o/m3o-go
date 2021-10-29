@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/go.m3o.com/holidays"
+	"go.m3o.com/holidays"
 )
 
 // List the holiday dates for a given country and year

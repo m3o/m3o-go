@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/go.m3o.com/evchargers"
+	"go.m3o.com/evchargers"
 )
 
 // Search by giving a coordinate and a max distance, or bounding box and optional filters

@@ -18,7 +18,7 @@ import(
 	"fmt"
 	"os"
 
-	"github.com/go.m3o.com/forex"
+	"go.m3o.com/forex"
 )
 
 // Get the latest price for a given forex ticker
@@ -45,7 +45,7 @@ import(
 	"fmt"
 	"os"
 
-	"github.com/go.m3o.com/forex"
+	"go.m3o.com/forex"
 )
 
 // Get the latest quote for the forex
@@ -72,7 +72,7 @@ import(
 	"fmt"
 	"os"
 
-	"github.com/go.m3o.com/forex"
+	"go.m3o.com/forex"
 )
 
 // Returns the data for the previous close

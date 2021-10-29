@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/go.m3o.com/emoji"
+	"go.m3o.com/emoji"
 )
 
 // Get the flag for a country. Requires country code e.g GB for great britain

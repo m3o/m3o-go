@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/go.m3o.com/cache"
+	"go.m3o.com/cache"
 )
 
 // Decrement a value (if it's a number)

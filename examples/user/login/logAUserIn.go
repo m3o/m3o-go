@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/go.m3o.com/user"
+	"go.m3o.com/user"
 )
 
 // Login using username or email. The response will return a new session for successful login,

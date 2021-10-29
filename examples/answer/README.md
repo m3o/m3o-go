@@ -18,7 +18,7 @@ import(
 	"fmt"
 	"os"
 
-	"github.com/go.m3o.com/answer"
+	"go.m3o.com/answer"
 )
 
 // Ask a question and receive an instant answer

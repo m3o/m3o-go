@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/go.m3o.com/crypto"
+	"go.m3o.com/crypto"
 )
 
 // Returns the history for the previous close

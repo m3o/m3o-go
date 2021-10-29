@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/go.m3o.com/user"
+	"go.m3o.com/user"
 )
 
 // Read an account by id, username or email. Only one need to be specified.

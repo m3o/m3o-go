@@ -18,7 +18,7 @@ import(
 	"fmt"
 	"os"
 
-	"github.com/go.m3o.com/url"
+	"go.m3o.com/url"
 )
 
 // List information on all the shortened URLs that you have created
@@ -44,7 +44,7 @@ import(
 	"fmt"
 	"os"
 
-	"github.com/go.m3o.com/url"
+	"go.m3o.com/url"
 )
 
 // Shortens a destination URL and returns a full short URL.
@@ -70,7 +70,7 @@ import(
 	"fmt"
 	"os"
 
-	"github.com/go.m3o.com/url"
+	"go.m3o.com/url"
 )
 
 // Proxy returns the destination URL of a short URL.

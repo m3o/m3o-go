@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/go.m3o.com/sunnah"
+	"go.m3o.com/sunnah"
 )
 
 // Get all the chapters of a given book within a collection.

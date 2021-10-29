@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/go.m3o.com/sunnah"
+	"go.m3o.com/sunnah"
 )
 
 // Get a list of available collections. A collection is

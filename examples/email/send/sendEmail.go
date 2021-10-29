@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/go.m3o.com/email"
+	"go.m3o.com/email"
 )
 
 // Send an email by passing in from, to, subject, and a text or html body

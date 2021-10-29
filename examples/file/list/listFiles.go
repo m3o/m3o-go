@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/go.m3o.com/file"
+	"go.m3o.com/file"
 )
 
 // List files by their project and optionally a path.

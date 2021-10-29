@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/go.m3o.com/function"
+	"go.m3o.com/function"
 )
 
 // Get the info for a deployed function

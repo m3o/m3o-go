@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/go.m3o.com/routing"
+	"go.m3o.com/routing"
 )
 
 // Get the eta for a route from origin to destination. The eta is an estimated time based on car routes

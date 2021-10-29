@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/go.m3o.com/currency"
+	"go.m3o.com/currency"
 )
 
 // Codes returns the supported currency codes for the API

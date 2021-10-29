@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/go.m3o.com/quran"
+	"go.m3o.com/quran"
 )
 
 // Get a summary for a given chapter (surah)

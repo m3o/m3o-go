@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/go.m3o.com/file"
+	"go.m3o.com/file"
 )
 
 // Read a file by path

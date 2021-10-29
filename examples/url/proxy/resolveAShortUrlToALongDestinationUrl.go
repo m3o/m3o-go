@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/go.m3o.com/url"
+	"go.m3o.com/url"
 )
 
 // Proxy returns the destination URL of a short URL.

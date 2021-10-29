@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/go.m3o.com/emoji"
+	"go.m3o.com/emoji"
 )
 
 // Print text and renders the emojis with aliases e.g

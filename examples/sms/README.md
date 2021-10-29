@@ -18,7 +18,7 @@ import(
 	"fmt"
 	"os"
 
-	"github.com/go.m3o.com/sms"
+	"go.m3o.com/sms"
 )
 
 // Send an SMS.

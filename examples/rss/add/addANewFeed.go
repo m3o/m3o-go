@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/go.m3o.com/rss"
+	"go.m3o.com/rss"
 )
 
 // Add a new RSS feed with a name, url, and category

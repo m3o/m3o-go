@@ -20,7 +20,7 @@ import(
 	"fmt"
 	"os"
 
-	"github.com/go.m3o.com/image"
+	"go.m3o.com/image"
 )
 
 // Resize an image on the fly without storing it (by sending and receiving a base64 encoded image), or resize and upload depending on parameters.
@@ -54,7 +54,7 @@ import(
 	"fmt"
 	"os"
 
-	"github.com/go.m3o.com/image"
+	"go.m3o.com/image"
 )
 
 // Resize an image on the fly without storing it (by sending and receiving a base64 encoded image), or resize and upload depending on parameters.
@@ -87,7 +87,7 @@ import(
 	"fmt"
 	"os"
 
-	"github.com/go.m3o.com/image"
+	"go.m3o.com/image"
 )
 
 // Resize an image on the fly without storing it (by sending and receiving a base64 encoded image), or resize and upload depending on parameters.
@@ -123,7 +123,7 @@ import(
 	"fmt"
 	"os"
 
-	"github.com/go.m3o.com/image"
+	"go.m3o.com/image"
 )
 
 // Convert an image from one format (jpeg, png etc.) to an other either on the fly (from base64 to base64),
@@ -153,7 +153,7 @@ import(
 	"fmt"
 	"os"
 
-	"github.com/go.m3o.com/image"
+	"go.m3o.com/image"
 )
 
 // Upload an image by either sending a base64 encoded image to this endpoint or a URL.
@@ -183,7 +183,7 @@ import(
 	"fmt"
 	"os"
 
-	"github.com/go.m3o.com/image"
+	"go.m3o.com/image"
 )
 
 // Upload an image by either sending a base64 encoded image to this endpoint or a URL.

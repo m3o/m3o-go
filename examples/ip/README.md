@@ -18,7 +18,7 @@ import(
 	"fmt"
 	"os"
 
-	"github.com/go.m3o.com/ip"
+	"go.m3o.com/ip"
 )
 
 // Lookup the geolocation information for an IP address

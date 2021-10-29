@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/go.m3o.com/routing"
+	"go.m3o.com/routing"
 )
 
 // Retrieve a route as a simple list of gps points along with total distance and estimated duration

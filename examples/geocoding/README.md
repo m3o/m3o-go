@@ -18,7 +18,7 @@ import(
 	"fmt"
 	"os"
 
-	"github.com/go.m3o.com/geocoding"
+	"go.m3o.com/geocoding"
 )
 
 // Lookup returns a geocoded address including normalized address and gps coordinates. All fields are optional, provide more to get more accurate results
@@ -48,7 +48,7 @@ import(
 	"fmt"
 	"os"
 
-	"github.com/go.m3o.com/geocoding"
+	"go.m3o.com/geocoding"
 )
 
 // Reverse lookup an address from gps coordinates

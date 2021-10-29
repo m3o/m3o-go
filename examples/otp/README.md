@@ -18,7 +18,7 @@ import(
 	"fmt"
 	"os"
 
-	"github.com/go.m3o.com/otp"
+	"go.m3o.com/otp"
 )
 
 // Generate an OTP (one time pass) code
@@ -45,7 +45,7 @@ import(
 	"fmt"
 	"os"
 
-	"github.com/go.m3o.com/otp"
+	"go.m3o.com/otp"
 )
 
 // Validate the OTP code

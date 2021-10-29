@@ -18,7 +18,7 @@ import(
 	"fmt"
 	"os"
 
-	"github.com/go.m3o.com/location"
+	"go.m3o.com/location"
 )
 
 // Save an entity's current position
@@ -53,7 +53,7 @@ import(
 	"fmt"
 	"os"
 
-	"github.com/go.m3o.com/location"
+	"go.m3o.com/location"
 )
 
 // Read an entity by its ID
@@ -80,7 +80,7 @@ import(
 	"fmt"
 	"os"
 
-	"github.com/go.m3o.com/location"
+	"go.m3o.com/location"
 )
 
 // Search for entities in a given radius

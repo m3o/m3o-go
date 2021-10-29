@@ -18,7 +18,7 @@ import(
 	"fmt"
 	"os"
 
-	"github.com/go.m3o.com/gifs"
+	"go.m3o.com/gifs"
 )
 
 // Search for a GIF

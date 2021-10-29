@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/go.m3o.com/cache"
+	"go.m3o.com/cache"
 )
 
 // Get an item from the cache by key

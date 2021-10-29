@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/go.m3o.com/weather"
+	"go.m3o.com/weather"
 )
 
 // Get the current weather report for a location by postcode, city, zip code, ip address
