@@ -4,6 +4,35 @@ This is the Go client to access APIs on the M3O Platform
 
 ## Usage
 
+Call a service using the generated client. Populate the `M3O_API_TOKEN` environment variable. 
+
+Import the package and initialise the service with your API token.
+
+```go
+package main
+
+import(
+        "fmt"
+        "os"
+
+        "go.m3o.com/helloworld"
+)
+
+// Call returns a personalised "Hello $name" response
+func main() {
+        helloworldService := helloworld.NewHelloworldService(os.Getenv("M3O_API_TOKEN"))
+        rsp, err := helloworldService.Call(&helloworld.CallRequest{
+                Name: "John",
+
+        })
+        fmt.Println(rsp, err)
+}
+```
+
+## Generic Client
+
+The generic client enables you to call any endpoint by name with freeform request/response types.
+
 ```go
 package main
 
@@ -49,8 +78,8 @@ func main() {
 
 ## Streaming
 
-The client supports streaming
-
+The client supports streaming but is not yet code generated. Use the following for streaming endpoints.
+ 
 ```go
 package main
 
