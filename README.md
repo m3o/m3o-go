@@ -40,7 +40,7 @@ import (
     "fmt"
     "os"
 
-    "github.com/m3o/m3o-go/client"
+    "go.m3o.com/client"
 )
 
 type Request struct {
@@ -86,7 +86,7 @@ package main
 import (
 	"fmt"
 
-	"github.com/m3o/m3o-go/client"
+	"go.m3o.com/client"
 )
 
 type Request struct {
