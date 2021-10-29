@@ -4,33 +4,6 @@ An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/Stream/api](ht
 
 Endpoints:
 
-## Subscribe
-
-Subscribe to messages for a given topic.
-
-
-[https://m3o.com/stream/api#Subscribe](https://m3o.com/stream/api#Subscribe)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"github.com/go.m3o.com/stream"
-)
-
-// Subscribe to messages for a given topic.
-func SubscribeToAtopic() {
-	streamService := stream.NewStreamService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := streamService.Subscribe(&stream.SubscribeRequest{
-		Topic: "events",
-
-	})
-	fmt.Println(rsp, err)
-}
-```
 ## Publish
 
 Publish a message to the stream. Specify a topic to group messages for a specific topic.
@@ -53,11 +26,38 @@ func PublishAmessage() {
 	streamService := stream.NewStreamService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := streamService.Publish(&stream.PublishRequest{
 		Message: map[string]interface{}{
+	"id": "1",
 	"type": "signup",
 	"user": "john",
-	"id": "1",
 },
 Topic: "events",
+
+	})
+	fmt.Println(rsp, err)
+}
+```
+## Subscribe
+
+Subscribe to messages for a given topic.
+
+
+[https://m3o.com/stream/api#Subscribe](https://m3o.com/stream/api#Subscribe)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"github.com/go.m3o.com/stream"
+)
+
+// Subscribe to messages for a given topic.
+func SubscribeToAtopic() {
+	streamService := stream.NewStreamService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := streamService.Subscribe(&stream.SubscribeRequest{
+		Topic: "events",
 
 	})
 	fmt.Println(rsp, err)

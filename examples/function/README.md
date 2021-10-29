@@ -4,6 +4,37 @@ An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/Function/api](
 
 Endpoints:
 
+## Deploy
+
+Deploy a group of functions
+
+
+[https://m3o.com/function/api#Deploy](https://m3o.com/function/api#Deploy)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"github.com/go.m3o.com/function"
+)
+
+// Deploy a group of functions
+func DeployAfunction() {
+	functionService := function.NewFunctionService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := functionService.Deploy(&function.DeployRequest{
+		Entrypoint: "helloworld",
+Name: "my-first-func",
+Project: "tests",
+Repo: "github.com/m3o/nodejs-function-example",
+Runtime: "nodejs14",
+
+	})
+	fmt.Println(rsp, err)
+}
+```
 ## Call
 
 Call a function by name
@@ -110,37 +141,6 @@ func DescribeFunctionStatus() {
 	rsp, err := functionService.Describe(&function.DescribeRequest{
 		Name: "my-first-func",
 Project: "tests",
-
-	})
-	fmt.Println(rsp, err)
-}
-```
-## Deploy
-
-Deploy a group of functions
-
-
-[https://m3o.com/function/api#Deploy](https://m3o.com/function/api#Deploy)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"github.com/go.m3o.com/function"
-)
-
-// Deploy a group of functions
-func DeployAfunction() {
-	functionService := function.NewFunctionService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := functionService.Deploy(&function.DeployRequest{
-		Entrypoint: "helloworld",
-Name: "my-first-func",
-Project: "tests",
-Repo: "github.com/m3o/nodejs-function-example",
-Runtime: "nodejs14",
 
 	})
 	fmt.Println(rsp, err)
