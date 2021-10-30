@@ -4,34 +4,6 @@ An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/Notes/api](htt
 
 Endpoints:
 
-## Create
-
-Create a new note
-
-
-[https://m3o.com/notes/api#Create](https://m3o.com/notes/api#Create)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/notes"
-)
-
-// Create a new note
-func CreateAnote() {
-	notesService := notes.NewNotesService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := notesService.Create(&notes.CreateRequest{
-		Text: "This is my note",
-Title: "New Note",
-
-	})
-	fmt.Println(rsp, err)
-}
-```
 ## Read
 
 Read a note
@@ -165,6 +137,34 @@ func SubscribeToEvents() {
 	notesService := notes.NewNotesService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := notesService.Subscribe(&notes.SubscribeRequest{
 		Id: "63c0cdf8-2121-11ec-a881-0242e36f037a",
+
+	})
+	fmt.Println(rsp, err)
+}
+```
+## Create
+
+Create a new note
+
+
+[https://m3o.com/notes/api#Create](https://m3o.com/notes/api#Create)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/notes"
+)
+
+// Create a new note
+func CreateAnote() {
+	notesService := notes.NewNotesService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := notesService.Create(&notes.CreateRequest{
+		Text: "This is my note",
+Title: "New Note",
 
 	})
 	fmt.Println(rsp, err)
