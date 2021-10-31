@@ -4,59 +4,6 @@ An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/Currency/api](
 
 Endpoints:
 
-## Codes
-
-Codes returns the supported currency codes for the API
-
-
-[https://m3o.com/currency/api#Codes](https://m3o.com/currency/api#Codes)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/currency"
-)
-
-// Codes returns the supported currency codes for the API
-func GetSupportedCodes() {
-	currencyService := currency.NewCurrencyService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := currencyService.Codes(&currency.CodesRequest{
-		
-	})
-	fmt.Println(rsp, err)
-}
-```
-## Rates
-
-Rates returns the currency rates for a given code e.g USD
-
-
-[https://m3o.com/currency/api#Rates](https://m3o.com/currency/api#Rates)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/currency"
-)
-
-// Rates returns the currency rates for a given code e.g USD
-func GetRatesForUsd() {
-	currencyService := currency.NewCurrencyService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := currencyService.Rates(&currency.RatesRequest{
-		Code: "USD",
-
-	})
-	fmt.Println(rsp, err)
-}
-```
 ## Convert
 
 Convert returns the currency conversion rate between two pairs e.g USD/GBP
@@ -137,6 +84,59 @@ func HistoricRatesForAcurrency() {
 	rsp, err := currencyService.History(&currency.HistoryRequest{
 		Code: "USD",
 Date: "2021-05-30",
+
+	})
+	fmt.Println(rsp, err)
+}
+```
+## Codes
+
+Codes returns the supported currency codes for the API
+
+
+[https://m3o.com/currency/api#Codes](https://m3o.com/currency/api#Codes)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/currency"
+)
+
+// Codes returns the supported currency codes for the API
+func GetSupportedCodes() {
+	currencyService := currency.NewCurrencyService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := currencyService.Codes(&currency.CodesRequest{
+		
+	})
+	fmt.Println(rsp, err)
+}
+```
+## Rates
+
+Rates returns the currency rates for a given code e.g USD
+
+
+[https://m3o.com/currency/api#Rates](https://m3o.com/currency/api#Rates)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/currency"
+)
+
+// Rates returns the currency rates for a given code e.g USD
+func GetRatesForUsd() {
+	currencyService := currency.NewCurrencyService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := currencyService.Rates(&currency.RatesRequest{
+		Code: "USD",
 
 	})
 	fmt.Println(rsp, err)
