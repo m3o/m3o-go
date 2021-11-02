@@ -4,33 +4,6 @@ An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/Crypto/api](ht
 
 Endpoints:
 
-## News
-
-Get news related to a currency
-
-
-[https://m3o.com/crypto/api#News](https://m3o.com/crypto/api#News)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/crypto"
-)
-
-// Get news related to a currency
-func GetCryptocurrencyNews() {
-	cryptoService := crypto.NewCryptoService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := cryptoService.News(&crypto.NewsRequest{
-		Symbol: "BTCUSD",
-
-	})
-	fmt.Println(rsp, err)
-}
-```
 ## Price
 
 Get the last price for a given crypto ticker
@@ -106,6 +79,33 @@ import(
 func GetPreviousClose() {
 	cryptoService := crypto.NewCryptoService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := cryptoService.History(&crypto.HistoryRequest{
+		Symbol: "BTCUSD",
+
+	})
+	fmt.Println(rsp, err)
+}
+```
+## News
+
+Get news related to a currency
+
+
+[https://m3o.com/crypto/api#News](https://m3o.com/crypto/api#News)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/crypto"
+)
+
+// Get news related to a currency
+func GetCryptocurrencyNews() {
+	cryptoService := crypto.NewCryptoService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := cryptoService.News(&crypto.NewsRequest{
 		Symbol: "BTCUSD",
 
 	})
