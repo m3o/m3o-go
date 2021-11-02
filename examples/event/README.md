@@ -26,9 +26,9 @@ func PublishAmessage() {
 	eventService := event.NewEventService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := eventService.Publish(&event.PublishRequest{
 		Message: map[string]interface{}{
-	"id": "1",
 	"type": "signup",
 	"user": "john",
+	"id": "1",
 },
 Topic: "user",
 
