@@ -26,9 +26,9 @@ func PublishAmessage() {
 	eventService := event.NewEventService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := eventService.Publish(&event.PublishRequest{
 		Message: map[string]interface{}{
-	"user": "john",
 	"id": "1",
 	"type": "signup",
+	"user": "john",
 },
 Topic: "user",
 
@@ -57,6 +57,33 @@ import(
 func SubscribeToAtopic() {
 	eventService := event.NewEventService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := eventService.Subscribe(&event.SubscribeRequest{
+		Topic: "user",
+
+	})
+	fmt.Println(rsp, err)
+}
+```
+## Read
+
+Read stored events
+
+
+[https://m3o.com/event/api#Read](https://m3o.com/event/api#Read)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/event"
+)
+
+// Read stored events
+func ReadEventsOnAtopic() {
+	eventService := event.NewEventService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := eventService.Read(&event.ReadRequest{
 		Topic: "user",
 
 	})
