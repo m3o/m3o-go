@@ -7,7 +7,7 @@ import (
 	"go.m3o.com/notes"
 )
 
-// Specify the note to events
+// Subscribe to notes events
 func SubscribeToEvents() {
 	notesService := notes.NewNotesService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := notesService.Events(&notes.EventsRequest{
