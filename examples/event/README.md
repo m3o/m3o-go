@@ -6,7 +6,7 @@ Endpoints:
 
 ## Publish
 
-Publish a message to the event stream.
+Publish a event to the event stream.
 
 
 [https://m3o.com/event/api#Publish](https://m3o.com/event/api#Publish)
@@ -21,8 +21,8 @@ import(
 	"go.m3o.com/event"
 )
 
-// Publish a message to the event stream.
-func PublishAmessage() {
+// Publish a event to the event stream.
+func PublishAnEvent() {
 	eventService := event.NewEventService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := eventService.Publish(&event.PublishRequest{
 		Message: map[string]interface{}{
@@ -36,12 +36,12 @@ Topic: "user",
 	fmt.Println(rsp, err)
 }
 ```
-## Subscribe
+## Consume
 
-Subscribe to messages for a given topic.
+Consume events from a given topic.
 
 
-[https://m3o.com/event/api#Subscribe](https://m3o.com/event/api#Subscribe)
+[https://m3o.com/event/api#Consume](https://m3o.com/event/api#Consume)
 
 ```go
 package example
@@ -53,10 +53,10 @@ import(
 	"go.m3o.com/event"
 )
 
-// Subscribe to messages for a given topic.
-func SubscribeToAtopic() {
+// Consume events from a given topic.
+func ConsumeFromAtopic() {
 	eventService := event.NewEventService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := eventService.Subscribe(&event.SubscribeRequest{
+	rsp, err := eventService.Consume(&event.ConsumeRequest{
 		Topic: "user",
 
 	})
