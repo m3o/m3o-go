@@ -10,6 +10,7 @@ import (
 	"go.m3o.com/email"
 	"go.m3o.com/emoji"
 	"go.m3o.com/evchargers"
+	"go.m3o.com/event"
 	"go.m3o.com/file"
 	"go.m3o.com/forex"
 	"go.m3o.com/function"
@@ -58,6 +59,7 @@ func NewClient(token string) *Client {
 		EmailService:      email.NewEmailService(token),
 		EmojiService:      emoji.NewEmojiService(token),
 		EvchargersService: evchargers.NewEvchargersService(token),
+		EventService:      event.NewEventService(token),
 		FileService:       file.NewFileService(token),
 		ForexService:      forex.NewForexService(token),
 		FunctionService:   function.NewFunctionService(token),
@@ -106,6 +108,7 @@ type Client struct {
 	EmailService      *email.EmailService
 	EmojiService      *emoji.EmojiService
 	EvchargersService *evchargers.EvchargersService
+	EventService      *event.EventService
 	FileService       *file.FileService
 	ForexService      *forex.ForexService
 	FunctionService   *function.FunctionService
