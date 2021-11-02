@@ -6,7 +6,7 @@ Endpoints:
 
 ## Publish
 
-Publish a message to the mq. Specify a topic to group messages for a specific topic.
+Publish a message. Specify a topic to group messages for a specific topic.
 
 
 [https://m3o.com/mq/api#Publish](https://m3o.com/mq/api#Publish)
@@ -21,7 +21,7 @@ import(
 	"go.m3o.com/mq"
 )
 
-// Publish a message to the mq. Specify a topic to group messages for a specific topic.
+// Publish a message. Specify a topic to group messages for a specific topic.
 func PublishAmessage() {
 	mqService := mq.NewMqService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := mqService.Publish(&mq.PublishRequest{
