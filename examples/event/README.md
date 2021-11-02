@@ -6,7 +6,7 @@ Endpoints:
 
 ## Publish
 
-Publish a message to the event. Specify a topic to group messages for a specific topic.
+Publish a message to the event stream.
 
 
 [https://m3o.com/event/api#Publish](https://m3o.com/event/api#Publish)
@@ -21,14 +21,14 @@ import(
 	"go.m3o.com/event"
 )
 
-// Publish a message to the event. Specify a topic to group messages for a specific topic.
+// Publish a message to the event stream.
 func PublishAmessage() {
 	eventService := event.NewEventService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := eventService.Publish(&event.PublishRequest{
 		Message: map[string]interface{}{
+	"user": "john",
 	"id": "1",
 	"type": "signup",
-	"user": "john",
 },
 Topic: "user",
 
