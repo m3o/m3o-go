@@ -4,6 +4,34 @@ An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/Stock/api](htt
 
 Endpoints:
 
+## History
+
+Get the historic open-close for a given day
+
+
+[https://m3o.com/stock/api#History](https://m3o.com/stock/api#History)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/stock"
+)
+
+// Get the historic open-close for a given day
+func GetHistoricData() {
+	stockService := stock.NewStockService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := stockService.History(&stock.HistoryRequest{
+		Date: "2020-10-01",
+Stock: "AAPL",
+
+	})
+	fmt.Println(rsp, err)
+}
+```
 ## OrderBook
 
 Get the historic order book and each trade by timestamp
@@ -84,34 +112,6 @@ func GetAstockQuote() {
 	stockService := stock.NewStockService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := stockService.Quote(&stock.QuoteRequest{
 		Symbol: "AAPL",
-
-	})
-	fmt.Println(rsp, err)
-}
-```
-## History
-
-Get the historic open-close for a given day
-
-
-[https://m3o.com/stock/api#History](https://m3o.com/stock/api#History)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/stock"
-)
-
-// Get the historic open-close for a given day
-func GetHistoricData() {
-	stockService := stock.NewStockService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := stockService.History(&stock.HistoryRequest{
-		Date: "2020-10-01",
-Stock: "AAPL",
 
 	})
 	fmt.Println(rsp, err)
