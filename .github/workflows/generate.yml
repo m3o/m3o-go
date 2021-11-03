@@ -1,0 +1,26 @@
+name: Test Clients
+on:
+  push:
+    branches:
+      - main
+      - beta
+      - ci
+
+jobs:
+  generate:
+    name: Test Clients
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repo
+        uses: actions/checkout@v2
+        with:
+          path: clients
+          #ref: main
+
+      - name: Test
+        working-directory: clients
+        env:
+          M3O_API_TOKEN: ${{ secrets.M3O_API_TOKEN }}
+        run: |
+          cd examples/helloworld/call/callTheHelloworldService
+          go run main.go
