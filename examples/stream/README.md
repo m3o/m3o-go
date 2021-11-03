@@ -4,6 +4,61 @@ An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/Stream/api](ht
 
 Endpoints:
 
+## SendMessage
+
+Send a message to the stream.
+
+
+[https://m3o.com/stream/api#SendMessage](https://m3o.com/stream/api#SendMessage)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/stream"
+)
+
+// Send a message to the stream.
+func SendMessage() {
+	streamService := stream.NewStreamService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := streamService.SendMessage(&stream.SendMessageRequest{
+		Channel: "general",
+Text: "Hey checkout this tweet https://twitter.com/m3oservices/status/1455291054295498752",
+
+	})
+	fmt.Println(rsp, err)
+}
+```
+## ListMessages
+
+List messages for a given channel
+
+
+[https://m3o.com/stream/api#ListMessages](https://m3o.com/stream/api#ListMessages)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/stream"
+)
+
+// List messages for a given channel
+func ListMessages() {
+	streamService := stream.NewStreamService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := streamService.ListMessages(&stream.ListMessagesRequest{
+		Channel: "general",
+
+	})
+	fmt.Println(rsp, err)
+}
+```
 ## ListChannels
 
 List all the active channels
@@ -55,61 +110,6 @@ func CreateChannel() {
 	rsp, err := streamService.CreateChannel(&stream.CreateChannelRequest{
 		Description: "The channel for all things",
 Name: "general",
-
-	})
-	fmt.Println(rsp, err)
-}
-```
-## SendMessage
-
-Send a message to the stream.
-
-
-[https://m3o.com/stream/api#SendMessage](https://m3o.com/stream/api#SendMessage)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/stream"
-)
-
-// Send a message to the stream.
-func SendMessage() {
-	streamService := stream.NewStreamService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := streamService.SendMessage(&stream.SendMessageRequest{
-		Channel: "general",
-Text: "Hey checkout this tweet https://twitter.com/m3oservices/status/1455291054295498752",
-
-	})
-	fmt.Println(rsp, err)
-}
-```
-## ListMessages
-
-List messages for a given channel
-
-
-[https://m3o.com/stream/api#ListMessages](https://m3o.com/stream/api#ListMessages)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/stream"
-)
-
-// List messages for a given channel
-func ListMessages() {
-	streamService := stream.NewStreamService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := streamService.ListMessages(&stream.ListMessagesRequest{
-		Channel: "general",
 
 	})
 	fmt.Println(rsp, err)
