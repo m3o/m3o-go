@@ -4,6 +4,34 @@ An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/Cache/api](htt
 
 Endpoints:
 
+## Increment
+
+Increment a value (if it's a number). If key not found it is equivalent to set.
+
+
+[https://m3o.com/cache/api#Increment](https://m3o.com/cache/api#Increment)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/cache"
+)
+
+// Increment a value (if it's a number). If key not found it is equivalent to set.
+func IncrementAvalue() {
+	cacheService := cache.NewCacheService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := cacheService.Increment(&cache.IncrementRequest{
+		Key: "counter",
+Value: 2,
+
+	})
+	fmt.Println(rsp, err)
+}
+```
 ## Decrement
 
 Decrement a value (if it's a number). If key not found it is equivalent to set.
@@ -109,34 +137,6 @@ func DeleteAvalue() {
 	cacheService := cache.NewCacheService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := cacheService.Delete(&cache.DeleteRequest{
 		Key: "foo",
-
-	})
-	fmt.Println(rsp, err)
-}
-```
-## Increment
-
-Increment a value (if it's a number). If key not found it is equivalent to set.
-
-
-[https://m3o.com/cache/api#Increment](https://m3o.com/cache/api#Increment)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/cache"
-)
-
-// Increment a value (if it's a number). If key not found it is equivalent to set.
-func IncrementAvalue() {
-	cacheService := cache.NewCacheService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := cacheService.Increment(&cache.IncrementRequest{
-		Key: "counter",
-Value: 2,
 
 	})
 	fmt.Println(rsp, err)
