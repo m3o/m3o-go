@@ -22,7 +22,5 @@ jobs:
         env:
           M3O_API_TOKEN: ${{ secrets.M3O_API_TOKEN }}
         run: |
-          cd examples/helloworld/call
-          npm init -y
-          npm install --save m3o
-          node callTheHelloworldService.js
+          cd examples/helloworld/call/callTheHelloworldService
+          go run main.go
