@@ -19,23 +19,29 @@ type ImageService struct {
 // Convert an image from one format (jpeg, png etc.) to an other either on the fly (from base64 to base64),
 // or by uploading the conversion result.
 func (t *ImageService) Convert(request *ConvertRequest) (*ConvertResponse, error) {
+
 	rsp := &ConvertResponse{}
 	return rsp, t.client.Call("image", "Convert", request, rsp)
+
 }
 
 // Resize an image on the fly without storing it (by sending and receiving a base64 encoded image), or resize and upload depending on parameters.
 // If one of width or height is 0, the image aspect ratio is preserved.
 // Optional cropping.
 func (t *ImageService) Resize(request *ResizeRequest) (*ResizeResponse, error) {
+
 	rsp := &ResizeResponse{}
 	return rsp, t.client.Call("image", "Resize", request, rsp)
+
 }
 
 // Upload an image by either sending a base64 encoded image to this endpoint or a URL.
 // To resize an image before uploading, see the Resize endpoint.
 func (t *ImageService) Upload(request *UploadRequest) (*UploadResponse, error) {
+
 	rsp := &UploadResponse{}
 	return rsp, t.client.Call("image", "Upload", request, rsp)
+
 }
 
 type ConvertRequest struct {

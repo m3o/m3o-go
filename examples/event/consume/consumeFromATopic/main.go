@@ -10,8 +10,22 @@ import (
 // Consume events from a given topic.
 func main() {
 	eventService := event.NewEventService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := eventService.Consume(&event.ConsumeRequest{
+
+	stream, err := eventService.Consume(&event.ConsumeRequest{
 		Topic: "user",
 	})
-	fmt.Println(rsp, err)
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+
+	for {
+		rsp, err := stream.Recv()
+		if err != nil {
+			fmt.Println(err)
+			return
+		}
+
+		fmt.Println(rsp)
+	}
 }

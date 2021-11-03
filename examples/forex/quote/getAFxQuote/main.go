@@ -14,4 +14,5 @@ func main() {
 		Symbol: "GBPUSD",
 	})
 	fmt.Println(rsp, err)
+
 }

@@ -18,39 +18,51 @@ type UserService struct {
 
 // Create a new user account. The email address and username for the account must be unique.
 func (t *UserService) Create(request *CreateRequest) (*CreateResponse, error) {
+
 	rsp := &CreateResponse{}
 	return rsp, t.client.Call("user", "Create", request, rsp)
+
 }
 
 // Delete an account by id
 func (t *UserService) Delete(request *DeleteRequest) (*DeleteResponse, error) {
+
 	rsp := &DeleteResponse{}
 	return rsp, t.client.Call("user", "Delete", request, rsp)
+
 }
 
 // Login using username or email. The response will return a new session for successful login,
 // 401 in the case of login failure and 500 for any other error
 func (t *UserService) Login(request *LoginRequest) (*LoginResponse, error) {
+
 	rsp := &LoginResponse{}
 	return rsp, t.client.Call("user", "Login", request, rsp)
+
 }
 
 // Logout a user account
 func (t *UserService) Logout(request *LogoutRequest) (*LogoutResponse, error) {
+
 	rsp := &LogoutResponse{}
 	return rsp, t.client.Call("user", "Logout", request, rsp)
+
 }
 
 // Read an account by id, username or email. Only one need to be specified.
 func (t *UserService) Read(request *ReadRequest) (*ReadResponse, error) {
+
 	rsp := &ReadResponse{}
 	return rsp, t.client.Call("user", "Read", request, rsp)
+
 }
 
 // Read a session by the session id. In the event it has expired or is not found and error is returned.
 func (t *UserService) ReadSession(request *ReadSessionRequest) (*ReadSessionResponse, error) {
+
 	rsp := &ReadSessionResponse{}
 	return rsp, t.client.Call("user", "ReadSession", request, rsp)
+
 }
 
 // Send a verification email
@@ -61,26 +73,34 @@ func (t *UserService) ReadSession(request *ReadSessionRequest) (*ReadSessionResp
 // The variable will be replaced with an actual url that will look similar to this:
 // 'https://user.m3o.com/user/verify?token=a-verification-token&redirectUrl=your-redir-url'
 func (t *UserService) SendVerificationEmail(request *SendVerificationEmailRequest) (*SendVerificationEmailResponse, error) {
+
 	rsp := &SendVerificationEmailResponse{}
 	return rsp, t.client.Call("user", "SendVerificationEmail", request, rsp)
+
 }
 
 // Update the account password
 func (t *UserService) UpdatePassword(request *UpdatePasswordRequest) (*UpdatePasswordResponse, error) {
+
 	rsp := &UpdatePasswordResponse{}
 	return rsp, t.client.Call("user", "UpdatePassword", request, rsp)
+
 }
 
 // Update the account username or email
 func (t *UserService) Update(request *UpdateRequest) (*UpdateResponse, error) {
+
 	rsp := &UpdateResponse{}
 	return rsp, t.client.Call("user", "Update", request, rsp)
+
 }
 
 // Verify the email address of an account from a token sent in an email to the user.
 func (t *UserService) VerifyEmail(request *VerifyEmailRequest) (*VerifyEmailResponse, error) {
+
 	rsp := &VerifyEmailResponse{}
 	return rsp, t.client.Call("user", "VerifyEmail", request, rsp)
+
 }
 
 type Account struct {

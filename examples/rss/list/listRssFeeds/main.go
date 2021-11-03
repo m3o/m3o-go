@@ -12,4 +12,5 @@ func main() {
 	rssService := rss.NewRssService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := rssService.List(&rss.ListRequest{})
 	fmt.Println(rsp, err)
+
 }

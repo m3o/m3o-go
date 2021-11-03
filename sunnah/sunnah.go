@@ -19,28 +19,36 @@ type SunnahService struct {
 // Get a list of books from within a collection. A book can contain many chapters
 // each with its own hadiths.
 func (t *SunnahService) Books(request *BooksRequest) (*BooksResponse, error) {
+
 	rsp := &BooksResponse{}
 	return rsp, t.client.Call("sunnah", "Books", request, rsp)
+
 }
 
 // Get all the chapters of a given book within a collection.
 func (t *SunnahService) Chapters(request *ChaptersRequest) (*ChaptersResponse, error) {
+
 	rsp := &ChaptersResponse{}
 	return rsp, t.client.Call("sunnah", "Chapters", request, rsp)
+
 }
 
 // Get a list of available collections. A collection is
 // a compilation of hadiths collected and written by an author.
 func (t *SunnahService) Collections(request *CollectionsRequest) (*CollectionsResponse, error) {
+
 	rsp := &CollectionsResponse{}
 	return rsp, t.client.Call("sunnah", "Collections", request, rsp)
+
 }
 
 // Hadiths returns a list of hadiths and their corresponding text for a
 // given book within a collection.
 func (t *SunnahService) Hadiths(request *HadithsRequest) (*HadithsResponse, error) {
+
 	rsp := &HadithsResponse{}
 	return rsp, t.client.Call("sunnah", "Hadiths", request, rsp)
+
 }
 
 type Book struct {

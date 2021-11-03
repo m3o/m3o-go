@@ -18,14 +18,18 @@ type HolidaysService struct {
 
 // Get the list of countries that are supported by this API
 func (t *HolidaysService) Countries(request *CountriesRequest) (*CountriesResponse, error) {
+
 	rsp := &CountriesResponse{}
 	return rsp, t.client.Call("holidays", "Countries", request, rsp)
+
 }
 
 // List the holiday dates for a given country and year
 func (t *HolidaysService) List(request *ListRequest) (*ListResponse, error) {
+
 	rsp := &ListResponse{}
 	return rsp, t.client.Call("holidays", "List", request, rsp)
+
 }
 
 type CountriesRequest struct {

@@ -16,4 +16,5 @@ func main() {
 		Url:      "http://feeds.bbci.co.uk/news/rss.xml",
 	})
 	fmt.Println(rsp, err)
+
 }

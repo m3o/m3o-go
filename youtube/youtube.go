@@ -18,8 +18,10 @@ type YoutubeService struct {
 
 // Search for videos on YouTube
 func (t *YoutubeService) Search(request *SearchRequest) (*SearchResponse, error) {
+
 	rsp := &SearchResponse{}
 	return rsp, t.client.Call("youtube", "Search", request, rsp)
+
 }
 
 type SearchRequest struct {

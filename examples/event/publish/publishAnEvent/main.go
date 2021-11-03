@@ -19,4 +19,5 @@ func main() {
 		Topic: "user",
 	})
 	fmt.Println(rsp, err)
+
 }

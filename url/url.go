@@ -18,20 +18,26 @@ type UrlService struct {
 
 // List information on all the shortened URLs that you have created
 func (t *UrlService) List(request *ListRequest) (*ListResponse, error) {
+
 	rsp := &ListResponse{}
 	return rsp, t.client.Call("url", "List", request, rsp)
+
 }
 
 // Proxy returns the destination URL of a short URL.
 func (t *UrlService) Proxy(request *ProxyRequest) (*ProxyResponse, error) {
+
 	rsp := &ProxyResponse{}
 	return rsp, t.client.Call("url", "Proxy", request, rsp)
+
 }
 
 // Shortens a destination URL and returns a full short URL.
 func (t *UrlService) Shorten(request *ShortenRequest) (*ShortenResponse, error) {
+
 	rsp := &ShortenResponse{}
 	return rsp, t.client.Call("url", "Shorten", request, rsp)
+
 }
 
 type ListRequest struct {

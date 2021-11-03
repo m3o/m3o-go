@@ -19,4 +19,5 @@ func main() {
 		Topic: "events",
 	})
 	fmt.Println(rsp, err)
+
 }

@@ -15,4 +15,5 @@ func main() {
 		Text: "https://m3o.com/qr",
 	})
 	fmt.Println(rsp, err)
+
 }

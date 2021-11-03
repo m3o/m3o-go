@@ -18,32 +18,42 @@ type FunctionService struct {
 
 // Call a function by name
 func (t *FunctionService) Call(request *CallRequest) (*CallResponse, error) {
+
 	rsp := &CallResponse{}
 	return rsp, t.client.Call("function", "Call", request, rsp)
+
 }
 
 // Delete a function by name
 func (t *FunctionService) Delete(request *DeleteRequest) (*DeleteResponse, error) {
+
 	rsp := &DeleteResponse{}
 	return rsp, t.client.Call("function", "Delete", request, rsp)
+
 }
 
 // Deploy a group of functions
 func (t *FunctionService) Deploy(request *DeployRequest) (*DeployResponse, error) {
+
 	rsp := &DeployResponse{}
 	return rsp, t.client.Call("function", "Deploy", request, rsp)
+
 }
 
 // Get the info for a deployed function
 func (t *FunctionService) Describe(request *DescribeRequest) (*DescribeResponse, error) {
+
 	rsp := &DescribeResponse{}
 	return rsp, t.client.Call("function", "Describe", request, rsp)
+
 }
 
 // List all the deployed functions
 func (t *FunctionService) List(request *ListRequest) (*ListResponse, error) {
+
 	rsp := &ListResponse{}
 	return rsp, t.client.Call("function", "List", request, rsp)
+
 }
 
 type CallRequest struct {

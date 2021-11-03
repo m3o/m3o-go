@@ -10,8 +10,22 @@ import (
 // Stream returns a stream of "Hello $name" responses
 func main() {
 	helloworldService := helloworld.NewHelloworldService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := helloworldService.Stream(&helloworld.StreamRequest{
+
+	stream, err := helloworldService.Stream(&helloworld.StreamRequest{
 		Name: "not supported",
 	})
-	fmt.Println(rsp, err)
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+
+	for {
+		rsp, err := stream.Recv()
+		if err != nil {
+			fmt.Println(err)
+			return
+		}
+
+		fmt.Println(rsp)
+	}
 }

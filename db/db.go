@@ -18,38 +18,50 @@ type DbService struct {
 
 // Count records in a table
 func (t *DbService) Count(request *CountRequest) (*CountResponse, error) {
+
 	rsp := &CountResponse{}
 	return rsp, t.client.Call("db", "Count", request, rsp)
+
 }
 
 // Create a record in the database. Optionally include an "id" field otherwise it's set automatically.
 func (t *DbService) Create(request *CreateRequest) (*CreateResponse, error) {
+
 	rsp := &CreateResponse{}
 	return rsp, t.client.Call("db", "Create", request, rsp)
+
 }
 
 // Delete a record in the database by id.
 func (t *DbService) Delete(request *DeleteRequest) (*DeleteResponse, error) {
+
 	rsp := &DeleteResponse{}
 	return rsp, t.client.Call("db", "Delete", request, rsp)
+
 }
 
 // Read data from a table. Lookup can be by ID or via querying any field in the record.
 func (t *DbService) Read(request *ReadRequest) (*ReadResponse, error) {
+
 	rsp := &ReadResponse{}
 	return rsp, t.client.Call("db", "Read", request, rsp)
+
 }
 
 // Truncate the records in a table
 func (t *DbService) Truncate(request *TruncateRequest) (*TruncateResponse, error) {
+
 	rsp := &TruncateResponse{}
 	return rsp, t.client.Call("db", "Truncate", request, rsp)
+
 }
 
 // Update a record in the database. Include an "id" in the record to update.
 func (t *DbService) Update(request *UpdateRequest) (*UpdateResponse, error) {
+
 	rsp := &UpdateResponse{}
 	return rsp, t.client.Call("db", "Update", request, rsp)
+
 }
 
 type CountRequest struct {

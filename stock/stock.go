@@ -18,26 +18,34 @@ type StockService struct {
 
 // Get the historic open-close for a given day
 func (t *StockService) History(request *HistoryRequest) (*HistoryResponse, error) {
+
 	rsp := &HistoryResponse{}
 	return rsp, t.client.Call("stock", "History", request, rsp)
+
 }
 
 // Get the historic order book and each trade by timestamp
 func (t *StockService) OrderBook(request *OrderBookRequest) (*OrderBookResponse, error) {
+
 	rsp := &OrderBookResponse{}
 	return rsp, t.client.Call("stock", "OrderBook", request, rsp)
+
 }
 
 // Get the last price for a given stock ticker
 func (t *StockService) Price(request *PriceRequest) (*PriceResponse, error) {
+
 	rsp := &PriceResponse{}
 	return rsp, t.client.Call("stock", "Price", request, rsp)
+
 }
 
 // Get the last quote for the stock
 func (t *StockService) Quote(request *QuoteRequest) (*QuoteResponse, error) {
+
 	rsp := &QuoteResponse{}
 	return rsp, t.client.Call("stock", "Quote", request, rsp)
+
 }
 
 type HistoryRequest struct {

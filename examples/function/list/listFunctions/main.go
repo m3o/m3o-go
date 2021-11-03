@@ -12,4 +12,5 @@ func main() {
 	functionService := function.NewFunctionService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := functionService.List(&function.ListRequest{})
 	fmt.Println(rsp, err)
+
 }

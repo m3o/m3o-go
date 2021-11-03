@@ -16,4 +16,5 @@ func main() {
 		Collection: "bukhari",
 	})
 	fmt.Println(rsp, err)
+
 }

@@ -18,20 +18,26 @@ type ForexService struct {
 
 // Returns the data for the previous close
 func (t *ForexService) History(request *HistoryRequest) (*HistoryResponse, error) {
+
 	rsp := &HistoryResponse{}
 	return rsp, t.client.Call("forex", "History", request, rsp)
+
 }
 
 // Get the latest price for a given forex ticker
 func (t *ForexService) Price(request *PriceRequest) (*PriceResponse, error) {
+
 	rsp := &PriceResponse{}
 	return rsp, t.client.Call("forex", "Price", request, rsp)
+
 }
 
 // Get the latest quote for the forex
 func (t *ForexService) Quote(request *QuoteRequest) (*QuoteResponse, error) {
+
 	rsp := &QuoteResponse{}
 	return rsp, t.client.Call("forex", "Quote", request, rsp)
+
 }
 
 type HistoryRequest struct {

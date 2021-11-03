@@ -18,26 +18,34 @@ type CryptoService struct {
 
 // Returns the history for the previous close
 func (t *CryptoService) History(request *HistoryRequest) (*HistoryResponse, error) {
+
 	rsp := &HistoryResponse{}
 	return rsp, t.client.Call("crypto", "History", request, rsp)
+
 }
 
 // Get news related to a currency
 func (t *CryptoService) News(request *NewsRequest) (*NewsResponse, error) {
+
 	rsp := &NewsResponse{}
 	return rsp, t.client.Call("crypto", "News", request, rsp)
+
 }
 
 // Get the last price for a given crypto ticker
 func (t *CryptoService) Price(request *PriceRequest) (*PriceResponse, error) {
+
 	rsp := &PriceResponse{}
 	return rsp, t.client.Call("crypto", "Price", request, rsp)
+
 }
 
 // Get the last quote for a given crypto ticker
 func (t *CryptoService) Quote(request *QuoteRequest) (*QuoteResponse, error) {
+
 	rsp := &QuoteResponse{}
 	return rsp, t.client.Call("crypto", "Quote", request, rsp)
+
 }
 
 type Article struct {

@@ -18,14 +18,18 @@ type EvchargersService struct {
 
 // Retrieve reference data as used by this API and in conjunction with the Search endpoint
 func (t *EvchargersService) ReferenceData(request *ReferenceDataRequest) (*ReferenceDataResponse, error) {
+
 	rsp := &ReferenceDataResponse{}
 	return rsp, t.client.Call("evchargers", "ReferenceData", request, rsp)
+
 }
 
 // Search by giving a coordinate and a max distance, or bounding box and optional filters
 func (t *EvchargersService) Search(request *SearchRequest) (*SearchResponse, error) {
+
 	rsp := &SearchResponse{}
 	return rsp, t.client.Call("evchargers", "Search", request, rsp)
+
 }
 
 type Address struct {

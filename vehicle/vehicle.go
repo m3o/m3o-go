@@ -18,8 +18,10 @@ type VehicleService struct {
 
 // Lookup a UK vehicle by it's registration number
 func (t *VehicleService) Lookup(request *LookupRequest) (*LookupResponse, error) {
+
 	rsp := &LookupResponse{}
 	return rsp, t.client.Call("vehicle", "Lookup", request, rsp)
+
 }
 
 type LookupRequest struct {

@@ -13,4 +13,5 @@ func main() {
 	sunnahService := sunnah.NewSunnahService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := sunnahService.Collections(&sunnah.CollectionsRequest{})
 	fmt.Println(rsp, err)
+
 }

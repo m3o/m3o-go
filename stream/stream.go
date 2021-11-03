@@ -18,20 +18,26 @@ type StreamService struct {
 
 // List all the active channels
 func (t *StreamService) ListChannels(request *ListChannelsRequest) (*ListChannelsResponse, error) {
+
 	rsp := &ListChannelsResponse{}
 	return rsp, t.client.Call("stream", "ListChannels", request, rsp)
+
 }
 
 // List messages for a given channel
 func (t *StreamService) ListMessages(request *ListMessagesRequest) (*ListMessagesResponse, error) {
+
 	rsp := &ListMessagesResponse{}
 	return rsp, t.client.Call("stream", "ListMessages", request, rsp)
+
 }
 
-// SendMessage a message to the stream.
+// Send a message to the stream.
 func (t *StreamService) SendMessage(request *SendMessageRequest) (*SendMessageResponse, error) {
+
 	rsp := &SendMessageResponse{}
 	return rsp, t.client.Call("stream", "SendMessage", request, rsp)
+
 }
 
 type Channel struct {

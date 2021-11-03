@@ -18,8 +18,10 @@ type AddressService struct {
 
 // Lookup a list of UK addresses by postcode
 func (t *AddressService) LookupPostcode(request *LookupPostcodeRequest) (*LookupPostcodeResponse, error) {
+
 	rsp := &LookupPostcodeResponse{}
 	return rsp, t.client.Call("address", "LookupPostcode", request, rsp)
+
 }
 
 type LookupPostcodeRequest struct {

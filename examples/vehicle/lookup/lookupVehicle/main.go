@@ -14,4 +14,5 @@ func main() {
 		Registration: "LC60OTA",
 	})
 	fmt.Println(rsp, err)
+
 }

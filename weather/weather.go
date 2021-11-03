@@ -18,14 +18,18 @@ type WeatherService struct {
 
 // Get the weather forecast for the next 1-10 days
 func (t *WeatherService) Forecast(request *ForecastRequest) (*ForecastResponse, error) {
+
 	rsp := &ForecastResponse{}
 	return rsp, t.client.Call("weather", "Forecast", request, rsp)
+
 }
 
 // Get the current weather report for a location by postcode, city, zip code, ip address
 func (t *WeatherService) Now(request *NowRequest) (*NowResponse, error) {
+
 	rsp := &NowResponse{}
 	return rsp, t.client.Call("weather", "Now", request, rsp)
+
 }
 
 type Forecast struct {

@@ -18,8 +18,10 @@ type GoogleService struct {
 
 // Search for videos on Google
 func (t *GoogleService) Search(request *SearchRequest) (*SearchResponse, error) {
+
 	rsp := &SearchResponse{}
 	return rsp, t.client.Call("google", "Search", request, rsp)
+
 }
 
 type SearchRequest struct {

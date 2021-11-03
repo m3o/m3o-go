@@ -18,28 +18,36 @@ type QuranService struct {
 
 // List the Chapters (surahs) of the Quran
 func (t *QuranService) Chapters(request *ChaptersRequest) (*ChaptersResponse, error) {
+
 	rsp := &ChaptersResponse{}
 	return rsp, t.client.Call("quran", "Chapters", request, rsp)
+
 }
 
 // Search the Quran for any form of query or questions
 func (t *QuranService) Search(request *SearchRequest) (*SearchResponse, error) {
+
 	rsp := &SearchResponse{}
 	return rsp, t.client.Call("quran", "Search", request, rsp)
+
 }
 
 // Get a summary for a given chapter (surah)
 func (t *QuranService) Summary(request *SummaryRequest) (*SummaryResponse, error) {
+
 	rsp := &SummaryResponse{}
 	return rsp, t.client.Call("quran", "Summary", request, rsp)
+
 }
 
 // Lookup the verses (ayahs) for a chapter including
 // translation, interpretation and breakdown by individual
 // words.
 func (t *QuranService) Verses(request *VersesRequest) (*VersesResponse, error) {
+
 	rsp := &VersesResponse{}
 	return rsp, t.client.Call("quran", "Verses", request, rsp)
+
 }
 
 type Chapter struct {

@@ -18,8 +18,10 @@ type GifsService struct {
 
 // Search for a GIF
 func (t *GifsService) Search(request *SearchRequest) (*SearchResponse, error) {
+
 	rsp := &SearchResponse{}
 	return rsp, t.client.Call("gifs", "Search", request, rsp)
+
 }
 
 type Gif struct {

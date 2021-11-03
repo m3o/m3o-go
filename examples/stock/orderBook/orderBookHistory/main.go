@@ -18,4 +18,5 @@ func main() {
 		Stock: "AAPL",
 	})
 	fmt.Println(rsp, err)
+
 }

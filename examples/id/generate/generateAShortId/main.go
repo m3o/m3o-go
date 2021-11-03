@@ -14,4 +14,5 @@ func main() {
 		Type: "shortid",
 	})
 	fmt.Println(rsp, err)
+
 }

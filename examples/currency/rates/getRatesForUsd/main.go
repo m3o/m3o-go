@@ -14,4 +14,5 @@ func main() {
 		Code: "USD",
 	})
 	fmt.Println(rsp, err)
+
 }

@@ -17,21 +17,43 @@ type EventService struct {
 }
 
 // Consume events from a given topic.
-func (t *EventService) Consume(request *ConsumeRequest) (*ConsumeResponse, error) {
-	rsp := &ConsumeResponse{}
-	return rsp, t.client.Call("event", "Consume", request, rsp)
+func (t *EventService) Consume(request *ConsumeRequest) (*ConsumeResponseStream, error) {
+	stream, err := t.client.Stream("event", "Consume", request)
+	if err != nil {
+		return nil, err
+	}
+	return &ConsumeResponseStream{
+		stream: stream,
+	}, nil
+
+}
+
+type ConsumeResponseStream struct {
+	stream *client.Stream
+}
+
+func (t *ConsumeResponseStream) Recv() (*ConsumeResponse, error) {
+	var rsp ConsumeResponse
+	if err := t.stream.Recv(&rsp); err != nil {
+		return nil, err
+	}
+	return &rsp, nil
 }
 
 // Publish a event to the event stream.
 func (t *EventService) Publish(request *PublishRequest) (*PublishResponse, error) {
+
 	rsp := &PublishResponse{}
 	return rsp, t.client.Call("event", "Publish", request, rsp)
+
 }
 
 // Read stored events
 func (t *EventService) Read(request *ReadRequest) (*ReadResponse, error) {
+
 	rsp := &ReadResponse{}
 	return rsp, t.client.Call("event", "Read", request, rsp)
+
 }
 
 type ConsumeRequest struct {

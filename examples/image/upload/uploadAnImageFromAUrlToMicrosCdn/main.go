@@ -16,4 +16,5 @@ func main() {
 		Url:  "somewebsite.com/cat.png",
 	})
 	fmt.Println(rsp, err)
+
 }

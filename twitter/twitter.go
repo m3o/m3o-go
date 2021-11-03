@@ -18,26 +18,34 @@ type TwitterService struct {
 
 // Search for tweets with a simple query
 func (t *TwitterService) Search(request *SearchRequest) (*SearchResponse, error) {
+
 	rsp := &SearchResponse{}
 	return rsp, t.client.Call("twitter", "Search", request, rsp)
+
 }
 
 // Get the timeline for a given user
 func (t *TwitterService) Timeline(request *TimelineRequest) (*TimelineResponse, error) {
+
 	rsp := &TimelineResponse{}
 	return rsp, t.client.Call("twitter", "Timeline", request, rsp)
+
 }
 
 // Get the current global trending topics
 func (t *TwitterService) Trends(request *TrendsRequest) (*TrendsResponse, error) {
+
 	rsp := &TrendsResponse{}
 	return rsp, t.client.Call("twitter", "Trends", request, rsp)
+
 }
 
 // Get a user's twitter profile
 func (t *TwitterService) User(request *UserRequest) (*UserResponse, error) {
+
 	rsp := &UserResponse{}
 	return rsp, t.client.Call("twitter", "User", request, rsp)
+
 }
 
 type Profile struct {

@@ -6,7 +6,7 @@ Endpoints:
 
 ## SendMessage
 
-SendMessage a message to the stream.
+Send a message to the stream.
 
 
 [https://m3o.com/stream/api#SendMessage](https://m3o.com/stream/api#SendMessage)
@@ -21,8 +21,8 @@ import(
 	"go.m3o.com/stream"
 )
 
-// SendMessage a message to the stream.
-func SendAmessage() {
+// Send a message to the stream.
+func SendMessage() {
 	streamService := stream.NewStreamService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := streamService.SendMessage(&stream.SendMessageRequest{
 		Channel: "general",

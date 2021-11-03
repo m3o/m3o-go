@@ -18,14 +18,34 @@ type MqService struct {
 
 // Publish a message. Specify a topic to group messages for a specific topic.
 func (t *MqService) Publish(request *PublishRequest) (*PublishResponse, error) {
+
 	rsp := &PublishResponse{}
 	return rsp, t.client.Call("mq", "Publish", request, rsp)
+
 }
 
 // Subscribe to messages for a given topic.
-func (t *MqService) Subscribe(request *SubscribeRequest) (*SubscribeResponse, error) {
-	rsp := &SubscribeResponse{}
-	return rsp, t.client.Call("mq", "Subscribe", request, rsp)
+func (t *MqService) Subscribe(request *SubscribeRequest) (*SubscribeResponseStream, error) {
+	stream, err := t.client.Stream("mq", "Subscribe", request)
+	if err != nil {
+		return nil, err
+	}
+	return &SubscribeResponseStream{
+		stream: stream,
+	}, nil
+
+}
+
+type SubscribeResponseStream struct {
+	stream *client.Stream
+}
+
+func (t *SubscribeResponseStream) Recv() (*SubscribeResponse, error) {
+	var rsp SubscribeResponse
+	if err := t.stream.Recv(&rsp); err != nil {
+		return nil, err
+	}
+	return &rsp, nil
 }
 
 type PublishRequest struct {
