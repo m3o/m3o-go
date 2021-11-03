@@ -4,6 +4,136 @@ An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/User/api](http
 
 Endpoints:
 
+## SendVerificationEmail
+
+Send a verification email
+to the user being signed up. Email from will be from 'support@m3o.com',
+but you can provide the title and contents.
+The verification link will be injected in to the email as a template variable, $micro_verification_link.
+Example: 'Hi there, welcome onboard! Use the link below to verify your email: $micro_verification_link'
+The variable will be replaced with an actual url that will look similar to this:
+'https://user.m3o.com/user/verify?token=a-verification-token&redirectUrl=your-redir-url'
+
+
+[https://m3o.com/user/api#SendVerificationEmail](https://m3o.com/user/api#SendVerificationEmail)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/user"
+)
+
+// Send a verification email
+// to the user being signed up. Email from will be from 'support@m3o.com',
+// but you can provide the title and contents.
+// The verification link will be injected in to the email as a template variable, $micro_verification_link.
+// Example: 'Hi there, welcome onboard! Use the link below to verify your email: $micro_verification_link'
+// The variable will be replaced with an actual url that will look similar to this:
+// 'https://user.m3o.com/user/verify?token=a-verification-token&redirectUrl=your-redir-url'
+func SendVerificationEmail() {
+	userService := user.NewUserService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := userService.SendVerificationEmail(&user.SendVerificationEmailRequest{
+		Email: "joe@example.com",
+FailureRedirectUrl: "https://m3o.com/verification-failed",
+FromName: "Awesome Dot Com",
+RedirectUrl: "https://m3o.com",
+Subject: "Email verification",
+TextContent: `Hi there,
+
+Please verify your email by clicking this link: $micro_verification_link`,
+
+	})
+	fmt.Println(rsp, err)
+}
+```
+## VerifyEmail
+
+Verify the email address of an account from a token sent in an email to the user.
+
+
+[https://m3o.com/user/api#VerifyEmail](https://m3o.com/user/api#VerifyEmail)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/user"
+)
+
+// Verify the email address of an account from a token sent in an email to the user.
+func VerifyEmail() {
+	userService := user.NewUserService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := userService.VerifyEmail(&user.VerifyEmailRequest{
+		Token: "t2323t232t",
+
+	})
+	fmt.Println(rsp, err)
+}
+```
+## Delete
+
+Delete an account by id
+
+
+[https://m3o.com/user/api#Delete](https://m3o.com/user/api#Delete)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/user"
+)
+
+// Delete an account by id
+func DeleteUserAccount() {
+	userService := user.NewUserService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := userService.Delete(&user.DeleteRequest{
+		Id: "fdf34f34f34-f34f34-f43f43f34-f4f34f",
+
+	})
+	fmt.Println(rsp, err)
+}
+```
+## Login
+
+Login using username or email. The response will return a new session for successful login,
+401 in the case of login failure and 500 for any other error
+
+
+[https://m3o.com/user/api#Login](https://m3o.com/user/api#Login)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/user"
+)
+
+// Login using username or email. The response will return a new session for successful login,
+// 401 in the case of login failure and 500 for any other error
+func LogAuserIn() {
+	userService := user.NewUserService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := userService.Login(&user.LoginRequest{
+		Email: "joe@example.com",
+Password: "mySecretPass123",
+
+	})
+	fmt.Println(rsp, err)
+}
+```
 ## Create
 
 Create a new user account. The email address and username for the account must be unique.
@@ -172,39 +302,12 @@ func ReadAccountByEmail() {
 	fmt.Println(rsp, err)
 }
 ```
-## VerifyEmail
+## Logout
 
-Verify the email address of an account from a token sent in an email to the user.
-
-
-[https://m3o.com/user/api#VerifyEmail](https://m3o.com/user/api#VerifyEmail)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/user"
-)
-
-// Verify the email address of an account from a token sent in an email to the user.
-func VerifyEmail() {
-	userService := user.NewUserService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := userService.VerifyEmail(&user.VerifyEmailRequest{
-		Token: "t2323t232t",
-
-	})
-	fmt.Println(rsp, err)
-}
-```
-## Delete
-
-Delete an account by id
+Logout a user account
 
 
-[https://m3o.com/user/api#Delete](https://m3o.com/user/api#Delete)
+[https://m3o.com/user/api#Logout](https://m3o.com/user/api#Logout)
 
 ```go
 package example
@@ -216,41 +319,11 @@ import(
 	"go.m3o.com/user"
 )
 
-// Delete an account by id
-func DeleteUserAccount() {
+// Logout a user account
+func LogAuserOut() {
 	userService := user.NewUserService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := userService.Delete(&user.DeleteRequest{
-		Id: "fdf34f34f34-f34f34-f43f43f34-f4f34f",
-
-	})
-	fmt.Println(rsp, err)
-}
-```
-## Login
-
-Login using username or email. The response will return a new session for successful login,
-401 in the case of login failure and 500 for any other error
-
-
-[https://m3o.com/user/api#Login](https://m3o.com/user/api#Login)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/user"
-)
-
-// Login using username or email. The response will return a new session for successful login,
-// 401 in the case of login failure and 500 for any other error
-func LogAuserIn() {
-	userService := user.NewUserService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := userService.Login(&user.LoginRequest{
-		Email: "joe@example.com",
-Password: "mySecretPass123",
+	rsp, err := userService.Logout(&user.LogoutRequest{
+		SessionId: "sds34s34s34-s34s34-s43s43s34-s4s34s",
 
 	})
 	fmt.Println(rsp, err)
@@ -277,79 +350,6 @@ import(
 func ReadAsessionByTheSessionId() {
 	userService := user.NewUserService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := userService.ReadSession(&user.ReadSessionRequest{
-		SessionId: "sds34s34s34-s34s34-s43s43s34-s4s34s",
-
-	})
-	fmt.Println(rsp, err)
-}
-```
-## SendVerificationEmail
-
-Send a verification email
-to the user being signed up. Email from will be from 'support@m3o.com',
-but you can provide the title and contents.
-The verification link will be injected in to the email as a template variable, $micro_verification_link.
-Example: 'Hi there, welcome onboard! Use the link below to verify your email: $micro_verification_link'
-The variable will be replaced with an actual url that will look similar to this:
-'https://user.m3o.com/user/verify?token=a-verification-token&redirectUrl=your-redir-url'
-
-
-[https://m3o.com/user/api#SendVerificationEmail](https://m3o.com/user/api#SendVerificationEmail)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/user"
-)
-
-// Send a verification email
-// to the user being signed up. Email from will be from 'support@m3o.com',
-// but you can provide the title and contents.
-// The verification link will be injected in to the email as a template variable, $micro_verification_link.
-// Example: 'Hi there, welcome onboard! Use the link below to verify your email: $micro_verification_link'
-// The variable will be replaced with an actual url that will look similar to this:
-// 'https://user.m3o.com/user/verify?token=a-verification-token&redirectUrl=your-redir-url'
-func SendVerificationEmail() {
-	userService := user.NewUserService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := userService.SendVerificationEmail(&user.SendVerificationEmailRequest{
-		Email: "joe@example.com",
-FailureRedirectUrl: "https://m3o.com/verification-failed",
-FromName: "Awesome Dot Com",
-RedirectUrl: "https://m3o.com",
-Subject: "Email verification",
-TextContent: `Hi there,
-
-Please verify your email by clicking this link: $micro_verification_link`,
-
-	})
-	fmt.Println(rsp, err)
-}
-```
-## Logout
-
-Logout a user account
-
-
-[https://m3o.com/user/api#Logout](https://m3o.com/user/api#Logout)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/user"
-)
-
-// Logout a user account
-func LogAuserOut() {
-	userService := user.NewUserService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := userService.Logout(&user.LogoutRequest{
 		SessionId: "sds34s34s34-s34s34-s43s43s34-s4s34s",
 
 	})
