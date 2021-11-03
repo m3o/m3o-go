@@ -18,38 +18,66 @@ type NotesService struct {
 
 // Create a new note
 func (t *NotesService) Create(request *CreateRequest) (*CreateResponse, error) {
+
 	rsp := &CreateResponse{}
 	return rsp, t.client.Call("notes", "Create", request, rsp)
+
 }
 
 // Delete a note
 func (t *NotesService) Delete(request *DeleteRequest) (*DeleteResponse, error) {
+
 	rsp := &DeleteResponse{}
 	return rsp, t.client.Call("notes", "Delete", request, rsp)
+
 }
 
 // Subscribe to notes events
-func (t *NotesService) Events(request *EventsRequest) (*EventsResponse, error) {
-	rsp := &EventsResponse{}
-	return rsp, t.client.Call("notes", "Events", request, rsp)
+func (t *NotesService) Events(request *EventsRequest) (*EventsResponseStream, error) {
+	stream, err := t.client.Stream("notes", "Events", request)
+	if err != nil {
+		return nil, err
+	}
+	return &EventsResponseStream{
+		stream: stream,
+	}, nil
+
+}
+
+type EventsResponseStream struct {
+	stream *client.Stream
+}
+
+func (t *EventsResponseStream) Recv() (*EventsResponse, error) {
+	var rsp EventsResponse
+	if err := t.stream.Recv(&rsp); err != nil {
+		return nil, err
+	}
+	return &rsp, nil
 }
 
 // List all the notes
 func (t *NotesService) List(request *ListRequest) (*ListResponse, error) {
+
 	rsp := &ListResponse{}
 	return rsp, t.client.Call("notes", "List", request, rsp)
+
 }
 
 // Read a note
 func (t *NotesService) Read(request *ReadRequest) (*ReadResponse, error) {
+
 	rsp := &ReadResponse{}
 	return rsp, t.client.Call("notes", "Read", request, rsp)
+
 }
 
 // Update a note
 func (t *NotesService) Update(request *UpdateRequest) (*UpdateResponse, error) {
+
 	rsp := &UpdateResponse{}
 	return rsp, t.client.Call("notes", "Update", request, rsp)
+
 }
 
 type CreateRequest struct {
