@@ -4,33 +4,6 @@ An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/Helloworld/api
 
 Endpoints:
 
-## Call
-
-Call returns a personalised "Hello $name" response
-
-
-[https://m3o.com/helloworld/api#Call](https://m3o.com/helloworld/api#Call)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/helloworld"
-)
-
-// Call returns a personalised "Hello $name" response
-func CallTheHelloworldService() {
-	helloworldService := helloworld.NewHelloworldService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := helloworldService.Call(&helloworld.CallRequest{
-		Name: "John",
-
-	})
-	fmt.Println(rsp, err)
-}
-```
 ## Stream
 
 Stream returns a stream of "Hello $name" responses
@@ -53,6 +26,33 @@ func StreamsAreCurrentlyTemporarilyNotSupportedInClients() {
 	helloworldService := helloworld.NewHelloworldService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := helloworldService.Stream(&helloworld.StreamRequest{
 		Name: "not supported",
+
+	})
+	fmt.Println(rsp, err)
+}
+```
+## Call
+
+Call returns a personalised "Hello $name" response
+
+
+[https://m3o.com/helloworld/api#Call](https://m3o.com/helloworld/api#Call)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/helloworld"
+)
+
+// Call returns a personalised "Hello $name" response
+func CallTheHelloworldService() {
+	helloworldService := helloworld.NewHelloworldService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := helloworldService.Call(&helloworld.CallRequest{
+		Name: "John",
 
 	})
 	fmt.Println(rsp, err)
