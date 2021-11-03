@@ -49,10 +49,10 @@ import(
 )
 
 // Stream returns a stream of "Hello $name" responses
-func StreamsAreCurrentlyTemporarilyNotSupportedInClients() {
+func StreamsResponsesFromTheServerUsingWebsockets() {
 	helloworldService := helloworld.NewHelloworldService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := helloworldService.Stream(&helloworld.StreamRequest{
-		Name: "not supported",
+		Name: "John",
 
 	})
 	fmt.Println(rsp, err)
