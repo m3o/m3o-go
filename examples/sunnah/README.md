@@ -4,6 +4,35 @@ An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/Sunnah/api](ht
 
 Endpoints:
 
+## Books
+
+Get a list of books from within a collection. A book can contain many chapters
+each with its own hadiths.
+
+
+[https://m3o.com/sunnah/api#Books](https://m3o.com/sunnah/api#Books)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/sunnah"
+)
+
+// Get a list of books from within a collection. A book can contain many chapters
+// each with its own hadiths.
+func GetTheBooksWithinAcollection() {
+	sunnahService := sunnah.NewSunnahService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := sunnahService.Books(&sunnah.BooksRequest{
+		Collection: "bukhari",
+
+	})
+	fmt.Println(rsp, err)
+}
+```
 ## Chapters
 
 Get all the chapters of a given book within a collection.
@@ -86,35 +115,6 @@ func ListAvailableCollections() {
 	sunnahService := sunnah.NewSunnahService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := sunnahService.Collections(&sunnah.CollectionsRequest{
 		
-	})
-	fmt.Println(rsp, err)
-}
-```
-## Books
-
-Get a list of books from within a collection. A book can contain many chapters
-each with its own hadiths.
-
-
-[https://m3o.com/sunnah/api#Books](https://m3o.com/sunnah/api#Books)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/sunnah"
-)
-
-// Get a list of books from within a collection. A book can contain many chapters
-// each with its own hadiths.
-func GetTheBooksWithinAcollection() {
-	sunnahService := sunnah.NewSunnahService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := sunnahService.Books(&sunnah.BooksRequest{
-		Collection: "bukhari",
-
 	})
 	fmt.Println(rsp, err)
 }
