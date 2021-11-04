@@ -4,33 +4,6 @@ An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/Crypto/api](ht
 
 Endpoints:
 
-## Price
-
-Get the last price for a given crypto ticker
-
-
-[https://m3o.com/crypto/api#Price](https://m3o.com/crypto/api#Price)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/crypto"
-)
-
-// Get the last price for a given crypto ticker
-func GetCryptocurrencyPrice() {
-	cryptoService := crypto.NewCryptoService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := cryptoService.Price(&crypto.PriceRequest{
-		Symbol: "BTCUSD",
-
-	})
-	fmt.Println(rsp, err)
-}
-```
 ## Quote
 
 Get the last quote for a given crypto ticker
@@ -106,6 +79,33 @@ import(
 func GetCryptocurrencyNews() {
 	cryptoService := crypto.NewCryptoService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := cryptoService.News(&crypto.NewsRequest{
+		Symbol: "BTCUSD",
+
+	})
+	fmt.Println(rsp, err)
+}
+```
+## Price
+
+Get the last price for a given crypto ticker
+
+
+[https://m3o.com/crypto/api#Price](https://m3o.com/crypto/api#Price)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/crypto"
+)
+
+// Get the last price for a given crypto ticker
+func GetCryptocurrencyPrice() {
+	cryptoService := crypto.NewCryptoService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := cryptoService.Price(&crypto.PriceRequest{
 		Symbol: "BTCUSD",
 
 	})

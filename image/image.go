@@ -25,6 +25,14 @@ func (t *ImageService) Convert(request *ConvertRequest) (*ConvertResponse, error
 
 }
 
+// Delete an image previously uploaded.
+func (t *ImageService) Delete(request *DeleteRequest) (*DeleteResponse, error) {
+
+	rsp := &DeleteResponse{}
+	return rsp, t.client.Call("image", "Delete", request, rsp)
+
+}
+
 // Resize an image on the fly without storing it (by sending and receiving a base64 encoded image), or resize and upload depending on parameters.
 // If one of width or height is 0, the image aspect ratio is preserved.
 // Optional cropping.
@@ -70,6 +78,14 @@ type CropOptions struct {
 	Height int32 `json:"height"`
 	// width to crop to
 	Width int32 `json:"width"`
+}
+
+type DeleteRequest struct {
+	// url of the image to delete e.g. https://cdn.m3ocontent.com/micro/images/micro/41e23b39-48dd-42b6-9738-79a313414bb8/cat.jpeg
+	Url string `json:"url"`
+}
+
+type DeleteResponse struct {
 }
 
 type Point struct {
