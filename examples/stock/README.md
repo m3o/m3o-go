@@ -4,60 +4,6 @@ An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/Stock/api](htt
 
 Endpoints:
 
-## Price
-
-Get the last price for a given stock ticker
-
-
-[https://m3o.com/stock/api#Price](https://m3o.com/stock/api#Price)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/stock"
-)
-
-// Get the last price for a given stock ticker
-func GetAstockPrice() {
-	stockService := stock.NewStockService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := stockService.Price(&stock.PriceRequest{
-		Symbol: "AAPL",
-
-	})
-	fmt.Println(rsp, err)
-}
-```
-## Quote
-
-Get the last quote for the stock
-
-
-[https://m3o.com/stock/api#Quote](https://m3o.com/stock/api#Quote)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/stock"
-)
-
-// Get the last quote for the stock
-func GetAstockQuote() {
-	stockService := stock.NewStockService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := stockService.Quote(&stock.QuoteRequest{
-		Symbol: "AAPL",
-
-	})
-	fmt.Println(rsp, err)
-}
-```
 ## History
 
 Get the historic open-close for a given day
@@ -112,6 +58,60 @@ End: "2020-10-01T11:00:00Z",
 Limit: 3,
 Start: "2020-10-01T10:00:00Z",
 Stock: "AAPL",
+
+	})
+	fmt.Println(rsp, err)
+}
+```
+## Price
+
+Get the last price for a given stock ticker
+
+
+[https://m3o.com/stock/api#Price](https://m3o.com/stock/api#Price)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/stock"
+)
+
+// Get the last price for a given stock ticker
+func GetAstockPrice() {
+	stockService := stock.NewStockService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := stockService.Price(&stock.PriceRequest{
+		Symbol: "AAPL",
+
+	})
+	fmt.Println(rsp, err)
+}
+```
+## Quote
+
+Get the last quote for the stock
+
+
+[https://m3o.com/stock/api#Quote](https://m3o.com/stock/api#Quote)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/stock"
+)
+
+// Get the last quote for the stock
+func GetAstockQuote() {
+	stockService := stock.NewStockService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := stockService.Quote(&stock.QuoteRequest{
+		Symbol: "AAPL",
 
 	})
 	fmt.Println(rsp, err)

@@ -4,36 +4,6 @@ An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/Image/api](htt
 
 Endpoints:
 
-## Convert
-
-Convert an image from one format (jpeg, png etc.) to an other either on the fly (from base64 to base64),
-or by uploading the conversion result.
-
-
-[https://m3o.com/image/api#Convert](https://m3o.com/image/api#Convert)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/image"
-)
-
-// Convert an image from one format (jpeg, png etc.) to an other either on the fly (from base64 to base64),
-// or by uploading the conversion result.
-func ConvertApngImageToAjpegTakenFromAurlAndSavedToAurlOnMicrosCdn() {
-	imageService := image.NewImageService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := imageService.Convert(&image.ConvertRequest{
-		Name: "cat.jpeg",
-Url: "somewebsite.com/cat.png",
-
-	})
-	fmt.Println(rsp, err)
-}
-```
 ## Upload
 
 Upload an image by either sending a base64 encoded image to this endpoint or a URL.
@@ -220,6 +190,36 @@ CropOptions: &image.CropOptions{
 },
 Height: 100,
 Width: 100,
+
+	})
+	fmt.Println(rsp, err)
+}
+```
+## Convert
+
+Convert an image from one format (jpeg, png etc.) to an other either on the fly (from base64 to base64),
+or by uploading the conversion result.
+
+
+[https://m3o.com/image/api#Convert](https://m3o.com/image/api#Convert)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/image"
+)
+
+// Convert an image from one format (jpeg, png etc.) to an other either on the fly (from base64 to base64),
+// or by uploading the conversion result.
+func ConvertApngImageToAjpegTakenFromAurlAndSavedToAurlOnMicrosCdn() {
+	imageService := image.NewImageService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := imageService.Convert(&image.ConvertRequest{
+		Name: "cat.jpeg",
+Url: "somewebsite.com/cat.png",
 
 	})
 	fmt.Println(rsp, err)
