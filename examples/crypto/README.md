@@ -29,6 +29,7 @@ func GetCryptocurrencyNews() {
 
 	})
 	fmt.Println(rsp, err)
+	
 }
 ```
 ## Price
@@ -56,6 +57,7 @@ func GetCryptocurrencyPrice() {
 
 	})
 	fmt.Println(rsp, err)
+	
 }
 ```
 ## Quote
@@ -83,6 +85,7 @@ func GetAcryptocurrencyQuote() {
 
 	})
 	fmt.Println(rsp, err)
+	
 }
 ```
 ## History
@@ -110,5 +113,6 @@ func GetPreviousClose() {
 
 	})
 	fmt.Println(rsp, err)
+	
 }
 ```

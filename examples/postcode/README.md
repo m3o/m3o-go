@@ -29,6 +29,7 @@ func LookupPostcode() {
 
 	})
 	fmt.Println(rsp, err)
+	
 }
 ```
 ## Random
@@ -55,6 +56,7 @@ func ReturnArandomPostcodeAndItsInformation() {
 		
 	})
 	fmt.Println(rsp, err)
+	
 }
 ```
 ## Validate
@@ -82,5 +84,6 @@ func ReturnArandomPostcodeAndItsInformation() {
 
 	})
 	fmt.Println(rsp, err)
+	
 }
 ```

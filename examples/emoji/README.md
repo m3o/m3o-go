@@ -29,6 +29,7 @@ func FindEmoji() {
 
 	})
 	fmt.Println(rsp, err)
+	
 }
 ```
 ## Flag
@@ -55,6 +56,7 @@ func GetFlagByCountryCode() {
 		
 	})
 	fmt.Println(rsp, err)
+	
 }
 ```
 ## Print
@@ -84,6 +86,7 @@ func PrintTextIncludingEmoji() {
 
 	})
 	fmt.Println(rsp, err)
+	
 }
 ```
 ## Send
@@ -113,5 +116,6 @@ To: "+44782669123",
 
 	})
 	fmt.Println(rsp, err)
+	
 }
 ```

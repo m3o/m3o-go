@@ -33,6 +33,7 @@ Location: &evchargers.Coordinates{
 
 	})
 	fmt.Println(rsp, err)
+	
 }
 ```
 ## Search
@@ -61,6 +62,7 @@ func SearchByBoundingBox() {
 
 	})
 	fmt.Println(rsp, err)
+	
 }
 ```
 ## Search
@@ -93,6 +95,7 @@ Location: &evchargers.Coordinates{
 
 	})
 	fmt.Println(rsp, err)
+	
 }
 ```
 ## ReferenceData
@@ -119,5 +122,6 @@ func GetReferenceData() {
 		
 	})
 	fmt.Println(rsp, err)
+	
 }
 ```

@@ -29,6 +29,7 @@ func GenerateAuniqueId() {
 
 	})
 	fmt.Println(rsp, err)
+	
 }
 ```
 ## Generate
@@ -56,6 +57,7 @@ func GenerateAshortId() {
 
 	})
 	fmt.Println(rsp, err)
+	
 }
 ```
 ## Generate
@@ -83,6 +85,7 @@ func GenerateAsnowflakeId() {
 
 	})
 	fmt.Println(rsp, err)
+	
 }
 ```
 ## Generate
@@ -110,6 +113,7 @@ func GenerateAbigflakeId() {
 
 	})
 	fmt.Println(rsp, err)
+	
 }
 ```
 ## Types
@@ -136,5 +140,6 @@ func ListTheTypesOfIdsAvailable() {
 		
 	})
 	fmt.Println(rsp, err)
+	
 }
 ```

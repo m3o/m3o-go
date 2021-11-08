@@ -4,32 +4,6 @@ An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/Time/api](http
 
 Endpoints:
 
-## Now
-
-Get the current time
-
-
-[https://m3o.com/time/api#Now](https://m3o.com/time/api#Now)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/time"
-)
-
-// Get the current time
-func ReturnsCurrentTimeOptionallyWithLocation() {
-	timeService := time.NewTimeService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := timeService.Now(&time.NowRequest{
-		
-	})
-	fmt.Println(rsp, err)
-}
-```
 ## Zone
 
 Get the timezone info for a specific location
@@ -55,5 +29,33 @@ func GetTheTimezoneInfoForAspecificLocation() {
 
 	})
 	fmt.Println(rsp, err)
+	
+}
+```
+## Now
+
+Get the current time
+
+
+[https://m3o.com/time/api#Now](https://m3o.com/time/api#Now)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/time"
+)
+
+// Get the current time
+func ReturnsCurrentTimeOptionallyWithLocation() {
+	timeService := time.NewTimeService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := timeService.Now(&time.NowRequest{
+		
+	})
+	fmt.Println(rsp, err)
+	
 }
 ```

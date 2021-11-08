@@ -36,6 +36,7 @@ Width: 100,
 
 	})
 	fmt.Println(rsp, err)
+	
 }
 ```
 ## Resize
@@ -69,6 +70,7 @@ Width: 100,
 
 	})
 	fmt.Println(rsp, err)
+	
 }
 ```
 ## Resize
@@ -106,6 +108,7 @@ Width: 100,
 
 	})
 	fmt.Println(rsp, err)
+	
 }
 ```
 ## Convert
@@ -136,6 +139,7 @@ Url: "somewebsite.com/cat.png",
 
 	})
 	fmt.Println(rsp, err)
+	
 }
 ```
 ## Upload
@@ -166,6 +170,7 @@ Name: "cat.jpeg",
 
 	})
 	fmt.Println(rsp, err)
+	
 }
 ```
 ## Upload
@@ -196,6 +201,7 @@ Url: "somewebsite.com/cat.png",
 
 	})
 	fmt.Println(rsp, err)
+	
 }
 ```
 ## Delete
@@ -223,5 +229,6 @@ func DeleteAnUploadedImage() {
 
 	})
 	fmt.Println(rsp, err)
+	
 }
 ```

@@ -4,33 +4,6 @@ An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/Otp/api](https
 
 Endpoints:
 
-## Generate
-
-Generate an OTP (one time pass) code
-
-
-[https://m3o.com/otp/api#Generate](https://m3o.com/otp/api#Generate)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/otp"
-)
-
-// Generate an OTP (one time pass) code
-func GenerateOtp() {
-	otpService := otp.NewOtpService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := otpService.Generate(&otp.GenerateRequest{
-		Id: "asim@example.com",
-
-	})
-	fmt.Println(rsp, err)
-}
-```
 ## Validate
 
 Validate the OTP code
@@ -57,5 +30,34 @@ Id: "asim@example.com",
 
 	})
 	fmt.Println(rsp, err)
+	
+}
+```
+## Generate
+
+Generate an OTP (one time pass) code
+
+
+[https://m3o.com/otp/api#Generate](https://m3o.com/otp/api#Generate)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/otp"
+)
+
+// Generate an OTP (one time pass) code
+func GenerateOtp() {
+	otpService := otp.NewOtpService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := otpService.Generate(&otp.GenerateRequest{
+		Id: "asim@example.com",
+
+	})
+	fmt.Println(rsp, err)
+	
 }
 ```

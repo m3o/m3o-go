@@ -29,6 +29,7 @@ func GetAnFxPrice() {
 
 	})
 	fmt.Println(rsp, err)
+	
 }
 ```
 ## Quote
@@ -56,6 +57,7 @@ func GetAfxQuote() {
 
 	})
 	fmt.Println(rsp, err)
+	
 }
 ```
 ## History
@@ -83,5 +85,6 @@ func GetPreviousClose() {
 
 	})
 	fmt.Println(rsp, err)
+	
 }
 ```

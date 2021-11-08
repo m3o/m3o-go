@@ -4,33 +4,6 @@ An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/Db/api](https:
 
 Endpoints:
 
-## Count
-
-Count records in a table
-
-
-[https://m3o.com/db/api#Count](https://m3o.com/db/api#Count)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/db"
-)
-
-// Count records in a table
-func CountEntriesInAtable() {
-	dbService := db.NewDbService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := dbService.Count(&db.CountRequest{
-		Table: "users",
-
-	})
-	fmt.Println(rsp, err)
-}
-```
 ## Create
 
 Create a record in the database. Optionally include an "id" field otherwise it's set automatically.
@@ -53,15 +26,16 @@ func CreateArecord() {
 	dbService := db.NewDbService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := dbService.Create(&db.CreateRequest{
 		Record: map[string]interface{}{
+	"id": "1",
 	"name": "Jane",
 	"age": 42,
 	"isActive": true,
-	"id": "1",
 },
 Table: "users",
 
 	})
 	fmt.Println(rsp, err)
+	
 }
 ```
 ## Update
@@ -93,6 +67,7 @@ Table: "users",
 
 	})
 	fmt.Println(rsp, err)
+	
 }
 ```
 ## Read
@@ -121,6 +96,7 @@ Table: "users",
 
 	})
 	fmt.Println(rsp, err)
+	
 }
 ```
 ## Delete
@@ -149,6 +125,7 @@ Table: "users",
 
 	})
 	fmt.Println(rsp, err)
+	
 }
 ```
 ## Truncate
@@ -176,5 +153,34 @@ func TruncateTable() {
 
 	})
 	fmt.Println(rsp, err)
+	
+}
+```
+## Count
+
+Count records in a table
+
+
+[https://m3o.com/db/api#Count](https://m3o.com/db/api#Count)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/db"
+)
+
+// Count records in a table
+func CountEntriesInAtable() {
+	dbService := db.NewDbService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := dbService.Count(&db.CountRequest{
+		Table: "users",
+
+	})
+	fmt.Println(rsp, err)
+	
 }
 ```

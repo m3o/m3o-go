@@ -29,5 +29,6 @@ func LookupIpInfo() {
 
 	})
 	fmt.Println(rsp, err)
+	
 }
 ```

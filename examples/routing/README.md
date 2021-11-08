@@ -36,6 +36,7 @@ Origin: &routing.Point{
 
 	})
 	fmt.Println(rsp, err)
+	
 }
 ```
 ## Directions
@@ -70,6 +71,7 @@ Origin: &routing.Point{
 
 	})
 	fmt.Println(rsp, err)
+	
 }
 ```
 ## Route
@@ -104,5 +106,6 @@ Origin: &routing.Point{
 
 	})
 	fmt.Println(rsp, err)
+	
 }
 ```

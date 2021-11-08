@@ -4,6 +4,35 @@ An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/Twitter/api](h
 
 Endpoints:
 
+## Timeline
+
+Get the timeline for a given user
+
+
+[https://m3o.com/twitter/api#Timeline](https://m3o.com/twitter/api#Timeline)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/twitter"
+)
+
+// Get the timeline for a given user
+func GetAtwitterTimeline() {
+	twitterService := twitter.NewTwitterService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := twitterService.Timeline(&twitter.TimelineRequest{
+		Limit: 1,
+Username: "m3oservices",
+
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
 ## Search
 
 Search for tweets with a simple query
@@ -29,6 +58,7 @@ func SearchForTweets() {
 
 	})
 	fmt.Println(rsp, err)
+	
 }
 ```
 ## Trends
@@ -55,6 +85,7 @@ func GetTheCurrentGlobalTrendingTopics() {
 		
 	})
 	fmt.Println(rsp, err)
+	
 }
 ```
 ## User
@@ -82,33 +113,6 @@ func GetAusersTwitterProfile() {
 
 	})
 	fmt.Println(rsp, err)
-}
-```
-## Timeline
-
-Get the timeline for a given user
-
-
-[https://m3o.com/twitter/api#Timeline](https://m3o.com/twitter/api#Timeline)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/twitter"
-)
-
-// Get the timeline for a given user
-func GetAtwitterTimeline() {
-	twitterService := twitter.NewTwitterService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := twitterService.Timeline(&twitter.TimelineRequest{
-		Limit: 1,
-Username: "m3oservices",
-
-	})
-	fmt.Println(rsp, err)
+	
 }
 ```

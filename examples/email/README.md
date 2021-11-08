@@ -33,5 +33,6 @@ Please verify your email by clicking this link: $micro_verification_link`,
 
 	})
 	fmt.Println(rsp, err)
+	
 }
 ```

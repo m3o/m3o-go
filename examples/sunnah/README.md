@@ -30,6 +30,7 @@ func ListAvailableCollections() {
 		
 	})
 	fmt.Println(rsp, err)
+	
 }
 ```
 ## Books
@@ -59,6 +60,7 @@ func GetTheBooksWithinAcollection() {
 
 	})
 	fmt.Println(rsp, err)
+	
 }
 ```
 ## Chapters
@@ -87,6 +89,7 @@ Collection: "bukhari",
 
 	})
 	fmt.Println(rsp, err)
+	
 }
 ```
 ## Hadiths
@@ -117,5 +120,6 @@ Collection: "bukhari",
 
 	})
 	fmt.Println(rsp, err)
+	
 }
 ```

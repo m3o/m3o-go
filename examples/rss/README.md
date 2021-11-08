@@ -31,6 +31,7 @@ Url: "http://feeds.bbci.co.uk/news/rss.xml",
 
 	})
 	fmt.Println(rsp, err)
+	
 }
 ```
 ## Feed
@@ -58,6 +59,7 @@ func ReadAfeed() {
 
 	})
 	fmt.Println(rsp, err)
+	
 }
 ```
 ## List
@@ -84,6 +86,7 @@ func ListRssFeeds() {
 		
 	})
 	fmt.Println(rsp, err)
+	
 }
 ```
 ## Remove
@@ -111,5 +114,6 @@ func RemoveAfeed() {
 
 	})
 	fmt.Println(rsp, err)
+	
 }
 ```
