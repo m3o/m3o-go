@@ -26,10 +26,10 @@ func CreateArecord() {
 	dbService := db.NewDbService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := dbService.Create(&db.CreateRequest{
 		Record: map[string]interface{}{
-	"age": 42,
-	"isActive": true,
 	"id": "1",
 	"name": "Jane",
+	"age": 42,
+	"isActive": true,
 },
 Table: "users",
 
@@ -60,8 +60,8 @@ func UpdateArecord() {
 	dbService := db.NewDbService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := dbService.Update(&db.UpdateRequest{
 		Record: map[string]interface{}{
-	"age": 43,
 	"id": "1",
+	"age": 43,
 },
 Table: "users",
 
