@@ -24,4 +24,8 @@ jobs:
         run: |
           # stream is temporarily excluded as it hangs forever because test does not close connection
           # @TODO remove "idempotent: true" from stream example
-          find . -name ".run" | grep -v stream | xargs -n1 dirname | xargs -n1 go run
+          O=$(find . -name ".run" | grep -v stream | xargs -n1 dirname | xargs -n1 go run)
+          echo $O
+          if grep -q Detail "$O"; then
+            exit 1
+          fi
