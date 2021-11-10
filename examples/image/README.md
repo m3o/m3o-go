@@ -9,6 +9,8 @@ Endpoints:
 Resize an image on the fly without storing it (by sending and receiving a base64 encoded image), or resize and upload depending on parameters.
 If one of width or height is 0, the image aspect ratio is preserved.
 Optional cropping.
+To use the file parameter you need to send the request as a multipart/form-data rather than the usual application/json
+with each parameter as a form field.
 
 
 [https://m3o.com/image/api#Resize](https://m3o.com/image/api#Resize)
@@ -26,6 +28,8 @@ import(
 // Resize an image on the fly without storing it (by sending and receiving a base64 encoded image), or resize and upload depending on parameters.
 // If one of width or height is 0, the image aspect ratio is preserved.
 // Optional cropping.
+// To use the file parameter you need to send the request as a multipart/form-data rather than the usual application/json
+// with each parameter as a form field.
 func Base64toHostedImage() {
 	imageService := image.NewImageService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := imageService.Resize(&image.ResizeRequest{
@@ -44,6 +48,8 @@ Width: 100,
 Resize an image on the fly without storing it (by sending and receiving a base64 encoded image), or resize and upload depending on parameters.
 If one of width or height is 0, the image aspect ratio is preserved.
 Optional cropping.
+To use the file parameter you need to send the request as a multipart/form-data rather than the usual application/json
+with each parameter as a form field.
 
 
 [https://m3o.com/image/api#Resize](https://m3o.com/image/api#Resize)
@@ -61,6 +67,8 @@ import(
 // Resize an image on the fly without storing it (by sending and receiving a base64 encoded image), or resize and upload depending on parameters.
 // If one of width or height is 0, the image aspect ratio is preserved.
 // Optional cropping.
+// To use the file parameter you need to send the request as a multipart/form-data rather than the usual application/json
+// with each parameter as a form field.
 func Base64toBase64image() {
 	imageService := image.NewImageService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := imageService.Resize(&image.ResizeRequest{
@@ -78,6 +86,8 @@ Width: 100,
 Resize an image on the fly without storing it (by sending and receiving a base64 encoded image), or resize and upload depending on parameters.
 If one of width or height is 0, the image aspect ratio is preserved.
 Optional cropping.
+To use the file parameter you need to send the request as a multipart/form-data rather than the usual application/json
+with each parameter as a form field.
 
 
 [https://m3o.com/image/api#Resize](https://m3o.com/image/api#Resize)
@@ -95,6 +105,8 @@ import(
 // Resize an image on the fly without storing it (by sending and receiving a base64 encoded image), or resize and upload depending on parameters.
 // If one of width or height is 0, the image aspect ratio is preserved.
 // Optional cropping.
+// To use the file parameter you need to send the request as a multipart/form-data rather than the usual application/json
+// with each parameter as a form field.
 func Base64toBase64imageWithCropping() {
 	imageService := image.NewImageService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := imageService.Resize(&image.ResizeRequest{
@@ -115,6 +127,8 @@ Width: 100,
 
 Convert an image from one format (jpeg, png etc.) to an other either on the fly (from base64 to base64),
 or by uploading the conversion result.
+To use the file parameter you need to send the request as a multipart/form-data rather than the usual application/json
+with each parameter as a form field.
 
 
 [https://m3o.com/image/api#Convert](https://m3o.com/image/api#Convert)
@@ -131,6 +145,8 @@ import(
 
 // Convert an image from one format (jpeg, png etc.) to an other either on the fly (from base64 to base64),
 // or by uploading the conversion result.
+// To use the file parameter you need to send the request as a multipart/form-data rather than the usual application/json
+// with each parameter as a form field.
 func ConvertApngImageToAjpegTakenFromAurlAndSavedToAurlOnMicrosCdn() {
 	imageService := image.NewImageService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := imageService.Convert(&image.ConvertRequest{
@@ -146,6 +162,8 @@ Url: "somewebsite.com/cat.png",
 
 Upload an image by either sending a base64 encoded image to this endpoint or a URL.
 To resize an image before uploading, see the Resize endpoint.
+To use the file parameter you need to send the request as a multipart/form-data rather than the usual application/json
+with each parameter as a form field.
 
 
 [https://m3o.com/image/api#Upload](https://m3o.com/image/api#Upload)
@@ -162,6 +180,8 @@ import(
 
 // Upload an image by either sending a base64 encoded image to this endpoint or a URL.
 // To resize an image before uploading, see the Resize endpoint.
+// To use the file parameter you need to send the request as a multipart/form-data rather than the usual application/json
+// with each parameter as a form field.
 func UploadAbase64imageToMicrosCdn() {
 	imageService := image.NewImageService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := imageService.Upload(&image.UploadRequest{
@@ -177,6 +197,8 @@ Name: "cat.jpeg",
 
 Upload an image by either sending a base64 encoded image to this endpoint or a URL.
 To resize an image before uploading, see the Resize endpoint.
+To use the file parameter you need to send the request as a multipart/form-data rather than the usual application/json
+with each parameter as a form field.
 
 
 [https://m3o.com/image/api#Upload](https://m3o.com/image/api#Upload)
@@ -193,6 +215,8 @@ import(
 
 // Upload an image by either sending a base64 encoded image to this endpoint or a URL.
 // To resize an image before uploading, see the Resize endpoint.
+// To use the file parameter you need to send the request as a multipart/form-data rather than the usual application/json
+// with each parameter as a form field.
 func UploadAnImageFromAurlToMicrosCdn() {
 	imageService := image.NewImageService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := imageService.Upload(&image.UploadRequest{
