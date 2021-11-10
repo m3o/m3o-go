@@ -22,5 +22,10 @@ jobs:
         env:
           M3O_API_TOKEN: ${{ secrets.M3O_API_TOKEN }}
         run: |
-          cd examples/helloworld/call/callTheHelloworldService
-          go run main.go
+          # stream is temporarily excluded as it hangs forever because test does not close connection
+          # @TODO remove "idempotent: true" from stream example
+          O=$(find . -name ".run" | grep -v stream | xargs -n1 dirname | xargs -n1 go run)
+          echo $O
+          if grep -q Detail "$O"; then
+            exit 1
+          fi
