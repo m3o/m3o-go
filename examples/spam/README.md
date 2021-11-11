@@ -34,3 +34,30 @@ To: "hello@example.com",
 	
 }
 ```
+## Classify
+
+Check whether an email is likely to be spam based on its attributes
+
+
+[https://m3o.com/spam/api#Classify](https://m3o.com/spam/api#Classify)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/spam"
+)
+
+// Check whether an email is likely to be spam based on its attributes
+func ClassifyAnEmailUsingTheRawData() {
+	spamService := spam.NewSpamService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := spamService.Classify(&spam.ClassifyRequest{
+		
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
