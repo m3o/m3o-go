@@ -4,6 +4,62 @@ An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/User/api](http
 
 Endpoints:
 
+## Logout
+
+Logout a user account
+
+
+[https://m3o.com/user/api#Logout](https://m3o.com/user/api#Logout)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/user"
+)
+
+// Logout a user account
+func LogAuserOut() {
+	userService := user.NewUserService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := userService.Logout(&user.LogoutRequest{
+		SessionId: "sds34s34s34-s34s34-s43s43s34-s4s34s",
+
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
+## ReadSession
+
+Read a session by the session id. In the event it has expired or is not found and error is returned.
+
+
+[https://m3o.com/user/api#ReadSession](https://m3o.com/user/api#ReadSession)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/user"
+)
+
+// Read a session by the session id. In the event it has expired or is not found and error is returned.
+func ReadAsessionByTheSessionId() {
+	userService := user.NewUserService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := userService.ReadSession(&user.ReadSessionRequest{
+		SessionId: "sds34s34s34-s34s34-s43s43s34-s4s34s",
+
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
 ## Create
 
 Create a new user account. The email address and username for the account must be unique.
@@ -29,36 +85,6 @@ func CreateAnAccount() {
 Id: "usrid-1",
 Password: "mySecretPass123",
 Username: "usrname-1",
-
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
-## UpdatePassword
-
-Update the account password
-
-
-[https://m3o.com/user/api#UpdatePassword](https://m3o.com/user/api#UpdatePassword)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/user"
-)
-
-// Update the account password
-func UpdateTheAccountPassword() {
-	userService := user.NewUserService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := userService.UpdatePassword(&user.UpdatePasswordRequest{
-		ConfirmPassword: "myEvenMoreSecretPass123",
-NewPassword: "myEvenMoreSecretPass123",
-OldPassword: "mySecretPass123",
 
 	})
 	fmt.Println(rsp, err)
@@ -149,34 +175,6 @@ func ReadAccountByEmail() {
 	
 }
 ```
-## VerifyEmail
-
-Verify the email address of an account from a token sent in an email to the user.
-
-
-[https://m3o.com/user/api#VerifyEmail](https://m3o.com/user/api#VerifyEmail)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/user"
-)
-
-// Verify the email address of an account from a token sent in an email to the user.
-func VerifyEmail() {
-	userService := user.NewUserService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := userService.VerifyEmail(&user.VerifyEmailRequest{
-		Token: "t2323t232t",
-
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
 ## Delete
 
 Delete an account by id
@@ -205,12 +203,13 @@ func DeleteUserAccount() {
 	
 }
 ```
-## ReadSession
+## Login
 
-Read a session by the session id. In the event it has expired or is not found and error is returned.
+Login using username or email. The response will return a new session for successful login,
+401 in the case of login failure and 500 for any other error
 
 
-[https://m3o.com/user/api#ReadSession](https://m3o.com/user/api#ReadSession)
+[https://m3o.com/user/api#Login](https://m3o.com/user/api#Login)
 
 ```go
 package example
@@ -222,11 +221,13 @@ import(
 	"go.m3o.com/user"
 )
 
-// Read a session by the session id. In the event it has expired or is not found and error is returned.
-func ReadAsessionByTheSessionId() {
+// Login using username or email. The response will return a new session for successful login,
+// 401 in the case of login failure and 500 for any other error
+func LogAuserIn() {
 	userService := user.NewUserService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := userService.ReadSession(&user.ReadSessionRequest{
-		SessionId: "sds34s34s34-s34s34-s43s43s34-s4s34s",
+	rsp, err := userService.Login(&user.LoginRequest{
+		Email: "joe@example.com",
+Password: "mySecretPass123",
 
 	})
 	fmt.Println(rsp, err)
@@ -256,6 +257,36 @@ func UpdateAnAccount() {
 	rsp, err := userService.Update(&user.UpdateRequest{
 		Email: "joeotheremail@example.com",
 Id: "usrid-1",
+
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
+## UpdatePassword
+
+Update the account password
+
+
+[https://m3o.com/user/api#UpdatePassword](https://m3o.com/user/api#UpdatePassword)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/user"
+)
+
+// Update the account password
+func UpdateTheAccountPassword() {
+	userService := user.NewUserService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := userService.UpdatePassword(&user.UpdatePasswordRequest{
+		ConfirmPassword: "myEvenMoreSecretPass123",
+NewPassword: "myEvenMoreSecretPass123",
+OldPassword: "mySecretPass123",
 
 	})
 	fmt.Println(rsp, err)
@@ -309,43 +340,12 @@ Please verify your email by clicking this link: $micro_verification_link`,
 	
 }
 ```
-## Login
+## VerifyEmail
 
-Login using username or email. The response will return a new session for successful login,
-401 in the case of login failure and 500 for any other error
-
-
-[https://m3o.com/user/api#Login](https://m3o.com/user/api#Login)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/user"
-)
-
-// Login using username or email. The response will return a new session for successful login,
-// 401 in the case of login failure and 500 for any other error
-func LogAuserIn() {
-	userService := user.NewUserService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := userService.Login(&user.LoginRequest{
-		Email: "joe@example.com",
-Password: "mySecretPass123",
-
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
-## Logout
-
-Logout a user account
+Verify the email address of an account from a token sent in an email to the user.
 
 
-[https://m3o.com/user/api#Logout](https://m3o.com/user/api#Logout)
+[https://m3o.com/user/api#VerifyEmail](https://m3o.com/user/api#VerifyEmail)
 
 ```go
 package example
@@ -357,11 +357,11 @@ import(
 	"go.m3o.com/user"
 )
 
-// Logout a user account
-func LogAuserOut() {
+// Verify the email address of an account from a token sent in an email to the user.
+func VerifyEmail() {
 	userService := user.NewUserService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := userService.Logout(&user.LogoutRequest{
-		SessionId: "sds34s34s34-s34s34-s43s43s34-s4s34s",
+	rsp, err := userService.VerifyEmail(&user.VerifyEmailRequest{
+		Token: "t2323t232t",
 
 	})
 	fmt.Println(rsp, err)
