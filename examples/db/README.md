@@ -4,67 +4,6 @@ An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/Db/api](https:
 
 Endpoints:
 
-## Update
-
-Update a record in the database. Include an "id" in the record to update.
-
-
-[https://m3o.com/db/api#Update](https://m3o.com/db/api#Update)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/db"
-)
-
-// Update a record in the database. Include an "id" in the record to update.
-func UpdateArecord() {
-	dbService := db.NewDbService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := dbService.Update(&db.UpdateRequest{
-		Record: map[string]interface{}{
-	"id": "1",
-	"age": 43,
-},
-Table: "users",
-
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
-## Read
-
-Read data from a table. Lookup can be by ID or via querying any field in the record.
-
-
-[https://m3o.com/db/api#Read](https://m3o.com/db/api#Read)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/db"
-)
-
-// Read data from a table. Lookup can be by ID or via querying any field in the record.
-func ReadRecords() {
-	dbService := db.NewDbService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := dbService.Read(&db.ReadRequest{
-		Query: "age == 43",
-Table: "users",
-
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
 ## Delete
 
 Delete a record in the database by id.
@@ -233,6 +172,67 @@ func CreateArecord() {
 	"age": 42,
 	"isActive": true,
 },
+Table: "users",
+
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
+## Update
+
+Update a record in the database. Include an "id" in the record to update.
+
+
+[https://m3o.com/db/api#Update](https://m3o.com/db/api#Update)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/db"
+)
+
+// Update a record in the database. Include an "id" in the record to update.
+func UpdateArecord() {
+	dbService := db.NewDbService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := dbService.Update(&db.UpdateRequest{
+		Record: map[string]interface{}{
+	"id": "1",
+	"age": 43,
+},
+Table: "users",
+
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
+## Read
+
+Read data from a table. Lookup can be by ID or via querying any field in the record.
+
+
+[https://m3o.com/db/api#Read](https://m3o.com/db/api#Read)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/db"
+)
+
+// Read data from a table. Lookup can be by ID or via querying any field in the record.
+func ReadRecords() {
+	dbService := db.NewDbService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := dbService.Read(&db.ReadRequest{
+		Query: "age == 43",
 Table: "users",
 
 	})
