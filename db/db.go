@@ -40,7 +40,7 @@ func (t *DbService) Delete(request *DeleteRequest) (*DeleteResponse, error) {
 
 }
 
-//
+// List tables in the DB
 func (t *DbService) ListTables(request *ListTablesRequest) (*ListTablesResponse, error) {
 
 	rsp := &ListTablesResponse{}
@@ -56,7 +56,7 @@ func (t *DbService) Read(request *ReadRequest) (*ReadResponse, error) {
 
 }
 
-//
+// Rename a table
 func (t *DbService) RenameTable(request *RenameTableRequest) (*RenameTableResponse, error) {
 
 	rsp := &RenameTableResponse{}
@@ -116,6 +116,7 @@ type ListTablesRequest struct {
 }
 
 type ListTablesResponse struct {
+	// list of tables
 	Tables []string `json:"tables"`
 }
 
@@ -146,8 +147,10 @@ type ReadResponse struct {
 }
 
 type RenameTableRequest struct {
+	// current table name
 	From string `json:"from"`
-	To   string `json:"to"`
+	// new table name
+	To string `json:"to"`
 }
 
 type RenameTableResponse struct {
