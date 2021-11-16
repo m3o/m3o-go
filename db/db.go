@@ -40,6 +40,14 @@ func (t *DbService) Delete(request *DeleteRequest) (*DeleteResponse, error) {
 
 }
 
+// Drop a table in the DB
+func (t *DbService) DropTable(request *DropTableRequest) (*DropTableResponse, error) {
+
+	rsp := &DropTableResponse{}
+	return rsp, t.client.Call("db", "DropTable", request, rsp)
+
+}
+
 // List tables in the DB
 func (t *DbService) ListTables(request *ListTablesRequest) (*ListTablesResponse, error) {
 
@@ -112,6 +120,13 @@ type DeleteRequest struct {
 type DeleteResponse struct {
 }
 
+type DropTableRequest struct {
+	Table string `json:"table"`
+}
+
+type DropTableResponse struct {
+}
+
 type ListTablesRequest struct {
 }
 
@@ -157,13 +172,10 @@ type RenameTableResponse struct {
 }
 
 type TruncateRequest struct {
-	// Optional table name. Defaults to 'default'
 	Table string `json:"table"`
 }
 
 type TruncateResponse struct {
-	// The table truncated
-	Table string `json:"table"`
 }
 
 type UpdateRequest struct {
