@@ -179,6 +179,7 @@ type LoginResponse struct {
 }
 
 type LogoutRequest struct {
+	// the session id for the user to logout
 	SessionId string `json:"sessionId"`
 }
 
@@ -204,6 +205,7 @@ type ReadSessionRequest struct {
 }
 
 type ReadSessionResponse struct {
+	// the session for the user
 	Session *Session `json:"session"`
 }
 
