@@ -4,12 +4,12 @@ An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/User/api](http
 
 Endpoints:
 
-## ResetPassword
+## VerifyEmail
 
-Reset password with the code sent by the "SendPasswordResetEmail" endoint.
+Verify the email address of an account from a token sent in an email to the user.
 
 
-[https://m3o.com/user/api#ResetPassword](https://m3o.com/user/api#ResetPassword)
+[https://m3o.com/user/api#VerifyEmail](https://m3o.com/user/api#VerifyEmail)
 
 ```go
 package example
@@ -21,13 +21,11 @@ import(
 	"go.m3o.com/user"
 )
 
-// Reset password with the code sent by the "SendPasswordResetEmail" endoint.
-func ResetPassword() {
+// Verify the email address of an account from a token sent in an email to the user.
+func VerifyEmail() {
 	userService := user.NewUserService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := userService.ResetPassword(&user.ResetPasswordRequest{
-		Code: "some-code-from-email",
-ConfirmPassword: "newpass123",
-NewPassword: "newpass123",
+	rsp, err := userService.VerifyEmail(&user.VerifyEmailRequest{
+		Token: "t2323t232t",
 
 	})
 	fmt.Println(rsp, err)
@@ -93,12 +91,12 @@ Password: "mySecretPass123",
 	
 }
 ```
-## Logout
+## ReadSession
 
-Logout a user account
+Read a session by the session id. In the event it has expired or is not found and error is returned.
 
 
-[https://m3o.com/user/api#Logout](https://m3o.com/user/api#Logout)
+[https://m3o.com/user/api#ReadSession](https://m3o.com/user/api#ReadSession)
 
 ```go
 package example
@@ -110,10 +108,10 @@ import(
 	"go.m3o.com/user"
 )
 
-// Logout a user account
-func LogAuserOut() {
+// Read a session by the session id. In the event it has expired or is not found and error is returned.
+func ReadAsessionByTheSessionId() {
 	userService := user.NewUserService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := userService.Logout(&user.LogoutRequest{
+	rsp, err := userService.ReadSession(&user.ReadSessionRequest{
 		SessionId: "sds34s34s34-s34s34-s43s43s34-s4s34s",
 
 	})
@@ -269,40 +267,12 @@ TextContent: `Hi there,
 	
 }
 ```
-## VerifyEmail
+## ResetPassword
 
-Verify the email address of an account from a token sent in an email to the user.
-
-
-[https://m3o.com/user/api#VerifyEmail](https://m3o.com/user/api#VerifyEmail)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/user"
-)
-
-// Verify the email address of an account from a token sent in an email to the user.
-func VerifyEmail() {
-	userService := user.NewUserService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := userService.VerifyEmail(&user.VerifyEmailRequest{
-		Token: "t2323t232t",
-
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
-## ReadSession
-
-Read a session by the session id. In the event it has expired or is not found and error is returned.
+Reset password with the code sent by the "SendPasswordResetEmail" endoint.
 
 
-[https://m3o.com/user/api#ReadSession](https://m3o.com/user/api#ReadSession)
+[https://m3o.com/user/api#ResetPassword](https://m3o.com/user/api#ResetPassword)
 
 ```go
 package example
@@ -314,11 +284,13 @@ import(
 	"go.m3o.com/user"
 )
 
-// Read a session by the session id. In the event it has expired or is not found and error is returned.
-func ReadAsessionByTheSessionId() {
+// Reset password with the code sent by the "SendPasswordResetEmail" endoint.
+func ResetPassword() {
 	userService := user.NewUserService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := userService.ReadSession(&user.ReadSessionRequest{
-		SessionId: "sds34s34s34-s34s34-s43s43s34-s4s34s",
+	rsp, err := userService.ResetPassword(&user.ResetPasswordRequest{
+		Code: "some-code-from-email",
+ConfirmPassword: "newpass123",
+NewPassword: "newpass123",
 
 	})
 	fmt.Println(rsp, err)
@@ -426,6 +398,34 @@ Subject: "Email verification",
 TextContent: `Hi there,
 
 Please verify your email by clicking this link: $micro_verification_link`,
+
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
+## Logout
+
+Logout a user account
+
+
+[https://m3o.com/user/api#Logout](https://m3o.com/user/api#Logout)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/user"
+)
+
+// Logout a user account
+func LogAuserOut() {
+	userService := user.NewUserService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := userService.Logout(&user.LogoutRequest{
+		SessionId: "sds34s34s34-s34s34-s43s43s34-s4s34s",
 
 	})
 	fmt.Println(rsp, err)
