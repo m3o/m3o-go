@@ -4,6 +4,35 @@ An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/Db/api](https:
 
 Endpoints:
 
+## RenameTable
+
+Rename a table
+
+
+[https://m3o.com/db/api#RenameTable](https://m3o.com/db/api#RenameTable)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/db"
+)
+
+// Rename a table
+func RenameTable() {
+	dbService := db.NewDbService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := dbService.RenameTable(&db.RenameTableRequest{
+		From: "events",
+To: "events_backup",
+
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
 ## Create
 
 Create a record in the database. Optionally include an "id" field otherwise it's set automatically.
@@ -32,92 +61,6 @@ func CreateArecord() {
 	"isActive": true,
 },
 Table: "users",
-
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
-## Read
-
-Read data from a table. Lookup can be by ID or via querying any field in the record.
-
-
-[https://m3o.com/db/api#Read](https://m3o.com/db/api#Read)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/db"
-)
-
-// Read data from a table. Lookup can be by ID or via querying any field in the record.
-func ReadRecords() {
-	dbService := db.NewDbService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := dbService.Read(&db.ReadRequest{
-		Query: "age == 43",
-Table: "users",
-
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
-## Count
-
-Count records in a table
-
-
-[https://m3o.com/db/api#Count](https://m3o.com/db/api#Count)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/db"
-)
-
-// Count records in a table
-func CountEntriesInAtable() {
-	dbService := db.NewDbService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := dbService.Count(&db.CountRequest{
-		Table: "users",
-
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
-## RenameTable
-
-Rename a table
-
-
-[https://m3o.com/db/api#RenameTable](https://m3o.com/db/api#RenameTable)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/db"
-)
-
-// Rename a table
-func RenameTable() {
-	dbService := db.NewDbService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := dbService.RenameTable(&db.RenameTableRequest{
-		From: "events",
-To: "events_backup",
 
 	})
 	fmt.Println(rsp, err)
@@ -213,6 +156,35 @@ func TruncateTable() {
 	
 }
 ```
+## Read
+
+Read data from a table. Lookup can be by ID or via querying any field in the record.
+
+
+[https://m3o.com/db/api#Read](https://m3o.com/db/api#Read)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/db"
+)
+
+// Read data from a table. Lookup can be by ID or via querying any field in the record.
+func ReadRecords() {
+	dbService := db.NewDbService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := dbService.Read(&db.ReadRequest{
+		Query: "age == 43",
+Table: "users",
+
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
 ## DropTable
 
 Drop a table in the DB
@@ -234,6 +206,34 @@ import(
 func DropTable() {
 	dbService := db.NewDbService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := dbService.DropTable(&db.DropTableRequest{
+		Table: "users",
+
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
+## Count
+
+Count records in a table
+
+
+[https://m3o.com/db/api#Count](https://m3o.com/db/api#Count)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/db"
+)
+
+// Count records in a table
+func CountEntriesInAtable() {
+	dbService := db.NewDbService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := dbService.Count(&db.CountRequest{
 		Table: "users",
 
 	})
