@@ -237,12 +237,14 @@ type SendPasswordResetEmailResponse struct {
 }
 
 type SendVerificationEmailRequest struct {
+	// email address to send the verification code
 	Email              string `json:"email"`
 	FailureRedirectUrl string `json:"failureRedirectUrl"`
 	// Display name of the sender for the email. Note: the email address will still be 'support@m3o.com'
 	FromName    string `json:"fromName"`
 	RedirectUrl string `json:"redirectUrl"`
-	Subject     string `json:"subject"`
+	// subject of the email
+	Subject string `json:"subject"`
 	// Text content of the email. Don't forget to include the string '$micro_verification_link' which will be replaced by the real verification link
 	// HTML emails are not available currently.
 	TextContent string `json:"textContent"`
