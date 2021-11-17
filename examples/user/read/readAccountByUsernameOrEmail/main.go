@@ -11,7 +11,7 @@ import (
 func main() {
 	userService := user.NewUserService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := userService.Read(&user.ReadRequest{
-		Username: "usrname-1",
+		Username: "joe",
 	})
 	fmt.Println(rsp, err)
 

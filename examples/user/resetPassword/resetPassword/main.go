@@ -11,10 +11,10 @@ import (
 func main() {
 	userService := user.NewUserService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := userService.ResetPassword(&user.ResetPasswordRequest{
-		Code:            "some-code-from-email",
-		ConfirmPassword: "newpass123",
+		Code:            "012345",
+		ConfirmPassword: "NewPassword1",
 		Email:           "joe@example.com",
-		NewPassword:     "newpass123",
+		NewPassword:     "NewPassword1",
 	})
 	fmt.Println(rsp, err)
 

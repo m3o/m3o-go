@@ -12,7 +12,7 @@ func main() {
 	userService := user.NewUserService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := userService.VerifyEmail(&user.VerifyEmailRequest{
 		Email: "joe@example.com",
-		Token: "t2323t232t",
+		Token: "012345",
 	})
 	fmt.Println(rsp, err)
 
