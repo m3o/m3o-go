@@ -6,6 +6,10 @@ import (
 )
 
 func TestBasicCall(t *testing.T) {
+	if v := os.Getenv("IN_TRAVIS"); v == "yes" {
+		return
+	}
+
 	response := map[string]interface{}{}
 	if err := NewClient(&Options{
 		Token: os.Getenv("TOKEN"),
