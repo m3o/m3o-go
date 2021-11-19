@@ -32,6 +32,14 @@ func (t *UserService) Delete(request *DeleteRequest) (*DeleteResponse, error) {
 
 }
 
+// List all users. Returns a paged list of results
+func (t *UserService) List(request *ListRequest) (*ListResponse, error) {
+
+	rsp := &ListResponse{}
+	return rsp, t.client.Call("user", "List", request, rsp)
+
+}
+
 // Login using username or email. The response will return a new session for successful login,
 // 401 in the case of login failure and 500 for any other error
 func (t *UserService) Login(request *LoginRequest) (*LoginResponse, error) {
@@ -162,6 +170,17 @@ type DeleteRequest struct {
 }
 
 type DeleteResponse struct {
+}
+
+type ListRequest struct {
+	// Maximum number of records to return. Default limit is 25.
+	// Maximum limit is 1000. Anything higher will return an error.
+	Limit  int32 `json:"limit"`
+	Offset int32 `json:"offset"`
+}
+
+type ListResponse struct {
+	Users []Account `json:"users"`
 }
 
 type LoginRequest struct {
