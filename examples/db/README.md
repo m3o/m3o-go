@@ -26,10 +26,10 @@ func CreateArecord() {
 	dbService := db.NewDbService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := dbService.Create(&db.CreateRequest{
 		Record: map[string]interface{}{
-	"age": 42,
-	"isActive": true,
 	"id": "1",
 	"name": "Jane",
+	"age": 42,
+	"isActive": true,
 },
 Table: "users",
 
@@ -96,34 +96,6 @@ Table: "users",
 	
 }
 ```
-## Truncate
-
-Truncate the records in a table
-
-
-[https://m3o.com/db/api#Truncate](https://m3o.com/db/api#Truncate)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/db"
-)
-
-// Truncate the records in a table
-func TruncateTable() {
-	dbService := db.NewDbService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := dbService.Truncate(&db.TruncateRequest{
-		Table: "users",
-
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
 ## DropTable
 
 Drop a table in the DB
@@ -152,12 +124,12 @@ func DropTable() {
 	
 }
 ```
-## Count
+## ListTables
 
-Count records in a table
+List tables in the DB
 
 
-[https://m3o.com/db/api#Count](https://m3o.com/db/api#Count)
+[https://m3o.com/db/api#ListTables](https://m3o.com/db/api#ListTables)
 
 ```go
 package example
@@ -169,12 +141,11 @@ import(
 	"go.m3o.com/db"
 )
 
-// Count records in a table
-func CountEntriesInAtable() {
+// List tables in the DB
+func ListTables() {
 	dbService := db.NewDbService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := dbService.Count(&db.CountRequest{
-		Table: "users",
-
+	rsp, err := dbService.ListTables(&db.ListTablesRequest{
+		
 	})
 	fmt.Println(rsp, err)
 	
@@ -241,12 +212,12 @@ Table: "users",
 	
 }
 ```
-## ListTables
+## Truncate
 
-List tables in the DB
+Truncate the records in a table
 
 
-[https://m3o.com/db/api#ListTables](https://m3o.com/db/api#ListTables)
+[https://m3o.com/db/api#Truncate](https://m3o.com/db/api#Truncate)
 
 ```go
 package example
@@ -258,11 +229,40 @@ import(
 	"go.m3o.com/db"
 )
 
-// List tables in the DB
-func ListTables() {
+// Truncate the records in a table
+func TruncateTable() {
 	dbService := db.NewDbService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := dbService.ListTables(&db.ListTablesRequest{
-		
+	rsp, err := dbService.Truncate(&db.TruncateRequest{
+		Table: "users",
+
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
+## Count
+
+Count records in a table
+
+
+[https://m3o.com/db/api#Count](https://m3o.com/db/api#Count)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/db"
+)
+
+// Count records in a table
+func CountEntriesInAtable() {
+	dbService := db.NewDbService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := dbService.Count(&db.CountRequest{
+		Table: "users",
+
 	})
 	fmt.Println(rsp, err)
 	
