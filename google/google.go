@@ -36,7 +36,7 @@ type SearchResponse struct {
 
 type SearchResult struct {
 	// abridged version of this search result’s URL, e.g. www.exampe.com
-	DisplayUrl string `json:"displayUrl"`
+	DisplayUrl string `json:"display_url"`
 	// id of the result
 	Id string `json:"id"`
 	// kind of result; "search"

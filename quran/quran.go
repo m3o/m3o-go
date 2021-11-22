@@ -52,9 +52,9 @@ func (t *QuranService) Verses(request *VersesRequest) (*VersesResponse, error) {
 
 type Chapter struct {
 	// The arabic name of the chapter
-	ArabicName string `json:"arabicName"`
+	ArabicName string `json:"arabic_name"`
 	// The complex name of the chapter
-	ComplexName string `json:"complexName"`
+	ComplexName string `json:"complex_name"`
 	// The id of the chapter as a number e.g 1
 	Id int32 `json:"id"`
 	// The simple name of the chapter
@@ -62,13 +62,13 @@ type Chapter struct {
 	// The pages from and to e.g 1, 1
 	Pages []int32 `json:"pages"`
 	// Should the chapter start with bismillah
-	PrefixBismillah bool `json:"prefixBismillah"`
+	PrefixBismillah bool `json:"prefix_bismillah"`
 	// The order in which it was revealed
-	RevelationOrder int32 `json:"revelationOrder"`
+	RevelationOrder int32 `json:"revelation_order"`
 	// The place of revelation
-	RevelationPlace string `json:"revelationPlace"`
+	RevelationPlace string `json:"revelation_place"`
 	// The translated name
-	TranslatedName string `json:"translatedName"`
+	TranslatedName string `json:"translated_name"`
 	// The number of verses in the chapter
 	Verses int32 `json:"verses"`
 }
@@ -97,9 +97,9 @@ type Result struct {
 	// The related translations to the text
 	Translations []Translation `json:"translations"`
 	// The unique verse id across the Quran
-	VerseId int32 `json:"verseId"`
+	VerseId int32 `json:"verse_id"`
 	// The verse key e.g 1:1
-	VerseKey string `json:"verseKey"`
+	VerseKey string `json:"verse_key"`
 }
 
 type SearchRequest struct {
@@ -121,9 +121,9 @@ type SearchResponse struct {
 	// The results for the query
 	Results []Result `json:"results"`
 	// The total pages
-	TotalPages int32 `json:"totalPages"`
+	TotalPages int32 `json:"total_pages"`
 	// The total results returned
-	TotalResults int32 `json:"totalResults"`
+	TotalResults int32 `json:"total_results"`
 }
 
 type SummaryRequest struct {
@@ -167,7 +167,7 @@ type Verse struct {
 	// The arabic text for this verse
 	Text string `json:"text"`
 	// The basic translation of the verse
-	TranslatedText string `json:"translatedText"`
+	TranslatedText string `json:"translated_text"`
 	// The alternative translations for the verse
 	Translations []Translation `json:"translations"`
 	// The phonetic transliteration from arabic
@@ -199,14 +199,14 @@ type VersesResponse struct {
 	// The page requested
 	Page int32 `json:"page"`
 	// The total pages
-	TotalPages int32 `json:"totalPages"`
+	TotalPages int32 `json:"total_pages"`
 	// The verses on the page
 	Verses []Verse `json:"verses"`
 }
 
 type Word struct {
 	// The character type e.g word, end
-	CharType string `json:"charType"`
+	CharType string `json:"char_type"`
 	// The QCF v2 font code
 	Code string `json:"code"`
 	// The id of the word within the verse

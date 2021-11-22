@@ -98,8 +98,8 @@ type Intersection struct {
 
 type Maneuver struct {
 	Action        string  `json:"action"`
-	BearingAfter  float64 `json:"bearingAfter"`
-	BearingBefore float64 `json:"bearingBefore"`
+	BearingAfter  float64 `json:"bearing_after"`
+	BearingBefore float64 `json:"bearing_before"`
 	Direction     string  `json:"direction"`
 	Location      *Point  `json:"location"`
 }

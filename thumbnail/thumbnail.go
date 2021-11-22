@@ -33,5 +33,5 @@ type ScreenshotRequest struct {
 }
 
 type ScreenshotResponse struct {
-	ImageUrl string `json:"imageUrl"`
+	ImageUrl string `json:"imageURL"`
 }

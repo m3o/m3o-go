@@ -53,7 +53,7 @@ func (t *SunnahService) Hadiths(request *HadithsRequest) (*HadithsResponse, erro
 
 type Book struct {
 	// arabic name of the book
-	ArabicName string `json:"arabicName"`
+	ArabicName string `json:"arabic_name"`
 	// number of hadiths in the book
 	Hadiths int32 `json:"hadiths"`
 	// number of the book e.g 1
@@ -86,7 +86,7 @@ type BooksResponse struct {
 
 type Chapter struct {
 	// arabic title
-	ArabicTitle string `json:"arabicTitle"`
+	ArabicTitle string `json:"arabic_title"`
 	// the book number
 	Book int32 `json:"book"`
 	// the chapter id e.g 1
@@ -125,7 +125,7 @@ type ChaptersResponse struct {
 
 type Collection struct {
 	// Arabic title if available
-	ArabicTitle string `json:"arabicTitle"`
+	ArabicTitle string `json:"arabic_title"`
 	// Total hadiths in the collection
 	Hadiths int32 `json:"hadiths"`
 	// Name of the collection e.g bukhari
@@ -149,15 +149,15 @@ type CollectionsResponse struct {
 
 type Hadith struct {
 	// the arabic chapter title
-	ArabicChapterTitle string `json:"arabicChapterTitle"`
+	ArabicChapterTitle string `json:"arabic_chapter_title"`
 	// the arabic text
-	ArabicText string `json:"arabicText"`
+	ArabicText string `json:"arabic_text"`
 	// the chapter id
 	Chapter int32 `json:"chapter"`
 	// the chapter key
-	ChapterKey string `json:"chapterKey"`
+	ChapterKey string `json:"chapter_key"`
 	// the chapter title
-	ChapterTitle string `json:"chapterTitle"`
+	ChapterTitle string `json:"chapter_title"`
 	// hadith id
 	Id int32 `json:"id"`
 	// hadith text

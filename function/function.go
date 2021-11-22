@@ -83,7 +83,7 @@ type DeployRequest struct {
 	// if not provided, defaults to the name parameter
 	Entrypoint string `json:"entrypoint"`
 	// environment variables to pass in at runtime
-	EnvVars map[string]string `json:"envVars"`
+	EnvVars map[string]string `json:"env_vars"`
 	// function name
 	Name string `json:"name"`
 	// project is used for namespacing your functions
@@ -120,7 +120,7 @@ type DescribeResponse struct {
 	// The timeout for requests to the function
 	Timeout string `json:"timeout"`
 	// The time at which the function was updated
-	UpdatedAt string `json:"updatedAt"`
+	UpdatedAt string `json:"updated_at"`
 }
 
 type Func struct {

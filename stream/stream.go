@@ -53,7 +53,7 @@ type Channel struct {
 	// description for the channel
 	Description string `json:"description"`
 	// last activity time
-	LastActive string `json:"lastActive"`
+	LastActive string `json:"last_active"`
 	// name of the channel
 	Name string `json:"name"`
 }

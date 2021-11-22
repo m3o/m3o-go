@@ -39,9 +39,9 @@ type SearchResult struct {
 	// none, upcoming, live, completed
 	Broadcasting string `json:"broadcasting"`
 	// the channel id
-	ChannelId string `json:"channelId"`
+	ChannelId string `json:"channel_id"`
 	// the channel title
-	ChannelTitle string `json:"channelTitle"`
+	ChannelTitle string `json:"channel_title"`
 	// the result description
 	Description string `json:"description"`
 	// id of the result
@@ -49,7 +49,7 @@ type SearchResult struct {
 	// kind of result; "video", "channel", "playlist"
 	Kind string `json:"kind"`
 	// published at time
-	PublishedAt string `json:"publishedAt"`
+	PublishedAt string `json:"published_at"`
 	// title of the result
 	Title string `json:"title"`
 	// the associated url

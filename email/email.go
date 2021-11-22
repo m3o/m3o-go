@@ -28,13 +28,13 @@ type SendRequest struct {
 	// the display name of the sender
 	From string `json:"from"`
 	// the html body
-	HtmlBody string `json:"htmlBody"`
+	HtmlBody string `json:"html_body"`
 	// an optional reply to email address
-	ReplyTo string `json:"replyTo"`
+	ReplyTo string `json:"reply_to"`
 	// the email subject
 	Subject string `json:"subject"`
 	// the text body
-	TextBody string `json:"textBody"`
+	TextBody string `json:"text_body"`
 	// the email address of the recipient
 	To string `json:"to"`
 }

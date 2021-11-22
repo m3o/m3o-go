@@ -66,7 +66,7 @@ type ConvertRequest struct {
 	// output name of the image including extension, ie. "cat.png"
 	Name string `json:"name"`
 	// make output a URL and not a base64 response
-	OutputUrl bool `json:"outputUrl"`
+	OutputUrl bool `json:"outputURL"`
 	// url of the image to resize
 	Url string `json:"url"`
 }
@@ -119,7 +119,7 @@ type ResizeRequest struct {
 	// output name of the image including extension, ie. "cat.png"
 	Name string `json:"name"`
 	// make output a URL and not a base64 response
-	OutputUrl bool `json:"outputUrl"`
+	OutputUrl bool `json:"outputURL"`
 	// url of the image to resize
 	Url   string `json:"url"`
 	Width int64  `json:"width,string"`

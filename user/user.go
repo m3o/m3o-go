@@ -287,7 +287,7 @@ type Session struct {
 
 type UpdatePasswordRequest struct {
 	// confirm new password
-	ConfirmPassword string `json:"confirmPassword"`
+	ConfirmPassword string `json:"confirm_password"`
 	// the new password
 	NewPassword string `json:"newPassword"`
 	// the old password

@@ -74,13 +74,13 @@ type HistoryResponse struct {
 
 type Order struct {
 	// the asking price
-	AskPrice float64 `json:"askPrice"`
+	AskPrice float64 `json:"ask_price"`
 	// the ask size
-	AskSize int32 `json:"askSize"`
+	AskSize int32 `json:"ask_size"`
 	// the bidding price
-	BidPrice float64 `json:"bidPrice"`
+	BidPrice float64 `json:"bid_price"`
 	// the bid size
-	BidSize int32 `json:"bidSize"`
+	BidSize int32 `json:"bid_size"`
 	// the UTC timestamp of the quote
 	Timestamp string `json:"timestamp"`
 }
@@ -126,13 +126,13 @@ type QuoteRequest struct {
 
 type QuoteResponse struct {
 	// the asking price
-	AskPrice float64 `json:"askPrice"`
+	AskPrice float64 `json:"ask_price"`
 	// the ask size
-	AskSize int32 `json:"askSize"`
+	AskSize int32 `json:"ask_size"`
 	// the bidding price
-	BidPrice float64 `json:"bidPrice"`
+	BidPrice float64 `json:"bid_price"`
 	// the bid size
-	BidSize int32 `json:"bidSize"`
+	BidSize int32 `json:"bid_size"`
 	// the stock symbol
 	Symbol string `json:"symbol"`
 	// the UTC timestamp of the quote
