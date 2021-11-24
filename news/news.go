@@ -16,7 +16,7 @@ type NewsService struct {
 	client *client.Client
 }
 
-//
+// Get the latest news headlines
 func (t *NewsService) Headlines(request *HeadlinesRequest) (*HeadlinesResponse, error) {
 
 	rsp := &HeadlinesResponse{}

@@ -6,7 +6,7 @@ Endpoints:
 
 ## Headlines
 
-
+Get the latest news headlines
 
 
 [https://m3o.com/news/api#Headlines](https://m3o.com/news/api#Headlines)
@@ -21,7 +21,7 @@ import(
 	"go.m3o.com/news"
 )
 
-// 
+// Get the latest news headlines
 func GetNewsHeadlines() {
 	newsService := news.NewNewsService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := newsService.Headlines(&news.HeadlinesRequest{

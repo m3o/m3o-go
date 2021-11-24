@@ -7,7 +7,7 @@ import (
 	"go.m3o.com/news"
 )
 
-//
+// Get the latest news headlines
 func main() {
 	newsService := news.NewNewsService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := newsService.Headlines(&news.HeadlinesRequest{
