@@ -37,6 +37,7 @@ import (
 	"go.m3o.com/rss"
 	"go.m3o.com/sentiment"
 	"go.m3o.com/sms"
+	"go.m3o.com/space"
 	"go.m3o.com/spam"
 	"go.m3o.com/stock"
 	"go.m3o.com/stream"
@@ -91,6 +92,7 @@ func NewClient(token string) *Client {
 		RssService:        rss.NewRssService(token),
 		SentimentService:  sentiment.NewSentimentService(token),
 		SmsService:        sms.NewSmsService(token),
+		SpaceService:      space.NewSpaceService(token),
 		SpamService:       spam.NewSpamService(token),
 		StockService:      stock.NewStockService(token),
 		StreamService:     stream.NewStreamService(token),
@@ -145,6 +147,7 @@ type Client struct {
 	RssService        *rss.RssService
 	SentimentService  *sentiment.SentimentService
 	SmsService        *sms.SmsService
+	SpaceService      *space.SpaceService
 	SpamService       *spam.SpamService
 	StockService      *stock.StockService
 	StreamService     *stream.StreamService
