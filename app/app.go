@@ -24,6 +24,14 @@ func (t *AppService) Reserve(request *ReserveRequest) (*ReserveResponse, error) 
 
 }
 
+// Vote to have the App api launched faster!
+func (t *AppService) Vote(request *VoteRequest) (*VoteResponse, error) {
+
+	rsp := &VoteResponse{}
+	return rsp, t.client.Call("app", "Vote", request, rsp)
+
+}
+
 type Reservation struct {
 	// time of reservation
 	Created string `json:"created"`
@@ -44,4 +52,14 @@ type ReserveRequest struct {
 
 type ReserveResponse struct {
 	Reservation *Reservation `json:"reservation"`
+}
+
+type VoteRequest struct {
+	// optional message
+	Message string `json:"message"`
+}
+
+type VoteResponse struct {
+	// response message
+	Message string `json:"message"`
 }
