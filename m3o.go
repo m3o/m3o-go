@@ -3,6 +3,7 @@ package m3o
 import (
 	"go.m3o.com/address"
 	"go.m3o.com/answer"
+	"go.m3o.com/app"
 	"go.m3o.com/cache"
 	"go.m3o.com/crypto"
 	"go.m3o.com/currency"
@@ -55,6 +56,7 @@ func NewClient(token string) *Client {
 
 		AddressService:    address.NewAddressService(token),
 		AnswerService:     answer.NewAnswerService(token),
+		AppService:        app.NewAppService(token),
 		CacheService:      cache.NewCacheService(token),
 		CryptoService:     crypto.NewCryptoService(token),
 		CurrencyService:   currency.NewCurrencyService(token),
@@ -107,6 +109,7 @@ type Client struct {
 
 	AddressService    *address.AddressService
 	AnswerService     *answer.AnswerService
+	AppService        *app.AppService
 	CacheService      *cache.CacheService
 	CryptoService     *crypto.CryptoService
 	CurrencyService   *currency.CurrencyService
