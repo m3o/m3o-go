@@ -4,6 +4,33 @@ An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/Url/api](https
 
 Endpoints:
 
+## List
+
+List information on all the shortened URLs that you have created
+
+
+[https://m3o.com/url/api#List](https://m3o.com/url/api#List)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/url"
+)
+
+// List information on all the shortened URLs that you have created
+func ListYourShortenedUrls() {
+	urlService := url.NewUrlService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := urlService.List(&url.ListRequest{
+		
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
 ## Shorten
 
 Shortens a destination URL and returns a full short URL.
@@ -52,33 +79,6 @@ import(
 func ResolveAshortUrlToAlongDestinationUrl() {
 	urlService := url.NewUrlService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := urlService.Proxy(&url.ProxyRequest{
-		
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
-## List
-
-List information on all the shortened URLs that you have created
-
-
-[https://m3o.com/url/api#List](https://m3o.com/url/api#List)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/url"
-)
-
-// List information on all the shortened URLs that you have created
-func ListYourShortenedUrls() {
-	urlService := url.NewUrlService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := urlService.List(&url.ListRequest{
 		
 	})
 	fmt.Println(rsp, err)
