@@ -4,6 +4,39 @@ An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/Event/api](htt
 
 Endpoints:
 
+## Publish
+
+Publish a event to the event stream.
+
+
+[https://m3o.com/event/api#Publish](https://m3o.com/event/api#Publish)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/event"
+)
+
+// Publish a event to the event stream.
+func PublishAnEvent() {
+	eventService := event.NewEventService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := eventService.Publish(&event.PublishRequest{
+		Message: map[string]interface{}{
+	"type": "signup",
+	"user": "john",
+	"id": "1",
+},
+Topic: "user",
+
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
 ## Consume
 
 Consume events from a given topic.
@@ -67,39 +100,6 @@ func ReadEventsOnAtopic() {
 	eventService := event.NewEventService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := eventService.Read(&event.ReadRequest{
 		Topic: "user",
-
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
-## Publish
-
-Publish a event to the event stream.
-
-
-[https://m3o.com/event/api#Publish](https://m3o.com/event/api#Publish)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/event"
-)
-
-// Publish a event to the event stream.
-func PublishAnEvent() {
-	eventService := event.NewEventService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := eventService.Publish(&event.PublishRequest{
-		Message: map[string]interface{}{
-	"user": "john",
-	"id": "1",
-	"type": "signup",
-},
-Topic: "user",
 
 	})
 	fmt.Println(rsp, err)
