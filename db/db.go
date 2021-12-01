@@ -99,6 +99,8 @@ type CountResponse struct {
 }
 
 type CreateRequest struct {
+	// optional record id to use
+	Id string `json:"id"`
 	// JSON encoded record or records (can be array or object)
 	Record map[string]interface{} `json:"record"`
 	// Optional table name. Defaults to 'default'
