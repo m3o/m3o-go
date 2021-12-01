@@ -4,6 +4,130 @@ An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/User/api](http
 
 Endpoints:
 
+## Update
+
+Update the account username or email
+
+
+[https://m3o.com/user/api#Update](https://m3o.com/user/api#Update)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/user"
+)
+
+// Update the account username or email
+func UpdateAnAccount() {
+	userService := user.NewUserService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := userService.Update(&user.UpdateRequest{
+		Email: "joe+2@example.com",
+Id: "user-1",
+
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
+## UpdatePassword
+
+Update the account password
+
+
+[https://m3o.com/user/api#UpdatePassword](https://m3o.com/user/api#UpdatePassword)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/user"
+)
+
+// Update the account password
+func UpdateTheAccountPassword() {
+	userService := user.NewUserService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := userService.UpdatePassword(&user.UpdatePasswordRequest{
+		ConfirmPassword: "Password2",
+NewPassword: "Password2",
+OldPassword: "Password1",
+
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
+## SendPasswordResetEmail
+
+Send an email with a verification code to reset password.
+Call "ResetPassword" endpoint once user provides the code.
+
+
+[https://m3o.com/user/api#SendPasswordResetEmail](https://m3o.com/user/api#SendPasswordResetEmail)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/user"
+)
+
+// Send an email with a verification code to reset password.
+// Call "ResetPassword" endpoint once user provides the code.
+func SendPasswordResetEmail() {
+	userService := user.NewUserService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := userService.SendPasswordResetEmail(&user.SendPasswordResetEmailRequest{
+		Email: "joe@example.com",
+FromName: "Awesome Dot Com",
+Subject: "Password reset",
+TextContent: `Hi there,
+ click here to reset your password: myapp.com/reset/code?=$code`,
+
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
+## ResetPassword
+
+Reset password with the code sent by the "SendPasswordResetEmail" endoint.
+
+
+[https://m3o.com/user/api#ResetPassword](https://m3o.com/user/api#ResetPassword)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/user"
+)
+
+// Reset password with the code sent by the "SendPasswordResetEmail" endoint.
+func ResetPassword() {
+	userService := user.NewUserService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := userService.ResetPassword(&user.ResetPasswordRequest{
+		Code: "012345",
+ConfirmPassword: "NewPassword1",
+Email: "joe@example.com",
+NewPassword: "NewPassword1",
+
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
 ## Login
 
 Login using username or email. The response will return a new session for successful login,
@@ -92,12 +216,12 @@ Offset: 0,
 	
 }
 ```
-## Update
+## Create
 
-Update the account username or email
+Create a new user account. The email address and username for the account must be unique.
 
 
-[https://m3o.com/user/api#Update](https://m3o.com/user/api#Update)
+[https://m3o.com/user/api#Create](https://m3o.com/user/api#Create)
 
 ```go
 package example
@@ -109,12 +233,14 @@ import(
 	"go.m3o.com/user"
 )
 
-// Update the account username or email
-func UpdateAnAccount() {
+// Create a new user account. The email address and username for the account must be unique.
+func CreateAnAccount() {
 	userService := user.NewUserService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := userService.Update(&user.UpdateRequest{
-		Email: "joe+2@example.com",
+	rsp, err := userService.Create(&user.CreateRequest{
+		Email: "joe@example.com",
 Id: "user-1",
+Password: "Password1",
+Username: "joe",
 
 	})
 	fmt.Println(rsp, err)
@@ -162,40 +288,6 @@ Subject: "Email verification",
 TextContent: `Hi there,
 
 Please verify your email by clicking this link: $micro_verification_link`,
-
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
-## SendPasswordResetEmail
-
-Send an email with a verification code to reset password.
-Call "ResetPassword" endpoint once user provides the code.
-
-
-[https://m3o.com/user/api#SendPasswordResetEmail](https://m3o.com/user/api#SendPasswordResetEmail)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/user"
-)
-
-// Send an email with a verification code to reset password.
-// Call "ResetPassword" endpoint once user provides the code.
-func SendPasswordResetEmail() {
-	userService := user.NewUserService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := userService.SendPasswordResetEmail(&user.SendPasswordResetEmailRequest{
-		Email: "joe@example.com",
-FromName: "Awesome Dot Com",
-Subject: "Password reset",
-TextContent: `Hi there,
- click here to reset your password: myapp.com/reset/code?=$code`,
 
 	})
 	fmt.Println(rsp, err)
@@ -259,43 +351,12 @@ func DeleteUserAccount() {
 	
 }
 ```
-## Create
+## Logout
 
-Create a new user account. The email address and username for the account must be unique.
-
-
-[https://m3o.com/user/api#Create](https://m3o.com/user/api#Create)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/user"
-)
-
-// Create a new user account. The email address and username for the account must be unique.
-func CreateAnAccount() {
-	userService := user.NewUserService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := userService.Create(&user.CreateRequest{
-		Email: "joe@example.com",
-Id: "user-1",
-Password: "Password1",
-Username: "joe",
-
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
-## UpdatePassword
-
-Update the account password
+Logout a user account
 
 
-[https://m3o.com/user/api#UpdatePassword](https://m3o.com/user/api#UpdatePassword)
+[https://m3o.com/user/api#Logout](https://m3o.com/user/api#Logout)
 
 ```go
 package example
@@ -307,13 +368,11 @@ import(
 	"go.m3o.com/user"
 )
 
-// Update the account password
-func UpdateTheAccountPassword() {
+// Logout a user account
+func LogAuserOut() {
 	userService := user.NewUserService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := userService.UpdatePassword(&user.UpdatePasswordRequest{
-		ConfirmPassword: "Password2",
-NewPassword: "Password2",
-OldPassword: "Password1",
+	rsp, err := userService.Logout(&user.LogoutRequest{
+		SessionId: "df91a612-5b24-4634-99ff-240220ab8f55",
 
 	})
 	fmt.Println(rsp, err)
@@ -398,65 +457,6 @@ func ReadAccountByEmail() {
 	userService := user.NewUserService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := userService.Read(&user.ReadRequest{
 		Email: "joe@example.com",
-
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
-## ResetPassword
-
-Reset password with the code sent by the "SendPasswordResetEmail" endoint.
-
-
-[https://m3o.com/user/api#ResetPassword](https://m3o.com/user/api#ResetPassword)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/user"
-)
-
-// Reset password with the code sent by the "SendPasswordResetEmail" endoint.
-func ResetPassword() {
-	userService := user.NewUserService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := userService.ResetPassword(&user.ResetPasswordRequest{
-		Code: "012345",
-ConfirmPassword: "NewPassword1",
-Email: "joe@example.com",
-NewPassword: "NewPassword1",
-
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
-## Logout
-
-Logout a user account
-
-
-[https://m3o.com/user/api#Logout](https://m3o.com/user/api#Logout)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/user"
-)
-
-// Logout a user account
-func LogAuserOut() {
-	userService := user.NewUserService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := userService.Logout(&user.LogoutRequest{
-		SessionId: "df91a612-5b24-4634-99ff-240220ab8f55",
 
 	})
 	fmt.Println(rsp, err)
