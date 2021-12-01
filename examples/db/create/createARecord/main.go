@@ -12,12 +12,12 @@ func main() {
 	dbService := db.NewDbService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := dbService.Create(&db.CreateRequest{
 		Record: map[string]interface{}{
-			"isActive": true,
 			"id":       "1",
 			"name":     "Jane",
 			"age":      42,
+			"isActive": true,
 		},
-		Table: "people",
+		Table: "example",
 	})
 	fmt.Println(rsp, err)
 
