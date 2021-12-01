@@ -12,8 +12,7 @@ func main() {
 	functionService := function.NewFunctionService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := functionService.Deploy(&function.DeployRequest{
 		Entrypoint: "helloworld",
-		Name:       "my-first-func",
-		Project:    "tests",
+		Name:       "helloworld",
 		Repo:       "github.com/m3o/nodejs-function-example",
 		Runtime:    "nodejs14",
 	})

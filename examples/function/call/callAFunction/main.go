@@ -11,7 +11,7 @@ import (
 func main() {
 	functionService := function.NewFunctionService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := functionService.Call(&function.CallRequest{
-		Name:    "my-first-func",
+		Name:    "helloworld",
 		Request: map[string]interface{}{},
 	})
 	fmt.Println(rsp, err)

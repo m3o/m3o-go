@@ -26,8 +26,7 @@ func DeployAfunction() {
 	functionService := function.NewFunctionService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := functionService.Deploy(&function.DeployRequest{
 		Entrypoint: "helloworld",
-Name: "my-first-func",
-Project: "tests",
+Name: "helloworld",
 Repo: "github.com/m3o/nodejs-function-example",
 Runtime: "nodejs14",
 
@@ -57,7 +56,7 @@ import(
 func CallAfunction() {
 	functionService := function.NewFunctionService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := functionService.Call(&function.CallRequest{
-		Name: "my-first-func",
+		Name: "helloworld",
 Request: map[string]interface{}{
 },
 
@@ -114,8 +113,7 @@ import(
 func DeleteAfunction() {
 	functionService := function.NewFunctionService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := functionService.Delete(&function.DeleteRequest{
-		Name: "my-first-func",
-Project: "tests",
+		Name: "helloworld",
 
 	})
 	fmt.Println(rsp, err)
@@ -143,8 +141,7 @@ import(
 func DescribeFunctionStatus() {
 	functionService := function.NewFunctionService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := functionService.Describe(&function.DescribeRequest{
-		Name: "my-first-func",
-Project: "tests",
+		Name: "helloworld",
 
 	})
 	fmt.Println(rsp, err)
