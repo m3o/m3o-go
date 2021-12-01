@@ -11,7 +11,7 @@ import (
 func main() {
 	dbService := db.NewDbService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := dbService.Truncate(&db.TruncateRequest{
-		Table: "users",
+		Table: "example",
 	})
 	fmt.Println(rsp, err)
 

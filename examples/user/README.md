@@ -4,64 +4,6 @@ An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/User/api](http
 
 Endpoints:
 
-## VerifyEmail
-
-Verify the email address of an account from a token sent in an email to the user.
-
-
-[https://m3o.com/user/api#VerifyEmail](https://m3o.com/user/api#VerifyEmail)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/user"
-)
-
-// Verify the email address of an account from a token sent in an email to the user.
-func VerifyEmail() {
-	userService := user.NewUserService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := userService.VerifyEmail(&user.VerifyEmailRequest{
-		Email: "joe@example.com",
-Token: "012345",
-
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
-## List
-
-List all users. Returns a paged list of results
-
-
-[https://m3o.com/user/api#List](https://m3o.com/user/api#List)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/user"
-)
-
-// List all users. Returns a paged list of results
-func ListAllUsers() {
-	userService := user.NewUserService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := userService.List(&user.ListRequest{
-		Limit: 100,
-Offset: 0,
-
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
 ## Update
 
 Update the account username or email
@@ -172,6 +114,150 @@ TextContent: `Hi there,
 	
 }
 ```
+## List
+
+List all users. Returns a paged list of results
+
+
+[https://m3o.com/user/api#List](https://m3o.com/user/api#List)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/user"
+)
+
+// List all users. Returns a paged list of results
+func ListAllUsers() {
+	userService := user.NewUserService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := userService.List(&user.ListRequest{
+		Limit: 100,
+Offset: 0,
+
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
+## Create
+
+Create a new user account. The email address and username for the account must be unique.
+
+
+[https://m3o.com/user/api#Create](https://m3o.com/user/api#Create)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/user"
+)
+
+// Create a new user account. The email address and username for the account must be unique.
+func CreateAnAccount() {
+	userService := user.NewUserService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := userService.Create(&user.CreateRequest{
+		Email: "joe@example.com",
+Id: "user-1",
+Password: "Password1",
+Username: "joe",
+
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
+## Read
+
+Read an account by id, username or email. Only one need to be specified.
+
+
+[https://m3o.com/user/api#Read](https://m3o.com/user/api#Read)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/user"
+)
+
+// Read an account by id, username or email. Only one need to be specified.
+func ReadAnAccountById() {
+	userService := user.NewUserService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := userService.Read(&user.ReadRequest{
+		Id: "user-1",
+
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
+## Read
+
+Read an account by id, username or email. Only one need to be specified.
+
+
+[https://m3o.com/user/api#Read](https://m3o.com/user/api#Read)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/user"
+)
+
+// Read an account by id, username or email. Only one need to be specified.
+func ReadAccountByUsernameOrEmail() {
+	userService := user.NewUserService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := userService.Read(&user.ReadRequest{
+		Username: "joe",
+
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
+## Read
+
+Read an account by id, username or email. Only one need to be specified.
+
+
+[https://m3o.com/user/api#Read](https://m3o.com/user/api#Read)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/user"
+)
+
+// Read an account by id, username or email. Only one need to be specified.
+func ReadAccountByEmail() {
+	userService := user.NewUserService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := userService.Read(&user.ReadRequest{
+		Email: "joe@example.com",
+
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
 ## ResetPassword
 
 Reset password with the code sent by the "SendPasswordResetEmail" endoint.
@@ -197,6 +283,63 @@ func ResetPassword() {
 ConfirmPassword: "NewPassword1",
 Email: "joe@example.com",
 NewPassword: "NewPassword1",
+
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
+## VerifyEmail
+
+Verify the email address of an account from a token sent in an email to the user.
+
+
+[https://m3o.com/user/api#VerifyEmail](https://m3o.com/user/api#VerifyEmail)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/user"
+)
+
+// Verify the email address of an account from a token sent in an email to the user.
+func VerifyEmail() {
+	userService := user.NewUserService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := userService.VerifyEmail(&user.VerifyEmailRequest{
+		Email: "joe@example.com",
+Token: "012345",
+
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
+## Delete
+
+Delete an account by id
+
+
+[https://m3o.com/user/api#Delete](https://m3o.com/user/api#Delete)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/user"
+)
+
+// Delete an account by id
+func DeleteUserAccount() {
+	userService := user.NewUserService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := userService.Delete(&user.DeleteRequest{
+		Id: "8b98acbe-0b6a-4d66-a414-5ffbf666786f",
 
 	})
 	fmt.Println(rsp, err)
@@ -290,37 +433,6 @@ func ReadAsessionByTheSessionId() {
 	
 }
 ```
-## Create
-
-Create a new user account. The email address and username for the account must be unique.
-
-
-[https://m3o.com/user/api#Create](https://m3o.com/user/api#Create)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/user"
-)
-
-// Create a new user account. The email address and username for the account must be unique.
-func CreateAnAccount() {
-	userService := user.NewUserService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := userService.Create(&user.CreateRequest{
-		Email: "joe@example.com",
-Id: "user-1",
-Password: "Password1",
-Username: "joe",
-
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
 ## UpdatePassword
 
 Update the account password
@@ -345,118 +457,6 @@ func UpdateTheAccountPassword() {
 		ConfirmPassword: "Password2",
 NewPassword: "Password2",
 OldPassword: "Password1",
-
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
-## Read
-
-Read an account by id, username or email. Only one need to be specified.
-
-
-[https://m3o.com/user/api#Read](https://m3o.com/user/api#Read)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/user"
-)
-
-// Read an account by id, username or email. Only one need to be specified.
-func ReadAnAccountById() {
-	userService := user.NewUserService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := userService.Read(&user.ReadRequest{
-		Id: "user-1",
-
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
-## Read
-
-Read an account by id, username or email. Only one need to be specified.
-
-
-[https://m3o.com/user/api#Read](https://m3o.com/user/api#Read)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/user"
-)
-
-// Read an account by id, username or email. Only one need to be specified.
-func ReadAccountByUsernameOrEmail() {
-	userService := user.NewUserService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := userService.Read(&user.ReadRequest{
-		Username: "joe",
-
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
-## Read
-
-Read an account by id, username or email. Only one need to be specified.
-
-
-[https://m3o.com/user/api#Read](https://m3o.com/user/api#Read)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/user"
-)
-
-// Read an account by id, username or email. Only one need to be specified.
-func ReadAccountByEmail() {
-	userService := user.NewUserService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := userService.Read(&user.ReadRequest{
-		Email: "joe@example.com",
-
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
-## Delete
-
-Delete an account by id
-
-
-[https://m3o.com/user/api#Delete](https://m3o.com/user/api#Delete)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/user"
-)
-
-// Delete an account by id
-func DeleteUserAccount() {
-	userService := user.NewUserService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := userService.Delete(&user.DeleteRequest{
-		Id: "8b98acbe-0b6a-4d66-a414-5ffbf666786f",
 
 	})
 	fmt.Println(rsp, err)

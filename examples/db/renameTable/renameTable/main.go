@@ -11,8 +11,8 @@ import (
 func main() {
 	dbService := db.NewDbService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := dbService.RenameTable(&db.RenameTableRequest{
-		From: "events",
-		To:   "events_backup",
+		From: "examples2",
+		To:   "examples3",
 	})
 	fmt.Println(rsp, err)
 
