@@ -4,40 +4,12 @@ An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/User/api](http
 
 Endpoints:
 
-## Logout
+## List
 
-Logout a user account
-
-
-[https://m3o.com/user/api#Logout](https://m3o.com/user/api#Logout)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/user"
-)
-
-// Logout a user account
-func LogAuserOut() {
-	userService := user.NewUserService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := userService.Logout(&user.LogoutRequest{
-		SessionId: "df91a612-5b24-4634-99ff-240220ab8f55",
-
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
-## ReadSession
-
-Read a session by the session id. In the event it has expired or is not found and error is returned.
+List all users. Returns a paged list of results
 
 
-[https://m3o.com/user/api#ReadSession](https://m3o.com/user/api#ReadSession)
+[https://m3o.com/user/api#List](https://m3o.com/user/api#List)
 
 ```go
 package example
@@ -49,42 +21,12 @@ import(
 	"go.m3o.com/user"
 )
 
-// Read a session by the session id. In the event it has expired or is not found and error is returned.
-func ReadAsessionByTheSessionId() {
+// List all users. Returns a paged list of results
+func ListAllUsers() {
 	userService := user.NewUserService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := userService.ReadSession(&user.ReadSessionRequest{
-		SessionId: "df91a612-5b24-4634-99ff-240220ab8f55",
-
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
-## Create
-
-Create a new user account. The email address and username for the account must be unique.
-
-
-[https://m3o.com/user/api#Create](https://m3o.com/user/api#Create)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/user"
-)
-
-// Create a new user account. The email address and username for the account must be unique.
-func CreateAnAccount() {
-	userService := user.NewUserService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := userService.Create(&user.CreateRequest{
-		Email: "joe@example.com",
-Id: "user-1",
-Password: "Password1",
-Username: "joe",
+	rsp, err := userService.List(&user.ListRequest{
+		Limit: 100,
+Offset: 0,
 
 	})
 	fmt.Println(rsp, err)
@@ -204,6 +146,37 @@ func ReadAccountByEmail() {
 	
 }
 ```
+## Login
+
+Login using username or email. The response will return a new session for successful login,
+401 in the case of login failure and 500 for any other error
+
+
+[https://m3o.com/user/api#Login](https://m3o.com/user/api#Login)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/user"
+)
+
+// Login using username or email. The response will return a new session for successful login,
+// 401 in the case of login failure and 500 for any other error
+func LogAuserIn() {
+	userService := user.NewUserService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := userService.Login(&user.LoginRequest{
+		Email: "joe@example.com",
+Password: "Password1",
+
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
 ## SendPasswordResetEmail
 
 Send an email with a verification code to reset password.
@@ -298,6 +271,93 @@ Token: "012345",
 	
 }
 ```
+## Delete
+
+Delete an account by id
+
+
+[https://m3o.com/user/api#Delete](https://m3o.com/user/api#Delete)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/user"
+)
+
+// Delete an account by id
+func DeleteUserAccount() {
+	userService := user.NewUserService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := userService.Delete(&user.DeleteRequest{
+		Id: "8b98acbe-0b6a-4d66-a414-5ffbf666786f",
+
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
+## Logout
+
+Logout a user account
+
+
+[https://m3o.com/user/api#Logout](https://m3o.com/user/api#Logout)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/user"
+)
+
+// Logout a user account
+func LogAuserOut() {
+	userService := user.NewUserService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := userService.Logout(&user.LogoutRequest{
+		SessionId: "df91a612-5b24-4634-99ff-240220ab8f55",
+
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
+## Create
+
+Create a new user account. The email address and username for the account must be unique.
+
+
+[https://m3o.com/user/api#Create](https://m3o.com/user/api#Create)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/user"
+)
+
+// Create a new user account. The email address and username for the account must be unique.
+func CreateAnAccount() {
+	userService := user.NewUserService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := userService.Create(&user.CreateRequest{
+		Email: "joe@example.com",
+Id: "user-1",
+Password: "Password1",
+Username: "joe",
+
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
 ## UpdatePassword
 
 Update the account password
@@ -375,41 +435,12 @@ Please verify your email by clicking this link: $micro_verification_link`,
 	
 }
 ```
-## Delete
+## ReadSession
 
-Delete an account by id
-
-
-[https://m3o.com/user/api#Delete](https://m3o.com/user/api#Delete)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/user"
-)
-
-// Delete an account by id
-func DeleteUserAccount() {
-	userService := user.NewUserService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := userService.Delete(&user.DeleteRequest{
-		Id: "8b98acbe-0b6a-4d66-a414-5ffbf666786f",
-
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
-## Login
-
-Login using username or email. The response will return a new session for successful login,
-401 in the case of login failure and 500 for any other error
+Read a session by the session id. In the event it has expired or is not found and error is returned.
 
 
-[https://m3o.com/user/api#Login](https://m3o.com/user/api#Login)
+[https://m3o.com/user/api#ReadSession](https://m3o.com/user/api#ReadSession)
 
 ```go
 package example
@@ -421,42 +452,11 @@ import(
 	"go.m3o.com/user"
 )
 
-// Login using username or email. The response will return a new session for successful login,
-// 401 in the case of login failure and 500 for any other error
-func LogAuserIn() {
+// Read a session by the session id. In the event it has expired or is not found and error is returned.
+func ReadAsessionByTheSessionId() {
 	userService := user.NewUserService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := userService.Login(&user.LoginRequest{
-		Email: "joe@example.com",
-Password: "Password1",
-
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
-## List
-
-List all users. Returns a paged list of results
-
-
-[https://m3o.com/user/api#List](https://m3o.com/user/api#List)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/user"
-)
-
-// List all users. Returns a paged list of results
-func ListAllUsers() {
-	userService := user.NewUserService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := userService.List(&user.ListRequest{
-		Limit: 100,
-Offset: 0,
+	rsp, err := userService.ReadSession(&user.ReadSessionRequest{
+		SessionId: "df91a612-5b24-4634-99ff-240220ab8f55",
 
 	})
 	fmt.Println(rsp, err)
