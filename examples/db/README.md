@@ -4,40 +4,6 @@ An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/Db/api](https:
 
 Endpoints:
 
-## Create
-
-Create a record in the database. Optionally include an "id" field otherwise it's set automatically.
-
-
-[https://m3o.com/db/api#Create](https://m3o.com/db/api#Create)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/db"
-)
-
-// Create a record in the database. Optionally include an "id" field otherwise it's set automatically.
-func CreateArecord() {
-	dbService := db.NewDbService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := dbService.Create(&db.CreateRequest{
-		Record: map[string]interface{}{
-	"id": "1",
-	"name": "Jane",
-	"age": 42,
-	"isActive": true,
-},
-Table: "example",
-
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
 ## Truncate
 
 Truncate the records in a table
@@ -66,12 +32,12 @@ func TruncateTable() {
 	
 }
 ```
-## RenameTable
+## DropTable
 
-Rename a table
+Drop a table in the DB
 
 
-[https://m3o.com/db/api#RenameTable](https://m3o.com/db/api#RenameTable)
+[https://m3o.com/db/api#DropTable](https://m3o.com/db/api#DropTable)
 
 ```go
 package example
@@ -83,12 +49,11 @@ import(
 	"go.m3o.com/db"
 )
 
-// Rename a table
-func RenameTable() {
+// Drop a table in the DB
+func DropTable() {
 	dbService := db.NewDbService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := dbService.RenameTable(&db.RenameTableRequest{
-		From: "examples2",
-To: "examples3",
+	rsp, err := dbService.DropTable(&db.DropTableRequest{
+		Table: "example",
 
 	})
 	fmt.Println(rsp, err)
@@ -123,12 +88,12 @@ func CountEntriesInAtable() {
 	
 }
 ```
-## ListTables
+## Delete
 
-List tables in the DB
+Delete a record in the database by id.
 
 
-[https://m3o.com/db/api#ListTables](https://m3o.com/db/api#ListTables)
+[https://m3o.com/db/api#Delete](https://m3o.com/db/api#Delete)
 
 ```go
 package example
@@ -140,11 +105,13 @@ import(
 	"go.m3o.com/db"
 )
 
-// List tables in the DB
-func ListTables() {
+// Delete a record in the database by id.
+func DeleteArecord() {
 	dbService := db.NewDbService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := dbService.ListTables(&db.ListTablesRequest{
-		
+	rsp, err := dbService.Delete(&db.DeleteRequest{
+		Id: "1",
+Table: "example",
+
 	})
 	fmt.Println(rsp, err)
 	
@@ -172,8 +139,8 @@ func UpdateArecord() {
 	dbService := db.NewDbService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := dbService.Update(&db.UpdateRequest{
 		Record: map[string]interface{}{
-	"age": 43,
 	"id": "1",
+	"age": 43,
 },
 Table: "example",
 
@@ -211,12 +178,12 @@ Table: "example",
 	
 }
 ```
-## Delete
+## ListTables
 
-Delete a record in the database by id.
+List tables in the DB
 
 
-[https://m3o.com/db/api#Delete](https://m3o.com/db/api#Delete)
+[https://m3o.com/db/api#ListTables](https://m3o.com/db/api#ListTables)
 
 ```go
 package example
@@ -228,24 +195,51 @@ import(
 	"go.m3o.com/db"
 )
 
-// Delete a record in the database by id.
-func DeleteArecord() {
+// List tables in the DB
+func ListTables() {
 	dbService := db.NewDbService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := dbService.Delete(&db.DeleteRequest{
-		Id: "1",
-Table: "example",
+	rsp, err := dbService.ListTables(&db.ListTablesRequest{
+		
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
+## RenameTable
+
+Rename a table
+
+
+[https://m3o.com/db/api#RenameTable](https://m3o.com/db/api#RenameTable)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/db"
+)
+
+// Rename a table
+func RenameTable() {
+	dbService := db.NewDbService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := dbService.RenameTable(&db.RenameTableRequest{
+		From: "examples2",
+To: "examples3",
 
 	})
 	fmt.Println(rsp, err)
 	
 }
 ```
-## DropTable
+## Create
 
-Drop a table in the DB
+Create a record in the database. Optionally include an "id" field otherwise it's set automatically.
 
 
-[https://m3o.com/db/api#DropTable](https://m3o.com/db/api#DropTable)
+[https://m3o.com/db/api#Create](https://m3o.com/db/api#Create)
 
 ```go
 package example
@@ -257,11 +251,17 @@ import(
 	"go.m3o.com/db"
 )
 
-// Drop a table in the DB
-func DropTable() {
+// Create a record in the database. Optionally include an "id" field otherwise it's set automatically.
+func CreateArecord() {
 	dbService := db.NewDbService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := dbService.DropTable(&db.DropTableRequest{
-		Table: "example",
+	rsp, err := dbService.Create(&db.CreateRequest{
+		Record: map[string]interface{}{
+	"id": "1",
+	"name": "Jane",
+	"age": 42,
+	"isActive": true,
+},
+Table: "example",
 
 	})
 	fmt.Println(rsp, err)
