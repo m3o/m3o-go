@@ -6,7 +6,7 @@ Endpoints:
 
 ## Search
 
-
+Search for movies by simple text search
 
 
 [https://m3o.com/movie/api#Search](https://m3o.com/movie/api#Search)
@@ -21,7 +21,7 @@ import(
 	"go.m3o.com/movie"
 )
 
-// 
+// Search for movies by simple text search
 func SearchForMovies() {
 	movieService := movie.NewMovieService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := movieService.Search(&movie.SearchRequest{

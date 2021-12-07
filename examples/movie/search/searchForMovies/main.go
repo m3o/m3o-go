@@ -7,7 +7,7 @@ import (
 	"go.m3o.com/movie"
 )
 
-//
+// Search for movies by simple text search
 func main() {
 	movieService := movie.NewMovieService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := movieService.Search(&movie.SearchRequest{

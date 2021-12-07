@@ -16,7 +16,7 @@ type MovieService struct {
 	client *client.Client
 }
 
-//
+// Search for movies by simple text search
 func (t *MovieService) Search(request *SearchRequest) (*SearchResponse, error) {
 
 	rsp := &SearchResponse{}
@@ -45,13 +45,15 @@ type SearchRequest struct {
 	// a ISO 639-1 value to display translated data
 	Language string `json:"language"`
 	// page to query
-	Page               int32 `json:"page"`
+	Page int32 `json:"page"`
+	// year of release
 	PrimaryReleaseYear int32 `json:"primary_release_year"`
 	// a text query to search
 	Query string `json:"query"`
 	// a ISO 3166-1 code to filter release dates.
 	Region string `json:"region"`
-	Year   int32  `json:"year"`
+	// year of making
+	Year int32 `json:"year"`
 }
 
 type SearchResponse struct {
