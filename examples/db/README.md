@@ -26,10 +26,42 @@ func CreateArecord() {
 	dbService := db.NewDbService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := dbService.Create(&db.CreateRequest{
 		Record: map[string]interface{}{
-	"id": "1",
 	"name": "Jane",
 	"age": 42,
 	"isActive": true,
+	"id": "1",
+},
+Table: "example",
+
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
+## Update
+
+Update a record in the database. Include an "id" in the record to update.
+
+
+[https://m3o.com/db/api#Update](https://m3o.com/db/api#Update)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/db"
+)
+
+// Update a record in the database. Include an "id" in the record to update.
+func UpdateArecord() {
+	dbService := db.NewDbService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := dbService.Update(&db.UpdateRequest{
+		Record: map[string]interface{}{
+	"age": 43,
+	"id": "1",
 },
 Table: "example",
 
@@ -89,66 +121,6 @@ func DeleteArecord() {
 	dbService := db.NewDbService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := dbService.Delete(&db.DeleteRequest{
 		Id: "1",
-Table: "example",
-
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
-## DropTable
-
-Drop a table in the DB
-
-
-[https://m3o.com/db/api#DropTable](https://m3o.com/db/api#DropTable)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/db"
-)
-
-// Drop a table in the DB
-func DropTable() {
-	dbService := db.NewDbService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := dbService.DropTable(&db.DropTableRequest{
-		Table: "example",
-
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
-## Update
-
-Update a record in the database. Include an "id" in the record to update.
-
-
-[https://m3o.com/db/api#Update](https://m3o.com/db/api#Update)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/db"
-)
-
-// Update a record in the database. Include an "id" in the record to update.
-func UpdateArecord() {
-	dbService := db.NewDbService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := dbService.Update(&db.UpdateRequest{
-		Record: map[string]interface{}{
-	"id": "1",
-	"age": 43,
-},
 Table: "example",
 
 	})
@@ -234,6 +206,34 @@ func ListTables() {
 	dbService := db.NewDbService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := dbService.ListTables(&db.ListTablesRequest{
 		
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
+## DropTable
+
+Drop a table in the DB
+
+
+[https://m3o.com/db/api#DropTable](https://m3o.com/db/api#DropTable)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/db"
+)
+
+// Drop a table in the DB
+func DropTable() {
+	dbService := db.NewDbService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := dbService.DropTable(&db.DropTableRequest{
+		Table: "example",
+
 	})
 	fmt.Println(rsp, err)
 	
