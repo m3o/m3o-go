@@ -24,6 +24,7 @@ import (
 	"go.m3o.com/image"
 	"go.m3o.com/ip"
 	"go.m3o.com/location"
+	"go.m3o.com/movie"
 	"go.m3o.com/mq"
 	"go.m3o.com/news"
 	"go.m3o.com/nft"
@@ -80,6 +81,7 @@ func NewClient(token string) *Client {
 		ImageService:      image.NewImageService(token),
 		IpService:         ip.NewIpService(token),
 		LocationService:   location.NewLocationService(token),
+		MovieService:      movie.NewMovieService(token),
 		MqService:         mq.NewMqService(token),
 		NewsService:       news.NewNewsService(token),
 		NftService:        nft.NewNftService(token),
@@ -136,6 +138,7 @@ type Client struct {
 	ImageService      *image.ImageService
 	IpService         *ip.IpService
 	LocationService   *location.LocationService
+	MovieService      *movie.MovieService
 	MqService         *mq.MqService
 	NewsService       *news.NewsService
 	NftService        *nft.NftService
