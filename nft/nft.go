@@ -24,6 +24,14 @@ func (t *NftService) Assets(request *AssetsRequest) (*AssetsResponse, error) {
 
 }
 
+// Get a list of collections
+func (t *NftService) Collections(request *CollectionsRequest) (*CollectionsResponse, error) {
+
+	rsp := &CollectionsResponse{}
+	return rsp, t.client.Call("nft", "Collections", request, rsp)
+
+}
+
 // Create your own NFT (coming soon)
 func (t *NftService) Create(request *CreateRequest) (*CreateResponse, error) {
 
@@ -88,6 +96,15 @@ type Collection struct {
 	Name          string `json:"name"`
 	PayoutAddress string `json:"payout_address"`
 	Slug          string `json:"slug"`
+}
+
+type CollectionsRequest struct {
+	Limit  int32 `json:"limit"`
+	Offset int32 `json:"offset"`
+}
+
+type CollectionsResponse struct {
+	Collections []Collection `json:"collections"`
 }
 
 type Contract struct {

@@ -61,3 +61,31 @@ Name: "Guybrush Threepwood",
 	
 }
 ```
+## Collections
+
+Get a list of collections
+
+
+[https://m3o.com/nft/api#Collections](https://m3o.com/nft/api#Collections)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/nft"
+)
+
+// Get a list of collections
+func ListCollections() {
+	nftService := nft.NewNftService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := nftService.Collections(&nft.CollectionsRequest{
+		Limit: 1,
+
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
