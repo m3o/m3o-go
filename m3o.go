@@ -23,6 +23,7 @@ import (
 	"go.m3o.com/id"
 	"go.m3o.com/image"
 	"go.m3o.com/ip"
+	"go.m3o.com/joke"
 	"go.m3o.com/location"
 	"go.m3o.com/movie"
 	"go.m3o.com/mq"
@@ -80,6 +81,7 @@ func NewClient(token string) *Client {
 		IdService:         id.NewIdService(token),
 		ImageService:      image.NewImageService(token),
 		IpService:         ip.NewIpService(token),
+		JokeService:       joke.NewJokeService(token),
 		LocationService:   location.NewLocationService(token),
 		MovieService:      movie.NewMovieService(token),
 		MqService:         mq.NewMqService(token),
@@ -137,6 +139,7 @@ type Client struct {
 	IdService         *id.IdService
 	ImageService      *image.ImageService
 	IpService         *ip.IpService
+	JokeService       *joke.JokeService
 	LocationService   *location.LocationService
 	MovieService      *movie.MovieService
 	MqService         *mq.MqService
