@@ -16,7 +16,7 @@ type NftService struct {
 	client *client.Client
 }
 
-// Return a list of NFT assets
+// Return a list of assets
 func (t *NftService) Assets(request *AssetsRequest) (*AssetsResponse, error) {
 
 	rsp := &AssetsResponse{}

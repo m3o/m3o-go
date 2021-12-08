@@ -6,7 +6,7 @@ Endpoints:
 
 ## Assets
 
-Return a list of NFT assets
+Return a list of assets
 
 
 [https://m3o.com/nft/api#Assets](https://m3o.com/nft/api#Assets)
@@ -21,7 +21,7 @@ import(
 	"go.m3o.com/nft"
 )
 
-// Return a list of NFT assets
+// Return a list of assets
 func GetAlistOfAssets() {
 	nftService := nft.NewNftService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := nftService.Assets(&nft.AssetsRequest{

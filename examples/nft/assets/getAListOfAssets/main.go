@@ -7,7 +7,7 @@ import (
 	"go.m3o.com/nft"
 )
 
-// Return a list of NFT assets
+// Return a list of assets
 func main() {
 	nftService := nft.NewNftService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := nftService.Assets(&nft.AssetsRequest{
