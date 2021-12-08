@@ -26,9 +26,9 @@ func PublishAmessage() {
 	mqService := mq.NewMqService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := mqService.Publish(&mq.PublishRequest{
 		Message: map[string]interface{}{
-	"type": "signup",
 	"user": "john",
 	"id": "1",
+	"type": "signup",
 },
 Topic: "events",
 
