@@ -6,7 +6,7 @@ Endpoints:
 
 ## Random
 
-
+Get a random joke
 
 
 [https://m3o.com/joke/api#Random](https://m3o.com/joke/api#Random)
@@ -21,7 +21,7 @@ import(
 	"go.m3o.com/joke"
 )
 
-// 
+// Get a random joke
 func GetRandomNjokes() {
 	jokeService := joke.NewJokeService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := jokeService.Random(&joke.RandomRequest{

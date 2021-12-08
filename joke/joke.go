@@ -16,7 +16,7 @@ type JokeService struct {
 	client *client.Client
 }
 
-//
+// Get a random joke
 func (t *JokeService) Random(request *RandomRequest) (*RandomResponse, error) {
 
 	rsp := &RandomResponse{}
@@ -28,9 +28,8 @@ type JokeInfo struct {
 	Body     string `json:"body"`
 	Category string `json:"category"`
 	Id       string `json:"id"`
-	// the source of joke
-	Source string `json:"source"`
-	Title  string `json:"title"`
+	Source   string `json:"source"`
+	Title    string `json:"title"`
 }
 
 type RandomRequest struct {

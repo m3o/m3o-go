@@ -7,7 +7,7 @@ import (
 	"go.m3o.com/joke"
 )
 
-//
+// Get a random joke
 func main() {
 	jokeService := joke.NewJokeService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := jokeService.Random(&joke.RandomRequest{
