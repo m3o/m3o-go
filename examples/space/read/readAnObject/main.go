@@ -7,7 +7,7 @@ import (
 	"go.m3o.com/space"
 )
 
-// Read/download the object
+// Read an object in storage
 func main() {
 	spaceService := space.NewSpaceService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := spaceService.Read(&space.ReadRequest{

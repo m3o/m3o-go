@@ -50,7 +50,7 @@ func (t *SpaceService) List(request *ListRequest) (*ListResponse, error) {
 
 }
 
-// Read/download the object
+// Read an object in storage
 func (t *SpaceService) Read(request *ReadRequest) (*ReadResponse, error) {
 
 	rsp := &ReadResponse{}
@@ -103,6 +103,7 @@ type HeadObject struct {
 }
 
 type HeadRequest struct {
+	// name of the object
 	Name string `json:"name"`
 }
 
@@ -127,10 +128,13 @@ type ListResponse struct {
 }
 
 type ReadRequest struct {
+	// name of the object
 	Name string `json:"name"`
 }
 
 type ReadResponse struct {
+	// Returns the response as a raw object
+	Object string `json:"object"`
 }
 
 type UpdateRequest struct {

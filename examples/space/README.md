@@ -4,6 +4,74 @@ An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/Space/api](htt
 
 Endpoints:
 
+## Create
+
+Create an object. Returns error if object with this name already exists. If you want to update an existing object use the `Update` endpoint
+You need to send the request as a multipart/form-data rather than the usual application/json
+with each parameter as a form field.
+
+
+[https://m3o.com/space/api#Create](https://m3o.com/space/api#Create)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/space"
+)
+
+// Create an object. Returns error if object with this name already exists. If you want to update an existing object use the `Update` endpoint
+// You need to send the request as a multipart/form-data rather than the usual application/json
+// with each parameter as a form field.
+func CreateAnObject() {
+	spaceService := space.NewSpaceService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := spaceService.Create(&space.CreateRequest{
+		Name: "images/file.jpg",
+Object: "<file bytes>",
+Visibility: "public",
+
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
+## Update
+
+Update an object. If an object with this name does not exist, creates a new one.
+You need to send the request as a multipart/form-data rather than the usual application/json
+with each parameter as a form field.
+
+
+[https://m3o.com/space/api#Update](https://m3o.com/space/api#Update)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/space"
+)
+
+// Update an object. If an object with this name does not exist, creates a new one.
+// You need to send the request as a multipart/form-data rather than the usual application/json
+// with each parameter as a form field.
+func UpdateAnObject() {
+	spaceService := space.NewSpaceService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := spaceService.Update(&space.UpdateRequest{
+		Name: "images/file.jpg",
+Object: "<file bytes>",
+Visibility: "public",
+
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
 ## Delete
 
 Delete an object
@@ -90,7 +158,7 @@ func HeadAnObject() {
 ```
 ## Read
 
-Read/download the object
+Read an object in storage
 
 
 [https://m3o.com/space/api#Read](https://m3o.com/space/api#Read)
@@ -105,79 +173,11 @@ import(
 	"go.m3o.com/space"
 )
 
-// Read/download the object
+// Read an object in storage
 func ReadAnObject() {
 	spaceService := space.NewSpaceService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := spaceService.Read(&space.ReadRequest{
 		Name: "images/file.jpg",
-
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
-## Create
-
-Create an object. Returns error if object with this name already exists. If you want to update an existing object use the `Update` endpoint
-You need to send the request as a multipart/form-data rather than the usual application/json
-with each parameter as a form field.
-
-
-[https://m3o.com/space/api#Create](https://m3o.com/space/api#Create)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/space"
-)
-
-// Create an object. Returns error if object with this name already exists. If you want to update an existing object use the `Update` endpoint
-// You need to send the request as a multipart/form-data rather than the usual application/json
-// with each parameter as a form field.
-func CreateAnObject() {
-	spaceService := space.NewSpaceService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := spaceService.Create(&space.CreateRequest{
-		Name: "images/file.jpg",
-Object: "<file bytes>",
-Visibility: "public",
-
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
-## Update
-
-Update an object. If an object with this name does not exist, creates a new one.
-You need to send the request as a multipart/form-data rather than the usual application/json
-with each parameter as a form field.
-
-
-[https://m3o.com/space/api#Update](https://m3o.com/space/api#Update)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/space"
-)
-
-// Update an object. If an object with this name does not exist, creates a new one.
-// You need to send the request as a multipart/form-data rather than the usual application/json
-// with each parameter as a form field.
-func UpdateAnObject() {
-	spaceService := space.NewSpaceService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := spaceService.Update(&space.UpdateRequest{
-		Name: "images/file.jpg",
-Object: "<file bytes>",
-Visibility: "public",
 
 	})
 	fmt.Println(rsp, err)
