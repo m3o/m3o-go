@@ -92,9 +92,9 @@ type DeleteResponse struct {
 
 type HeadObject struct {
 	// when was this created
-	Created int64 `json:"created,string"`
+	Created string `json:"created"`
 	// when was this last modified
-	Modified int64  `json:"modified,string"`
+	Modified string `json:"modified"`
 	Name     string `json:"name"`
 	// URL to access the object if it is public
 	Url string `json:"url"`
@@ -112,10 +112,12 @@ type HeadResponse struct {
 }
 
 type ListObject struct {
+	Created string `json:"created"`
 	// when was this last modified
-	Modified int64  `json:"modified,string"`
-	Name     string `json:"name"`
-	Url      string `json:"url"`
+	Modified   string `json:"modified"`
+	Name       string `json:"name"`
+	Url        string `json:"url"`
+	Visibility string `json:"visibility"`
 }
 
 type ListRequest struct {
