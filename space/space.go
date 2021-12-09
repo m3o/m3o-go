@@ -83,7 +83,7 @@ type CreateResponse struct {
 }
 
 type DeleteRequest struct {
-	// The name of the object. Use forward slash delimiter to implement a nested directory-like structure e.g. images/foo.jpg
+	// Name of the object
 	Name string `json:"name"`
 }
 
