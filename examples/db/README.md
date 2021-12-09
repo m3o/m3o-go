@@ -4,6 +4,40 @@ An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/Db/api](https:
 
 Endpoints:
 
+## Create
+
+Create a record in the database. Optionally include an "id" field otherwise it's set automatically.
+
+
+[https://m3o.com/db/api#Create](https://m3o.com/db/api#Create)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/db"
+)
+
+// Create a record in the database. Optionally include an "id" field otherwise it's set automatically.
+func CreateArecord() {
+	dbService := db.NewDbService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := dbService.Create(&db.CreateRequest{
+		Record: map[string]interface{}{
+	"name": "Jane",
+	"age": 42,
+	"isActive": true,
+	"id": "1",
+},
+Table: "example",
+
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
 ## Update
 
 Update a record in the database. Include an "id" in the record to update.
@@ -65,35 +99,6 @@ Table: "example",
 	
 }
 ```
-## Delete
-
-Delete a record in the database by id.
-
-
-[https://m3o.com/db/api#Delete](https://m3o.com/db/api#Delete)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/db"
-)
-
-// Delete a record in the database by id.
-func DeleteArecord() {
-	dbService := db.NewDbService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := dbService.Delete(&db.DeleteRequest{
-		Id: "1",
-Table: "example",
-
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
 ## Truncate
 
 Truncate the records in a table
@@ -122,12 +127,12 @@ func TruncateTable() {
 	
 }
 ```
-## Count
+## DropTable
 
-Count records in a table
+Drop a table in the DB
 
 
-[https://m3o.com/db/api#Count](https://m3o.com/db/api#Count)
+[https://m3o.com/db/api#DropTable](https://m3o.com/db/api#DropTable)
 
 ```go
 package example
@@ -139,10 +144,10 @@ import(
 	"go.m3o.com/db"
 )
 
-// Count records in a table
-func CountEntriesInAtable() {
+// Drop a table in the DB
+func DropTable() {
 	dbService := db.NewDbService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := dbService.Count(&db.CountRequest{
+	rsp, err := dbService.DropTable(&db.DropTableRequest{
 		Table: "example",
 
 	})
@@ -206,12 +211,12 @@ To: "examples3",
 	
 }
 ```
-## Create
+## Delete
 
-Create a record in the database. Optionally include an "id" field otherwise it's set automatically.
+Delete a record in the database by id.
 
 
-[https://m3o.com/db/api#Create](https://m3o.com/db/api#Create)
+[https://m3o.com/db/api#Delete](https://m3o.com/db/api#Delete)
 
 ```go
 package example
@@ -223,16 +228,11 @@ import(
 	"go.m3o.com/db"
 )
 
-// Create a record in the database. Optionally include an "id" field otherwise it's set automatically.
-func CreateArecord() {
+// Delete a record in the database by id.
+func DeleteArecord() {
 	dbService := db.NewDbService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := dbService.Create(&db.CreateRequest{
-		Record: map[string]interface{}{
-	"age": 42,
-	"isActive": true,
-	"id": "1",
-	"name": "Jane",
-},
+	rsp, err := dbService.Delete(&db.DeleteRequest{
+		Id: "1",
 Table: "example",
 
 	})
@@ -240,12 +240,12 @@ Table: "example",
 	
 }
 ```
-## DropTable
+## Count
 
-Drop a table in the DB
+Count records in a table
 
 
-[https://m3o.com/db/api#DropTable](https://m3o.com/db/api#DropTable)
+[https://m3o.com/db/api#Count](https://m3o.com/db/api#Count)
 
 ```go
 package example
@@ -257,10 +257,10 @@ import(
 	"go.m3o.com/db"
 )
 
-// Drop a table in the DB
-func DropTable() {
+// Count records in a table
+func CountEntriesInAtable() {
 	dbService := db.NewDbService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := dbService.DropTable(&db.DropTableRequest{
+	rsp, err := dbService.Count(&db.CountRequest{
 		Table: "example",
 
 	})
