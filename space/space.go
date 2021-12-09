@@ -133,7 +133,7 @@ type ReadRequest struct {
 }
 
 type ReadResponse struct {
-	// Returns the response as a raw object
+	// Returns the response as raw data
 	Object string `json:"object"`
 }
 
