@@ -4,12 +4,12 @@ An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/Db/api](https:
 
 Endpoints:
 
-## Truncate
+## Create
 
-Truncate the records in a table
+Create a record in the database. Optionally include an "id" field otherwise it's set automatically.
 
 
-[https://m3o.com/db/api#Truncate](https://m3o.com/db/api#Truncate)
+[https://m3o.com/db/api#Create](https://m3o.com/db/api#Create)
 
 ```go
 package example
@@ -21,10 +21,44 @@ import(
 	"go.m3o.com/db"
 )
 
-// Truncate the records in a table
-func TruncateTable() {
+// Create a record in the database. Optionally include an "id" field otherwise it's set automatically.
+func CreateArecord() {
 	dbService := db.NewDbService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := dbService.Truncate(&db.TruncateRequest{
+	rsp, err := dbService.Create(&db.CreateRequest{
+		Record: map[string]interface{}{
+	"age": 42,
+	"isActive": true,
+	"id": "1",
+	"name": "Jane",
+},
+Table: "example",
+
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
+## DropTable
+
+Drop a table in the DB
+
+
+[https://m3o.com/db/api#DropTable](https://m3o.com/db/api#DropTable)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/db"
+)
+
+// Drop a table in the DB
+func DropTable() {
+	dbService := db.NewDbService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := dbService.DropTable(&db.DropTableRequest{
 		Table: "example",
 
 	})
@@ -87,12 +121,12 @@ func ListTables() {
 	
 }
 ```
-## Create
+## RenameTable
 
-Create a record in the database. Optionally include an "id" field otherwise it's set automatically.
+Rename a table
 
 
-[https://m3o.com/db/api#Create](https://m3o.com/db/api#Create)
+[https://m3o.com/db/api#RenameTable](https://m3o.com/db/api#RenameTable)
 
 ```go
 package example
@@ -104,17 +138,12 @@ import(
 	"go.m3o.com/db"
 )
 
-// Create a record in the database. Optionally include an "id" field otherwise it's set automatically.
-func CreateArecord() {
+// Rename a table
+func RenameTable() {
 	dbService := db.NewDbService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := dbService.Create(&db.CreateRequest{
-		Record: map[string]interface{}{
-	"id": "1",
-	"name": "Jane",
-	"age": 42,
-	"isActive": true,
-},
-Table: "example",
+	rsp, err := dbService.RenameTable(&db.RenameTableRequest{
+		From: "examples2",
+To: "examples3",
 
 	})
 	fmt.Println(rsp, err)
@@ -211,12 +240,12 @@ Table: "example",
 	
 }
 ```
-## DropTable
+## Truncate
 
-Drop a table in the DB
+Truncate the records in a table
 
 
-[https://m3o.com/db/api#DropTable](https://m3o.com/db/api#DropTable)
+[https://m3o.com/db/api#Truncate](https://m3o.com/db/api#Truncate)
 
 ```go
 package example
@@ -228,40 +257,11 @@ import(
 	"go.m3o.com/db"
 )
 
-// Drop a table in the DB
-func DropTable() {
+// Truncate the records in a table
+func TruncateTable() {
 	dbService := db.NewDbService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := dbService.DropTable(&db.DropTableRequest{
+	rsp, err := dbService.Truncate(&db.TruncateRequest{
 		Table: "example",
-
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
-## RenameTable
-
-Rename a table
-
-
-[https://m3o.com/db/api#RenameTable](https://m3o.com/db/api#RenameTable)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/db"
-)
-
-// Rename a table
-func RenameTable() {
-	dbService := db.NewDbService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := dbService.RenameTable(&db.RenameTableRequest{
-		From: "examples2",
-To: "examples3",
 
 	})
 	fmt.Println(rsp, err)
