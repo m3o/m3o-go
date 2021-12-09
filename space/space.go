@@ -50,7 +50,7 @@ func (t *SpaceService) List(request *ListRequest) (*ListResponse, error) {
 
 }
 
-// Read an object in storage
+// Read an object in storage. Use for private objects.
 func (t *SpaceService) Read(request *ReadRequest) (*ReadResponse, error) {
 
 	rsp := &ReadResponse{}
