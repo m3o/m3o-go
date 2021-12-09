@@ -12,5 +12,4 @@ func main() {
 	spamService := spam.NewSpamService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := spamService.Classify(&spam.ClassifyRequest{})
 	fmt.Println(rsp, err)
-
 }

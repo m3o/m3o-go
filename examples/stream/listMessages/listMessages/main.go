@@ -14,5 +14,4 @@ func main() {
 		Channel: "general",
 	})
 	fmt.Println(rsp, err)
-
 }

@@ -12,5 +12,4 @@ func main() {
 	urlService := url.NewUrlService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := urlService.Proxy(&url.ProxyRequest{})
 	fmt.Println(rsp, err)
-
 }

@@ -14,5 +14,4 @@ func main() {
 		Username: "joe",
 	})
 	fmt.Println(rsp, err)
-
 }

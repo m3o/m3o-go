@@ -15,5 +15,4 @@ func main() {
 		Table: "example",
 	})
 	fmt.Println(rsp, err)
-
 }

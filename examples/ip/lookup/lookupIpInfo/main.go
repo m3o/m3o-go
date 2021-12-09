@@ -14,5 +14,4 @@ func main() {
 		Ip: "93.148.214.31",
 	})
 	fmt.Println(rsp, err)
-
 }

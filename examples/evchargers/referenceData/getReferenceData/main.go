@@ -12,5 +12,4 @@ func main() {
 	evchargersService := evchargers.NewEvchargersService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := evchargersService.ReferenceData(&evchargers.ReferenceDataRequest{})
 	fmt.Println(rsp, err)
-
 }

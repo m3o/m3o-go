@@ -12,5 +12,4 @@ func main() {
 	emojiService := emoji.NewEmojiService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := emojiService.Flag(&emoji.FlagRequest{})
 	fmt.Println(rsp, err)
-
 }

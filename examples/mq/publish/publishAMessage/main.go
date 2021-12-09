@@ -12,12 +12,11 @@ func main() {
 	mqService := mq.NewMqService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := mqService.Publish(&mq.PublishRequest{
 		Message: map[string]interface{}{
-			"id":   "1",
 			"type": "signup",
 			"user": "john",
+			"id":   "1",
 		},
 		Topic: "events",
 	})
 	fmt.Println(rsp, err)
-
 }

@@ -14,5 +14,4 @@ func main() {
 		Query: "microsoft",
 	})
 	fmt.Println(rsp, err)
-
 }

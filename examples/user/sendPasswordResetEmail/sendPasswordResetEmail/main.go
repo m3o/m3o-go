@@ -19,5 +19,4 @@ func main() {
  click here to reset your password: myapp.com/reset/code?=$code`,
 	})
 	fmt.Println(rsp, err)
-
 }

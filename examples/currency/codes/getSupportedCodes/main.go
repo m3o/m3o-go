@@ -12,5 +12,4 @@ func main() {
 	currencyService := currency.NewCurrencyService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := currencyService.Codes(&currency.CodesRequest{})
 	fmt.Println(rsp, err)
-
 }

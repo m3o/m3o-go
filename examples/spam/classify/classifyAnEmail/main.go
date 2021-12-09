@@ -16,5 +16,4 @@ func main() {
 		To:      "hello@example.com",
 	})
 	fmt.Println(rsp, err)
-
 }

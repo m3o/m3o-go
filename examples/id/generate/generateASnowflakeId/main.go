@@ -14,5 +14,4 @@ func main() {
 		Type: "snowflake",
 	})
 	fmt.Println(rsp, err)
-
 }

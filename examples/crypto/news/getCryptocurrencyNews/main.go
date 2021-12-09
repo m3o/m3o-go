@@ -14,5 +14,4 @@ func main() {
 		Symbol: "BTCUSD",
 	})
 	fmt.Println(rsp, err)
-
 }

@@ -18,5 +18,4 @@ func main() {
 		Name:   "cat.jpeg",
 	})
 	fmt.Println(rsp, err)
-
 }

@@ -17,5 +17,4 @@ func main() {
 		NewPassword:     "NewPassword1",
 	})
 	fmt.Println(rsp, err)
-
 }

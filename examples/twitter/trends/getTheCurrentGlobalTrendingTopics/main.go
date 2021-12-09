@@ -12,5 +12,4 @@ func main() {
 	twitterService := twitter.NewTwitterService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := twitterService.Trends(&twitter.TrendsRequest{})
 	fmt.Println(rsp, err)
-
 }

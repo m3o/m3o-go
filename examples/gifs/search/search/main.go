@@ -15,5 +15,4 @@ func main() {
 		Query: "dogs",
 	})
 	fmt.Println(rsp, err)
-
 }

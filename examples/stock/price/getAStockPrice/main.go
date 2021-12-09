@@ -14,5 +14,4 @@ func main() {
 		Symbol: "AAPL",
 	})
 	fmt.Println(rsp, err)
-
 }

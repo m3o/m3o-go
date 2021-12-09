@@ -12,5 +12,4 @@ func main() {
 	holidaysService := holidays.NewHolidaysService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := holidaysService.Countries(&holidays.CountriesRequest{})
 	fmt.Println(rsp, err)
-
 }

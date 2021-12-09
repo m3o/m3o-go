@@ -14,5 +14,4 @@ func main() {
 		Query: "cats",
 	})
 	fmt.Println(rsp, err)
-
 }

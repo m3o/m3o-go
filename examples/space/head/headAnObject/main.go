@@ -14,5 +14,4 @@ func main() {
 		Name: "images/file.jpg",
 	})
 	fmt.Println(rsp, err)
-
 }

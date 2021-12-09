@@ -12,5 +12,4 @@ func main() {
 	timeService := time.NewTimeService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := timeService.Now(&time.NowRequest{})
 	fmt.Println(rsp, err)
-
 }

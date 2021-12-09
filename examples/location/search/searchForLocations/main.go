@@ -20,5 +20,4 @@ func main() {
 		Type:        "bike",
 	})
 	fmt.Println(rsp, err)
-
 }

@@ -18,5 +18,4 @@ func main() {
 		Visibility: "public",
 	})
 	fmt.Println(rsp, err)
-
 }

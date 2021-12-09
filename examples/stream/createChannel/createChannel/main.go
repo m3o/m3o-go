@@ -16,5 +16,4 @@ func main() {
 		Name:        "general",
 	})
 	fmt.Println(rsp, err)
-
 }

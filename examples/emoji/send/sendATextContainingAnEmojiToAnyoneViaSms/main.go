@@ -16,5 +16,4 @@ func main() {
 		To:      "+44782669123",
 	})
 	fmt.Println(rsp, err)
-
 }

@@ -14,5 +14,4 @@ func main() {
 		Alias: ":beer:",
 	})
 	fmt.Println(rsp, err)
-
 }

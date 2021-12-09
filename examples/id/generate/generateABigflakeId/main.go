@@ -14,5 +14,4 @@ func main() {
 		Type: "bigflake",
 	})
 	fmt.Println(rsp, err)
-
 }

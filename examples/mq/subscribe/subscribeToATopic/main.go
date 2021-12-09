@@ -10,7 +10,6 @@ import (
 // Subscribe to messages for a given topic.
 func main() {
 	mqService := mq.NewMqService(os.Getenv("M3O_API_TOKEN"))
-
 	stream, err := mqService.Subscribe(&mq.SubscribeRequest{
 		Topic: "events",
 	})

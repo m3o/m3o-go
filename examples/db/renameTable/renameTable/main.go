@@ -15,5 +15,4 @@ func main() {
 		To:   "examples3",
 	})
 	fmt.Println(rsp, err)
-
 }

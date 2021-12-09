@@ -15,5 +15,4 @@ func main() {
 		Value: "bar",
 	})
 	fmt.Println(rsp, err)
-
 }

@@ -14,5 +14,4 @@ func main() {
 		Key: "foo",
 	})
 	fmt.Println(rsp, err)
-
 }

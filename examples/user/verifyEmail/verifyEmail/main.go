@@ -15,5 +15,4 @@ func main() {
 		Token: "012345",
 	})
 	fmt.Println(rsp, err)
-
 }
