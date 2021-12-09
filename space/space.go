@@ -26,7 +26,7 @@ func (t *SpaceService) Create(request *CreateRequest) (*CreateResponse, error) {
 
 }
 
-// Delete an object
+// Delete an object from space
 func (t *SpaceService) Delete(request *DeleteRequest) (*DeleteResponse, error) {
 
 	rsp := &DeleteResponse{}
@@ -42,7 +42,7 @@ func (t *SpaceService) Head(request *HeadRequest) (*HeadResponse, error) {
 
 }
 
-// List the objects in the space
+// List the objects in space
 func (t *SpaceService) List(request *ListRequest) (*ListResponse, error) {
 
 	rsp := &ListResponse{}
@@ -50,7 +50,7 @@ func (t *SpaceService) List(request *ListRequest) (*ListResponse, error) {
 
 }
 
-// Read an object in storage. Use for private objects.
+// Read an object in space. Use for private objects.
 func (t *SpaceService) Read(request *ReadRequest) (*ReadResponse, error) {
 
 	rsp := &ReadResponse{}
@@ -133,7 +133,7 @@ type ReadRequest struct {
 }
 
 type ReadResponse struct {
-	// Returns the response as raw data
+	// Returns the object as raw data
 	Object string `json:"object"`
 }
 
