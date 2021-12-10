@@ -16,7 +16,7 @@ type SpaceService struct {
 	client *client.Client
 }
 
-// Create an object. Returns error if object with this name already exists. If you want to update an existing object use the `Update` endpoint
+// Create an object. Returns error if object with this name already exists. Max object size of 10MB, see Upload endpoint for larger objects. If you want to update an existing object use the `Update` endpoint
 // You need to send the request as a multipart/form-data rather than the usual application/json
 // with each parameter as a form field.
 func (t *SpaceService) Create(request *CreateRequest) (*CreateResponse, error) {
@@ -76,7 +76,7 @@ func (t *SpaceService) Update(request *UpdateRequest) (*UpdateResponse, error) {
 
 }
 
-// Upload a large object. Returns a time limited presigned URL to be used for uploading the object
+// Upload a large object (> 10MB). Returns a time limited presigned URL to be used for uploading the object
 func (t *SpaceService) Upload(request *UploadRequest) (*UploadResponse, error) {
 
 	rsp := &UploadResponse{}
