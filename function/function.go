@@ -135,7 +135,7 @@ type Func struct {
 	// name of handler in source code
 	Entrypoint string `json:"entrypoint"`
 	// associated env vars
-	EnvVars map[string]string `json:"env_Vars"`
+	EnvVars map[string]string `json:"env_vars"`
 	// function name
 	// limitation: must be unique across projects
 	Name string `json:"name"`
