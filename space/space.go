@@ -201,6 +201,6 @@ type UploadRequest struct {
 }
 
 type UploadResponse struct {
-	// a presigned url to be used for uploading
+	// a presigned url to be used for uploading. To use the URL call it with HTTP PUT and pass the object as the request data
 	Url string `json:"url"`
 }
