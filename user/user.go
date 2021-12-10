@@ -81,6 +81,30 @@ func (t *UserService) ResetPassword(request *ResetPasswordRequest) (*ResetPasswo
 
 }
 
+// Login using email only - Passwordless
+func (t *UserService) SendMagicLink(request *SendMagicLinkRequest) (*SendMagicLinkResponseStream, error) {
+	stream, err := t.client.Stream("user", "SendMagicLink", request)
+	if err != nil {
+		return nil, err
+	}
+	return &SendMagicLinkResponseStream{
+		stream: stream,
+	}, nil
+
+}
+
+type SendMagicLinkResponseStream struct {
+	stream *client.Stream
+}
+
+func (t *SendMagicLinkResponseStream) Recv() (*SendMagicLinkResponse, error) {
+	var rsp SendMagicLinkResponse
+	if err := t.stream.Recv(&rsp); err != nil {
+		return nil, err
+	}
+	return &rsp, nil
+}
+
 // Send an email with a verification code to reset password.
 // Call "ResetPassword" endpoint once user provides the code.
 func (t *UserService) SendPasswordResetEmail(request *SendPasswordResetEmailRequest) (*SendPasswordResetEmailResponse, error) {
@@ -125,6 +149,17 @@ func (t *UserService) VerifyEmail(request *VerifyEmailRequest) (*VerifyEmailResp
 
 	rsp := &VerifyEmailResponse{}
 	return rsp, t.client.Call("user", "VerifyEmail", request, rsp)
+
+}
+
+// Check whether the token attached to MagicLink is valid or not.
+// Ideally, you need to call this endpoint from your http request
+// handler that handles the endpoint which is specified in the
+// SendMagicLink request.
+func (t *UserService) VerifyToken(request *VerifyTokenRequest) (*VerifyTokenResponse, error) {
+
+	rsp := &VerifyTokenResponse{}
+	return rsp, t.client.Call("user", "VerifyToken", request, rsp)
 
 }
 
@@ -242,6 +277,27 @@ type ResetPasswordRequest struct {
 type ResetPasswordResponse struct {
 }
 
+type SendMagicLinkRequest struct {
+	// Your web site address, example www.example.com or user.example.com
+	Address string `json:"address"`
+	// the email address of the user
+	Email string `json:"email"`
+	// Endpoint name where your http request handler handles MagicLink by
+	// calling M3O VerifyToken endpoint. You can return as a result a success,
+	// failed or redirect to another page.
+	Endpoint string `json:"endpoint"`
+	// Display name of the sender for the email. Note: the email address will still be 'support@m3o.com'
+	FromName string `json:"fromName"`
+	Subject  string `json:"subject"`
+	// Text content of the email. Don't forget to include the string '$micro_verification_link' which will be replaced by the real verification link
+	// HTML emails are not available currently.
+	TextContent string `json:"textContent"`
+}
+
+type SendMagicLinkResponse struct {
+	Session *Session `json:"session"`
+}
+
 type SendPasswordResetEmailRequest struct {
 	// email address to send reset for
 	Email string `json:"email"`
@@ -321,4 +377,13 @@ type VerifyEmailRequest struct {
 }
 
 type VerifyEmailResponse struct {
+}
+
+type VerifyTokenRequest struct {
+	Token string `json:"token"`
+}
+
+type VerifyTokenResponse struct {
+	IsValid bool   `json:"is_valid"`
+	Message string `json:"message"`
 }
