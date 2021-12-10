@@ -48,13 +48,6 @@ func (t *FileService) Save(request *SaveRequest) (*SaveResponse, error) {
 
 }
 
-type BatchSaveRequest struct {
-	Files []Record `json:"files"`
-}
-
-type BatchSaveResponse struct {
-}
-
 type DeleteRequest struct {
 	// Path to the file
 	Path string `json:"path"`
