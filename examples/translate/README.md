@@ -6,7 +6,7 @@ Endpoints:
 
 ## Text
 
-TextRequest is the basic edition request
+Basic text translation
 
 
 [https://m3o.com/translate/api#Text](https://m3o.com/translate/api#Text)
@@ -21,14 +21,15 @@ import(
 	"go.m3o.com/translate"
 )
 
-// TextRequest is the basic edition request
-func TranslateString() {
+// Basic text translation
+func TranslateText() {
 	translateService := translate.NewTranslateService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := translateService.Text(&translate.TextRequest{
-		Format: "text",
+		Content: "hello",
+Format: "text",
 Model: "nmt",
 Source: "en",
-Target: "zh",
+Target: "fr",
 
 	})
 	fmt.Println(rsp, err)

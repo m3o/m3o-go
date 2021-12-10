@@ -16,7 +16,7 @@ type TranslateService struct {
 	client *client.Client
 }
 
-// TextRequest is the basic edition request
+// Basic text translation
 func (t *TranslateService) Text(request *TextRequest) (*TextResponse, error) {
 
 	rsp := &TextResponse{}
@@ -41,6 +41,7 @@ type TextRequest struct {
 }
 
 type TextResponse struct {
+	// The translated text
 	Translation *Translation `json:"translation"`
 }
 

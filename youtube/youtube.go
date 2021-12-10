@@ -16,12 +16,34 @@ type YoutubeService struct {
 	client *client.Client
 }
 
+// Embed a YouTube video
+func (t *YoutubeService) Embed(request *EmbedRequest) (*EmbedResponse, error) {
+
+	rsp := &EmbedResponse{}
+	return rsp, t.client.Call("youtube", "Embed", request, rsp)
+
+}
+
 // Search for videos on YouTube
 func (t *YoutubeService) Search(request *SearchRequest) (*SearchResponse, error) {
 
 	rsp := &SearchResponse{}
 	return rsp, t.client.Call("youtube", "Search", request, rsp)
 
+}
+
+type EmbedRequest struct {
+	// provide the youtube url e.g https://www.youtube.com/watch?v=GWRWZu7XsJ0
+	Url string `json:"url"`
+}
+
+type EmbedResponse struct {
+	// the embeddable link e.g https://www.youtube.com/watch?v=GWRWZu7XsJ0
+	Link string `json:"link"`
+	// the script code
+	Script string `json:"script"`
+	// the short link
+	ShortUrl string `json:"short_url"`
 }
 
 type SearchRequest struct {
