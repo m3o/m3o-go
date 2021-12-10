@@ -56,6 +56,14 @@ func (t *FunctionService) List(request *ListRequest) (*ListResponse, error) {
 
 }
 
+//
+func (t *FunctionService) Update(request *UpdateRequest) (*UpdateResponse, error) {
+
+	rsp := &UpdateResponse{}
+	return rsp, t.client.Call("function", "Update", request, rsp)
+
+}
+
 type CallRequest struct {
 	// Name of the function
 	Name string `json:"name"`
@@ -126,6 +134,8 @@ type DescribeResponse struct {
 type Func struct {
 	// name of handler in source code
 	Entrypoint string `json:"entrypoint"`
+	// associated env vars
+	EnvVars map[string]string `json:"env_Vars"`
 	// function name
 	// limitation: must be unique across projects
 	Name string `json:"name"`
@@ -158,4 +168,33 @@ type ListRequest struct {
 type ListResponse struct {
 	// List of functions deployed
 	Functions []Func `json:"functions"`
+}
+
+type UpdateRequest struct {
+	// entry point, ie. handler name in the source code
+	// if not provided, defaults to the name parameter
+	Entrypoint string `json:"entrypoint"`
+	// environment variables to pass in at runtime
+	EnvVars map[string]string `json:"env_vars"`
+	// function name
+	Name string `json:"name"`
+	// project is used for namespacing your functions
+	// optional. defaults to "default".
+	Project string `json:"project"`
+	// github url to repo
+	Repo string `json:"repo"`
+	// runtime/language of the function
+	// eg: php74,
+	// nodejs6, nodejs8, nodejs10, nodejs12, nodejs14, nodejs16
+	// dotnet3
+	// java11
+	// ruby26, ruby27
+	// go111, go113, go116
+	// python37, python38, python39
+	Runtime string `json:"runtime"`
+	// optional subfolder path
+	Subfolder string `json:"subfolder"`
+}
+
+type UpdateResponse struct {
 }
