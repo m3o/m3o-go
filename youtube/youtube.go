@@ -39,10 +39,12 @@ type EmbedRequest struct {
 
 type EmbedResponse struct {
 	// the embeddable link e.g https://www.youtube.com/watch?v=GWRWZu7XsJ0
-	Link string `json:"link"`
+	EmbedUrl string `json:"embed_url"`
 	// the script code
-	Script string `json:"script"`
-	// the short link
+	HtmlScript string `json:"html_script"`
+	// the full url
+	LongUrl string `json:"long_url"`
+	// the short url
 	ShortUrl string `json:"short_url"`
 }
 
