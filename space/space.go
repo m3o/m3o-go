@@ -34,6 +34,14 @@ func (t *SpaceService) Delete(request *DeleteRequest) (*DeleteResponse, error) {
 
 }
 
+// Download an object via a presigned url
+func (t *SpaceService) Download(request *DownloadRequest) (*DownloadResponse, error) {
+
+	rsp := &DownloadResponse{}
+	return rsp, t.client.Call("space", "Download", request, rsp)
+
+}
+
 // Retrieve meta information about an object
 func (t *SpaceService) Head(request *HeadRequest) (*HeadResponse, error) {
 
@@ -50,7 +58,7 @@ func (t *SpaceService) List(request *ListRequest) (*ListResponse, error) {
 
 }
 
-// Read an object in space. Use for private objects.
+// Read an object in space
 func (t *SpaceService) Read(request *ReadRequest) (*ReadResponse, error) {
 
 	rsp := &ReadResponse{}
@@ -88,6 +96,16 @@ type DeleteRequest struct {
 }
 
 type DeleteResponse struct {
+}
+
+type DownloadRequest struct {
+	// name of object
+	Name string `json:"name"`
+}
+
+type DownloadResponse struct {
+	// presigned url
+	Url string `json:"url"`
 }
 
 type HeadObject struct {
@@ -129,14 +147,29 @@ type ListResponse struct {
 	Objects []ListObject `json:"objects"`
 }
 
+type Object struct {
+	// when was this created
+	Created string `json:"created"`
+	// the data within the object
+	Data string `json:"data"`
+	// when was this last modified
+	Modified string `json:"modified"`
+	// name of object
+	Name string `json:"name"`
+	// URL to access the object if it is public
+	Url string `json:"url"`
+	// is this public or private
+	Visibility string `json:"visibility"`
+}
+
 type ReadRequest struct {
 	// name of the object
 	Name string `json:"name"`
 }
 
 type ReadResponse struct {
-	// Returns the object as raw data
-	Object string `json:"object"`
+	// The object itself
+	Object *Object `json:"object"`
 }
 
 type UpdateRequest struct {
