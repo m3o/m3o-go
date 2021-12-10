@@ -76,6 +76,14 @@ func (t *SpaceService) Update(request *UpdateRequest) (*UpdateResponse, error) {
 
 }
 
+// Upload a large object. Returns a time limited presigned URL to be used for uploading the object
+func (t *SpaceService) Upload(request *UploadRequest) (*UploadResponse, error) {
+
+	rsp := &UploadResponse{}
+	return rsp, t.client.Call("space", "Upload", request, rsp)
+
+}
+
 type CreateRequest struct {
 	// The name of the object. Use forward slash delimiter to implement a nested directory-like structure e.g. images/foo.jpg
 	Name string `json:"name"`
@@ -183,5 +191,16 @@ type UpdateRequest struct {
 
 type UpdateResponse struct {
 	// A public URL to access the object if visibility is "public"
+	Url string `json:"url"`
+}
+
+type UploadRequest struct {
+	Name string `json:"name"`
+	// is this object public or private
+	Visibility string `json:"visibility"`
+}
+
+type UploadResponse struct {
+	// a presigned url to be used for uploading
 	Url string `json:"url"`
 }
