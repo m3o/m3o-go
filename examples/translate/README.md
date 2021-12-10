@@ -25,8 +25,7 @@ import(
 func TranslateString() {
 	translateService := translate.NewTranslateService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := translateService.Text(&translate.TextRequest{
-		Contents: []string{"pen", "pencil"},
-Format: "text",
+		Format: "text",
 Model: "nmt",
 Source: "en",
 Target: "zh",

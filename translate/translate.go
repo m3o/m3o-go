@@ -24,18 +24,9 @@ func (t *TranslateService) Text(request *TextRequest) (*TextResponse, error) {
 
 }
 
-type BasicTranslation struct {
-	// The model used in translation
-	Model string `json:"model"`
-	// The source of the query string
-	Source string `json:"source"`
-	// The translation result
-	Text string `json:"text"`
-}
-
 type TextRequest struct {
 	// The contents to be translated
-	Contents []string `json:"contents"`
+	Content string `json:"content"`
 	// The string format, `text` or `html`
 	Format string `json:"format"`
 	// The model to use for translation, `nmt` or `base`,
@@ -50,5 +41,14 @@ type TextRequest struct {
 }
 
 type TextResponse struct {
-	Translations []BasicTranslation `json:"translations"`
+	Translation *Translation `json:"translation"`
+}
+
+type Translation struct {
+	// The model used in translation
+	Model string `json:"model"`
+	// The source of the query string
+	Source string `json:"source"`
+	// The translation result
+	Text string `json:"text"`
 }
