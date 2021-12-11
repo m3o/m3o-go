@@ -6,7 +6,7 @@ Endpoints:
 
 ## List
 
-List information on all the shortened URLs that you have created
+List all the shortened URLs
 
 
 [https://m3o.com/url/api#List](https://m3o.com/url/api#List)
@@ -21,7 +21,7 @@ import(
 	"go.m3o.com/url"
 )
 
-// List information on all the shortened URLs that you have created
+// List all the shortened URLs
 func ListYourShortenedUrls() {
 	urlService := url.NewUrlService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := urlService.List(&url.ListRequest{
@@ -33,7 +33,7 @@ func ListYourShortenedUrls() {
 ```
 ## Shorten
 
-Shortens a destination URL and returns a full short URL.
+Shorten a long URL
 
 
 [https://m3o.com/url/api#Shorten](https://m3o.com/url/api#Shorten)
@@ -48,7 +48,7 @@ import(
 	"go.m3o.com/url"
 )
 
-// Shortens a destination URL and returns a full short URL.
+// Shorten a long URL
 func ShortenAlongUrl() {
 	urlService := url.NewUrlService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := urlService.Shorten(&url.ShortenRequest{

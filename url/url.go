@@ -16,7 +16,7 @@ type UrlService struct {
 	client *client.Client
 }
 
-// List information on all the shortened URLs that you have created
+// List all the shortened URLs
 func (t *UrlService) List(request *ListRequest) (*ListResponse, error) {
 
 	rsp := &ListResponse{}
@@ -32,7 +32,7 @@ func (t *UrlService) Proxy(request *ProxyRequest) (*ProxyResponse, error) {
 
 }
 
-// Shortens a destination URL and returns a full short URL.
+// Shorten a long URL
 func (t *UrlService) Shorten(request *ShortenRequest) (*ShortenResponse, error) {
 
 	rsp := &ShortenResponse{}
@@ -46,7 +46,7 @@ type ListRequest struct {
 }
 
 type ListResponse struct {
-	UrlPairs *URLPair `json:"urlPairs"`
+	Urls []URLPair `json:"urls"`
 }
 
 type ProxyRequest struct {
@@ -60,20 +60,20 @@ type ProxyResponse struct {
 }
 
 type ShortenRequest struct {
+	// the url to shorten
 	DestinationUrl string `json:"destinationURL"`
 }
 
 type ShortenResponse struct {
+	// the shortened url
 	ShortUrl string `json:"shortURL"`
 }
 
 type URLPair struct {
-	Created        int64  `json:"created,string"`
+	// time of creation
+	Created string `json:"created"`
+	// destination url
 	DestinationUrl string `json:"destinationURL"`
-	// HitCount keeps track many times the short URL has been resolved.
-	// Hitcount only gets saved to disk (database) after every 10th hit, so
-	// its not intended to be 100% accurate, more like an almost correct estimate.
-	HitCount int64  `json:"hitCount,string"`
-	Owner    string `json:"owner"`
+	// shortened url
 	ShortUrl string `json:"shortURL"`
 }
