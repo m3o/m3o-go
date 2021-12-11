@@ -46,7 +46,7 @@ type ListRequest struct {
 }
 
 type ListResponse struct {
-	Urls []URLPair `json:"urls"`
+	UrlPairs *URLPair `json:"urlPairs"`
 }
 
 type ProxyRequest struct {
