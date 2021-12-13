@@ -82,27 +82,11 @@ func (t *UserService) ResetPassword(request *ResetPasswordRequest) (*ResetPasswo
 }
 
 // Login using email only - Passwordless
-func (t *UserService) SendMagicLink(request *SendMagicLinkRequest) (*SendMagicLinkResponseStream, error) {
-	stream, err := t.client.Stream("user", "SendMagicLink", request)
-	if err != nil {
-		return nil, err
-	}
-	return &SendMagicLinkResponseStream{
-		stream: stream,
-	}, nil
+func (t *UserService) SendMagicLink(request *SendMagicLinkRequest) (*SendMagicLinkResponse, error) {
 
-}
+	rsp := &SendMagicLinkResponse{}
+	return rsp, t.client.Call("user", "SendMagicLink", request, rsp)
 
-type SendMagicLinkResponseStream struct {
-	stream *client.Stream
-}
-
-func (t *SendMagicLinkResponseStream) Recv() (*SendMagicLinkResponse, error) {
-	var rsp SendMagicLinkResponse
-	if err := t.stream.Recv(&rsp); err != nil {
-		return nil, err
-	}
-	return &rsp, nil
 }
 
 // Send an email with a verification code to reset password.
@@ -295,7 +279,6 @@ type SendMagicLinkRequest struct {
 }
 
 type SendMagicLinkResponse struct {
-	Session *Session `json:"session"`
 }
 
 type SendPasswordResetEmailRequest struct {
@@ -384,6 +367,7 @@ type VerifyTokenRequest struct {
 }
 
 type VerifyTokenResponse struct {
-	IsValid bool   `json:"is_valid"`
-	Message string `json:"message"`
+	IsValid bool     `json:"is_valid"`
+	Message string   `json:"message"`
+	Session *Session `json:"session"`
 }
