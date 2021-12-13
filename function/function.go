@@ -56,7 +56,7 @@ func (t *FunctionService) List(request *ListRequest) (*ListResponse, error) {
 
 }
 
-//
+// Update a function
 func (t *FunctionService) Update(request *UpdateRequest) (*UpdateResponse, error) {
 
 	rsp := &UpdateResponse{}
