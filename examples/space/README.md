@@ -4,6 +4,62 @@ An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/Space/api](htt
 
 Endpoints:
 
+## List
+
+List the objects in space
+
+
+[https://m3o.com/space/api#List](https://m3o.com/space/api#List)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/space"
+)
+
+// List the objects in space
+func ListObjectsWithPrefix() {
+	spaceService := space.NewSpaceService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := spaceService.List(&space.ListRequest{
+		Prefix: "images/",
+
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
+## Head
+
+Retrieve meta information about an object
+
+
+[https://m3o.com/space/api#Head](https://m3o.com/space/api#Head)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/space"
+)
+
+// Retrieve meta information about an object
+func HeadAnObject() {
+	spaceService := space.NewSpaceService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := spaceService.Head(&space.HeadRequest{
+		Name: "images/file.jpg",
+
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
 ## Read
 
 Read an object in space
@@ -177,62 +233,6 @@ import(
 func DeleteAnObject() {
 	spaceService := space.NewSpaceService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := spaceService.Delete(&space.DeleteRequest{
-		Name: "images/file.jpg",
-
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
-## List
-
-List the objects in space
-
-
-[https://m3o.com/space/api#List](https://m3o.com/space/api#List)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/space"
-)
-
-// List the objects in space
-func ListObjectsWithPrefix() {
-	spaceService := space.NewSpaceService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := spaceService.List(&space.ListRequest{
-		Prefix: "images/",
-
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
-## Head
-
-Retrieve meta information about an object
-
-
-[https://m3o.com/space/api#Head](https://m3o.com/space/api#Head)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/space"
-)
-
-// Retrieve meta information about an object
-func HeadAnObject() {
-	spaceService := space.NewSpaceService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := spaceService.Head(&space.HeadRequest{
 		Name: "images/file.jpg",
 
 	})
