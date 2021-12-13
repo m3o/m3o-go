@@ -4,92 +4,6 @@ An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/Space/api](htt
 
 Endpoints:
 
-## Download
-
-Download an object via a presigned url
-
-
-[https://m3o.com/space/api#Download](https://m3o.com/space/api#Download)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/space"
-)
-
-// Download an object via a presigned url
-func DownloadAnObject() {
-	spaceService := space.NewSpaceService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := spaceService.Download(&space.DownloadRequest{
-		Name: "images/file.jpg",
-
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
-## Upload
-
-Upload a large object (> 10MB). Returns a time limited presigned URL to be used for uploading the object
-
-
-[https://m3o.com/space/api#Upload](https://m3o.com/space/api#Upload)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/space"
-)
-
-// Upload a large object (> 10MB). Returns a time limited presigned URL to be used for uploading the object
-func UploadAnObject() {
-	spaceService := space.NewSpaceService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := spaceService.Upload(&space.UploadRequest{
-		Name: "images/file.jpg",
-
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
-## Create
-
-Create an object. Returns error if object with this name already exists. Max object size of 10MB, see Upload endpoint for larger objects. If you want to update an existing object use the `Update` endpoint
-
-
-[https://m3o.com/space/api#Create](https://m3o.com/space/api#Create)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/space"
-)
-
-// Create an object. Returns error if object with this name already exists. Max object size of 10MB, see Upload endpoint for larger objects. If you want to update an existing object use the `Update` endpoint
-func CreateAnObject() {
-	spaceService := space.NewSpaceService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := spaceService.Create(&space.CreateRequest{
-		Name: "images/file.jpg",
-Object: "<file bytes>",
-Visibility: "public",
-
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
 ## Update
 
 Update an object. If an object with this name does not exist, creates a new one.
@@ -226,6 +140,92 @@ func ReadAnObject() {
 	spaceService := space.NewSpaceService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := spaceService.Read(&space.ReadRequest{
 		Name: "images/file.jpg",
+
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
+## Download
+
+Download an object via a presigned url
+
+
+[https://m3o.com/space/api#Download](https://m3o.com/space/api#Download)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/space"
+)
+
+// Download an object via a presigned url
+func DownloadAnObject() {
+	spaceService := space.NewSpaceService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := spaceService.Download(&space.DownloadRequest{
+		Name: "images/file.jpg",
+
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
+## Upload
+
+Upload a large object (> 10MB). Returns a time limited presigned URL to be used for uploading the object
+
+
+[https://m3o.com/space/api#Upload](https://m3o.com/space/api#Upload)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/space"
+)
+
+// Upload a large object (> 10MB). Returns a time limited presigned URL to be used for uploading the object
+func UploadAnObject() {
+	spaceService := space.NewSpaceService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := spaceService.Upload(&space.UploadRequest{
+		Name: "images/file.jpg",
+
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
+## Create
+
+Create an object. Returns error if object with this name already exists. Max object size of 10MB, see Upload endpoint for larger objects. If you want to update an existing object use the `Update` endpoint
+
+
+[https://m3o.com/space/api#Create](https://m3o.com/space/api#Create)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/space"
+)
+
+// Create an object. Returns error if object with this name already exists. Max object size of 10MB, see Upload endpoint for larger objects. If you want to update an existing object use the `Update` endpoint
+func CreateAnObject() {
+	spaceService := space.NewSpaceService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := spaceService.Create(&space.CreateRequest{
+		Name: "images/file.jpg",
+Object: "<file bytes>",
+Visibility: "public",
 
 	})
 	fmt.Println(rsp, err)
