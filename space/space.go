@@ -17,8 +17,6 @@ type SpaceService struct {
 }
 
 // Create an object. Returns error if object with this name already exists. Max object size of 10MB, see Upload endpoint for larger objects. If you want to update an existing object use the `Update` endpoint
-// You need to send the request as a multipart/form-data rather than the usual application/json
-// with each parameter as a form field.
 func (t *SpaceService) Create(request *CreateRequest) (*CreateResponse, error) {
 
 	rsp := &CreateResponse{}
@@ -67,8 +65,6 @@ func (t *SpaceService) Read(request *ReadRequest) (*ReadResponse, error) {
 }
 
 // Update an object. If an object with this name does not exist, creates a new one.
-// You need to send the request as a multipart/form-data rather than the usual application/json
-// with each parameter as a form field.
 func (t *SpaceService) Update(request *UpdateRequest) (*UpdateResponse, error) {
 
 	rsp := &UpdateResponse{}
@@ -87,7 +83,7 @@ func (t *SpaceService) Upload(request *UploadRequest) (*UploadResponse, error) {
 type CreateRequest struct {
 	// The name of the object. Use forward slash delimiter to implement a nested directory-like structure e.g. images/foo.jpg
 	Name string `json:"name"`
-	// The contents of the object
+	// The contents of the object. Either base64 encoded if sending request as application/json or raw bytes if using multipart/form-data format
 	Object string `json:"object"`
 	// Who can see this object? "public" or "private", defaults to "private"
 	Visibility string `json:"visibility"`
@@ -183,7 +179,7 @@ type ReadResponse struct {
 type UpdateRequest struct {
 	// The name of the object. Use forward slash delimiter to implement a nested directory-like structure e.g. images/foo.jpg
 	Name string `json:"name"`
-	// The contents of the object
+	// The contents of the object. Either base64 encoded if sending request as application/json or raw bytes if using multipart/form-data format
 	Object string `json:"object"`
 	// Who can see this object? "public" or "private", defaults to "private"
 	Visibility string `json:"visibility"`
