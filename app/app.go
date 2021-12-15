@@ -56,7 +56,7 @@ func (t *AppService) Resolve(request *ResolveRequest) (*ResolveResponse, error) 
 
 }
 
-// Run an app
+// Run an app from a source repo. Specify region etc.
 func (t *AppService) Run(request *RunRequest) (*RunResponse, error) {
 
 	rsp := &RunResponse{}
@@ -72,7 +72,7 @@ func (t *AppService) Status(request *StatusRequest) (*StatusResponse, error) {
 
 }
 
-// Update the app
+// Update the app. The latest source code will be downloaded, built and deployed.
 func (t *AppService) Update(request *UpdateRequest) (*UpdateResponse, error) {
 
 	rsp := &UpdateResponse{}
