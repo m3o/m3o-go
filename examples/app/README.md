@@ -4,9 +4,37 @@ An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/App/api](https
 
 Endpoints:
 
+## Delete
+
+Delete an app
+
+
+[https://m3o.com/app/api#Delete](https://m3o.com/app/api#Delete)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/app"
+)
+
+// Delete an app
+func DeleteAnApp() {
+	appService := app.NewAppService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := appService.Delete(&app.DeleteRequest{
+		Name: "helloworld",
+
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
 ## Reserve
 
-Reserve your app name
+Reserve apps beyond the free quota. Call Run after.
 
 
 [https://m3o.com/app/api#Reserve](https://m3o.com/app/api#Reserve)
@@ -21,7 +49,7 @@ import(
 	"go.m3o.com/app"
 )
 
-// Reserve your app name
+// Reserve apps beyond the free quota. Call Run after.
 func ReserveAppName() {
 	appService := app.NewAppService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := appService.Reserve(&app.ReserveRequest{
@@ -32,12 +60,12 @@ func ReserveAppName() {
 	
 }
 ```
-## Vote
+## List
 
-Vote to have the App api launched faster!
+List all the apps
 
 
-[https://m3o.com/app/api#Vote](https://m3o.com/app/api#Vote)
+[https://m3o.com/app/api#List](https://m3o.com/app/api#List)
 
 ```go
 package example
@@ -49,11 +77,153 @@ import(
 	"go.m3o.com/app"
 )
 
-// Vote to have the App api launched faster!
-func VoteForTheApi() {
+// List all the apps
+func ListTheApps() {
 	appService := app.NewAppService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := appService.Vote(&app.VoteRequest{
-		Message: "Launch it!",
+	rsp, err := appService.List(&app.ListRequest{
+		
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
+## Run
+
+Run an app
+
+
+[https://m3o.com/app/api#Run](https://m3o.com/app/api#Run)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/app"
+)
+
+// Run an app
+func RunAnApp() {
+	appService := app.NewAppService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := appService.Run(&app.RunRequest{
+		Branch: "master",
+Name: "helloworld",
+Port: 8080,
+Region: "eu-west-1",
+Repo: "github.com/asim/helloworld",
+
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
+## Regions
+
+Return the support regions
+
+
+[https://m3o.com/app/api#Regions](https://m3o.com/app/api#Regions)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/app"
+)
+
+// Return the support regions
+func ListRegions() {
+	appService := app.NewAppService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := appService.Regions(&app.RegionsRequest{
+		
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
+## Status
+
+Get the status of an app
+
+
+[https://m3o.com/app/api#Status](https://m3o.com/app/api#Status)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/app"
+)
+
+// Get the status of an app
+func GetTheStatusOfAnApp() {
+	appService := app.NewAppService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := appService.Status(&app.StatusRequest{
+		Name: "helloworld",
+
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
+## Resolve
+
+Resolve an app by id to its raw backend endpoint
+
+
+[https://m3o.com/app/api#Resolve](https://m3o.com/app/api#Resolve)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/app"
+)
+
+// Resolve an app by id to its raw backend endpoint
+func ResolveAppById() {
+	appService := app.NewAppService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := appService.Resolve(&app.ResolveRequest{
+		Id: "helloworld",
+
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
+## Update
+
+Update the app
+
+
+[https://m3o.com/app/api#Update](https://m3o.com/app/api#Update)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/app"
+)
+
+// Update the app
+func UpdateAnApp() {
+	appService := app.NewAppService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := appService.Update(&app.UpdateRequest{
+		Name: "helloworld",
 
 	})
 	fmt.Println(rsp, err)

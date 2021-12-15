@@ -7,10 +7,10 @@ import (
 	"go.m3o.com/app"
 )
 
-// Reserve apps beyond the free quota. Call Run after.
+// Update the app
 func main() {
 	appService := app.NewAppService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := appService.Reserve(&app.ReserveRequest{
+	rsp, err := appService.Update(&app.UpdateRequest{
 		Name: "helloworld",
 	})
 	fmt.Println(rsp, err)

@@ -7,11 +7,11 @@ import (
 	"go.m3o.com/app"
 )
 
-// Reserve apps beyond the free quota. Call Run after.
+// Resolve an app by id to its raw backend endpoint
 func main() {
 	appService := app.NewAppService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := appService.Reserve(&app.ReserveRequest{
-		Name: "helloworld",
+	rsp, err := appService.Resolve(&app.ResolveRequest{
+		Id: "helloworld",
 	})
 	fmt.Println(rsp, err)
 }

@@ -16,7 +16,31 @@ type AppService struct {
 	client *client.Client
 }
 
-// Reserve your app name
+// Delete an app
+func (t *AppService) Delete(request *DeleteRequest) (*DeleteResponse, error) {
+
+	rsp := &DeleteResponse{}
+	return rsp, t.client.Call("app", "Delete", request, rsp)
+
+}
+
+// List all the apps
+func (t *AppService) List(request *ListRequest) (*ListResponse, error) {
+
+	rsp := &ListResponse{}
+	return rsp, t.client.Call("app", "List", request, rsp)
+
+}
+
+// Return the support regions
+func (t *AppService) Regions(request *RegionsRequest) (*RegionsResponse, error) {
+
+	rsp := &RegionsResponse{}
+	return rsp, t.client.Call("app", "Regions", request, rsp)
+
+}
+
+// Reserve apps beyond the free quota. Call Run after.
 func (t *AppService) Reserve(request *ReserveRequest) (*ReserveResponse, error) {
 
 	rsp := &ReserveResponse{}
@@ -24,12 +48,59 @@ func (t *AppService) Reserve(request *ReserveRequest) (*ReserveResponse, error) 
 
 }
 
-// Vote to have the App api launched faster!
-func (t *AppService) Vote(request *VoteRequest) (*VoteResponse, error) {
+// Resolve an app by id to its raw backend endpoint
+func (t *AppService) Resolve(request *ResolveRequest) (*ResolveResponse, error) {
 
-	rsp := &VoteResponse{}
-	return rsp, t.client.Call("app", "Vote", request, rsp)
+	rsp := &ResolveResponse{}
+	return rsp, t.client.Call("app", "Resolve", request, rsp)
 
+}
+
+// Run an app
+func (t *AppService) Run(request *RunRequest) (*RunResponse, error) {
+
+	rsp := &RunResponse{}
+	return rsp, t.client.Call("app", "Run", request, rsp)
+
+}
+
+// Get the status of an app
+func (t *AppService) Status(request *StatusRequest) (*StatusResponse, error) {
+
+	rsp := &StatusResponse{}
+	return rsp, t.client.Call("app", "Status", request, rsp)
+
+}
+
+// Update the app
+func (t *AppService) Update(request *UpdateRequest) (*UpdateResponse, error) {
+
+	rsp := &UpdateResponse{}
+	return rsp, t.client.Call("app", "Update", request, rsp)
+
+}
+
+type DeleteRequest struct {
+	// name of the app
+	Name string `json:"name"`
+}
+
+type DeleteResponse struct {
+}
+
+type ListRequest struct {
+}
+
+type ListResponse struct {
+	// all the apps
+	Services []Service `json:"services"`
+}
+
+type RegionsRequest struct {
+}
+
+type RegionsResponse struct {
+	Regions []string `json:"regions"`
 }
 
 type Reservation struct {
@@ -51,15 +122,81 @@ type ReserveRequest struct {
 }
 
 type ReserveResponse struct {
+	// The app reservation
 	Reservation *Reservation `json:"reservation"`
 }
 
-type VoteRequest struct {
-	// optional message
-	Message string `json:"message"`
+type ResolveRequest struct {
+	// the service id
+	Id string `json:"id"`
 }
 
-type VoteResponse struct {
-	// response message
-	Message string `json:"message"`
+type ResolveResponse struct {
+	// the end provider url
+	Url string `json:"url"`
+}
+
+type RunRequest struct {
+	// branch. defaults to master
+	Branch string `json:"branch"`
+	// associatede env vars to pass in
+	EnvVars map[string]string `json:"env_vars"`
+	// name of the app
+	Name string `json:"name"`
+	// port to run on
+	Port int32 `json:"port"`
+	// region to run in
+	Region string `json:"region"`
+	// source repository
+	Repo string `json:"repo"`
+}
+
+type RunResponse struct {
+	// The running service
+	Service *Service `json:"service"`
+}
+
+type Service struct {
+	// branch of code
+	Branch string `json:"branch"`
+	// time of creation
+	Created string `json:"created"`
+	// custom domains
+	CustomDomains string `json:"custom_domains"`
+	// associated env vars
+	EnvVars map[string]string `json:"env_vars"`
+	// unique id
+	Id string `json:"id"`
+	// name of the app
+	Name string `json:"name"`
+	// port running on
+	Port int32 `json:"port"`
+	// region running in
+	Region string `json:"region"`
+	// source repository
+	Repo string `json:"repo"`
+	// status of the app
+	Status string `json:"status"`
+	// last updated
+	Updated string `json:"updated"`
+	// app url
+	Url string `json:"url"`
+}
+
+type StatusRequest struct {
+	// name of the app
+	Name string `json:"name"`
+}
+
+type StatusResponse struct {
+	// running service info
+	Service *Service `json:"service"`
+}
+
+type UpdateRequest struct {
+	// name of the app
+	Name string `json:"name"`
+}
+
+type UpdateResponse struct {
 }
