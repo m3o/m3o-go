@@ -4,37 +4,6 @@ An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/Function/api](
 
 Endpoints:
 
-## Update
-
-Update a function
-
-
-[https://m3o.com/function/api#Update](https://m3o.com/function/api#Update)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/function"
-)
-
-// Update a function
-func UpdateAfunction() {
-	functionService := function.NewFunctionService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := functionService.Update(&function.UpdateRequest{
-		Entrypoint: "helloworld",
-Name: "helloworld",
-Repo: "github.com/m3o/nodejs-function-example",
-Runtime: "nodejs14",
-
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
 ## Call
 
 Call a function by name
@@ -169,6 +138,37 @@ import(
 func DeployAfunction() {
 	functionService := function.NewFunctionService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := functionService.Deploy(&function.DeployRequest{
+		Entrypoint: "helloworld",
+Name: "helloworld",
+Repo: "github.com/m3o/nodejs-function-example",
+Runtime: "nodejs14",
+
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
+## Update
+
+Update a function
+
+
+[https://m3o.com/function/api#Update](https://m3o.com/function/api#Update)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/function"
+)
+
+// Update a function
+func UpdateAfunction() {
+	functionService := function.NewFunctionService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := functionService.Update(&function.UpdateRequest{
 		Entrypoint: "helloworld",
 Name: "helloworld",
 Repo: "github.com/m3o/nodejs-function-example",
