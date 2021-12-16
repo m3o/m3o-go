@@ -13,7 +13,6 @@ func DeployAfunction() {
 	rsp, err := functionService.Deploy(&function.DeployRequest{
 		Entrypoint: "helloworld",
 		Name:       "my-first-func",
-		Project:    "tests",
 		Repo:       "github.com/m3o/nodejs-function-example",
 		Runtime:    "nodejs14",
 	})
