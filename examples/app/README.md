@@ -4,6 +4,34 @@ An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/App/api](https
 
 Endpoints:
 
+## Delete
+
+Delete an app
+
+
+[https://m3o.com/app/api#Delete](https://m3o.com/app/api#Delete)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/app"
+)
+
+// Delete an app
+func DeleteAnApp() {
+	appService := app.NewAppService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := appService.Delete(&app.DeleteRequest{
+		Name: "helloworld",
+
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
 ## Reserve
 
 Reserve apps beyond the free quota. Call Run after.
@@ -195,34 +223,6 @@ import(
 func UpdateAnApp() {
 	appService := app.NewAppService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := appService.Update(&app.UpdateRequest{
-		Name: "helloworld",
-
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
-## Delete
-
-Delete an app
-
-
-[https://m3o.com/app/api#Delete](https://m3o.com/app/api#Delete)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/app"
-)
-
-// Delete an app
-func DeleteAnApp() {
-	appService := app.NewAppService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := appService.Delete(&app.DeleteRequest{
 		Name: "helloworld",
 
 	})
