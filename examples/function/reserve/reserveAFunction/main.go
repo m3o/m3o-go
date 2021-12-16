@@ -7,14 +7,11 @@ import (
 	"go.m3o.com/function"
 )
 
-// Call a function by name
+// Reserve function names and resources beyond free quota
 func main() {
 	functionService := function.NewFunctionService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := functionService.Call(&function.CallRequest{
+	rsp, err := functionService.Reserve(&function.ReserveRequest{
 		Name: "helloworld",
-		Request: map[string]interface{}{
-			"name": "Alice",
-		},
 	})
 	fmt.Println(rsp, err)
 }

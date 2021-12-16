@@ -11,7 +11,7 @@ import (
 func DescribeFunctionStatus() {
 	functionService := function.NewFunctionService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := functionService.Describe(&function.DescribeRequest{
-		Name:    "my-first-func",
+		Name: "my-first-func",
 	})
 	fmt.Println(rsp, err)
 }

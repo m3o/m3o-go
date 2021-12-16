@@ -7,14 +7,11 @@ import (
 	"go.m3o.com/function"
 )
 
-// Call a function by name
+// Return the backend url for proxying
 func main() {
 	functionService := function.NewFunctionService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := functionService.Call(&function.CallRequest{
-		Name: "helloworld",
-		Request: map[string]interface{}{
-			"name": "Alice",
-		},
+	rsp, err := functionService.Proxy(&function.ProxyRequest{
+		Id: "helloworld",
 	})
 	fmt.Println(rsp, err)
 }

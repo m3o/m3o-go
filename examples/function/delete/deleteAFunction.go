@@ -11,7 +11,7 @@ import (
 func DeleteAfunction() {
 	functionService := function.NewFunctionService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := functionService.Delete(&function.DeleteRequest{
-		Name:    "my-first-func",
+		Name: "my-first-func",
 	})
 	fmt.Println(rsp, err)
 }

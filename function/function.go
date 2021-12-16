@@ -56,7 +56,31 @@ func (t *FunctionService) List(request *ListRequest) (*ListResponse, error) {
 
 }
 
-// Update a function
+// Return the backend url for proxying
+func (t *FunctionService) Proxy(request *ProxyRequest) (*ProxyResponse, error) {
+
+	rsp := &ProxyResponse{}
+	return rsp, t.client.Call("function", "Proxy", request, rsp)
+
+}
+
+// Return a list of supported regions
+func (t *FunctionService) Regions(request *RegionsRequest) (*RegionsResponse, error) {
+
+	rsp := &RegionsResponse{}
+	return rsp, t.client.Call("function", "Regions", request, rsp)
+
+}
+
+// Reserve function names and resources beyond free quota
+func (t *FunctionService) Reserve(request *ReserveRequest) (*ReserveResponse, error) {
+
+	rsp := &ReserveResponse{}
+	return rsp, t.client.Call("function", "Reserve", request, rsp)
+
+}
+
+// Update a function. Downloads the source, builds and redeploys
 func (t *FunctionService) Update(request *UpdateRequest) (*UpdateResponse, error) {
 
 	rsp := &UpdateResponse{}
@@ -79,14 +103,14 @@ type CallResponse struct {
 type DeleteRequest struct {
 	// The name of the function
 	Name string `json:"name"`
-	// Optional project name
-	Project string `json:"project"`
 }
 
 type DeleteResponse struct {
 }
 
 type DeployRequest struct {
+	// branch to deploy. defaults to master
+	Branch string `json:"branch"`
 	// entry point, ie. handler name in the source code
 	// if not provided, defaults to the name parameter
 	Entrypoint string `json:"entrypoint"`
@@ -94,18 +118,13 @@ type DeployRequest struct {
 	EnvVars map[string]string `json:"env_vars"`
 	// function name
 	Name string `json:"name"`
-	// project is used for namespacing your functions
-	// optional. defaults to "default".
-	Project string `json:"project"`
+	// region to deploy in. defaults to europe-west1
+	Region string `json:"region"`
 	// github url to repo
 	Repo string `json:"repo"`
-	// runtime/language of the function
-	// eg: php74,
-	// nodejs6, nodejs8, nodejs10, nodejs12, nodejs14, nodejs16
-	// dotnet3
-	// java11
-	// ruby26, ruby27
-	// go111, go113, go116
+	// runtime/lanaguage of the function e.g php74,
+	// nodejs6, nodejs8, nodejs10, nodejs12, nodejs14, nodejs16,
+	// dotnet3, java11, ruby26, ruby27, go111, go113, go116,
 	// python37, python38, python39
 	Runtime string `json:"runtime"`
 	// optional subfolder path
@@ -113,56 +132,53 @@ type DeployRequest struct {
 }
 
 type DeployResponse struct {
+	Function *Func `json:"function"`
 }
 
 type DescribeRequest struct {
 	// The name of the function
 	Name string `json:"name"`
-	// Optional project name
-	Project string `json:"project"`
 }
 
 type DescribeResponse struct {
 	// The function requested
 	Function *Func `json:"function"`
-	// The timeout for requests to the function
-	Timeout string `json:"timeout"`
-	// The time at which the function was updated
-	UpdatedAt string `json:"updated_at"`
 }
 
 type Func struct {
+	// branch to deploy. defaults to master
+	Branch string `json:"branch"`
+	// time of creation
+	Created string `json:"created"`
 	// name of handler in source code
 	Entrypoint string `json:"entrypoint"`
 	// associated env vars
 	EnvVars map[string]string `json:"env_vars"`
+	// id of the function
+	Id string `json:"id"`
 	// function name
 	// limitation: must be unique across projects
 	Name string `json:"name"`
-	// project of function, optional
-	// defaults to literal "default"
-	// used to namespace functions
-	Project string `json:"project"`
+	// region to deploy in. defaults to europe-west1
+	Region string `json:"region"`
 	// git repo address
 	Repo string `json:"repo"`
-	// runtime/language of the function
-	// eg: php74,
-	// nodejs6, nodejs8, nodejs10, nodejs12, nodejs14, nodejs16
-	// dotnet3
-	// java11
-	// ruby26, ruby27
-	// go111, go113, go116
+	// runtime/language of the function e.g php74,
+	// nodejs6, nodejs8, nodejs10, nodejs12, nodejs14, nodejs16,
+	// dotnet3, java11, ruby26, ruby27, go111, go113, go116,
 	// python37, python38, python39
 	Runtime string `json:"runtime"`
 	// eg. ACTIVE, DEPLOY_IN_PROGRESS, OFFLINE etc
 	Status string `json:"status"`
 	// subfolder path to entrypoint
 	Subfolder string `json:"subfolder"`
+	// time it was updated
+	Updated string `json:"updated"`
+	// unique url of the function
+	Url string `json:"url"`
 }
 
 type ListRequest struct {
-	// optional project name
-	Project string `json:"project"`
 }
 
 type ListResponse struct {
@@ -170,30 +186,49 @@ type ListResponse struct {
 	Functions []Func `json:"functions"`
 }
 
+type ProxyRequest struct {
+	// id of the function
+	Id string `json:"id"`
+}
+
+type ProxyResponse struct {
+	// backend url
+	Url string `json:"url"`
+}
+
+type RegionsRequest struct {
+}
+
+type RegionsResponse struct {
+	Regions []string `json:"regions"`
+}
+
+type Reservation struct {
+	// time of reservation
+	Created string `json:"created"`
+	// time reservation expires
+	Expires string `json:"expires"`
+	// name of the app
+	Name string `json:"name"`
+	// owner id
+	Owner string `json:"owner"`
+	// associated token
+	Token string `json:"token"`
+}
+
+type ReserveRequest struct {
+	// name of your app e.g helloworld
+	Name string `json:"name"`
+}
+
+type ReserveResponse struct {
+	// The app reservation
+	Reservation *Reservation `json:"reservation"`
+}
+
 type UpdateRequest struct {
-	// entry point, ie. handler name in the source code
-	// if not provided, defaults to the name parameter
-	Entrypoint string `json:"entrypoint"`
-	// environment variables to pass in at runtime
-	EnvVars map[string]string `json:"env_vars"`
 	// function name
 	Name string `json:"name"`
-	// project is used for namespacing your functions
-	// optional. defaults to "default".
-	Project string `json:"project"`
-	// github url to repo
-	Repo string `json:"repo"`
-	// runtime/language of the function
-	// eg: php74,
-	// nodejs6, nodejs8, nodejs10, nodejs12, nodejs14, nodejs16
-	// dotnet3
-	// java11
-	// ruby26, ruby27
-	// go111, go113, go116
-	// python37, python38, python39
-	Runtime string `json:"runtime"`
-	// optional subfolder path
-	Subfolder string `json:"subfolder"`
 }
 
 type UpdateResponse struct {
