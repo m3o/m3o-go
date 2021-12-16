@@ -4,6 +4,38 @@ An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/File/api](http
 
 Endpoints:
 
+## Save
+
+Save a file
+
+
+[https://m3o.com/file/api#Save](https://m3o.com/file/api#Save)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/file"
+)
+
+// Save a file
+func SaveFile() {
+	fileService := file.NewFileService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := fileService.Save(&file.SaveRequest{
+		File: &file.Record{
+	Content: "file content example",
+			Path: "/document/text-files/file.txt",
+	Project: "examples",
+	},
+
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
 ## List
 
 List files by their project and optionally a path.
@@ -84,38 +116,6 @@ func DeleteFile() {
 	rsp, err := fileService.Delete(&file.DeleteRequest{
 		Path: "/document/text-files/file.txt",
 Project: "examples",
-
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
-## Save
-
-Save a file
-
-
-[https://m3o.com/file/api#Save](https://m3o.com/file/api#Save)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/file"
-)
-
-// Save a file
-func SaveFile() {
-	fileService := file.NewFileService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := fileService.Save(&file.SaveRequest{
-		File: &file.Record{
-	Content: "file content example",
-			Path: "/document/text-files/file.txt",
-	Project: "examples",
-	},
 
 	})
 	fmt.Println(rsp, err)

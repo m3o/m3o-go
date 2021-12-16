@@ -4,6 +4,34 @@ An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/Event/api](htt
 
 Endpoints:
 
+## Read
+
+Read stored events
+
+
+[https://m3o.com/event/api#Read](https://m3o.com/event/api#Read)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/event"
+)
+
+// Read stored events
+func ReadEventsOnAtopic() {
+	eventService := event.NewEventService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := eventService.Read(&event.ReadRequest{
+		Topic: "user",
+
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
 ## Publish
 
 Publish a event to the event stream.
@@ -26,9 +54,9 @@ func PublishAnEvent() {
 	eventService := event.NewEventService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := eventService.Publish(&event.PublishRequest{
 		Message: map[string]interface{}{
-	"user": "john",
 	"id": "1",
 	"type": "signup",
+	"user": "john",
 },
 Topic: "user",
 
@@ -76,33 +104,5 @@ func ConsumeFromAtopic() {
 
 			fmt.Println(rsp)
 	}
-}
-```
-## Read
-
-Read stored events
-
-
-[https://m3o.com/event/api#Read](https://m3o.com/event/api#Read)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/event"
-)
-
-// Read stored events
-func ReadEventsOnAtopic() {
-	eventService := event.NewEventService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := eventService.Read(&event.ReadRequest{
-		Topic: "user",
-
-	})
-	fmt.Println(rsp, err)
-	
 }
 ```
