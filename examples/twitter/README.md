@@ -4,34 +4,6 @@ An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/Twitter/api](h
 
 Endpoints:
 
-## User
-
-Get a user's twitter profile
-
-
-[https://m3o.com/twitter/api#User](https://m3o.com/twitter/api#User)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/twitter"
-)
-
-// Get a user's twitter profile
-func GetAusersTwitterProfile() {
-	twitterService := twitter.NewTwitterService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := twitterService.User(&twitter.UserRequest{
-		Username: "crufter",
-
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
 ## Timeline
 
 Get the timeline for a given user
@@ -111,6 +83,34 @@ func GetTheCurrentGlobalTrendingTopics() {
 	twitterService := twitter.NewTwitterService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := twitterService.Trends(&twitter.TrendsRequest{
 		
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
+## User
+
+Get a user's twitter profile
+
+
+[https://m3o.com/twitter/api#User](https://m3o.com/twitter/api#User)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/twitter"
+)
+
+// Get a user's twitter profile
+func GetAusersTwitterProfile() {
+	twitterService := twitter.NewTwitterService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := twitterService.User(&twitter.UserRequest{
+		Username: "crufter",
+
 	})
 	fmt.Println(rsp, err)
 	
