@@ -4,65 +4,6 @@ An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/Currency/api](
 
 Endpoints:
 
-## Convert
-
-Convert returns the currency conversion rate between two pairs e.g USD/GBP
-
-
-[https://m3o.com/currency/api#Convert](https://m3o.com/currency/api#Convert)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/currency"
-)
-
-// Convert returns the currency conversion rate between two pairs e.g USD/GBP
-func ConvertUsdToGbp() {
-	currencyService := currency.NewCurrencyService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := currencyService.Convert(&currency.ConvertRequest{
-		From: "USD",
-To: "GBP",
-
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
-## Convert
-
-Convert returns the currency conversion rate between two pairs e.g USD/GBP
-
-
-[https://m3o.com/currency/api#Convert](https://m3o.com/currency/api#Convert)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/currency"
-)
-
-// Convert returns the currency conversion rate between two pairs e.g USD/GBP
-func Convert10usdToGbp() {
-	currencyService := currency.NewCurrencyService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := currencyService.Convert(&currency.ConvertRequest{
-		Amount: 10,
-From: "USD",
-To: "GBP",
-
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
 ## History
 
 Returns the historic rates for a currency on a given date
@@ -141,6 +82,65 @@ func GetRatesForUsd() {
 	currencyService := currency.NewCurrencyService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := currencyService.Rates(&currency.RatesRequest{
 		Code: "USD",
+
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
+## Convert
+
+Convert returns the currency conversion rate between two pairs e.g USD/GBP
+
+
+[https://m3o.com/currency/api#Convert](https://m3o.com/currency/api#Convert)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/currency"
+)
+
+// Convert returns the currency conversion rate between two pairs e.g USD/GBP
+func ConvertUsdToGbp() {
+	currencyService := currency.NewCurrencyService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := currencyService.Convert(&currency.ConvertRequest{
+		From: "USD",
+To: "GBP",
+
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
+## Convert
+
+Convert returns the currency conversion rate between two pairs e.g USD/GBP
+
+
+[https://m3o.com/currency/api#Convert](https://m3o.com/currency/api#Convert)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/currency"
+)
+
+// Convert returns the currency conversion rate between two pairs e.g USD/GBP
+func Convert10usdToGbp() {
+	currencyService := currency.NewCurrencyService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := currencyService.Convert(&currency.ConvertRequest{
+		Amount: 10,
+From: "USD",
+To: "GBP",
 
 	})
 	fmt.Println(rsp, err)
