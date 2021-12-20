@@ -4,34 +4,6 @@ An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/Space/api](htt
 
 Endpoints:
 
-## Read
-
-Read an object in space
-
-
-[https://m3o.com/space/api#Read](https://m3o.com/space/api#Read)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/space"
-)
-
-// Read an object in space
-func ReadAnObject() {
-	spaceService := space.NewSpaceService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := spaceService.Read(&space.ReadRequest{
-		Name: "images/file.jpg",
-
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
 ## Download
 
 Download an object via a presigned url
@@ -225,6 +197,34 @@ import(
 func HeadAnObject() {
 	spaceService := space.NewSpaceService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := spaceService.Head(&space.HeadRequest{
+		Name: "images/file.jpg",
+
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
+## Read
+
+Read an object in space
+
+
+[https://m3o.com/space/api#Read](https://m3o.com/space/api#Read)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/space"
+)
+
+// Read an object in space
+func ReadAnObject() {
+	spaceService := space.NewSpaceService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := spaceService.Read(&space.ReadRequest{
 		Name: "images/file.jpg",
 
 	})
