@@ -59,8 +59,8 @@ func (t *ContactService) Update(request *UpdateRequest) (*UpdateResponse, error)
 type Address struct {
 	// the label of the address
 	Label string `json:"label"`
-	// the street address
-	Street string `json:"street"`
+	// the address location
+	Location string `json:"location"`
 }
 
 type ContactInfo struct {
@@ -89,7 +89,7 @@ type ContactInfo struct {
 }
 
 type CreateRequest struct {
-	// optional, address
+	// optional, location
 	Addresses []Address `json:"addresses"`
 	// optional, birthday
 	Birthday string `json:"birthday"`
