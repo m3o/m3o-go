@@ -4,33 +4,6 @@ An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/Url/api](https
 
 Endpoints:
 
-## List
-
-List all the shortened URLs
-
-
-[https://m3o.com/url/api#List](https://m3o.com/url/api#List)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/url"
-)
-
-// List all the shortened URLs
-func ListYourShortenedUrls() {
-	urlService := url.NewUrlService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := urlService.List(&url.ListRequest{
-		
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
 ## Shorten
 
 Shorten a long URL
@@ -79,6 +52,33 @@ import(
 func ResolveAshortUrlToAlongDestinationUrl() {
 	urlService := url.NewUrlService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := urlService.Proxy(&url.ProxyRequest{
+		
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
+## List
+
+List all the shortened URLs
+
+
+[https://m3o.com/url/api#List](https://m3o.com/url/api#List)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/url"
+)
+
+// List all the shortened URLs
+func ListYourShortenedUrls() {
+	urlService := url.NewUrlService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := urlService.List(&url.ListRequest{
 		
 	})
 	fmt.Println(rsp, err)
