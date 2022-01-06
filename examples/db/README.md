@@ -4,6 +4,35 @@ An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/Db/api](https:
 
 Endpoints:
 
+## Read
+
+Read data from a table. Lookup can be by ID or via querying any field in the record.
+
+
+[https://m3o.com/db/api#Read](https://m3o.com/db/api#Read)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/db"
+)
+
+// Read data from a table. Lookup can be by ID or via querying any field in the record.
+func ReadRecords() {
+	dbService := db.NewDbService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := dbService.Read(&db.ReadRequest{
+		Query: "age == 43",
+Table: "example",
+
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
 ## Delete
 
 Delete a record in the database by id.
@@ -89,6 +118,33 @@ func CountEntriesInAtable() {
 	
 }
 ```
+## ListTables
+
+List tables in the DB
+
+
+[https://m3o.com/db/api#ListTables](https://m3o.com/db/api#ListTables)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/db"
+)
+
+// List tables in the DB
+func ListTables() {
+	dbService := db.NewDbService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := dbService.ListTables(&db.ListTablesRequest{
+		
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
 ## RenameTable
 
 Rename a table
@@ -150,35 +206,6 @@ Table: "example",
 	
 }
 ```
-## Read
-
-Read data from a table. Lookup can be by ID or via querying any field in the record.
-
-
-[https://m3o.com/db/api#Read](https://m3o.com/db/api#Read)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/db"
-)
-
-// Read data from a table. Lookup can be by ID or via querying any field in the record.
-func ReadRecords() {
-	dbService := db.NewDbService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := dbService.Read(&db.ReadRequest{
-		Query: "age == 43",
-Table: "example",
-
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
 ## Truncate
 
 Truncate the records in a table
@@ -202,33 +229,6 @@ func TruncateTable() {
 	rsp, err := dbService.Truncate(&db.TruncateRequest{
 		Table: "example",
 
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
-## ListTables
-
-List tables in the DB
-
-
-[https://m3o.com/db/api#ListTables](https://m3o.com/db/api#ListTables)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/db"
-)
-
-// List tables in the DB
-func ListTables() {
-	dbService := db.NewDbService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := dbService.ListTables(&db.ListTablesRequest{
-		
 	})
 	fmt.Println(rsp, err)
 	
