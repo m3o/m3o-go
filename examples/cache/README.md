@@ -4,6 +4,35 @@ An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/Cache/api](htt
 
 Endpoints:
 
+## Set
+
+Set an item in the cache. Overwrites any existing value already set.
+
+
+[https://m3o.com/cache/api#Set](https://m3o.com/cache/api#Set)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/cache"
+)
+
+// Set an item in the cache. Overwrites any existing value already set.
+func SetAvalue() {
+	cacheService := cache.NewCacheService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := cacheService.Set(&cache.SetRequest{
+		Key: "foo",
+Value: "bar",
+
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
 ## Get
 
 Get an item from the cache by key. If key is not found, an empty response is returned.
@@ -112,35 +141,6 @@ func DecrementAvalue() {
 	rsp, err := cacheService.Decrement(&cache.DecrementRequest{
 		Key: "counter",
 Value: 2,
-
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
-## Set
-
-Set an item in the cache. Overwrites any existing value already set.
-
-
-[https://m3o.com/cache/api#Set](https://m3o.com/cache/api#Set)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/cache"
-)
-
-// Set an item in the cache. Overwrites any existing value already set.
-func SetAvalue() {
-	cacheService := cache.NewCacheService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := cacheService.Set(&cache.SetRequest{
-		Key: "foo",
-Value: "bar",
 
 	})
 	fmt.Println(rsp, err)
