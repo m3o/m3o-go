@@ -4,12 +4,12 @@ An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/Function/api](
 
 Endpoints:
 
-## List
+## Delete
 
-List all the deployed functions
+Delete a function by name
 
 
-[https://m3o.com/function/api#List](https://m3o.com/function/api#List)
+[https://m3o.com/function/api#Delete](https://m3o.com/function/api#Delete)
 
 ```go
 package example
@@ -21,11 +21,40 @@ import(
 	"go.m3o.com/function"
 )
 
-// List all the deployed functions
-func ListFunctions() {
+// Delete a function by name
+func DeleteAfunction() {
 	functionService := function.NewFunctionService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := functionService.List(&function.ListRequest{
-		
+	rsp, err := functionService.Delete(&function.DeleteRequest{
+		Name: "helloworld",
+
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
+## Describe
+
+Get the info for a deployed function
+
+
+[https://m3o.com/function/api#Describe](https://m3o.com/function/api#Describe)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/function"
+)
+
+// Get the info for a deployed function
+func DescribeFunctionStatus() {
+	functionService := function.NewFunctionService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := functionService.Describe(&function.DescribeRequest{
+		Name: "helloworld",
+
 	})
 	fmt.Println(rsp, err)
 	
@@ -80,34 +109,6 @@ func ReserveAfunction() {
 	functionService := function.NewFunctionService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := functionService.Reserve(&function.ReserveRequest{
 		Name: "helloworld",
-
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
-## Proxy
-
-Return the backend url for proxying
-
-
-[https://m3o.com/function/api#Proxy](https://m3o.com/function/api#Proxy)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/function"
-)
-
-// Return the backend url for proxying
-func ProxyUrl() {
-	functionService := function.NewFunctionService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := functionService.Proxy(&function.ProxyRequest{
-		Id: "helloworld",
 
 	})
 	fmt.Println(rsp, err)
@@ -176,6 +177,33 @@ func UpdateAfunction() {
 	
 }
 ```
+## List
+
+List all the deployed functions
+
+
+[https://m3o.com/function/api#List](https://m3o.com/function/api#List)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/function"
+)
+
+// List all the deployed functions
+func ListFunctions() {
+	functionService := function.NewFunctionService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := functionService.List(&function.ListRequest{
+		
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
 ## Call
 
 Call a function by name
@@ -207,40 +235,12 @@ Request: map[string]interface{}{
 	
 }
 ```
-## Delete
+## Proxy
 
-Delete a function by name
-
-
-[https://m3o.com/function/api#Delete](https://m3o.com/function/api#Delete)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/function"
-)
-
-// Delete a function by name
-func DeleteAfunction() {
-	functionService := function.NewFunctionService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := functionService.Delete(&function.DeleteRequest{
-		Name: "helloworld",
-
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
-## Describe
-
-Get the info for a deployed function
+Return the backend url for proxying
 
 
-[https://m3o.com/function/api#Describe](https://m3o.com/function/api#Describe)
+[https://m3o.com/function/api#Proxy](https://m3o.com/function/api#Proxy)
 
 ```go
 package example
@@ -252,11 +252,11 @@ import(
 	"go.m3o.com/function"
 )
 
-// Get the info for a deployed function
-func DescribeFunctionStatus() {
+// Return the backend url for proxying
+func ProxyUrl() {
 	functionService := function.NewFunctionService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := functionService.Describe(&function.DescribeRequest{
-		Name: "helloworld",
+	rsp, err := functionService.Proxy(&function.ProxyRequest{
+		Id: "helloworld",
 
 	})
 	fmt.Println(rsp, err)
