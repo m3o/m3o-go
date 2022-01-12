@@ -20,7 +20,7 @@ type CarbonService struct {
 	client *client.Client
 }
 
-// Purchase 1 tonne of carbon offsets in a single request
+// Purchase 1K (0.001 tonne) of carbon offsets in a single request
 func (t *CarbonService) Offset(request *OffsetRequest) (*OffsetResponse, error) {
 
 	rsp := &OffsetResponse{}
