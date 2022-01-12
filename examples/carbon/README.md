@@ -6,7 +6,7 @@ Endpoints:
 
 ## Offset
 
-Purchase 1K (0.001 tonne) of carbon offsets in a single request
+Purchase 1KG (0.001 tonne) of carbon offsets in a single request
 
 
 [https://m3o.com/carbon/api#Offset](https://m3o.com/carbon/api#Offset)
@@ -21,7 +21,7 @@ import(
 	"go.m3o.com/carbon"
 )
 
-// Purchase 1K (0.001 tonne) of carbon offsets in a single request
+// Purchase 1KG (0.001 tonne) of carbon offsets in a single request
 func OffsetCarbon() {
 	carbonService := carbon.NewCarbonService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := carbonService.Offset(&carbon.OffsetRequest{
