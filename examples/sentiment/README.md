@@ -1,6 +1,6 @@
 # Sentiment
 
-An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/Sentiment/api](https://m3o.com/Sentiment/api).
+An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/sentiment/api](https://m3o.com/sentiment/api).
 
 Endpoints:
 

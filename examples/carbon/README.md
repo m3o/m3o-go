@@ -1,6 +1,6 @@
 # Carbon
 
-An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/Carbon/api](https://m3o.com/Carbon/api).
+An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/carbon/api](https://m3o.com/carbon/api).
 
 Endpoints:
 

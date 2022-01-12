@@ -1,6 +1,6 @@
 # Movie
 
-An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/Movie/api](https://m3o.com/Movie/api).
+An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/movie/api](https://m3o.com/movie/api).
 
 Endpoints:
 

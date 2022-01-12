@@ -1,6 +1,6 @@
 # Email
 
-An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/Email/api](https://m3o.com/Email/api).
+An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/email/api](https://m3o.com/email/api).
 
 Endpoints:
 

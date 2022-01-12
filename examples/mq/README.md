@@ -1,6 +1,6 @@
 # Mq
 
-An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/Mq/api](https://m3o.com/Mq/api).
+An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/mq/api](https://m3o.com/mq/api).
 
 Endpoints:
 
@@ -26,9 +26,9 @@ func PublishAmessage() {
 	mqService := mq.NewMqService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := mqService.Publish(&mq.PublishRequest{
 		Message: map[string]interface{}{
-	"type": "signup",
 	"user": "john",
 	"id": "1",
+	"type": "signup",
 },
 Topic: "events",
 

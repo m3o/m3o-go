@@ -1,6 +1,6 @@
 # Id
 
-An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/Id/api](https://m3o.com/Id/api).
+An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/id/api](https://m3o.com/id/api).
 
 Endpoints:
 

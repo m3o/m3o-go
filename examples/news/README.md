@@ -1,6 +1,6 @@
 # News
 
-An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/News/api](https://m3o.com/News/api).
+An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/news/api](https://m3o.com/news/api).
 
 Endpoints:
 

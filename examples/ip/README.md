@@ -1,6 +1,6 @@
 # Ip
 
-An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/Ip/api](https://m3o.com/Ip/api).
+An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/ip/api](https://m3o.com/ip/api).
 
 Endpoints:
 

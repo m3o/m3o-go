@@ -1,6 +1,6 @@
 # Otp
 
-An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/Otp/api](https://m3o.com/Otp/api).
+An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/otp/api](https://m3o.com/otp/api).
 
 Endpoints:
 

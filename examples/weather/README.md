@@ -1,6 +1,6 @@
 # Weather
 
-An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/Weather/api](https://m3o.com/Weather/api).
+An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/weather/api](https://m3o.com/weather/api).
 
 Endpoints:
 

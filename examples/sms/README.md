@@ -1,6 +1,6 @@
 # Sms
 
-An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/Sms/api](https://m3o.com/Sms/api).
+An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/sms/api](https://m3o.com/sms/api).
 
 Endpoints:
 

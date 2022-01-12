@@ -1,6 +1,6 @@
 # Time
 
-An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/Time/api](https://m3o.com/Time/api).
+An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/time/api](https://m3o.com/time/api).
 
 Endpoints:
 

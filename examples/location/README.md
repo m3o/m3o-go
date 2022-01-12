@@ -1,6 +1,6 @@
 # Location
 
-An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/Location/api](https://m3o.com/Location/api).
+An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/location/api](https://m3o.com/location/api).
 
 Endpoints:
 

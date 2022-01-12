@@ -1,6 +1,6 @@
 # Vehicle
 
-An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/Vehicle/api](https://m3o.com/Vehicle/api).
+An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/vehicle/api](https://m3o.com/vehicle/api).
 
 Endpoints:
 

@@ -1,6 +1,6 @@
 # Google
 
-An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/Google/api](https://m3o.com/Google/api).
+An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/google/api](https://m3o.com/google/api).
 
 Endpoints:
 

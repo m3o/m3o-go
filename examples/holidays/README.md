@@ -1,6 +1,6 @@
 # Holidays
 
-An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/Holidays/api](https://m3o.com/Holidays/api).
+An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/holidays/api](https://m3o.com/holidays/api).
 
 Endpoints:
 

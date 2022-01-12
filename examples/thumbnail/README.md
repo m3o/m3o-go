@@ -1,6 +1,6 @@
 # Thumbnail
 
-An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/Thumbnail/api](https://m3o.com/Thumbnail/api).
+An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/thumbnail/api](https://m3o.com/thumbnail/api).
 
 Endpoints:
 

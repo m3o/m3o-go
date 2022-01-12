@@ -1,6 +1,6 @@
 # Translate
 
-An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/Translate/api](https://m3o.com/Translate/api).
+An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/translate/api](https://m3o.com/translate/api).
 
 Endpoints:
 

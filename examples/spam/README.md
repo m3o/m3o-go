@@ -1,6 +1,6 @@
 # Spam
 
-An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/Spam/api](https://m3o.com/Spam/api).
+An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/spam/api](https://m3o.com/spam/api).
 
 Endpoints:
 

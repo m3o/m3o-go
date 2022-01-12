@@ -1,6 +1,6 @@
 # Notes
 
-An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/Notes/api](https://m3o.com/Notes/api).
+An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/notes/api](https://m3o.com/notes/api).
 
 Endpoints:
 

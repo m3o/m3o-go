@@ -1,6 +1,6 @@
 # Contact
 
-An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/Contact/api](https://m3o.com/Contact/api).
+An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/contact/api](https://m3o.com/contact/api).
 
 Endpoints:
 

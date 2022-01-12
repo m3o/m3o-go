@@ -1,6 +1,6 @@
 # Nft
 
-An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/Nft/api](https://m3o.com/Nft/api).
+An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/nft/api](https://m3o.com/nft/api).
 
 Endpoints:
 

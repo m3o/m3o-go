@@ -1,6 +1,6 @@
 # Gifs
 
-An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/Gifs/api](https://m3o.com/Gifs/api).
+An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/gifs/api](https://m3o.com/gifs/api).
 
 Endpoints:
 

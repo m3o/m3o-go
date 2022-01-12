@@ -1,6 +1,6 @@
 # Emoji
 
-An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/Emoji/api](https://m3o.com/Emoji/api).
+An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/emoji/api](https://m3o.com/emoji/api).
 
 Endpoints:
 

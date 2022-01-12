@@ -1,6 +1,6 @@
 # Image
 
-An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/Image/api](https://m3o.com/Image/api).
+An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/image/api](https://m3o.com/image/api).
 
 Endpoints:
 

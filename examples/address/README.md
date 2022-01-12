@@ -1,6 +1,6 @@
 # Address
 
-An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/Address/api](https://m3o.com/Address/api).
+An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/address/api](https://m3o.com/address/api).
 
 Endpoints:
 

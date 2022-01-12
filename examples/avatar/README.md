@@ -1,6 +1,6 @@
 # Avatar
 
-An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/Avatar/api](https://m3o.com/Avatar/api).
+An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/avatar/api](https://m3o.com/avatar/api).
 
 Endpoints:
 

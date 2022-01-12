@@ -1,6 +1,6 @@
 # Joke
 
-An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/Joke/api](https://m3o.com/Joke/api).
+An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/joke/api](https://m3o.com/joke/api).
 
 Endpoints:
 

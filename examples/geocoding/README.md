@@ -1,6 +1,6 @@
 # Geocoding
 
-An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/Geocoding/api](https://m3o.com/Geocoding/api).
+An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/geocoding/api](https://m3o.com/geocoding/api).
 
 Endpoints:
 

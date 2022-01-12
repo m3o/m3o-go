@@ -1,6 +1,6 @@
 # Prayer
 
-An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/Prayer/api](https://m3o.com/Prayer/api).
+An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/prayer/api](https://m3o.com/prayer/api).
 
 Endpoints:
 

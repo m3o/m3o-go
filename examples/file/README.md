@@ -1,6 +1,6 @@
 # File
 
-An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/File/api](https://m3o.com/File/api).
+An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/file/api](https://m3o.com/file/api).
 
 Endpoints:
 

@@ -1,6 +1,6 @@
 # Answer
 
-An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/Answer/api](https://m3o.com/Answer/api).
+An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/answer/api](https://m3o.com/answer/api).
 
 Endpoints:
 

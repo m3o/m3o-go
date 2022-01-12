@@ -1,6 +1,6 @@
 # Youtube
 
-An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/Youtube/api](https://m3o.com/Youtube/api).
+An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/youtube/api](https://m3o.com/youtube/api).
 
 Endpoints:
 
