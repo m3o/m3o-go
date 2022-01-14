@@ -4,6 +4,63 @@ An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/cache/api](htt
 
 Endpoints:
 
+## Delete
+
+Delete a value from the cache. If key not found a success response is returned.
+
+
+[https://m3o.com/cache/api#Delete](https://m3o.com/cache/api#Delete)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/cache"
+)
+
+// Delete a value from the cache. If key not found a success response is returned.
+func DeleteAvalue() {
+	cacheService := cache.NewCacheService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := cacheService.Delete(&cache.DeleteRequest{
+		Key: "foo",
+
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
+## Increment
+
+Increment a value (if it's a number). If key not found it is equivalent to set.
+
+
+[https://m3o.com/cache/api#Increment](https://m3o.com/cache/api#Increment)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/cache"
+)
+
+// Increment a value (if it's a number). If key not found it is equivalent to set.
+func IncrementAvalue() {
+	cacheService := cache.NewCacheService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := cacheService.Increment(&cache.IncrementRequest{
+		Key: "counter",
+Value: 2,
+
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
 ## Decrement
 
 Decrement a value (if it's a number). If key not found it is equivalent to set.
@@ -28,6 +85,33 @@ func DecrementAvalue() {
 		Key: "counter",
 Value: 2,
 
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
+## ListKeys
+
+List all the available keys
+
+
+[https://m3o.com/cache/api#ListKeys](https://m3o.com/cache/api#ListKeys)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/cache"
+)
+
+// List all the available keys
+func ListTheKeys() {
+	cacheService := cache.NewCacheService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := cacheService.ListKeys(&cache.ListKeysRequest{
+		
 	})
 	fmt.Println(rsp, err)
 	
@@ -84,63 +168,6 @@ func GetAvalue() {
 	cacheService := cache.NewCacheService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := cacheService.Get(&cache.GetRequest{
 		Key: "foo",
-
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
-## Delete
-
-Delete a value from the cache. If key not found a success response is returned.
-
-
-[https://m3o.com/cache/api#Delete](https://m3o.com/cache/api#Delete)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/cache"
-)
-
-// Delete a value from the cache. If key not found a success response is returned.
-func DeleteAvalue() {
-	cacheService := cache.NewCacheService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := cacheService.Delete(&cache.DeleteRequest{
-		Key: "foo",
-
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
-## Increment
-
-Increment a value (if it's a number). If key not found it is equivalent to set.
-
-
-[https://m3o.com/cache/api#Increment](https://m3o.com/cache/api#Increment)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/cache"
-)
-
-// Increment a value (if it's a number). If key not found it is equivalent to set.
-func IncrementAvalue() {
-	cacheService := cache.NewCacheService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := cacheService.Increment(&cache.IncrementRequest{
-		Key: "counter",
-Value: 2,
 
 	})
 	fmt.Println(rsp, err)
