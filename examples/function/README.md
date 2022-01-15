@@ -4,6 +4,34 @@ An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/function/api](
 
 Endpoints:
 
+## Proxy
+
+Return the backend url for proxying
+
+
+[https://m3o.com/function/api#Proxy](https://m3o.com/function/api#Proxy)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/function"
+)
+
+// Return the backend url for proxying
+func ProxyUrl() {
+	functionService := function.NewFunctionService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := functionService.Proxy(&function.ProxyRequest{
+		Id: "helloworld",
+
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
 ## Update
 
 Update a function. Downloads the source, builds and redeploys
@@ -26,37 +54,6 @@ func UpdateAfunction() {
 	functionService := function.NewFunctionService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := functionService.Update(&function.UpdateRequest{
 		Name: "helloworld",
-
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
-## Call
-
-Call a function by name
-
-
-[https://m3o.com/function/api#Call](https://m3o.com/function/api#Call)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/function"
-)
-
-// Call a function by name
-func CallAfunction() {
-	functionService := function.NewFunctionService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := functionService.Call(&function.CallRequest{
-		Name: "helloworld",
-Request: map[string]interface{}{
-	"name": "Alice",
-},
 
 	})
 	fmt.Println(rsp, err)
@@ -146,12 +143,12 @@ func ListRegions() {
 	
 }
 ```
-## Proxy
+## Reserve
 
-Return the backend url for proxying
+Reserve function names and resources beyond free quota
 
 
-[https://m3o.com/function/api#Proxy](https://m3o.com/function/api#Proxy)
+[https://m3o.com/function/api#Reserve](https://m3o.com/function/api#Reserve)
 
 ```go
 package example
@@ -163,11 +160,11 @@ import(
 	"go.m3o.com/function"
 )
 
-// Return the backend url for proxying
-func ProxyUrl() {
+// Reserve function names and resources beyond free quota
+func ReserveAfunction() {
 	functionService := function.NewFunctionService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := functionService.Proxy(&function.ProxyRequest{
-		Id: "helloworld",
+	rsp, err := functionService.Reserve(&function.ReserveRequest{
+		Name: "helloworld",
 
 	})
 	fmt.Println(rsp, err)
@@ -208,6 +205,37 @@ Subfolder: "examples/go-function",
 	
 }
 ```
+## Call
+
+Call a function by name
+
+
+[https://m3o.com/function/api#Call](https://m3o.com/function/api#Call)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/function"
+)
+
+// Call a function by name
+func CallAfunction() {
+	functionService := function.NewFunctionService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := functionService.Call(&function.CallRequest{
+		Name: "helloworld",
+Request: map[string]interface{}{
+	"name": "Alice",
+},
+
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
 ## List
 
 List all the deployed functions
@@ -230,34 +258,6 @@ func ListFunctions() {
 	functionService := function.NewFunctionService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := functionService.List(&function.ListRequest{
 		
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
-## Reserve
-
-Reserve function names and resources beyond free quota
-
-
-[https://m3o.com/function/api#Reserve](https://m3o.com/function/api#Reserve)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/function"
-)
-
-// Reserve function names and resources beyond free quota
-func ReserveAfunction() {
-	functionService := function.NewFunctionService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := functionService.Reserve(&function.ReserveRequest{
-		Name: "helloworld",
-
 	})
 	fmt.Println(rsp, err)
 	
