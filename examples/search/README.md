@@ -4,6 +4,93 @@ An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/search/api](ht
 
 Endpoints:
 
+## Search
+
+Search for documents in a given in index
+
+
+[https://m3o.com/search/api#Search](https://m3o.com/search/api#Search)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/search"
+)
+
+// Search for documents in a given in index
+func SearchForAdocument() {
+	searchService := search.NewSearchService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := searchService.Search(&search.SearchRequest{
+		Index: "customers",
+Query: "name == 'John'",
+
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
+## Search
+
+Search for documents in a given in index
+
+
+[https://m3o.com/search/api#Search](https://m3o.com/search/api#Search)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/search"
+)
+
+// Search for documents in a given in index
+func SearchOnMultipleFieldsand() {
+	searchService := search.NewSearchService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := searchService.Search(&search.SearchRequest{
+		Index: "customers",
+Query: "name == 'John' AND starsign == 'Leo'",
+
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
+## Search
+
+Search for documents in a given in index
+
+
+[https://m3o.com/search/api#Search](https://m3o.com/search/api#Search)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/search"
+)
+
+// Search for documents in a given in index
+func SearchOnMultipleFieldsor() {
+	searchService := search.NewSearchService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := searchService.Search(&search.SearchRequest{
+		Index: "customers",
+Query: "name == 'John' OR name == 'Jane'",
+
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
 ## Delete
 
 Delete a document given its ID
@@ -91,93 +178,6 @@ func IndexAdocument() {
 	Id: "1234",
 },
 Index: "customers",
-
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
-## Search
-
-Search for documents in a given in index
-
-
-[https://m3o.com/search/api#Search](https://m3o.com/search/api#Search)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/search"
-)
-
-// Search for documents in a given in index
-func SearchForAdocument() {
-	searchService := search.NewSearchService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := searchService.Search(&search.SearchRequest{
-		Index: "customers",
-Query: "name == 'John'",
-
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
-## Search
-
-Search for documents in a given in index
-
-
-[https://m3o.com/search/api#Search](https://m3o.com/search/api#Search)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/search"
-)
-
-// Search for documents in a given in index
-func SearchOnMultipleFieldsand() {
-	searchService := search.NewSearchService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := searchService.Search(&search.SearchRequest{
-		Index: "customers",
-Query: "name == 'John' AND starsign == 'Leo'",
-
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
-## Search
-
-Search for documents in a given in index
-
-
-[https://m3o.com/search/api#Search](https://m3o.com/search/api#Search)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/search"
-)
-
-// Search for documents in a given in index
-func SearchOnMultipleFieldsor() {
-	searchService := search.NewSearchService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := searchService.Search(&search.SearchRequest{
-		Index: "customers",
-Query: "name == 'John' OR name == 'Jane'",
 
 	})
 	fmt.Println(rsp, err)
