@@ -4,6 +4,34 @@ An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/search/api](ht
 
 Endpoints:
 
+## DeleteIndex
+
+Delete an index.
+
+
+[https://m3o.com/search/api#DeleteIndex](https://m3o.com/search/api#DeleteIndex)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/search"
+)
+
+// Delete an index.
+func DeleteAnIndex() {
+	searchService := search.NewSearchService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := searchService.DeleteIndex(&search.DeleteIndexRequest{
+		Index: "customers",
+
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
 ## Index
 
 Index a document i.e. insert a document to search for.
@@ -150,34 +178,6 @@ func DeleteAdocument() {
 	rsp, err := searchService.Delete(&search.DeleteRequest{
 		Id: "1234",
 Index: "customers",
-
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
-## DeleteIndex
-
-Delete an index.
-
-
-[https://m3o.com/search/api#DeleteIndex](https://m3o.com/search/api#DeleteIndex)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/search"
-)
-
-// Delete an index.
-func DeleteAnIndex() {
-	searchService := search.NewSearchService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := searchService.DeleteIndex(&search.DeleteIndexRequest{
-		Index: "customers",
 
 	})
 	fmt.Println(rsp, err)
