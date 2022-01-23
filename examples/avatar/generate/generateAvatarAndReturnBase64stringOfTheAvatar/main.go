@@ -11,9 +11,9 @@ import (
 func main() {
 	avatarService := avatar.NewAvatarService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := avatarService.Generate(&avatar.GenerateRequest{
-		Format:   "png",
+		Format:   "jpeg",
 		Gender:   "female",
-		Upload:   true,
+		Upload:   false,
 		Username: "",
 	})
 	fmt.Println(rsp, err)
