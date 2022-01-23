@@ -4,6 +4,36 @@ An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/emoji/api](htt
 
 Endpoints:
 
+## Send
+
+Send an emoji to anyone via SMS. Messages are sent in the form '<message> Sent from <from>'
+
+
+[https://m3o.com/emoji/api#Send](https://m3o.com/emoji/api#Send)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/emoji"
+)
+
+// Send an emoji to anyone via SMS. Messages are sent in the form '<message> Sent from <from>'
+func SendAtextContainingAnEmojiToAnyoneViaSms() {
+	emojiService := emoji.NewEmojiService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := emojiService.Send(&emoji.SendRequest{
+		From: "Alice",
+Message: "let's grab a :beer:",
+To: "+44782669123",
+
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
 ## Find
 
 Find an emoji by its alias e.g :beer:
@@ -83,36 +113,6 @@ func PrintTextIncludingEmoji() {
 	emojiService := emoji.NewEmojiService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := emojiService.Print(&emoji.PrintRequest{
 		Text: "let's grab a :beer:",
-
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
-## Send
-
-Send an emoji to anyone via SMS. Messages are sent in the form '<message> Sent from <from>'
-
-
-[https://m3o.com/emoji/api#Send](https://m3o.com/emoji/api#Send)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/emoji"
-)
-
-// Send an emoji to anyone via SMS. Messages are sent in the form '<message> Sent from <from>'
-func SendAtextContainingAnEmojiToAnyoneViaSms() {
-	emojiService := emoji.NewEmojiService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := emojiService.Send(&emoji.SendRequest{
-		From: "Alice",
-Message: "let's grab a :beer:",
-To: "+44782669123",
 
 	})
 	fmt.Println(rsp, err)
