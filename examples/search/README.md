@@ -4,6 +4,34 @@ An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/search/api](ht
 
 Endpoints:
 
+## DeleteIndex
+
+Delete an index.
+
+
+[https://m3o.com/search/api#DeleteIndex](https://m3o.com/search/api#DeleteIndex)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/search"
+)
+
+// Delete an index.
+func DeleteAnIndex() {
+	searchService := search.NewSearchService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := searchService.DeleteIndex(&search.DeleteIndexRequest{
+		Index: "customers",
+
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
 ## Index
 
 Index a document i.e. insert a document to search for.
@@ -27,9 +55,9 @@ func IndexAdocument() {
 	rsp, err := searchService.Index(&search.IndexRequest{
 		Document: &search.Document{
 	Contents: map[string]interface{}{
-		"age": 37,
 		"starsign": "Leo",
 		"name": "John Doe",
+		"age": 37,
 },
 	Id: "1234",
 },
@@ -156,12 +184,12 @@ Index: "customers",
 	
 }
 ```
-## DeleteIndex
+## CreateIndex
 
-Delete an index.
+Create a search index by name
 
 
-[https://m3o.com/search/api#DeleteIndex](https://m3o.com/search/api#DeleteIndex)
+[https://m3o.com/search/api#CreateIndex](https://m3o.com/search/api#CreateIndex)
 
 ```go
 package example
@@ -173,10 +201,10 @@ import(
 	"go.m3o.com/search"
 )
 
-// Delete an index.
-func DeleteAnIndex() {
+// Create a search index by name
+func CreateAnIndex() {
 	searchService := search.NewSearchService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := searchService.DeleteIndex(&search.DeleteIndexRequest{
+	rsp, err := searchService.CreateIndex(&search.CreateIndexRequest{
 		Index: "customers",
 
 	})
