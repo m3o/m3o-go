@@ -65,10 +65,7 @@ func (t *SearchService) Search(request *SearchRequest) (*SearchResponse, error) 
 }
 
 type CreateIndexRequest struct {
-	// the name of the index
-	//
-	// TODO: allow fields to index
-	// repeated Field fields = 2;
+	// The name of the index
 	Index string `json:"index"`
 }
 
