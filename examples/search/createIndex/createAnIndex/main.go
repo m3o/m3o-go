@@ -7,7 +7,7 @@ import (
 	"go.m3o.com/search"
 )
 
-// Create a search index by name
+// Create an index by name
 func main() {
 	searchService := search.NewSearchService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := searchService.CreateIndex(&search.CreateIndexRequest{

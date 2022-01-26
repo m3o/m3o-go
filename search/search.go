@@ -24,7 +24,7 @@ type SearchService struct {
 	client *client.Client
 }
 
-// Create a search index by name
+// Create an index by name
 func (t *SearchService) CreateIndex(request *CreateIndexRequest) (*CreateIndexResponse, error) {
 
 	rsp := &CreateIndexResponse{}
@@ -32,7 +32,7 @@ func (t *SearchService) CreateIndex(request *CreateIndexRequest) (*CreateIndexRe
 
 }
 
-// Delete an index.
+// Delete an index by name
 func (t *SearchService) DeleteIndex(request *DeleteIndexRequest) (*DeleteIndexResponse, error) {
 
 	rsp := &DeleteIndexResponse{}
