@@ -14,6 +14,7 @@ func main() {
 		ConfirmPassword: "Password2",
 		NewPassword:     "Password2",
 		OldPassword:     "Password1",
+		UserId:          "user-1",
 	})
 	fmt.Println(rsp, err)
 }
