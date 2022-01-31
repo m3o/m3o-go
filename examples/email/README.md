@@ -4,34 +4,6 @@ An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/email/api](htt
 
 Endpoints:
 
-## Validate
-
-Validate an email address format
-
-
-[https://m3o.com/email/api#Validate](https://m3o.com/email/api#Validate)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/email"
-)
-
-// Validate an email address format
-func ValidateEmail() {
-	emailService := email.NewEmailService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := emailService.Validate(&email.ValidateRequest{
-		Address: "joe@example.com",
-
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
 ## Send
 
 Send an email by passing in from, to, subject, and a text or html body
@@ -86,6 +58,34 @@ func ParseEmail() {
 	emailService := email.NewEmailService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := emailService.Parse(&email.ParseRequest{
 		Address: "Joe Blogs <joe@example.com>",
+
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
+## Validate
+
+Validate an email address format
+
+
+[https://m3o.com/email/api#Validate](https://m3o.com/email/api#Validate)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/email"
+)
+
+// Validate an email address format
+func ValidateEmail() {
+	emailService := email.NewEmailService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := emailService.Validate(&email.ValidateRequest{
+		Address: "joe@example.com",
 
 	})
 	fmt.Println(rsp, err)

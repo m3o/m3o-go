@@ -13,9 +13,9 @@ func main() {
 	rsp, err := searchService.Index(&search.IndexRequest{
 		Document: &search.Document{
 			Contents: map[string]interface{}{
+				"name":     "John Doe",
 				"age":      37,
 				"starsign": "Leo",
-				"name":     "John Doe",
 			},
 			Id: "1234",
 		},
