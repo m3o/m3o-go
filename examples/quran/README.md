@@ -4,6 +4,38 @@ An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/quran/api](htt
 
 Endpoints:
 
+## Verses
+
+Lookup the verses (ayahs) for a chapter including
+translation, interpretation and breakdown by individual
+words.
+
+
+[https://m3o.com/quran/api#Verses](https://m3o.com/quran/api#Verses)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/quran"
+)
+
+// Lookup the verses (ayahs) for a chapter including
+// translation, interpretation and breakdown by individual
+// words.
+func GetVersesOfAchapter() {
+	quranService := quran.NewQuranService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := quranService.Verses(&quran.VersesRequest{
+		Chapter: 1,
+
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
 ## Search
 
 Search the Quran for any form of query or questions
@@ -81,38 +113,6 @@ import(
 func GetChapterSummary() {
 	quranService := quran.NewQuranService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := quranService.Summary(&quran.SummaryRequest{
-		Chapter: 1,
-
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
-## Verses
-
-Lookup the verses (ayahs) for a chapter including
-translation, interpretation and breakdown by individual
-words.
-
-
-[https://m3o.com/quran/api#Verses](https://m3o.com/quran/api#Verses)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/quran"
-)
-
-// Lookup the verses (ayahs) for a chapter including
-// translation, interpretation and breakdown by individual
-// words.
-func GetVersesOfAchapter() {
-	quranService := quran.NewQuranService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := quranService.Verses(&quran.VersesRequest{
 		Chapter: 1,
 
 	})
