@@ -4,120 +4,6 @@ An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/space/api](htt
 
 Endpoints:
 
-## Update
-
-Update an object. If an object with this name does not exist, creates a new one.
-
-
-[https://m3o.com/space/api#Update](https://m3o.com/space/api#Update)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/space"
-)
-
-// Update an object. If an object with this name does not exist, creates a new one.
-func UpdateAnObject() {
-	spaceService := space.NewSpaceService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := spaceService.Update(&space.UpdateRequest{
-		Name: "images/file.jpg",
-Object: "<file bytes>",
-Visibility: "public",
-
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
-## Delete
-
-Delete an object from space
-
-
-[https://m3o.com/space/api#Delete](https://m3o.com/space/api#Delete)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/space"
-)
-
-// Delete an object from space
-func DeleteAnObject() {
-	spaceService := space.NewSpaceService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := spaceService.Delete(&space.DeleteRequest{
-		Name: "images/file.jpg",
-
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
-## List
-
-List the objects in space
-
-
-[https://m3o.com/space/api#List](https://m3o.com/space/api#List)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/space"
-)
-
-// List the objects in space
-func ListObjectsWithPrefix() {
-	spaceService := space.NewSpaceService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := spaceService.List(&space.ListRequest{
-		Prefix: "images/",
-
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
-## Head
-
-Retrieve meta information about an object
-
-
-[https://m3o.com/space/api#Head](https://m3o.com/space/api#Head)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/space"
-)
-
-// Retrieve meta information about an object
-func HeadAnObject() {
-	spaceService := space.NewSpaceService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := spaceService.Head(&space.HeadRequest{
-		Name: "images/file.jpg",
-
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
 ## Read
 
 Read an object in space
@@ -226,6 +112,120 @@ func CreateAnObject() {
 		Name: "images/file.jpg",
 Object: "<file bytes>",
 Visibility: "public",
+
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
+## Update
+
+Update an object. If an object with this name does not exist, creates a new one.
+
+
+[https://m3o.com/space/api#Update](https://m3o.com/space/api#Update)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/space"
+)
+
+// Update an object. If an object with this name does not exist, creates a new one.
+func UpdateAnObject() {
+	spaceService := space.NewSpaceService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := spaceService.Update(&space.UpdateRequest{
+		Name: "images/file.jpg",
+Object: "<file bytes>",
+Visibility: "public",
+
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
+## Delete
+
+Delete an object from space
+
+
+[https://m3o.com/space/api#Delete](https://m3o.com/space/api#Delete)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/space"
+)
+
+// Delete an object from space
+func DeleteAnObject() {
+	spaceService := space.NewSpaceService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := spaceService.Delete(&space.DeleteRequest{
+		Name: "images/file.jpg",
+
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
+## List
+
+List the objects in space
+
+
+[https://m3o.com/space/api#List](https://m3o.com/space/api#List)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/space"
+)
+
+// List the objects in space
+func ListObjectsWithPrefix() {
+	spaceService := space.NewSpaceService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := spaceService.List(&space.ListRequest{
+		Prefix: "images/",
+
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
+## Head
+
+Retrieve meta information about an object
+
+
+[https://m3o.com/space/api#Head](https://m3o.com/space/api#Head)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/space"
+)
+
+// Retrieve meta information about an object
+func HeadAnObject() {
+	spaceService := space.NewSpaceService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := spaceService.Head(&space.HeadRequest{
+		Name: "images/file.jpg",
 
 	})
 	fmt.Println(rsp, err)
