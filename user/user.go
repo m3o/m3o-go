@@ -373,10 +373,6 @@ type UpdateResponse struct {
 }
 
 type VerifyEmailRequest struct {
-	// the email address to verify
-	Email string `json:"email"`
-	// the unique id assigned to the verification process
-	Id string `json:"id"`
 	// The token from the verification email
 	Token string `json:"token"`
 }
