@@ -7,12 +7,12 @@ import (
 	"go.m3o.com/user"
 )
 
-// Send a verification email
-// to the user being signed up. Email from will be from 'noreply@email.m3ocontent.com',
-// but you can provide the title and contents.
-// The verification link will be injected in to the email as a template variable, $micro_verification_link.
-// Example: 'Hi there, welcome onboard! Use the link below to verify your email: $micro_verification_link'
-// The variable will be replaced with an actual url that will look similar to this:
+// Send a verification email to a user.
+// Email "from" will be 'noreply@email.m3ocontent.com'.
+// The verification link will be injected in the email
+// as a template variable, $micro_verification_link e.g
+// 'Welcome to M3O! Use the link below to verify your email: $micro_verification_link'
+// The variable will be replaced with a url similar to:
 // 'https://user.m3o.com/user/verify?token=a-verification-token&redirectUrl=your-redir-url'
 func main() {
 	userService := user.NewUserService(os.Getenv("M3O_API_TOKEN"))
