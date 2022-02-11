@@ -4,36 +4,6 @@ An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/emoji/api](htt
 
 Endpoints:
 
-## Print
-
-Print text and renders the emojis with aliases e.g
-let's grab a :beer: becomes let's grab a 🍺
-
-
-[https://m3o.com/emoji/api#Print](https://m3o.com/emoji/api#Print)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/emoji"
-)
-
-// Print text and renders the emojis with aliases e.g
-// let's grab a :beer: becomes let's grab a 🍺
-func PrintTextIncludingEmoji() {
-	emojiService := emoji.NewEmojiService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := emojiService.Print(&emoji.PrintRequest{
-		Text: "let's grab a :beer:",
-
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
 ## Send
 
 Send an emoji to anyone via SMS. Messages are sent in the form '<message> Sent from <from>'
@@ -114,6 +84,36 @@ func GetFlagByCountryCode() {
 	emojiService := emoji.NewEmojiService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := emojiService.Flag(&emoji.FlagRequest{
 		
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
+## Print
+
+Print text and renders the emojis with aliases e.g
+let's grab a :beer: becomes let's grab a 🍺
+
+
+[https://m3o.com/emoji/api#Print](https://m3o.com/emoji/api#Print)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/emoji"
+)
+
+// Print text and renders the emojis with aliases e.g
+// let's grab a :beer: becomes let's grab a 🍺
+func PrintTextIncludingEmoji() {
+	emojiService := emoji.NewEmojiService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := emojiService.Print(&emoji.PrintRequest{
+		Text: "let's grab a :beer:",
+
 	})
 	fmt.Println(rsp, err)
 	
