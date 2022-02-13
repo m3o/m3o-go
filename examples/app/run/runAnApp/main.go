@@ -7,7 +7,7 @@ import (
 	"go.m3o.com/app"
 )
 
-// Run an app from a source repo. Specify region etc.
+// Run an app from source
 func main() {
 	appService := app.NewAppService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := appService.Run(&app.RunRequest{
