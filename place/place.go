@@ -5,7 +5,6 @@ import (
 )
 
 type Place interface {
-	Autocomplete(*AutocompleteRequest) (*AutocompleteResponse, error)
 	Nearby(*NearbyRequest) (*NearbyResponse, error)
 	Search(*SearchRequest) (*SearchResponse, error)
 }
@@ -20,14 +19,6 @@ func NewPlaceService(token string) *PlaceService {
 
 type PlaceService struct {
 	client *client.Client
-}
-
-// Autocomplete queries (coming soon)
-func (t *PlaceService) Autocomplete(request *AutocompleteRequest) (*AutocompleteResponse, error) {
-
-	rsp := &AutocompleteResponse{}
-	return rsp, t.client.Call("place", "Autocomplete", request, rsp)
-
 }
 
 // Find places nearby using a location

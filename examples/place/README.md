@@ -4,33 +4,6 @@ An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/place/api](htt
 
 Endpoints:
 
-## Autocomplete
-
-Autocomplete queries (coming soon)
-
-
-[https://m3o.com/place/api#Autocomplete](https://m3o.com/place/api#Autocomplete)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/place"
-)
-
-// Autocomplete queries (coming soon)
-func AutocompleteQueries() {
-	placeService := place.NewPlaceService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := placeService.Autocomplete(&place.AutocompleteRequest{
-		
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
 ## Nearby
 
 Find places nearby using a location
