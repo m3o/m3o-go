@@ -4,9 +4,36 @@ An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/place/api](htt
 
 Endpoints:
 
+## Autocomplete
+
+Autocomplete queries (coming soon)
+
+
+[https://m3o.com/place/api#Autocomplete](https://m3o.com/place/api#Autocomplete)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/place"
+)
+
+// Autocomplete queries (coming soon)
+func AutocompleteQueries() {
+	placeService := place.NewPlaceService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := placeService.Autocomplete(&place.AutocompleteRequest{
+		
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
 ## Nearby
 
-Search for places nearby, points of interest and geographic locations
+Find places nearby using a location
 
 
 [https://m3o.com/place/api#Nearby](https://m3o.com/place/api#Nearby)
@@ -21,7 +48,7 @@ import(
 	"go.m3o.com/place"
 )
 
-// Search for places nearby, points of interest and geographic locations
+// Find places nearby using a location
 func FindPlacesNearby() {
 	placeService := place.NewPlaceService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := placeService.Nearby(&place.NearbyRequest{
@@ -36,7 +63,7 @@ Type: "store",
 ```
 ## Search
 
-
+Search for places by text query
 
 
 [https://m3o.com/place/api#Search](https://m3o.com/place/api#Search)
@@ -51,7 +78,7 @@ import(
 	"go.m3o.com/place"
 )
 
-// 
+// Search for places by text query
 func SearchForPlaces() {
 	placeService := place.NewPlaceService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := placeService.Search(&place.SearchRequest{

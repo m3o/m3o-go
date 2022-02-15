@@ -7,7 +7,7 @@ import (
 	"go.m3o.com/place"
 )
 
-// Search for places nearby, points of interest and geographic locations
+// Find places nearby using a location
 func main() {
 	placeService := place.NewPlaceService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := placeService.Nearby(&place.NearbyRequest{
