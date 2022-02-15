@@ -4,12 +4,12 @@ An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/db/api](https:
 
 Endpoints:
 
-## Update
+## Create
 
-Update a record in the database. Include an "id" in the record to update.
+Create a record in the database. Optionally include an "id" field otherwise it's set automatically.
 
 
-[https://m3o.com/db/api#Update](https://m3o.com/db/api#Update)
+[https://m3o.com/db/api#Create](https://m3o.com/db/api#Create)
 
 ```go
 package example
@@ -21,13 +21,15 @@ import(
 	"go.m3o.com/db"
 )
 
-// Update a record in the database. Include an "id" in the record to update.
-func UpdateArecord() {
+// Create a record in the database. Optionally include an "id" field otherwise it's set automatically.
+func CreateArecord() {
 	dbService := db.NewDbService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := dbService.Update(&db.UpdateRequest{
+	rsp, err := dbService.Create(&db.CreateRequest{
 		Record: map[string]interface{}{
+	"age": 42,
+	"isActive": true,
 	"id": "1",
-	"age": 43,
+	"name": "Jane",
 },
 Table: "example",
 
@@ -122,12 +124,12 @@ func TruncateTable() {
 	
 }
 ```
-## RenameTable
+## ListTables
 
-Rename a table
+List tables in the DB
 
 
-[https://m3o.com/db/api#RenameTable](https://m3o.com/db/api#RenameTable)
+[https://m3o.com/db/api#ListTables](https://m3o.com/db/api#ListTables)
 
 ```go
 package example
@@ -139,24 +141,22 @@ import(
 	"go.m3o.com/db"
 )
 
-// Rename a table
-func RenameTable() {
+// List tables in the DB
+func ListTables() {
 	dbService := db.NewDbService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := dbService.RenameTable(&db.RenameTableRequest{
-		From: "examples2",
-To: "examples3",
-
+	rsp, err := dbService.ListTables(&db.ListTablesRequest{
+		
 	})
 	fmt.Println(rsp, err)
 	
 }
 ```
-## Create
+## Update
 
-Create a record in the database. Optionally include an "id" field otherwise it's set automatically.
+Update a record in the database. Include an "id" in the record to update.
 
 
-[https://m3o.com/db/api#Create](https://m3o.com/db/api#Create)
+[https://m3o.com/db/api#Update](https://m3o.com/db/api#Update)
 
 ```go
 package example
@@ -168,15 +168,13 @@ import(
 	"go.m3o.com/db"
 )
 
-// Create a record in the database. Optionally include an "id" field otherwise it's set automatically.
-func CreateArecord() {
+// Update a record in the database. Include an "id" in the record to update.
+func UpdateArecord() {
 	dbService := db.NewDbService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := dbService.Create(&db.CreateRequest{
+	rsp, err := dbService.Update(&db.UpdateRequest{
 		Record: map[string]interface{}{
 	"id": "1",
-	"name": "Jane",
-	"age": 42,
-	"isActive": true,
+	"age": 43,
 },
 Table: "example",
 
@@ -241,12 +239,12 @@ func CountEntriesInAtable() {
 	
 }
 ```
-## ListTables
+## RenameTable
 
-List tables in the DB
+Rename a table
 
 
-[https://m3o.com/db/api#ListTables](https://m3o.com/db/api#ListTables)
+[https://m3o.com/db/api#RenameTable](https://m3o.com/db/api#RenameTable)
 
 ```go
 package example
@@ -258,11 +256,13 @@ import(
 	"go.m3o.com/db"
 )
 
-// List tables in the DB
-func ListTables() {
+// Rename a table
+func RenameTable() {
 	dbService := db.NewDbService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := dbService.ListTables(&db.ListTablesRequest{
-		
+	rsp, err := dbService.RenameTable(&db.RenameTableRequest{
+		From: "examples2",
+To: "examples3",
+
 	})
 	fmt.Println(rsp, err)
 	
