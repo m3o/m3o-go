@@ -36,6 +36,7 @@ import (
 	"go.m3o.com/notes"
 	"go.m3o.com/otp"
 	"go.m3o.com/ping"
+	"go.m3o.com/place"
 	"go.m3o.com/postcode"
 	"go.m3o.com/prayer"
 	"go.m3o.com/qr"
@@ -100,6 +101,7 @@ func NewClient(token string) *Client {
 		NotesService:      notes.NewNotesService(token),
 		OtpService:        otp.NewOtpService(token),
 		PingService:       ping.NewPingService(token),
+		PlaceService:      place.NewPlaceService(token),
 		PostcodeService:   postcode.NewPostcodeService(token),
 		PrayerService:     prayer.NewPrayerService(token),
 		QrService:         qr.NewQrService(token),
@@ -164,6 +166,7 @@ type Client struct {
 	NotesService      *notes.NotesService
 	OtpService        *otp.OtpService
 	PingService       *ping.PingService
+	PlaceService      *place.PlaceService
 	PostcodeService   *postcode.PostcodeService
 	PrayerService     *prayer.PrayerService
 	QrService         *qr.QrService
