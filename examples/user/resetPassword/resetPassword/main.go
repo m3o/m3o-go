@@ -7,7 +7,7 @@ import (
 	"go.m3o.com/user"
 )
 
-// Reset password with the code sent by the "SendPasswordResetEmail" endoint.
+// Reset password with the code sent by the "SendPasswordResetEmail" endpoint.
 func main() {
 	userService := user.NewUserService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := userService.ResetPassword(&user.ResetPasswordRequest{

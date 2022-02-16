@@ -91,7 +91,7 @@ func (t *UserService) ReadSession(request *ReadSessionRequest) (*ReadSessionResp
 
 }
 
-// Reset password with the code sent by the "SendPasswordResetEmail" endoint.
+// Reset password with the code sent by the "SendPasswordResetEmail" endpoint.
 func (t *UserService) ResetPassword(request *ResetPasswordRequest) (*ResetPasswordResponse, error) {
 
 	rsp := &ResetPasswordResponse{}
@@ -179,7 +179,7 @@ type Account struct {
 	// alphanumeric username
 	Username string `json:"username"`
 	// date of verification
-	VerificationDate int64 `json:"verificationDate,string"`
+	VerificationDate int64 `json:"verification_date,string"`
 	// if the account is verified
 	Verified bool `json:"verified"`
 }
@@ -236,7 +236,7 @@ type LoginResponse struct {
 
 type LogoutRequest struct {
 	// the session id for the user to logout
-	SessionId string `json:"sessionId"`
+	SessionId string `json:"session_id"`
 }
 
 type LogoutResponse struct {
@@ -257,7 +257,7 @@ type ReadResponse struct {
 
 type ReadSessionRequest struct {
 	// The unique session id
-	SessionId string `json:"sessionId"`
+	SessionId string `json:"session_id"`
 }
 
 type ReadSessionResponse struct {
@@ -269,11 +269,11 @@ type ResetPasswordRequest struct {
 	// The code from the verification email
 	Code string `json:"code"`
 	// confirm new password
-	ConfirmPassword string `json:"confirmPassword"`
+	ConfirmPassword string `json:"confirm_password"`
 	// the email to reset the password for
 	Email string `json:"email"`
 	// the new password
-	NewPassword string `json:"newPassword"`
+	NewPassword string `json:"new_password"`
 }
 
 type ResetPasswordResponse struct {
@@ -289,11 +289,11 @@ type SendMagicLinkRequest struct {
 	// failed or redirect to another page.
 	Endpoint string `json:"endpoint"`
 	// Display name of the sender for the email. Note: the email address will still be 'support@m3o.com'
-	FromName string `json:"fromName"`
+	FromName string `json:"from_name"`
 	Subject  string `json:"subject"`
 	// Text content of the email. Don't forget to include the string '$micro_verification_link' which will be replaced by the real verification link
 	// HTML emails are not available currently.
-	TextContent string `json:"textContent"`
+	TextContent string `json:"text_content"`
 }
 
 type SendMagicLinkResponse struct {
@@ -302,13 +302,15 @@ type SendMagicLinkResponse struct {
 type SendPasswordResetEmailRequest struct {
 	// email address to send reset for
 	Email string `json:"email"`
+	// Number of secs that the password reset email is valid for, defaults to 1800 secs (30 mins)
+	Expiration int64 `json:"expiration,string"`
 	// Display name of the sender for the email. Note: the email address will still be 'noreply@email.m3ocontent.com'
-	FromName string `json:"fromName"`
+	FromName string `json:"from_name"`
 	// subject of the email
 	Subject string `json:"subject"`
 	// Text content of the email. Don't forget to include the string '$code' which will be replaced by the real verification link
 	// HTML emails are not available currently.
-	TextContent string `json:"textContent"`
+	TextContent string `json:"text_content"`
 }
 
 type SendPasswordResetEmailResponse struct {
@@ -318,16 +320,16 @@ type SendVerificationEmailRequest struct {
 	// email address to send the verification code
 	Email string `json:"email"`
 	// The url to redirect to incase of failure
-	FailureRedirectUrl string `json:"failureRedirectUrl"`
+	FailureRedirectUrl string `json:"failure_redirect_url"`
 	// Display name of the sender for the email. Note: the email address will still be 'noreply@email.m3ocontent.com'
-	FromName string `json:"fromName"`
+	FromName string `json:"from_name"`
 	// The url to redirect to after successful verification
-	RedirectUrl string `json:"redirectUrl"`
+	RedirectUrl string `json:"redirect_url"`
 	// subject of the email
 	Subject string `json:"subject"`
 	// Text content of the email. Don't forget to include the string '$micro_verification_link' which will be replaced by the real verification link
 	// HTML emails are not available currently.
-	TextContent string `json:"textContent"`
+	TextContent string `json:"text_content"`
 }
 
 type SendVerificationEmailResponse struct {
@@ -348,9 +350,9 @@ type UpdatePasswordRequest struct {
 	// confirm new password
 	ConfirmPassword string `json:"confirm_password"`
 	// the new password
-	NewPassword string `json:"newPassword"`
+	NewPassword string `json:"new_password"`
 	// the old password
-	OldPassword string `json:"oldPassword"`
+	OldPassword string `json:"old_password"`
 	// the account id
 	UserId string `json:"userId"`
 }
