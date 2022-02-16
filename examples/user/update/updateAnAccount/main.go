@@ -11,8 +11,9 @@ import (
 func main() {
 	userService := user.NewUserService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := userService.Update(&user.UpdateRequest{
-		Email: "joe+2@example.com",
-		Id:    "user-1",
+		Email:    "joe+2@example.com",
+		Id:       "user-1",
+		Username: "joe",
 	})
 	fmt.Println(rsp, err)
 }
