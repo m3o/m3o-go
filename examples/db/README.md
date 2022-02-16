@@ -4,6 +4,40 @@ An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/db/api](https:
 
 Endpoints:
 
+## Create
+
+Create a record in the database. Optionally include an "id" field otherwise it's set automatically.
+
+
+[https://m3o.com/db/api#Create](https://m3o.com/db/api#Create)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/db"
+)
+
+// Create a record in the database. Optionally include an "id" field otherwise it's set automatically.
+func CreateArecord() {
+	dbService := db.NewDbService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := dbService.Create(&db.CreateRequest{
+		Record: map[string]interface{}{
+	"id": "1",
+	"name": "Jane",
+	"age": 42,
+	"isActive": true,
+},
+Table: "example",
+
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
 ## Delete
 
 Delete a record in the database by id.
@@ -54,6 +88,34 @@ import(
 func DropTable() {
 	dbService := db.NewDbService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := dbService.DropTable(&db.DropTableRequest{
+		Table: "example",
+
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
+## Count
+
+Count records in a table
+
+
+[https://m3o.com/db/api#Count](https://m3o.com/db/api#Count)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/db"
+)
+
+// Count records in a table
+func CountEntriesInAtable() {
+	dbService := db.NewDbService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := dbService.Count(&db.CountRequest{
 		Table: "example",
 
 	})
@@ -200,68 +262,6 @@ func TruncateTable() {
 	dbService := db.NewDbService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := dbService.Truncate(&db.TruncateRequest{
 		Table: "example",
-
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
-## Count
-
-Count records in a table
-
-
-[https://m3o.com/db/api#Count](https://m3o.com/db/api#Count)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/db"
-)
-
-// Count records in a table
-func CountEntriesInAtable() {
-	dbService := db.NewDbService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := dbService.Count(&db.CountRequest{
-		Table: "example",
-
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
-## Create
-
-Create a record in the database. Optionally include an "id" field otherwise it's set automatically.
-
-
-[https://m3o.com/db/api#Create](https://m3o.com/db/api#Create)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/db"
-)
-
-// Create a record in the database. Optionally include an "id" field otherwise it's set automatically.
-func CreateArecord() {
-	dbService := db.NewDbService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := dbService.Create(&db.CreateRequest{
-		Record: map[string]interface{}{
-	"isActive": true,
-	"id": "1",
-	"name": "Jane",
-	"age": 42,
-},
-Table: "example",
 
 	})
 	fmt.Println(rsp, err)
