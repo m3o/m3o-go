@@ -38,6 +38,37 @@ Subfolder: "examples/go-function",
 	
 }
 ```
+## Call
+
+Call a function by name
+
+
+[https://m3o.com/function/api#Call](https://m3o.com/function/api#Call)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/function"
+)
+
+// Call a function by name
+func CallAfunction() {
+	functionService := function.NewFunctionService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := functionService.Call(&function.CallRequest{
+		Name: "helloworld",
+Request: map[string]interface{}{
+	"name": "Alice",
+},
+
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
 ## Regions
 
 Return a list of supported regions
@@ -88,6 +119,61 @@ func ProxyUrl() {
 	rsp, err := functionService.Proxy(&function.ProxyRequest{
 		Id: "helloworld",
 
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
+## Update
+
+Update a function. Downloads the source, builds and redeploys
+
+
+[https://m3o.com/function/api#Update](https://m3o.com/function/api#Update)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/function"
+)
+
+// Update a function. Downloads the source, builds and redeploys
+func UpdateAfunction() {
+	functionService := function.NewFunctionService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := functionService.Update(&function.UpdateRequest{
+		Name: "helloworld",
+
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
+## List
+
+List all the deployed functions
+
+
+[https://m3o.com/function/api#List](https://m3o.com/function/api#List)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/function"
+)
+
+// List all the deployed functions
+func ListFunctions() {
+	functionService := function.NewFunctionService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := functionService.List(&function.ListRequest{
+		
 	})
 	fmt.Println(rsp, err)
 	
@@ -172,92 +258,6 @@ func ReserveAfunction() {
 	rsp, err := functionService.Reserve(&function.ReserveRequest{
 		Name: "helloworld",
 
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
-## Update
-
-Update a function. Downloads the source, builds and redeploys
-
-
-[https://m3o.com/function/api#Update](https://m3o.com/function/api#Update)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/function"
-)
-
-// Update a function. Downloads the source, builds and redeploys
-func UpdateAfunction() {
-	functionService := function.NewFunctionService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := functionService.Update(&function.UpdateRequest{
-		Name: "helloworld",
-
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
-## Call
-
-Call a function by name
-
-
-[https://m3o.com/function/api#Call](https://m3o.com/function/api#Call)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/function"
-)
-
-// Call a function by name
-func CallAfunction() {
-	functionService := function.NewFunctionService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := functionService.Call(&function.CallRequest{
-		Name: "helloworld",
-Request: map[string]interface{}{
-	"name": "Alice",
-},
-
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
-## List
-
-List all the deployed functions
-
-
-[https://m3o.com/function/api#List](https://m3o.com/function/api#List)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/function"
-)
-
-// List all the deployed functions
-func ListFunctions() {
-	functionService := function.NewFunctionService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := functionService.List(&function.ListRequest{
-		
 	})
 	fmt.Println(rsp, err)
 	
