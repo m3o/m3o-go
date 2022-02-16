@@ -44,6 +44,8 @@ type LookupResponse struct {
 	FuelType string `json:"fuel_type"`
 	// date of last v5 issue
 	LastV5Issued string `json:"last_v5_issued"`
+	// url of logo for the make
+	LogoUrl string `json:"logo_url"`
 	// make of vehicle
 	Make string `json:"make"`
 	// month of first registration
