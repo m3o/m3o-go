@@ -4,12 +4,12 @@ An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/db/api](https:
 
 Endpoints:
 
-## Read
+## Delete
 
-Read data from a table. Lookup can be by ID or via querying any field in the record.
+Delete a record in the database by id.
 
 
-[https://m3o.com/db/api#Read](https://m3o.com/db/api#Read)
+[https://m3o.com/db/api#Delete](https://m3o.com/db/api#Delete)
 
 ```go
 package example
@@ -21,11 +21,11 @@ import(
 	"go.m3o.com/db"
 )
 
-// Read data from a table. Lookup can be by ID or via querying any field in the record.
-func ReadRecords() {
+// Delete a record in the database by id.
+func DeleteArecord() {
 	dbService := db.NewDbService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := dbService.Read(&db.ReadRequest{
-		Query: "age == 43",
+	rsp, err := dbService.Delete(&db.DeleteRequest{
+		Id: "1",
 Table: "example",
 
 	})
@@ -33,12 +33,12 @@ Table: "example",
 	
 }
 ```
-## Count
+## DropTable
 
-Count records in a table
+Drop a table in the DB
 
 
-[https://m3o.com/db/api#Count](https://m3o.com/db/api#Count)
+[https://m3o.com/db/api#DropTable](https://m3o.com/db/api#DropTable)
 
 ```go
 package example
@@ -50,10 +50,10 @@ import(
 	"go.m3o.com/db"
 )
 
-// Count records in a table
-func CountEntriesInAtable() {
+// Drop a table in the DB
+func DropTable() {
 	dbService := db.NewDbService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := dbService.Count(&db.CountRequest{
+	rsp, err := dbService.DropTable(&db.DropTableRequest{
 		Table: "example",
 
 	})
@@ -183,12 +183,12 @@ Table: "example",
 	
 }
 ```
-## Delete
+## Count
 
-Delete a record in the database by id.
+Count records in a table
 
 
-[https://m3o.com/db/api#Delete](https://m3o.com/db/api#Delete)
+[https://m3o.com/db/api#Count](https://m3o.com/db/api#Count)
 
 ```go
 package example
@@ -200,11 +200,39 @@ import(
 	"go.m3o.com/db"
 )
 
-// Delete a record in the database by id.
-func DeleteArecord() {
+// Count records in a table
+func CountEntriesInAtable() {
 	dbService := db.NewDbService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := dbService.Delete(&db.DeleteRequest{
-		Id: "1",
+	rsp, err := dbService.Count(&db.CountRequest{
+		Table: "example",
+
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
+## Read
+
+Read data from a table. Lookup can be by ID or via querying any field in the record.
+
+
+[https://m3o.com/db/api#Read](https://m3o.com/db/api#Read)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/db"
+)
+
+// Read data from a table. Lookup can be by ID or via querying any field in the record.
+func ReadRecords() {
+	dbService := db.NewDbService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := dbService.Read(&db.ReadRequest{
+		Query: "age == 43",
 Table: "example",
 
 	})
@@ -233,34 +261,6 @@ import(
 func TruncateTable() {
 	dbService := db.NewDbService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := dbService.Truncate(&db.TruncateRequest{
-		Table: "example",
-
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
-## DropTable
-
-Drop a table in the DB
-
-
-[https://m3o.com/db/api#DropTable](https://m3o.com/db/api#DropTable)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/db"
-)
-
-// Drop a table in the DB
-func DropTable() {
-	dbService := db.NewDbService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := dbService.DropTable(&db.DropTableRequest{
 		Table: "example",
 
 	})
