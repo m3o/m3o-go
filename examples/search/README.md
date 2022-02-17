@@ -4,42 +4,6 @@ An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/search/api](ht
 
 Endpoints:
 
-## Index
-
-Index a document i.e. insert a document to search for.
-
-
-[https://m3o.com/search/api#Index](https://m3o.com/search/api#Index)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/search"
-)
-
-// Index a document i.e. insert a document to search for.
-func IndexAdocument() {
-	searchService := search.NewSearchService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := searchService.Index(&search.IndexRequest{
-		Document: &search.Document{
-	Contents: map[string]interface{}{
-		"name": "John Doe",
-		"age": 37,
-		"starsign": "Leo",
-},
-	Id: "1234",
-},
-Index: "customers",
-
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
 ## Search
 
 Search for documents in a given in index
@@ -206,6 +170,42 @@ func DeleteAnIndex() {
 	searchService := search.NewSearchService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := searchService.DeleteIndex(&search.DeleteIndexRequest{
 		Index: "customers",
+
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
+## Index
+
+Index a document i.e. insert a document to search for.
+
+
+[https://m3o.com/search/api#Index](https://m3o.com/search/api#Index)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/search"
+)
+
+// Index a document i.e. insert a document to search for.
+func IndexAdocument() {
+	searchService := search.NewSearchService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := searchService.Index(&search.IndexRequest{
+		Document: &search.Document{
+	Contents: map[string]interface{}{
+		"name": "John Doe",
+		"age": 37,
+		"starsign": "Leo",
+},
+	Id: "1234",
+},
+Index: "customers",
 
 	})
 	fmt.Println(rsp, err)
