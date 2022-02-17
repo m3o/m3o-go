@@ -12,8 +12,8 @@ func main() {
 	dbService := db.NewDbService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := dbService.Update(&db.UpdateRequest{
 		Record: map[string]interface{}{
-			"age": 43,
 			"id":  "1",
+			"age": 43,
 		},
 		Table: "example",
 	})
