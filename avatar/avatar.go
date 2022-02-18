@@ -20,7 +20,7 @@ type AvatarService struct {
 	client *client.Client
 }
 
-//
+// Generate an unique avatar
 func (t *AvatarService) Generate(request *GenerateRequest) (*GenerateResponse, error) {
 
 	rsp := &GenerateResponse{}
