@@ -26,10 +26,10 @@ func CreateArecord() {
 	dbService := db.NewDbService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := dbService.Create(&db.CreateRequest{
 		Record: map[string]interface{}{
-	"id": "1",
 	"name": "Jane",
 	"age": 42,
 	"isActive": true,
+	"id": "1",
 },
 Table: "example",
 
@@ -96,6 +96,33 @@ Table: "example",
 	
 }
 ```
+## ListTables
+
+List tables in the DB
+
+
+[https://m3o.com/db/api#ListTables](https://m3o.com/db/api#ListTables)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/db"
+)
+
+// List tables in the DB
+func ListTables() {
+	dbService := db.NewDbService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := dbService.ListTables(&db.ListTablesRequest{
+		
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
 ## RenameTable
 
 Rename a table
@@ -125,33 +152,6 @@ To: "examples3",
 	
 }
 ```
-## ListTables
-
-List tables in the DB
-
-
-[https://m3o.com/db/api#ListTables](https://m3o.com/db/api#ListTables)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/db"
-)
-
-// List tables in the DB
-func ListTables() {
-	dbService := db.NewDbService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := dbService.ListTables(&db.ListTablesRequest{
-		
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
 ## Update
 
 Update a record in the database. Include an "id" in the record to update.
@@ -174,8 +174,8 @@ func UpdateArecord() {
 	dbService := db.NewDbService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := dbService.Update(&db.UpdateRequest{
 		Record: map[string]interface{}{
-	"id": "1",
 	"age": 43,
+	"id": "1",
 },
 Table: "example",
 
