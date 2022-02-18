@@ -98,8 +98,6 @@ type DeleteResponse struct {
 }
 
 type GetRequest struct {
-	// Specify a default value returned in the event the value does not exist
-	DefaultValue string `json:"default_value"`
 	// The key to retrieve
 	Key string `json:"key"`
 }
