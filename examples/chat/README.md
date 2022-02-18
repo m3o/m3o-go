@@ -4,12 +4,12 @@ An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/chat/api](http
 
 Endpoints:
 
-## Delete
+## Join
 
-Delete a chat room
+Join a chat room
 
 
-[https://m3o.com/chat/api#Delete](https://m3o.com/chat/api#Delete)
+[https://m3o.com/chat/api#Join](https://m3o.com/chat/api#Join)
 
 ```go
 package example
@@ -21,10 +21,104 @@ import(
 	"go.m3o.com/chat"
 )
 
-// Delete a chat room
-func DeleteAchat() {
+// Join a chat room
+func JoinAroom() {
 	chatService := chat.NewChatService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := chatService.Delete(&chat.DeleteRequest{
+	
+	stream, err := chatService.Join(&chat.JoinRequest{
+		
+	})
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+
+	for {
+			rsp, err := stream.Recv()
+			if err != nil {
+					fmt.Println(err)
+					return
+			}
+
+			fmt.Println(rsp)
+	}
+}
+```
+## Kick
+
+Kick a user from a chat room
+
+
+[https://m3o.com/chat/api#Kick](https://m3o.com/chat/api#Kick)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/chat"
+)
+
+// Kick a user from a chat room
+func KickAuserFromAroom() {
+	chatService := chat.NewChatService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := chatService.Kick(&chat.KickRequest{
+		
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
+## Leave
+
+Leave a chat room
+
+
+[https://m3o.com/chat/api#Leave](https://m3o.com/chat/api#Leave)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/chat"
+)
+
+// Leave a chat room
+func LeaveAroom() {
+	chatService := chat.NewChatService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := chatService.Leave(&chat.LeaveRequest{
+		
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
+## Invite
+
+Invite a user to a chat room
+
+
+[https://m3o.com/chat/api#Invite](https://m3o.com/chat/api#Invite)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/chat"
+)
+
+// Invite a user to a chat room
+func InviteAuser() {
+	chatService := chat.NewChatService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := chatService.Invite(&chat.InviteRequest{
 		
 	})
 	fmt.Println(rsp, err)
@@ -90,60 +184,6 @@ func GetChatHistory() {
 	
 }
 ```
-## Kick
-
-Kick a user from a chat room
-
-
-[https://m3o.com/chat/api#Kick](https://m3o.com/chat/api#Kick)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/chat"
-)
-
-// Kick a user from a chat room
-func KickAuserFromAroom() {
-	chatService := chat.NewChatService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := chatService.Kick(&chat.KickRequest{
-		
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
-## Leave
-
-Leave a chat room
-
-
-[https://m3o.com/chat/api#Leave](https://m3o.com/chat/api#Leave)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/chat"
-)
-
-// Leave a chat room
-func LeaveAroom() {
-	chatService := chat.NewChatService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := chatService.Leave(&chat.LeaveRequest{
-		
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
 ## New
 
 Create a new chat room
@@ -200,12 +240,12 @@ func ListChatRooms() {
 	
 }
 ```
-## Invite
+## Delete
 
-Invite a user to a chat room
+Delete a chat room
 
 
-[https://m3o.com/chat/api#Invite](https://m3o.com/chat/api#Invite)
+[https://m3o.com/chat/api#Delete](https://m3o.com/chat/api#Delete)
 
 ```go
 package example
@@ -217,53 +257,13 @@ import(
 	"go.m3o.com/chat"
 )
 
-// Invite a user to a chat room
-func InviteAuser() {
+// Delete a chat room
+func DeleteAchat() {
 	chatService := chat.NewChatService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := chatService.Invite(&chat.InviteRequest{
+	rsp, err := chatService.Delete(&chat.DeleteRequest{
 		
 	})
 	fmt.Println(rsp, err)
 	
-}
-```
-## Join
-
-Join a chat room
-
-
-[https://m3o.com/chat/api#Join](https://m3o.com/chat/api#Join)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/chat"
-)
-
-// Join a chat room
-func JoinAroom() {
-	chatService := chat.NewChatService(os.Getenv("M3O_API_TOKEN"))
-	
-	stream, err := chatService.Join(&chat.JoinRequest{
-		
-	})
-	if err != nil {
-		fmt.Println(err)
-		return
-	}
-
-	for {
-			rsp, err := stream.Recv()
-			if err != nil {
-					fmt.Println(err)
-					return
-			}
-
-			fmt.Println(rsp)
-	}
 }
 ```
