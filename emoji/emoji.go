@@ -8,7 +8,6 @@ type Emoji interface {
 	Find(*FindRequest) (*FindResponse, error)
 	Flag(*FlagRequest) (*FlagResponse, error)
 	Print(*PrintRequest) (*PrintResponse, error)
-	Send(*SendRequest) (*SendResponse, error)
 }
 
 func NewEmojiService(token string) *EmojiService {
@@ -48,14 +47,6 @@ func (t *EmojiService) Print(request *PrintRequest) (*PrintResponse, error) {
 
 }
 
-// Send an emoji to anyone via SMS. Messages are sent in the form '<message> Sent from <from>'
-func (t *EmojiService) Send(request *SendRequest) (*SendResponse, error) {
-
-	rsp := &SendResponse{}
-	return rsp, t.client.Call("emoji", "Send", request, rsp)
-
-}
-
 type FindRequest struct {
 	// the alias code e.g :beer:
 	Alias string `json:"alias"`
@@ -84,18 +75,4 @@ type PrintRequest struct {
 type PrintResponse struct {
 	// text with rendered emojis
 	Text string `json:"text"`
-}
-
-type SendRequest struct {
-	// the name of the sender from e.g Alice
-	From string `json:"from"`
-	// message to send including emoji aliases
-	Message string `json:"message"`
-	// phone number to send to (including international dialing code)
-	To string `json:"to"`
-}
-
-type SendResponse struct {
-	// whether or not it succeeded
-	Success bool `json:"success"`
 }
