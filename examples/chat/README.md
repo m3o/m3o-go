@@ -4,33 +4,6 @@ An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/chat/api](http
 
 Endpoints:
 
-## Invite
-
-Invite a user to a chat room
-
-
-[https://m3o.com/chat/api#Invite](https://m3o.com/chat/api#Invite)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/chat"
-)
-
-// Invite a user to a chat room
-func InviteAuser() {
-	chatService := chat.NewChatService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := chatService.Invite(&chat.InviteRequest{
-		
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
 ## Join
 
 Join a chat room
@@ -179,6 +152,38 @@ func DeleteAchat() {
 	
 }
 ```
+## Send
+
+Connect to a chat to receive a stream of messages
+Send a message to a chat
+
+
+[https://m3o.com/chat/api#Send](https://m3o.com/chat/api#Send)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/chat"
+)
+
+// Connect to a chat to receive a stream of messages
+// Send a message to a chat
+func SendAmessage() {
+	chatService := chat.NewChatService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := chatService.Send(&chat.SendRequest{
+		Client: "web",
+Subject: "Random",
+Text: "Hey whats up?",
+
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
 ## History
 
 List the messages in a chat
@@ -235,13 +240,12 @@ Name: "general",
 	
 }
 ```
-## Send
+## Invite
 
-Connect to a chat to receive a stream of messages
-Send a message to a chat
+Invite a user to a chat room
 
 
-[https://m3o.com/chat/api#Send](https://m3o.com/chat/api#Send)
+[https://m3o.com/chat/api#Invite](https://m3o.com/chat/api#Invite)
 
 ```go
 package example
@@ -253,15 +257,11 @@ import(
 	"go.m3o.com/chat"
 )
 
-// Connect to a chat to receive a stream of messages
-// Send a message to a chat
-func SendAmessage() {
+// Invite a user to a chat room
+func InviteAuser() {
 	chatService := chat.NewChatService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := chatService.Send(&chat.SendRequest{
-		Client: "web",
-Subject: "Random",
-Text: "Hey whats up?",
-
+	rsp, err := chatService.Invite(&chat.InviteRequest{
+		
 	})
 	fmt.Println(rsp, err)
 	
