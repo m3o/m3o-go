@@ -4,13 +4,12 @@ An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/chat/api](http
 
 Endpoints:
 
-## Send
+## New
 
-Connect to a chat to receive a stream of messages
-Send a message to a chat
+Create a new chat room
 
 
-[https://m3o.com/chat/api#Send](https://m3o.com/chat/api#Send)
+[https://m3o.com/chat/api#New](https://m3o.com/chat/api#New)
 
 ```go
 package example
@@ -22,14 +21,12 @@ import(
 	"go.m3o.com/chat"
 )
 
-// Connect to a chat to receive a stream of messages
-// Send a message to a chat
-func SendAmessage() {
+// Create a new chat room
+func CreateAnewChat() {
 	chatService := chat.NewChatService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := chatService.Send(&chat.SendRequest{
-		Client: "web",
-Subject: "Random",
-Text: "Hey whats up?",
+	rsp, err := chatService.New(&chat.NewRequest{
+		Description: "The general chat room",
+Name: "general",
 
 	})
 	fmt.Println(rsp, err)
@@ -88,6 +85,46 @@ func LeaveAroom() {
 	})
 	fmt.Println(rsp, err)
 	
+}
+```
+## Join
+
+Join a chat room
+
+
+[https://m3o.com/chat/api#Join](https://m3o.com/chat/api#Join)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/chat"
+)
+
+// Join a chat room
+func JoinAroom() {
+	chatService := chat.NewChatService(os.Getenv("M3O_API_TOKEN"))
+	
+	stream, err := chatService.Join(&chat.JoinRequest{
+		
+	})
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+
+	for {
+			rsp, err := stream.Recv()
+			if err != nil {
+					fmt.Println(err)
+					return
+			}
+
+			fmt.Println(rsp)
+	}
 }
 ```
 ## List
@@ -171,12 +208,13 @@ func InviteAuser() {
 	
 }
 ```
-## New
+## Send
 
-Create a new chat room
+Connect to a chat to receive a stream of messages
+Send a message to a chat
 
 
-[https://m3o.com/chat/api#New](https://m3o.com/chat/api#New)
+[https://m3o.com/chat/api#Send](https://m3o.com/chat/api#Send)
 
 ```go
 package example
@@ -188,12 +226,14 @@ import(
 	"go.m3o.com/chat"
 )
 
-// Create a new chat room
-func CreateAnewChat() {
+// Connect to a chat to receive a stream of messages
+// Send a message to a chat
+func SendAmessage() {
 	chatService := chat.NewChatService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := chatService.New(&chat.NewRequest{
-		Description: "The general chat room",
-Name: "general",
+	rsp, err := chatService.Send(&chat.SendRequest{
+		Client: "web",
+Subject: "Random",
+Text: "Hey whats up?",
 
 	})
 	fmt.Println(rsp, err)
@@ -225,45 +265,5 @@ func GetChatHistory() {
 	})
 	fmt.Println(rsp, err)
 	
-}
-```
-## Join
-
-Join a chat room
-
-
-[https://m3o.com/chat/api#Join](https://m3o.com/chat/api#Join)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/chat"
-)
-
-// Join a chat room
-func JoinAroom() {
-	chatService := chat.NewChatService(os.Getenv("M3O_API_TOKEN"))
-	
-	stream, err := chatService.Join(&chat.JoinRequest{
-		
-	})
-	if err != nil {
-		fmt.Println(err)
-		return
-	}
-
-	for {
-			rsp, err := stream.Recv()
-			if err != nil {
-					fmt.Println(err)
-					return
-			}
-
-			fmt.Println(rsp)
-	}
 }
 ```
