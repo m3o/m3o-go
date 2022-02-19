@@ -31,41 +31,12 @@ func LeaveAroom() {
 	
 }
 ```
-## New
+## Delete
 
-Create a new chat room
-
-
-[https://m3o.com/chat/api#New](https://m3o.com/chat/api#New)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/chat"
-)
-
-// Create a new chat room
-func CreateAnewChat() {
-	chatService := chat.NewChatService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := chatService.New(&chat.NewRequest{
-		Description: "The general chat room",
-Name: "general",
-
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
-## List
-
-List available chats
+Delete a chat room
 
 
-[https://m3o.com/chat/api#List](https://m3o.com/chat/api#List)
+[https://m3o.com/chat/api#Delete](https://m3o.com/chat/api#Delete)
 
 ```go
 package example
@@ -77,10 +48,10 @@ import(
 	"go.m3o.com/chat"
 )
 
-// List available chats
-func ListChatRooms() {
+// Delete a chat room
+func DeleteAchat() {
 	chatService := chat.NewChatService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := chatService.List(&chat.ListRequest{
+	rsp, err := chatService.Delete(&chat.DeleteRequest{
 		
 	})
 	fmt.Println(rsp, err)
@@ -173,12 +144,12 @@ func KickAuserFromAroom() {
 	
 }
 ```
-## Delete
+## New
 
-Delete a chat room
+Create a new chat room
 
 
-[https://m3o.com/chat/api#Delete](https://m3o.com/chat/api#Delete)
+[https://m3o.com/chat/api#New](https://m3o.com/chat/api#New)
 
 ```go
 package example
@@ -190,10 +161,39 @@ import(
 	"go.m3o.com/chat"
 )
 
-// Delete a chat room
-func DeleteAchat() {
+// Create a new chat room
+func CreateAnewChat() {
 	chatService := chat.NewChatService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := chatService.Delete(&chat.DeleteRequest{
+	rsp, err := chatService.New(&chat.NewRequest{
+		Description: "The general chat room",
+Name: "general",
+
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
+## List
+
+List available chats
+
+
+[https://m3o.com/chat/api#List](https://m3o.com/chat/api#List)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/chat"
+)
+
+// List available chats
+func ListChatRooms() {
+	chatService := chat.NewChatService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := chatService.List(&chat.ListRequest{
 		
 	})
 	fmt.Println(rsp, err)
