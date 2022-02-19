@@ -90,12 +90,12 @@ func DeleteAfunction() {
 	
 }
 ```
-## Describe
+## Regions
 
-Get the info for a deployed function
+Return a list of supported regions
 
 
-[https://m3o.com/function/api#Describe](https://m3o.com/function/api#Describe)
+[https://m3o.com/function/api#Regions](https://m3o.com/function/api#Regions)
 
 ```go
 package example
@@ -107,12 +107,11 @@ import(
 	"go.m3o.com/function"
 )
 
-// Get the info for a deployed function
-func DescribeFunctionStatus() {
+// Return a list of supported regions
+func ListRegions() {
 	functionService := function.NewFunctionService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := functionService.Describe(&function.DescribeRequest{
-		Name: "helloworld",
-
+	rsp, err := functionService.Regions(&function.RegionsRequest{
+		
 	})
 	fmt.Println(rsp, err)
 	
@@ -208,12 +207,12 @@ func UpdateAfunction() {
 	
 }
 ```
-## Regions
+## Describe
 
-Return a list of supported regions
+Get the info for a deployed function
 
 
-[https://m3o.com/function/api#Regions](https://m3o.com/function/api#Regions)
+[https://m3o.com/function/api#Describe](https://m3o.com/function/api#Describe)
 
 ```go
 package example
@@ -225,11 +224,12 @@ import(
 	"go.m3o.com/function"
 )
 
-// Return a list of supported regions
-func ListRegions() {
+// Get the info for a deployed function
+func DescribeFunctionStatus() {
 	functionService := function.NewFunctionService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := functionService.Regions(&function.RegionsRequest{
-		
+	rsp, err := functionService.Describe(&function.DescribeRequest{
+		Name: "helloworld",
+
 	})
 	fmt.Println(rsp, err)
 	
