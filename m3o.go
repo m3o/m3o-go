@@ -31,6 +31,7 @@ import (
 	"go.m3o.com/joke"
 	"go.m3o.com/lists"
 	"go.m3o.com/location"
+	"go.m3o.com/meme"
 	"go.m3o.com/minecraft"
 	"go.m3o.com/movie"
 	"go.m3o.com/mq"
@@ -99,6 +100,7 @@ func NewClient(token string) *Client {
 		JokeService:       joke.NewJokeService(token),
 		ListsService:      lists.NewListsService(token),
 		LocationService:   location.NewLocationService(token),
+		MemeService:       meme.NewMemeService(token),
 		MinecraftService:  minecraft.NewMinecraftService(token),
 		MovieService:      movie.NewMovieService(token),
 		MqService:         mq.NewMqService(token),
@@ -167,6 +169,7 @@ type Client struct {
 	JokeService       *joke.JokeService
 	ListsService      *lists.ListsService
 	LocationService   *location.LocationService
+	MemeService       *meme.MemeService
 	MinecraftService  *minecraft.MinecraftService
 	MovieService      *movie.MovieService
 	MqService         *mq.MqService
