@@ -21,7 +21,7 @@ type MemegenService struct {
 	client *client.Client
 }
 
-//
+// Generate a meme using a template
 func (t *MemegenService) Generate(request *GenerateRequest) (*GenerateResponse, error) {
 
 	rsp := &GenerateResponse{}
