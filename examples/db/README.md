@@ -64,12 +64,12 @@ func TruncateTable() {
 	
 }
 ```
-## ListTables
+## RenameTable
 
-List tables in the DB
+Rename a table
 
 
-[https://m3o.com/db/api#ListTables](https://m3o.com/db/api#ListTables)
+[https://m3o.com/db/api#RenameTable](https://m3o.com/db/api#RenameTable)
 
 ```go
 package example
@@ -81,11 +81,13 @@ import(
 	"go.m3o.com/db"
 )
 
-// List tables in the DB
-func ListTables() {
+// Rename a table
+func RenameTable() {
 	dbService := db.NewDbService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := dbService.ListTables(&db.ListTablesRequest{
-		
+	rsp, err := dbService.RenameTable(&db.RenameTableRequest{
+		From: "examples2",
+To: "examples3",
+
 	})
 	fmt.Println(rsp, err)
 	
@@ -210,12 +212,12 @@ func CountEntriesInAtable() {
 	
 }
 ```
-## RenameTable
+## ListTables
 
-Rename a table
+List tables in the DB
 
 
-[https://m3o.com/db/api#RenameTable](https://m3o.com/db/api#RenameTable)
+[https://m3o.com/db/api#ListTables](https://m3o.com/db/api#ListTables)
 
 ```go
 package example
@@ -227,13 +229,11 @@ import(
 	"go.m3o.com/db"
 )
 
-// Rename a table
-func RenameTable() {
+// List tables in the DB
+func ListTables() {
 	dbService := db.NewDbService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := dbService.RenameTable(&db.RenameTableRequest{
-		From: "examples2",
-To: "examples3",
-
+	rsp, err := dbService.ListTables(&db.ListTablesRequest{
+		
 	})
 	fmt.Println(rsp, err)
 	
