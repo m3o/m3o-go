@@ -86,12 +86,12 @@ func ListRegions() {
 	
 }
 ```
-## Deploy
+## Proxy
 
-Deploy a group of functions
+Return the backend url for proxying
 
 
-[https://m3o.com/function/api#Deploy](https://m3o.com/function/api#Deploy)
+[https://m3o.com/function/api#Proxy](https://m3o.com/function/api#Proxy)
 
 ```go
 package example
@@ -103,17 +103,11 @@ import(
 	"go.m3o.com/function"
 )
 
-// Deploy a group of functions
-func DeployAfunction() {
+// Return the backend url for proxying
+func ProxyUrl() {
 	functionService := function.NewFunctionService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := functionService.Deploy(&function.DeployRequest{
-		Branch: "main",
-Entrypoint: "Helloworld",
-Name: "helloworld",
-Region: "europe-west1",
-Repo: "https://github.com/m3o/m3o",
-Runtime: "go116",
-Subfolder: "examples/go-function",
+	rsp, err := functionService.Proxy(&function.ProxyRequest{
+		Id: "helloworld",
 
 	})
 	fmt.Println(rsp, err)
@@ -235,12 +229,12 @@ func ReserveAfunction() {
 	
 }
 ```
-## Proxy
+## Deploy
 
-Return the backend url for proxying
+Deploy a group of functions
 
 
-[https://m3o.com/function/api#Proxy](https://m3o.com/function/api#Proxy)
+[https://m3o.com/function/api#Deploy](https://m3o.com/function/api#Deploy)
 
 ```go
 package example
@@ -252,11 +246,17 @@ import(
 	"go.m3o.com/function"
 )
 
-// Return the backend url for proxying
-func ProxyUrl() {
+// Deploy a group of functions
+func DeployAfunction() {
 	functionService := function.NewFunctionService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := functionService.Proxy(&function.ProxyRequest{
-		Id: "helloworld",
+	rsp, err := functionService.Deploy(&function.DeployRequest{
+		Branch: "main",
+Entrypoint: "Helloworld",
+Name: "helloworld",
+Region: "europe-west1",
+Repo: "https://github.com/m3o/m3o",
+Runtime: "go116",
+Subfolder: "examples/go-function",
 
 	})
 	fmt.Println(rsp, err)
