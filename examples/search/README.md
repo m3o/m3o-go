@@ -83,9 +83,9 @@ func IndexAdocument() {
 	rsp, err := searchService.Index(&search.IndexRequest{
 		Document: &search.Document{
 	Contents: map[string]interface{}{
+		"starsign": "Leo",
 		"name": "John Doe",
 		"age": 37,
-		"starsign": "Leo",
 },
 	Id: "1234",
 },
