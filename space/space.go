@@ -162,7 +162,17 @@ type ListResponse struct {
 	Objects []ListObject `json:"objects"`
 }
 
-type Object struct {
+type ReadRequest struct {
+	// name of the object
+	Name string `json:"name"`
+}
+
+type ReadResponse struct {
+	// The object itself
+	Object *SpaceObject `json:"object"`
+}
+
+type SpaceObject struct {
 	// when was this created
 	Created string `json:"created"`
 	// the data within the object
@@ -175,16 +185,6 @@ type Object struct {
 	Url string `json:"url"`
 	// is this public or private
 	Visibility string `json:"visibility"`
-}
-
-type ReadRequest struct {
-	// name of the object
-	Name string `json:"name"`
-}
-
-type ReadResponse struct {
-	// The object itself
-	Object *Object `json:"object"`
 }
 
 type UpdateRequest struct {
