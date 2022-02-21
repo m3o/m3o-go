@@ -54,6 +54,10 @@ type Forecast struct {
 	MaxTempC float64 `json:"max_temp_c"`
 	// max temp in fahrenheit
 	MaxTempF float64 `json:"max_temp_f"`
+	// max wind speed kph
+	MaxWindKph float64 `json:"max_wind_kph"`
+	// max wind speed mph
+	MaxWindMph float64 `json:"max_wind_mph"`
 	// minimum temp in celsius
 	MinTempC float64 `json:"min_temp_c"`
 	// minimum temp in fahrenheit
