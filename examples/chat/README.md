@@ -4,6 +4,62 @@ An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/chat/api](http
 
 Endpoints:
 
+## Kick
+
+Kick a user from a chat room
+
+
+[https://m3o.com/chat/api#Kick](https://m3o.com/chat/api#Kick)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/chat"
+)
+
+// Kick a user from a chat room
+func KickAuserFromAroom() {
+	chatService := chat.NewChatService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := chatService.Kick(&chat.KickRequest{
+		
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
+## New
+
+Create a new chat room
+
+
+[https://m3o.com/chat/api#New](https://m3o.com/chat/api#New)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/chat"
+)
+
+// Create a new chat room
+func CreateAnewChat() {
+	chatService := chat.NewChatService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := chatService.New(&chat.NewRequest{
+		Description: "The general chat room",
+Name: "general",
+
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
 ## List
 
 List available chats
@@ -130,62 +186,6 @@ func JoinAroom() {
 	}
 }
 ```
-## Leave
-
-Leave a chat room
-
-
-[https://m3o.com/chat/api#Leave](https://m3o.com/chat/api#Leave)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/chat"
-)
-
-// Leave a chat room
-func LeaveAroom() {
-	chatService := chat.NewChatService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := chatService.Leave(&chat.LeaveRequest{
-		
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
-## New
-
-Create a new chat room
-
-
-[https://m3o.com/chat/api#New](https://m3o.com/chat/api#New)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/chat"
-)
-
-// Create a new chat room
-func CreateAnewChat() {
-	chatService := chat.NewChatService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := chatService.New(&chat.NewRequest{
-		Description: "The general chat room",
-Name: "general",
-
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
 ## Delete
 
 Delete a chat room
@@ -240,12 +240,12 @@ func GetChatHistory() {
 	
 }
 ```
-## Kick
+## Leave
 
-Kick a user from a chat room
+Leave a chat room
 
 
-[https://m3o.com/chat/api#Kick](https://m3o.com/chat/api#Kick)
+[https://m3o.com/chat/api#Leave](https://m3o.com/chat/api#Leave)
 
 ```go
 package example
@@ -257,10 +257,10 @@ import(
 	"go.m3o.com/chat"
 )
 
-// Kick a user from a chat room
-func KickAuserFromAroom() {
+// Leave a chat room
+func LeaveAroom() {
 	chatService := chat.NewChatService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := chatService.Kick(&chat.KickRequest{
+	rsp, err := chatService.Leave(&chat.LeaveRequest{
 		
 	})
 	fmt.Println(rsp, err)
