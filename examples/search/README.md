@@ -6,7 +6,7 @@ Endpoints:
 
 ## Index
 
-Index a document i.e. insert a document to search for.
+Index a record i.e. insert a document to search for.
 
 
 [https://m3o.com/search/api#Index](https://m3o.com/search/api#Index)
@@ -21,17 +21,14 @@ import(
 	"go.m3o.com/search"
 )
 
-// Index a document i.e. insert a document to search for.
-func IndexAdocument() {
+// Index a record i.e. insert a document to search for.
+func IndexArecord() {
 	searchService := search.NewSearchService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := searchService.Index(&search.IndexRequest{
-		Document: &search.Document{
-	Contents: map[string]interface{}{
-		"name": "John Doe",
-		"age": 37,
-		"starsign": "Leo",
-},
-	Id: "1234",
+		Data: map[string]interface{}{
+	"name": "John Doe",
+	"age": 37,
+	"starsign": "Leo",
 },
 Index: "customers",
 
@@ -42,7 +39,7 @@ Index: "customers",
 ```
 ## Search
 
-Search for documents in a given in index
+Search for records in a given in index
 
 
 [https://m3o.com/search/api#Search](https://m3o.com/search/api#Search)
@@ -57,8 +54,8 @@ import(
 	"go.m3o.com/search"
 )
 
-// Search for documents in a given in index
-func SearchForAdocument() {
+// Search for records in a given in index
+func SearchForArecord() {
 	searchService := search.NewSearchService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := searchService.Search(&search.SearchRequest{
 		Index: "customers",
@@ -71,7 +68,7 @@ Query: "name == 'John'",
 ```
 ## Search
 
-Search for documents in a given in index
+Search for records in a given in index
 
 
 [https://m3o.com/search/api#Search](https://m3o.com/search/api#Search)
@@ -86,7 +83,7 @@ import(
 	"go.m3o.com/search"
 )
 
-// Search for documents in a given in index
+// Search for records in a given in index
 func SearchOnMultipleFieldsand() {
 	searchService := search.NewSearchService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := searchService.Search(&search.SearchRequest{
@@ -100,7 +97,7 @@ Query: "name == 'John' AND starsign == 'Leo'",
 ```
 ## Search
 
-Search for documents in a given in index
+Search for records in a given in index
 
 
 [https://m3o.com/search/api#Search](https://m3o.com/search/api#Search)
@@ -115,7 +112,7 @@ import(
 	"go.m3o.com/search"
 )
 
-// Search for documents in a given in index
+// Search for records in a given in index
 func SearchOnMultipleFieldsor() {
 	searchService := search.NewSearchService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := searchService.Search(&search.SearchRequest{
@@ -129,7 +126,7 @@ Query: "name == 'John' OR name == 'Jane'",
 ```
 ## Delete
 
-Delete a document given its ID
+Delete a record given its ID
 
 
 [https://m3o.com/search/api#Delete](https://m3o.com/search/api#Delete)
@@ -144,8 +141,8 @@ import(
 	"go.m3o.com/search"
 )
 
-// Delete a document given its ID
-func DeleteAdocument() {
+// Delete a record given its ID
+func DeleteArecord() {
 	searchService := search.NewSearchService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := searchService.Delete(&search.DeleteRequest{
 		Id: "1234",

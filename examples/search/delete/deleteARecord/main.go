@@ -7,12 +7,12 @@ import (
 	"go.m3o.com/search"
 )
 
-// Search for records in a given in index
+// Delete a record given its ID
 func main() {
 	searchService := search.NewSearchService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := searchService.Search(&search.SearchRequest{
+	rsp, err := searchService.Delete(&search.DeleteRequest{
+		Id:    "1234",
 		Index: "customers",
-		Query: "name == 'John' OR name == 'Jane'",
 	})
 	fmt.Println(rsp, err)
 }

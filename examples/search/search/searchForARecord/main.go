@@ -12,7 +12,7 @@ func main() {
 	searchService := search.NewSearchService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := searchService.Search(&search.SearchRequest{
 		Index: "customers",
-		Query: "name == 'John' OR name == 'Jane'",
+		Query: "name == 'John'",
 	})
 	fmt.Println(rsp, err)
 }

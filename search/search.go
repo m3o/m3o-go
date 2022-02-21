@@ -40,7 +40,7 @@ func (t *SearchService) DeleteIndex(request *DeleteIndexRequest) (*DeleteIndexRe
 
 }
 
-// Delete a document given its ID
+// Delete a record given its ID
 func (t *SearchService) Delete(request *DeleteRequest) (*DeleteResponse, error) {
 
 	rsp := &DeleteResponse{}
@@ -48,7 +48,7 @@ func (t *SearchService) Delete(request *DeleteRequest) (*DeleteResponse, error) 
 
 }
 
-// Index a document i.e. insert a document to search for.
+// Index a record i.e. insert a document to search for.
 func (t *SearchService) Index(request *IndexRequest) (*IndexResponse, error) {
 
 	rsp := &IndexResponse{}
@@ -56,7 +56,7 @@ func (t *SearchService) Index(request *IndexRequest) (*IndexResponse, error) {
 
 }
 
-// Search for documents in a given in index
+// Search for records in a given in index
 func (t *SearchService) Search(request *SearchRequest) (*SearchResponse, error) {
 
 	rsp := &SearchResponse{}
@@ -81,20 +81,13 @@ type DeleteIndexResponse struct {
 }
 
 type DeleteRequest struct {
-	// The ID of the document to delete
+	// The ID of the record to delete
 	Id string `json:"id"`
-	// The index the document belongs to
+	// The index the record belongs to
 	Index string `json:"index"`
 }
 
 type DeleteResponse struct {
-}
-
-type Document struct {
-	// The JSON contents of the document
-	Contents map[string]interface{} `json:"contents"`
-	// The ID for this document. If blank, one will be generated
-	Id string `json:"id"`
 }
 
 type Field struct {
@@ -105,24 +98,34 @@ type Field struct {
 }
 
 type IndexRequest struct {
-	// The document to index
-	Document *Document `json:"document"`
-	// The index this document belongs to
+	// The data to index
+	Data map[string]interface{} `json:"data"`
+	// Optional ID for the record
+	Id string `json:"id"`
+	// The index this record belongs to
 	Index string `json:"index"`
 }
 
 type IndexResponse struct {
+	// the indexed record
+	Record *Record `json:"record"`
+}
+
+type Record struct {
+	// The JSON contents of the record
+	Data map[string]interface{} `json:"data"`
+	// The ID for this record. If blank, one will be generated
 	Id string `json:"id"`
 }
 
 type SearchRequest struct {
-	// The index the document belongs to
+	// The index the record belongs to
 	Index string `json:"index"`
 	// The query. See docs for query language examples
 	Query string `json:"query"`
 }
 
 type SearchResponse struct {
-	// The matching documents
-	Documents []Document `json:"documents"`
+	// The matching records
+	Records []Record `json:"records"`
 }
