@@ -22,7 +22,7 @@ import(
 )
 
 // Call returns a personalised "Hello $name" response
-func CallTheHelloworldService() {
+func CallHelloworld() {
 	helloworldService := helloworld.NewHelloworldService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := helloworldService.Call(&helloworld.CallRequest{
 		Name: "John",
@@ -50,7 +50,7 @@ import(
 )
 
 // Stream returns a stream of "Hello $name" responses
-func StreamsResponsesFromTheServerUsingWebsockets() {
+func StreamHelloworld() {
 	helloworldService := helloworld.NewHelloworldService(os.Getenv("M3O_API_TOKEN"))
 	
 	stream, err := helloworldService.Stream(&helloworld.StreamRequest{
