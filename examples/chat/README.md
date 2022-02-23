@@ -4,12 +4,12 @@ An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/chat/api](http
 
 Endpoints:
 
-## Invite
+## History
 
-Invite a user to a chat room
+List the messages in a chat
 
 
-[https://m3o.com/chat/api#Invite](https://m3o.com/chat/api#Invite)
+[https://m3o.com/chat/api#History](https://m3o.com/chat/api#History)
 
 ```go
 package example
@@ -21,10 +21,64 @@ import(
 	"go.m3o.com/chat"
 )
 
-// Invite a user to a chat room
-func InviteAuser() {
+// List the messages in a chat
+func GetChatHistory() {
 	chatService := chat.NewChatService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := chatService.Invite(&chat.InviteRequest{
+	rsp, err := chatService.History(&chat.HistoryRequest{
+		
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
+## List
+
+List available chats
+
+
+[https://m3o.com/chat/api#List](https://m3o.com/chat/api#List)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/chat"
+)
+
+// List available chats
+func ListChatRooms() {
+	chatService := chat.NewChatService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := chatService.List(&chat.ListRequest{
+		
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
+## Delete
+
+Delete a chat room
+
+
+[https://m3o.com/chat/api#Delete](https://m3o.com/chat/api#Delete)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/chat"
+)
+
+// Delete a chat room
+func DeleteAchat() {
+	chatService := chat.NewChatService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := chatService.Delete(&chat.DeleteRequest{
 		
 	})
 	fmt.Println(rsp, err)
@@ -90,46 +144,6 @@ func KickAuserFromAroom() {
 	
 }
 ```
-## Join
-
-Join a chat room
-
-
-[https://m3o.com/chat/api#Join](https://m3o.com/chat/api#Join)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/chat"
-)
-
-// Join a chat room
-func JoinAroom() {
-	chatService := chat.NewChatService(os.Getenv("M3O_API_TOKEN"))
-	
-	stream, err := chatService.Join(&chat.JoinRequest{
-		
-	})
-	if err != nil {
-		fmt.Println(err)
-		return
-	}
-
-	for {
-			rsp, err := stream.Recv()
-			if err != nil {
-					fmt.Println(err)
-					return
-			}
-
-			fmt.Println(rsp)
-	}
-}
-```
 ## Leave
 
 Leave a chat room
@@ -186,12 +200,12 @@ Name: "general",
 	
 }
 ```
-## List
+## Invite
 
-List available chats
+Invite a user to a chat room
 
 
-[https://m3o.com/chat/api#List](https://m3o.com/chat/api#List)
+[https://m3o.com/chat/api#Invite](https://m3o.com/chat/api#Invite)
 
 ```go
 package example
@@ -203,49 +217,22 @@ import(
 	"go.m3o.com/chat"
 )
 
-// List available chats
-func ListChatRooms() {
+// Invite a user to a chat room
+func InviteAuser() {
 	chatService := chat.NewChatService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := chatService.List(&chat.ListRequest{
+	rsp, err := chatService.Invite(&chat.InviteRequest{
 		
 	})
 	fmt.Println(rsp, err)
 	
 }
 ```
-## Delete
+## Join
 
-Delete a chat room
-
-
-[https://m3o.com/chat/api#Delete](https://m3o.com/chat/api#Delete)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/chat"
-)
-
-// Delete a chat room
-func DeleteAchat() {
-	chatService := chat.NewChatService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := chatService.Delete(&chat.DeleteRequest{
-		
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
-## History
-
-List the messages in a chat
+Join a chat room
 
 
-[https://m3o.com/chat/api#History](https://m3o.com/chat/api#History)
+[https://m3o.com/chat/api#Join](https://m3o.com/chat/api#Join)
 
 ```go
 package example
@@ -257,13 +244,26 @@ import(
 	"go.m3o.com/chat"
 )
 
-// List the messages in a chat
-func GetChatHistory() {
+// Join a chat room
+func JoinAroom() {
 	chatService := chat.NewChatService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := chatService.History(&chat.HistoryRequest{
+	
+	stream, err := chatService.Join(&chat.JoinRequest{
 		
 	})
-	fmt.Println(rsp, err)
-	
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+
+	for {
+			rsp, err := stream.Recv()
+			if err != nil {
+					fmt.Println(err)
+					return
+			}
+
+			fmt.Println(rsp)
+	}
 }
 ```
