@@ -4,12 +4,12 @@ An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/function/api](
 
 Endpoints:
 
-## Update
+## Deploy
 
-Update a function. Downloads the source, builds and redeploys
+Deploy a group of functions
 
 
-[https://m3o.com/function/api#Update](https://m3o.com/function/api#Update)
+[https://m3o.com/function/api#Deploy](https://m3o.com/function/api#Deploy)
 
 ```go
 package example
@@ -21,11 +21,17 @@ import(
 	"go.m3o.com/function"
 )
 
-// Update a function. Downloads the source, builds and redeploys
-func UpdateAfunction() {
+// Deploy a group of functions
+func DeployAfunction() {
 	functionService := function.NewFunctionService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := functionService.Update(&function.UpdateRequest{
-		Name: "helloworld",
+	rsp, err := functionService.Deploy(&function.DeployRequest{
+		Branch: "main",
+Entrypoint: "Helloworld",
+Name: "helloworld",
+Region: "europe-west1",
+Repo: "https://github.com/m3o/m3o",
+Runtime: "go116",
+Subfolder: "examples/go-function",
 
 	})
 	fmt.Println(rsp, err)
@@ -58,33 +64,6 @@ Request: map[string]interface{}{
 	"name": "Alice",
 },
 
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
-## Regions
-
-Return a list of supported regions
-
-
-[https://m3o.com/function/api#Regions](https://m3o.com/function/api#Regions)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/function"
-)
-
-// Return a list of supported regions
-func ListRegions() {
-	functionService := function.NewFunctionService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := functionService.Regions(&function.RegionsRequest{
-		
 	})
 	fmt.Println(rsp, err)
 	
@@ -146,12 +125,12 @@ func ProxyUrl() {
 	
 }
 ```
-## Deploy
+## Update
 
-Deploy a group of functions
+Update a function. Downloads the source, builds and redeploys
 
 
-[https://m3o.com/function/api#Deploy](https://m3o.com/function/api#Deploy)
+[https://m3o.com/function/api#Update](https://m3o.com/function/api#Update)
 
 ```go
 package example
@@ -163,17 +142,11 @@ import(
 	"go.m3o.com/function"
 )
 
-// Deploy a group of functions
-func DeployAfunction() {
+// Update a function. Downloads the source, builds and redeploys
+func UpdateAfunction() {
 	functionService := function.NewFunctionService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := functionService.Deploy(&function.DeployRequest{
-		Branch: "main",
-Entrypoint: "Helloworld",
-Name: "helloworld",
-Region: "europe-west1",
-Repo: "https://github.com/m3o/m3o",
-Runtime: "go116",
-Subfolder: "examples/go-function",
+	rsp, err := functionService.Update(&function.UpdateRequest{
+		Name: "helloworld",
 
 	})
 	fmt.Println(rsp, err)
@@ -258,6 +231,33 @@ func DescribeFunctionStatus() {
 	rsp, err := functionService.Describe(&function.DescribeRequest{
 		Name: "helloworld",
 
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
+## Regions
+
+Return a list of supported regions
+
+
+[https://m3o.com/function/api#Regions](https://m3o.com/function/api#Regions)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/function"
+)
+
+// Return a list of supported regions
+func ListRegions() {
+	functionService := function.NewFunctionService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := functionService.Regions(&function.RegionsRequest{
+		
 	})
 	fmt.Println(rsp, err)
 	
