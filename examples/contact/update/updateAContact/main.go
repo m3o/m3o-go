@@ -7,7 +7,7 @@ import (
 	"go.m3o.com/contact"
 )
 
-//
+// Update a contact
 func main() {
 	contactService := contact.NewContactService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := contactService.Update(&contact.UpdateRequest{

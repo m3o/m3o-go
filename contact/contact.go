@@ -24,7 +24,7 @@ type ContactService struct {
 	client *client.Client
 }
 
-//
+// Create a contact
 func (t *ContactService) Create(request *CreateRequest) (*CreateResponse, error) {
 
 	rsp := &CreateResponse{}
@@ -32,7 +32,7 @@ func (t *ContactService) Create(request *CreateRequest) (*CreateResponse, error)
 
 }
 
-//
+// Delete a contact
 func (t *ContactService) Delete(request *DeleteRequest) (*DeleteResponse, error) {
 
 	rsp := &DeleteResponse{}
@@ -40,7 +40,7 @@ func (t *ContactService) Delete(request *DeleteRequest) (*DeleteResponse, error)
 
 }
 
-//
+// List contacts
 func (t *ContactService) List(request *ListRequest) (*ListResponse, error) {
 
 	rsp := &ListResponse{}
@@ -48,7 +48,7 @@ func (t *ContactService) List(request *ListRequest) (*ListResponse, error) {
 
 }
 
-//
+// Read contact details
 func (t *ContactService) Read(request *ReadRequest) (*ReadResponse, error) {
 
 	rsp := &ReadResponse{}
@@ -56,7 +56,7 @@ func (t *ContactService) Read(request *ReadRequest) (*ReadResponse, error) {
 
 }
 
-//
+// Update a contact
 func (t *ContactService) Update(request *UpdateRequest) (*UpdateResponse, error) {
 
 	rsp := &UpdateResponse{}
