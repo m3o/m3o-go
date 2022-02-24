@@ -4,6 +4,34 @@ An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/stock/api](htt
 
 Endpoints:
 
+## Quote
+
+Get the last quote for the stock
+
+
+[https://m3o.com/stock/api#Quote](https://m3o.com/stock/api#Quote)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/stock"
+)
+
+// Get the last quote for the stock
+func GetAstockQuote() {
+	stockService := stock.NewStockService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := stockService.Quote(&stock.QuoteRequest{
+		Symbol: "AAPL",
+
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
 ## History
 
 Get the historic open-close for a given day
@@ -86,34 +114,6 @@ import(
 func GetAstockPrice() {
 	stockService := stock.NewStockService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := stockService.Price(&stock.PriceRequest{
-		Symbol: "AAPL",
-
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
-## Quote
-
-Get the last quote for the stock
-
-
-[https://m3o.com/stock/api#Quote](https://m3o.com/stock/api#Quote)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/stock"
-)
-
-// Get the last quote for the stock
-func GetAstockQuote() {
-	stockService := stock.NewStockService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := stockService.Quote(&stock.QuoteRequest{
 		Symbol: "AAPL",
 
 	})
