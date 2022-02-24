@@ -5,6 +5,7 @@ import (
 )
 
 type Chat interface {
+	Create(*CreateRequest) (*CreateResponse, error)
 	Delete(*DeleteRequest) (*DeleteResponse, error)
 	History(*HistoryRequest) (*HistoryResponse, error)
 	Invite(*InviteRequest) (*InviteResponse, error)
@@ -12,7 +13,6 @@ type Chat interface {
 	Kick(*KickRequest) (*KickResponse, error)
 	Leave(*LeaveRequest) (*LeaveResponse, error)
 	List(*ListRequest) (*ListResponse, error)
-	New(*NewRequest) (*NewResponse, error)
 	Send(*SendRequest) (*SendResponse, error)
 }
 
@@ -26,6 +26,14 @@ func NewChatService(token string) *ChatService {
 
 type ChatService struct {
 	client *client.Client
+}
+
+// Create a new chat room
+func (t *ChatService) Create(request *CreateRequest) (*CreateResponse, error) {
+
+	rsp := &CreateResponse{}
+	return rsp, t.client.Call("chat", "Create", request, rsp)
+
 }
 
 // Delete a chat room
@@ -100,14 +108,6 @@ func (t *ChatService) List(request *ListRequest) (*ListResponse, error) {
 
 }
 
-// Create a new chat room
-func (t *ChatService) New(request *NewRequest) (*NewResponse, error) {
-
-	rsp := &NewResponse{}
-	return rsp, t.client.Call("chat", "New", request, rsp)
-
-}
-
 // Connect to a chat to receive a stream of messages
 // Send a message to a chat
 func (t *ChatService) Send(request *SendRequest) (*SendResponse, error) {
@@ -115,6 +115,22 @@ func (t *ChatService) Send(request *SendRequest) (*SendResponse, error) {
 	rsp := &SendResponse{}
 	return rsp, t.client.Call("chat", "Send", request, rsp)
 
+}
+
+type CreateRequest struct {
+	// chat description
+	Description string `json:"description"`
+	// name of the room
+	Name string `json:"name"`
+	// whether its a private room
+	Private bool `json:"private"`
+	// optional list of user ids
+	UserIds string `json:"user_ids"`
+}
+
+type CreateResponse struct {
+	// the unique chat room
+	Room *Room `json:"room"`
 }
 
 type DeleteRequest struct {
@@ -204,22 +220,6 @@ type Message struct {
 	Text string `json:"text"`
 	// id of the user who sent the message
 	UserId string `json:"user_id"`
-}
-
-type NewRequest struct {
-	// chat description
-	Description string `json:"description"`
-	// name of the room
-	Name string `json:"name"`
-	// whether its a private room
-	Private bool `json:"private"`
-	// optional list of user ids
-	UserIds string `json:"user_ids"`
-}
-
-type NewResponse struct {
-	// the unique chat room
-	Room *Room `json:"room"`
 }
 
 type Room struct {
