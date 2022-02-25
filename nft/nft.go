@@ -5,7 +5,9 @@ import (
 )
 
 type Nft interface {
+	Asset(*AssetRequest) (*AssetResponse, error)
 	Assets(*AssetsRequest) (*AssetsResponse, error)
+	Collection(*CollectionRequest) (*CollectionResponse, error)
 	Collections(*CollectionsRequest) (*CollectionsResponse, error)
 	Create(*CreateRequest) (*CreateResponse, error)
 }
@@ -22,11 +24,27 @@ type NftService struct {
 	client *client.Client
 }
 
+//
+func (t *NftService) Asset(request *AssetRequest) (*AssetResponse, error) {
+
+	rsp := &AssetResponse{}
+	return rsp, t.client.Call("nft", "Asset", request, rsp)
+
+}
+
 // Return a list of assets
 func (t *NftService) Assets(request *AssetsRequest) (*AssetsResponse, error) {
 
 	rsp := &AssetsResponse{}
 	return rsp, t.client.Call("nft", "Assets", request, rsp)
+
+}
+
+//
+func (t *NftService) Collection(request *CollectionRequest) (*CollectionResponse, error) {
+
+	rsp := &CollectionResponse{}
+	return rsp, t.client.Call("nft", "Collection", request, rsp)
 
 }
 
@@ -75,6 +93,17 @@ type Asset struct {
 	Sales int32 `json:"sales"`
 	// the token id
 	TokenId string `json:"token_id"`
+	// traits associated with the item
+	Traits []map[string]interface{} `json:"traits"`
+}
+
+type AssetRequest struct {
+	ContractAddress string `json:"contract_address"`
+	TokenId         string `json:"token_id"`
+}
+
+type AssetResponse struct {
+	Asset *Asset `json:"asset"`
 }
 
 type AssetsRequest struct {
@@ -96,12 +125,44 @@ type AssetsResponse struct {
 }
 
 type Collection struct {
-	CreatedAt     string `json:"created_at"`
-	Description   string `json:"description"`
-	ImageUrl      string `json:"image_url"`
-	Name          string `json:"name"`
+	// image used in the banner for the collection
+	BannerImageUrl string `json:"banner_image_url"`
+	// creation time
+	CreatedAt string `json:"created_at"`
+	// description of the collection
+	Description string `json:"description"`
+	// approved editors for this collection
+	Editors []string `json:"editors"`
+	// external link to the original website for the collection
+	ExternalLink string `json:"external_link"`
+	// an image for the collection
+	ImageUrl string `json:"image_url"`
+	// name of the collection
+	Name string `json:"name"`
+	// the payment tokens accepted for this collection
+	PaymentTokens *Token `json:"payment_tokens"`
+	// payout address for the collection's royalties
 	PayoutAddress string `json:"payout_address"`
-	Slug          string `json:"slug"`
+	// a list of the contracts associated with this collection
+	PrimaryAssetContracts *Contract `json:"primary_asset_contracts"`
+	// the collection's approval status on OpenSea
+	SafelistRequestStatus string `json:"safelist_request_status"`
+	// the fees that get paid out when a sale is made
+	SellerFees string `json:"seller_fees"`
+	// collection slug
+	Slug string `json:"slug"`
+	// sales statistics associated with the collection
+	Stats map[string]interface{} `json:"stats"`
+	// listing of all the trait types available within this collection
+	Traits map[string]interface{} `json:"traits"`
+}
+
+type CollectionRequest struct {
+	Slug string `json:"slug"`
+}
+
+type CollectionResponse struct {
+	Collection *Collection `json:"collection"`
 }
 
 type CollectionsRequest struct {

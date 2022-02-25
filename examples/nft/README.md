@@ -89,3 +89,58 @@ func ListCollections() {
 	
 }
 ```
+## Asset
+
+
+
+
+[https://m3o.com/nft/api#Asset](https://m3o.com/nft/api#Asset)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/nft"
+)
+
+// 
+func GetAsingleAsset() {
+	nftService := nft.NewNftService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := nftService.Asset(&nft.AssetRequest{
+		
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
+## Collection
+
+
+
+
+[https://m3o.com/nft/api#Collection](https://m3o.com/nft/api#Collection)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/nft"
+)
+
+// 
+func GetAsingleCollection() {
+	nftService := nft.NewNftService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := nftService.Collection(&nft.CollectionRequest{
+		Slug: "doodles-official",
+
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
