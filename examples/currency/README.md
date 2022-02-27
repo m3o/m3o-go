@@ -4,35 +4,6 @@ An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/currency/api](
 
 Endpoints:
 
-## History
-
-Returns the historic rates for a currency on a given date
-
-
-[https://m3o.com/currency/api#History](https://m3o.com/currency/api#History)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/currency"
-)
-
-// Returns the historic rates for a currency on a given date
-func HistoricRatesForAcurrency() {
-	currencyService := currency.NewCurrencyService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := currencyService.History(&currency.HistoryRequest{
-		Code: "USD",
-Date: "2021-05-30",
-
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
 ## Codes
 
 Codes returns the supported currency codes for the API
@@ -141,6 +112,35 @@ func Convert10usdToGbp() {
 		Amount: 10,
 From: "USD",
 To: "GBP",
+
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
+## History
+
+Returns the historic rates for a currency on a given date
+
+
+[https://m3o.com/currency/api#History](https://m3o.com/currency/api#History)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/currency"
+)
+
+// Returns the historic rates for a currency on a given date
+func HistoricRatesForAcurrency() {
+	currencyService := currency.NewCurrencyService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := currencyService.History(&currency.HistoryRequest{
+		Code: "USD",
+Date: "2021-05-30",
 
 	})
 	fmt.Println(rsp, err)
