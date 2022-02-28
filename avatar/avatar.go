@@ -29,22 +29,21 @@ func (t *AvatarService) Generate(request *GenerateRequest) (*GenerateResponse, e
 }
 
 type GenerateRequest struct {
-	// encode format of avatar image, `png` or `jpeg`, default is `jpeg`
+	// encode format of avatar image: `png` or `jpeg`; default is `jpeg`
 	Format string `json:"format"`
-	// avatar's gender, `male` or `female`, default is `male`
+	// avatar's gender: `male` or `female`; default is `male`
 	Gender string `json:"gender"`
-	// if upload to m3o CDN, default is `false`
-	// if update = true, then it'll return the CDN url
+	// set to true to upload to the M3O CDN and receive the url
 	Upload bool `json:"upload"`
-	// avatar's username, unique username will generates the unique avatar;
-	// if username == "", will generate a random avatar in every request
-	// if upload == true, username will be used as CDN filename rather than a random uuid string
+	// avatar's username, unique username will generate the unique avatar;
+	// if empty, every request generates a random avatar;
+	// if upload == true, username will be the CDN filename rather than a random uuid string
 	Username string `json:"username"`
 }
 
 type GenerateResponse struct {
-	// base64encode string of the avatar image
+	// base64 encoded string of the avatar image
 	Base64 string `json:"base64"`
-	// Micro's CDN url of the avatar image
+	// M3O's CDN url of the avatar image
 	Url string `json:"url"`
 }

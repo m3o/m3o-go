@@ -38,12 +38,12 @@ func (t *YoutubeService) Search(request *SearchRequest) (*SearchResponse, error)
 }
 
 type EmbedRequest struct {
-	// provide the youtube url e.g https://www.youtube.com/watch?v=GWRWZu7XsJ0
+	// provide the youtube url
 	Url string `json:"url"`
 }
 
 type EmbedResponse struct {
-	// the embeddable link e.g https://www.youtube.com/watch?v=GWRWZu7XsJ0
+	// the embeddable link
 	EmbedUrl string `json:"embed_url"`
 	// the script code
 	HtmlScript string `json:"html_script"`
@@ -64,7 +64,7 @@ type SearchResponse struct {
 }
 
 type SearchResult struct {
-	// if live broadcast then indicates activity.
+	// if live broadcast then indicates activity:
 	// none, upcoming, live, completed
 	Broadcasting string `json:"broadcasting"`
 	// the channel id
@@ -75,7 +75,7 @@ type SearchResult struct {
 	Description string `json:"description"`
 	// id of the result
 	Id string `json:"id"`
-	// kind of result; "video", "channel", "playlist"
+	// kind of result: "video", "channel", "playlist"
 	Kind string `json:"kind"`
 	// published at time
 	PublishedAt string `json:"published_at"`
