@@ -9,6 +9,7 @@ type Crypto interface {
 	News(*NewsRequest) (*NewsResponse, error)
 	Price(*PriceRequest) (*PriceResponse, error)
 	Quote(*QuoteRequest) (*QuoteResponse, error)
+	Symbols(*SymbolsRequest) (*SymbolsResponse, error)
 }
 
 func NewCryptoService(token string) *CryptoService {
@@ -52,6 +53,14 @@ func (t *CryptoService) Quote(request *QuoteRequest) (*QuoteResponse, error) {
 
 	rsp := &QuoteResponse{}
 	return rsp, t.client.Call("crypto", "Quote", request, rsp)
+
+}
+
+// Returns the full list of supported symbols
+func (t *CryptoService) Symbols(request *SymbolsRequest) (*SymbolsResponse, error) {
+
+	rsp := &SymbolsResponse{}
+	return rsp, t.client.Call("crypto", "Symbols", request, rsp)
 
 }
 
@@ -132,4 +141,16 @@ type QuoteResponse struct {
 	Symbol string `json:"symbol"`
 	// the UTC timestamp of the quote
 	Timestamp string `json:"timestamp"`
+}
+
+type Symbol struct {
+	Name   string `json:"name"`
+	Symbol string `json:"symbol"`
+}
+
+type SymbolsRequest struct {
+}
+
+type SymbolsResponse struct {
+	Symbols []Symbol `json:"symbols"`
 }

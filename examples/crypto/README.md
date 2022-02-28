@@ -116,3 +116,30 @@ func GetPreviousClose() {
 	
 }
 ```
+## Symbols
+
+Returns the full list of supported symbols
+
+
+[https://m3o.com/crypto/api#Symbols](https://m3o.com/crypto/api#Symbols)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/crypto"
+)
+
+// Returns the full list of supported symbols
+func GetListOfAllSupportedSymbols() {
+	cryptoService := crypto.NewCryptoService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := cryptoService.Symbols(&crypto.SymbolsRequest{
+		
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
