@@ -4,6 +4,33 @@ An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/nft/api](https
 
 Endpoints:
 
+## Asset
+
+
+
+
+[https://m3o.com/nft/api#Asset](https://m3o.com/nft/api#Asset)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/nft"
+)
+
+// 
+func GetAsingleAsset() {
+	nftService := nft.NewNftService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := nftService.Asset(&nft.AssetRequest{
+		
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
 ## Collection
 
 
@@ -112,33 +139,6 @@ func ListCollections() {
 	rsp, err := nftService.Collections(&nft.CollectionsRequest{
 		Limit: 1,
 
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
-## Asset
-
-
-
-
-[https://m3o.com/nft/api#Asset](https://m3o.com/nft/api#Asset)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/nft"
-)
-
-// 
-func GetAsingleAsset() {
-	nftService := nft.NewNftService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := nftService.Asset(&nft.AssetRequest{
-		
 	})
 	fmt.Println(rsp, err)
 	
