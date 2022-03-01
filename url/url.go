@@ -81,7 +81,7 @@ type URLPair struct {
 	// destination url
 	DestinationUrl string `json:"destinationURL"`
 	// The number of times the short URL has been resolved
-	HitCount int64 `json:"hit_count,string"`
+	HitCount int64 `json:"hitCount,string"`
 	// shortened url
 	ShortUrl string `json:"shortURL"`
 }
