@@ -80,6 +80,8 @@ type URLPair struct {
 	Created string `json:"created"`
 	// destination url
 	DestinationUrl string `json:"destinationURL"`
+	// The number of times the short URL has been resolved
+	HitCount int64 `json:"hit_count,string"`
 	// shortened url
 	ShortUrl string `json:"shortURL"`
 }
