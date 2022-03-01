@@ -75,6 +75,8 @@ type ZoneResponse struct {
 	Location string `json:"location"`
 	// e.g -0.37
 	Longitude float64 `json:"longitude"`
+	// UTC offset in hours
+	Offset int32 `json:"offset"`
 	// region of timezone
 	Region string `json:"region"`
 	// the timezone e.g Europe/London
