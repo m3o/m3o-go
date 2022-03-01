@@ -13,6 +13,7 @@ type Function interface {
 	Proxy(*ProxyRequest) (*ProxyResponse, error)
 	Regions(*RegionsRequest) (*RegionsResponse, error)
 	Reserve(*ReserveRequest) (*ReserveResponse, error)
+	Runtimes(*RuntimesRequest) (*RuntimesResponse, error)
 	Update(*UpdateRequest) (*UpdateResponse, error)
 }
 
@@ -89,6 +90,14 @@ func (t *FunctionService) Reserve(request *ReserveRequest) (*ReserveResponse, er
 
 	rsp := &ReserveResponse{}
 	return rsp, t.client.Call("function", "Reserve", request, rsp)
+
+}
+
+// Return a list of supported runtimes
+func (t *FunctionService) Runtimes(request *RuntimesRequest) (*RuntimesResponse, error) {
+
+	rsp := &RuntimesResponse{}
+	return rsp, t.client.Call("function", "Runtimes", request, rsp)
 
 }
 
@@ -236,6 +245,13 @@ type ReserveRequest struct {
 type ReserveResponse struct {
 	// The app reservation
 	Reservation *Reservation `json:"reservation"`
+}
+
+type RuntimesRequest struct {
+}
+
+type RuntimesResponse struct {
+	Runtimes []string `json:"runtimes"`
 }
 
 type UpdateRequest struct {
