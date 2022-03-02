@@ -20,7 +20,7 @@ type PasswordService struct {
 	client *client.Client
 }
 
-// Generate a strong random password
+// Generate a strong random password. Use the switches to control which character types are included, defaults to using all of them
 func (t *PasswordService) Generate(request *GenerateRequest) (*GenerateResponse, error) {
 
 	rsp := &GenerateResponse{}
@@ -29,8 +29,16 @@ func (t *PasswordService) Generate(request *GenerateRequest) (*GenerateResponse,
 }
 
 type GenerateRequest struct {
-	// password length; defaults to 16 chars
+	// password length; defaults to 8 chars
 	Length int32 `json:"length"`
+	// include lowercase letters
+	Lowercase bool `json:"lowercase"`
+	// include numbers
+	Numbers bool `json:"numbers"`
+	// include special characters (!@#$%&*)
+	Special bool `json:"special"`
+	// include uppercase letters
+	Uppercase bool `json:"uppercase"`
 }
 
 type GenerateResponse struct {
