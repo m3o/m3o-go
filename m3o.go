@@ -39,6 +39,7 @@ import (
 	"go.m3o.com/nft"
 	"go.m3o.com/notes"
 	"go.m3o.com/otp"
+	"go.m3o.com/password"
 	"go.m3o.com/ping"
 	"go.m3o.com/place"
 	"go.m3o.com/postcode"
@@ -108,6 +109,7 @@ func NewClient(token string) *Client {
 		Nft:        nft.NewNftService(token),
 		Notes:      notes.NewNotesService(token),
 		Otp:        otp.NewOtpService(token),
+		Password:   password.NewPasswordService(token),
 		Ping:       ping.NewPingService(token),
 		Place:      place.NewPlaceService(token),
 		Postcode:   postcode.NewPostcodeService(token),
@@ -177,6 +179,7 @@ type Client struct {
 	Nft        nft.Nft
 	Notes      notes.Notes
 	Otp        otp.Otp
+	Password   password.Password
 	Ping       ping.Ping
 	Place      place.Place
 	Postcode   postcode.Postcode
