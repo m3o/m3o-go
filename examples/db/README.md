@@ -26,8 +26,8 @@ func UpdateArecord() {
 	dbService := db.NewDbService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := dbService.Update(&db.UpdateRequest{
 		Record: map[string]interface{}{
-	"age": 43,
 	"id": "1",
+	"age": 43,
 },
 Table: "example",
 
@@ -65,12 +65,12 @@ Table: "example",
 	
 }
 ```
-## Count
+## DropTable
 
-Count records in a table
+Drop a table in the DB
 
 
-[https://m3o.com/db/api#Count](https://m3o.com/db/api#Count)
+[https://m3o.com/db/api#DropTable](https://m3o.com/db/api#DropTable)
 
 ```go
 package example
@@ -82,10 +82,10 @@ import(
 	"go.m3o.com/db"
 )
 
-// Count records in a table
-func CountEntriesInAtable() {
+// Drop a table in the DB
+func DropTable() {
 	dbService := db.NewDbService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := dbService.Count(&db.CountRequest{
+	rsp, err := dbService.DropTable(&db.DropTableRequest{
 		Table: "example",
 
 	})
@@ -184,12 +184,12 @@ func TruncateTable() {
 	
 }
 ```
-## DropTable
+## Count
 
-Drop a table in the DB
+Count records in a table
 
 
-[https://m3o.com/db/api#DropTable](https://m3o.com/db/api#DropTable)
+[https://m3o.com/db/api#Count](https://m3o.com/db/api#Count)
 
 ```go
 package example
@@ -201,10 +201,10 @@ import(
 	"go.m3o.com/db"
 )
 
-// Drop a table in the DB
-func DropTable() {
+// Count records in a table
+func CountEntriesInAtable() {
 	dbService := db.NewDbService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := dbService.DropTable(&db.DropTableRequest{
+	rsp, err := dbService.Count(&db.CountRequest{
 		Table: "example",
 
 	})
