@@ -4,34 +4,6 @@ An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/nft/api](https
 
 Endpoints:
 
-## Assets
-
-Return a list of assets
-
-
-[https://m3o.com/nft/api#Assets](https://m3o.com/nft/api#Assets)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/nft"
-)
-
-// Return a list of assets
-func GetAlistOfAssets() {
-	nftService := nft.NewNftService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := nftService.Assets(&nft.AssetsRequest{
-		Limit: 1,
-
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
 ## Create
 
 Create your own NFT (coming soon)
@@ -138,6 +110,34 @@ func GetAsingleCollection() {
 	nftService := nft.NewNftService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := nftService.Collection(&nft.CollectionRequest{
 		Slug: "doodles-official",
+
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
+## Assets
+
+Return a list of assets
+
+
+[https://m3o.com/nft/api#Assets](https://m3o.com/nft/api#Assets)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/nft"
+)
+
+// Return a list of assets
+func GetAlistOfAssets() {
+	nftService := nft.NewNftService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := nftService.Assets(&nft.AssetsRequest{
+		Limit: 1,
 
 	})
 	fmt.Println(rsp, err)
