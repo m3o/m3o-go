@@ -141,13 +141,15 @@ type DeployRequest struct {
 	Name string `json:"name"`
 	// region to deploy in. defaults to europe-west1
 	Region string `json:"region"`
-	// github url to repo
+	// github url for a repo
 	Repo string `json:"repo"`
 	// runtime/lanaguage of the function e.g php74,
 	// nodejs6, nodejs8, nodejs10, nodejs12, nodejs14, nodejs16,
 	// dotnet3, java11, ruby26, ruby27, go111, go113, go116,
 	// python37, python38, python39
 	Runtime string `json:"runtime"`
+	// inline source code
+	Source string `json:"source"`
 	// optional subfolder path
 	Subfolder string `json:"subfolder"`
 }
@@ -189,6 +191,8 @@ type Func struct {
 	// dotnet3, java11, ruby26, ruby27, go111, go113, go116,
 	// python37, python38, python39
 	Runtime string `json:"runtime"`
+	// the source code
+	Source string `json:"source"`
 	// eg. ACTIVE, DEPLOY_IN_PROGRESS, OFFLINE etc
 	Status string `json:"status"`
 	// subfolder path to entrypoint
@@ -257,6 +261,8 @@ type RuntimesResponse struct {
 type UpdateRequest struct {
 	// function name
 	Name string `json:"name"`
+	// inline source code
+	Source string `json:"source"`
 }
 
 type UpdateResponse struct {
