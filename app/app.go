@@ -205,6 +205,8 @@ type StatusResponse struct {
 }
 
 type UpdateRequest struct {
+	// Additional env vars to update
+	EnvVars map[string]string `json:"env_vars"`
 	// name of the app
 	Name string `json:"name"`
 }
