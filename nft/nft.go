@@ -24,7 +24,7 @@ type NftService struct {
 	client *client.Client
 }
 
-//
+// Get a single asset by the contract
 func (t *NftService) Asset(request *AssetRequest) (*AssetResponse, error) {
 
 	rsp := &AssetResponse{}
@@ -40,7 +40,7 @@ func (t *NftService) Assets(request *AssetsRequest) (*AssetsResponse, error) {
 
 }
 
-//
+// Get a collection by its slug
 func (t *NftService) Collection(request *CollectionRequest) (*CollectionResponse, error) {
 
 	rsp := &CollectionResponse{}
