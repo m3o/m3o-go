@@ -4,72 +4,6 @@ An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/user/api](http
 
 Endpoints:
 
-## SendMagicLink
-
-Login using email only - Passwordless
-
-
-[https://m3o.com/user/api#SendMagicLink](https://m3o.com/user/api#SendMagicLink)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/user"
-)
-
-// Login using email only - Passwordless
-func SendAmagicLink() {
-	userService := user.NewUserService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := userService.SendMagicLink(&user.SendMagicLinkRequest{
-		Address: "www.example.com",
-Email: "joe@example.com",
-Endpoint: "verifytoken",
-FromName: "Awesome Dot Com",
-Subject: "MagicLink to access your account",
-TextContent: `Hi there,
-
-Click here to access your account $micro_verification_link`,
-
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
-## UpdatePassword
-
-Update the account password
-
-
-[https://m3o.com/user/api#UpdatePassword](https://m3o.com/user/api#UpdatePassword)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/user"
-)
-
-// Update the account password
-func UpdateTheAccountPassword() {
-	userService := user.NewUserService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := userService.UpdatePassword(&user.UpdatePasswordRequest{
-		ConfirmPassword: "Password2",
-NewPassword: "Password2",
-OldPassword: "Password1",
-UserId: "user-1",
-
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
 ## Login
 
 Login using username or email. The response will return a new session for successful login,
@@ -151,6 +85,101 @@ func ReadAsessionByTheSessionId() {
 	userService := user.NewUserService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := userService.ReadSession(&user.ReadSessionRequest{
 		SessionId: "df91a612-5b24-4634-99ff-240220ab8f55",
+
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
+## Update
+
+Update the account username or email
+
+
+[https://m3o.com/user/api#Update](https://m3o.com/user/api#Update)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/user"
+)
+
+// Update the account username or email
+func UpdateAnAccount() {
+	userService := user.NewUserService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := userService.Update(&user.UpdateRequest{
+		Email: "joe+2@example.com",
+Id: "user-1",
+Username: "joe",
+
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
+## UpdatePassword
+
+Update the account password
+
+
+[https://m3o.com/user/api#UpdatePassword](https://m3o.com/user/api#UpdatePassword)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/user"
+)
+
+// Update the account password
+func UpdateTheAccountPassword() {
+	userService := user.NewUserService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := userService.UpdatePassword(&user.UpdatePasswordRequest{
+		ConfirmPassword: "Password2",
+NewPassword: "Password2",
+OldPassword: "Password1",
+UserId: "user-1",
+
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
+## SendPasswordResetEmail
+
+Send an email with a verification code to reset password.
+Call "ResetPassword" endpoint once user provides the code.
+
+
+[https://m3o.com/user/api#SendPasswordResetEmail](https://m3o.com/user/api#SendPasswordResetEmail)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/user"
+)
+
+// Send an email with a verification code to reset password.
+// Call "ResetPassword" endpoint once user provides the code.
+func SendPasswordResetEmail() {
+	userService := user.NewUserService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := userService.SendPasswordResetEmail(&user.SendPasswordResetEmailRequest{
+		Email: "joe@example.com",
+FromName: "Awesome Dot Com",
+Subject: "Password reset",
+TextContent: `Hi there,
+ click here to reset your password: myapp.com/reset/code?=$code`,
 
 	})
 	fmt.Println(rsp, err)
@@ -275,18 +304,12 @@ func ReadAccountByEmail() {
 	
 }
 ```
-## SendVerificationEmail
+## VerifyEmail
 
-Send a verification email to a user.
-Email "from" will be 'noreply@email.m3ocontent.com'.
-The verification link will be injected in the email
-as a template variable, $micro_verification_link e.g
-'Welcome to M3O! Use the link below to verify your email: $micro_verification_link'
-The variable will be replaced with a url similar to:
-'https://user.m3o.com/user/verify?token=a-verification-token&redirectUrl=your-redir-url'
+Verify the email address of an account from a token sent in an email to the user.
 
 
-[https://m3o.com/user/api#SendVerificationEmail](https://m3o.com/user/api#SendVerificationEmail)
+[https://m3o.com/user/api#VerifyEmail](https://m3o.com/user/api#VerifyEmail)
 
 ```go
 package example
@@ -298,24 +321,40 @@ import(
 	"go.m3o.com/user"
 )
 
-// Send a verification email to a user.
-// Email "from" will be 'noreply@email.m3ocontent.com'.
-// The verification link will be injected in the email
-// as a template variable, $micro_verification_link e.g
-// 'Welcome to M3O! Use the link below to verify your email: $micro_verification_link'
-// The variable will be replaced with a url similar to:
-// 'https://user.m3o.com/user/verify?token=a-verification-token&redirectUrl=your-redir-url'
-func SendVerificationEmail() {
+// Verify the email address of an account from a token sent in an email to the user.
+func VerifyEmail() {
 	userService := user.NewUserService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := userService.SendVerificationEmail(&user.SendVerificationEmailRequest{
-		Email: "joe@example.com",
-FailureRedirectUrl: "https://m3o.com/verification-failed",
-FromName: "Awesome Dot Com",
-RedirectUrl: "https://m3o.com",
-Subject: "Email verification",
-TextContent: `Hi there,
+	rsp, err := userService.VerifyEmail(&user.VerifyEmailRequest{
+		Token: "012345",
 
-Please verify your email by clicking this link: $micro_verification_link`,
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
+## List
+
+List all users. Returns a paged list of results
+
+
+[https://m3o.com/user/api#List](https://m3o.com/user/api#List)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/user"
+)
+
+// List all users. Returns a paged list of results
+func ListAllUsers() {
+	userService := user.NewUserService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := userService.List(&user.ListRequest{
+		Limit: 100,
+Offset: 0,
 
 	})
 	fmt.Println(rsp, err)
@@ -347,34 +386,6 @@ func ResetPassword() {
 ConfirmPassword: "NewPassword1",
 Email: "joe@example.com",
 NewPassword: "NewPassword1",
-
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
-## VerifyEmail
-
-Verify the email address of an account from a token sent in an email to the user.
-
-
-[https://m3o.com/user/api#VerifyEmail](https://m3o.com/user/api#VerifyEmail)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/user"
-)
-
-// Verify the email address of an account from a token sent in an email to the user.
-func VerifyEmail() {
-	userService := user.NewUserService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := userService.VerifyEmail(&user.VerifyEmailRequest{
-		Token: "012345",
 
 	})
 	fmt.Println(rsp, err)
@@ -440,43 +451,18 @@ Username: "joe",
 	
 }
 ```
-## Update
+## SendVerificationEmail
 
-Update the account username or email
-
-
-[https://m3o.com/user/api#Update](https://m3o.com/user/api#Update)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/user"
-)
-
-// Update the account username or email
-func UpdateAnAccount() {
-	userService := user.NewUserService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := userService.Update(&user.UpdateRequest{
-		Email: "joe+2@example.com",
-Id: "user-1",
-Username: "joe",
-
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
-## SendPasswordResetEmail
-
-Send an email with a verification code to reset password.
-Call "ResetPassword" endpoint once user provides the code.
+Send a verification email to a user.
+Email "from" will be 'noreply@email.m3ocontent.com'.
+The verification link will be injected in the email
+as a template variable, $micro_verification_link e.g
+'Welcome to M3O! Use the link below to verify your email: $micro_verification_link'
+The variable will be replaced with a url similar to:
+'https://user.m3o.com/user/verify?token=a-verification-token&redirectUrl=your-redir-url'
 
 
-[https://m3o.com/user/api#SendPasswordResetEmail](https://m3o.com/user/api#SendPasswordResetEmail)
+[https://m3o.com/user/api#SendVerificationEmail](https://m3o.com/user/api#SendVerificationEmail)
 
 ```go
 package example
@@ -488,28 +474,36 @@ import(
 	"go.m3o.com/user"
 )
 
-// Send an email with a verification code to reset password.
-// Call "ResetPassword" endpoint once user provides the code.
-func SendPasswordResetEmail() {
+// Send a verification email to a user.
+// Email "from" will be 'noreply@email.m3ocontent.com'.
+// The verification link will be injected in the email
+// as a template variable, $micro_verification_link e.g
+// 'Welcome to M3O! Use the link below to verify your email: $micro_verification_link'
+// The variable will be replaced with a url similar to:
+// 'https://user.m3o.com/user/verify?token=a-verification-token&redirectUrl=your-redir-url'
+func SendVerificationEmail() {
 	userService := user.NewUserService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := userService.SendPasswordResetEmail(&user.SendPasswordResetEmailRequest{
+	rsp, err := userService.SendVerificationEmail(&user.SendVerificationEmailRequest{
 		Email: "joe@example.com",
+FailureRedirectUrl: "https://m3o.com/verification-failed",
 FromName: "Awesome Dot Com",
-Subject: "Password reset",
+RedirectUrl: "https://m3o.com",
+Subject: "Email verification",
 TextContent: `Hi there,
- click here to reset your password: myapp.com/reset/code?=$code`,
+
+Please verify your email by clicking this link: $micro_verification_link`,
 
 	})
 	fmt.Println(rsp, err)
 	
 }
 ```
-## List
+## SendMagicLink
 
-List all users. Returns a paged list of results
+Login using email only - Passwordless
 
 
-[https://m3o.com/user/api#List](https://m3o.com/user/api#List)
+[https://m3o.com/user/api#SendMagicLink](https://m3o.com/user/api#SendMagicLink)
 
 ```go
 package example
@@ -521,12 +515,18 @@ import(
 	"go.m3o.com/user"
 )
 
-// List all users. Returns a paged list of results
-func ListAllUsers() {
+// Login using email only - Passwordless
+func SendAmagicLink() {
 	userService := user.NewUserService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := userService.List(&user.ListRequest{
-		Limit: 100,
-Offset: 0,
+	rsp, err := userService.SendMagicLink(&user.SendMagicLinkRequest{
+		Address: "www.example.com",
+Email: "joe@example.com",
+Endpoint: "verifytoken",
+FromName: "Awesome Dot Com",
+Subject: "MagicLink to access your account",
+TextContent: `Hi there,
+
+Click here to access your account $micro_verification_link`,
 
 	})
 	fmt.Println(rsp, err)
