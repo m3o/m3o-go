@@ -4,6 +4,33 @@ An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/holidays/api](
 
 Endpoints:
 
+## Countries
+
+Get the list of countries that are supported by this API
+
+
+[https://m3o.com/holidays/api#Countries](https://m3o.com/holidays/api#Countries)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/holidays"
+)
+
+// Get the list of countries that are supported by this API
+func ListCountries() {
+	holidaysService := holidays.NewHolidaysService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := holidaysService.Countries(&holidays.CountriesRequest{
+		
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
 ## List
 
 List the holiday dates for a given country and year
@@ -27,33 +54,6 @@ func GetHolidays() {
 	rsp, err := holidaysService.List(&holidays.ListRequest{
 		Year: 2022,
 
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
-## Countries
-
-Get the list of countries that are supported by this API
-
-
-[https://m3o.com/holidays/api#Countries](https://m3o.com/holidays/api#Countries)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/holidays"
-)
-
-// Get the list of countries that are supported by this API
-func ListCountries() {
-	holidaysService := holidays.NewHolidaysService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := holidaysService.Countries(&holidays.CountriesRequest{
-		
 	})
 	fmt.Println(rsp, err)
 	
