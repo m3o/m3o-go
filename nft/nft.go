@@ -109,9 +109,11 @@ type AssetResponse struct {
 type AssetsRequest struct {
 	// limit to members of a collection by slug name (case sensitive)
 	Collection string `json:"collection"`
+	// A cursor pointing to the page to retrieve
+	Cursor string `json:"cursor"`
 	// limit returned assets
 	Limit int32 `json:"limit"`
-	// offset for pagination
+	// DEPRECATED offset for pagination, please use cursor instead
 	Offset int32 `json:"offset"`
 	// order "asc" or "desc"
 	Order string `json:"order"`
@@ -122,6 +124,10 @@ type AssetsRequest struct {
 type AssetsResponse struct {
 	// list of assets
 	Assets []Asset `json:"assets"`
+	// A cursor to be supplied to retrieve the next page of results
+	Next string `json:"next"`
+	// A cursor to be supplied to retrieve the previous page of results
+	Previous string `json:"previous"`
 }
 
 type Collection struct {
