@@ -4,34 +4,6 @@ An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/quran/api](htt
 
 Endpoints:
 
-## Summary
-
-Get a summary for a given chapter (surah)
-
-
-[https://m3o.com/quran/api#Summary](https://m3o.com/quran/api#Summary)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/quran"
-)
-
-// Get a summary for a given chapter (surah)
-func GetChapterSummary() {
-	quranService := quran.NewQuranService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := quranService.Summary(&quran.SummaryRequest{
-		Chapter: 1,
-
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
 ## Verses
 
 Lookup the verses (ayahs) for a chapter including
@@ -114,6 +86,34 @@ func ListChapters() {
 	quranService := quran.NewQuranService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := quranService.Chapters(&quran.ChaptersRequest{
 		Language: "en",
+
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
+## Summary
+
+Get a summary for a given chapter (surah)
+
+
+[https://m3o.com/quran/api#Summary](https://m3o.com/quran/api#Summary)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/quran"
+)
+
+// Get a summary for a given chapter (surah)
+func GetChapterSummary() {
+	quranService := quran.NewQuranService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := quranService.Summary(&quran.SummaryRequest{
+		Chapter: 1,
 
 	})
 	fmt.Println(rsp, err)
