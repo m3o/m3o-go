@@ -4,12 +4,12 @@ An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/function/api](
 
 Endpoints:
 
-## Proxy
+## Call
 
-Return the backend url for proxying
+Call a function by name
 
 
-[https://m3o.com/function/api#Proxy](https://m3o.com/function/api#Proxy)
+[https://m3o.com/function/api#Call](https://m3o.com/function/api#Call)
 
 ```go
 package example
@@ -21,11 +21,14 @@ import(
 	"go.m3o.com/function"
 )
 
-// Return the backend url for proxying
-func ProxyUrl() {
+// Call a function by name
+func CallAfunction() {
 	functionService := function.NewFunctionService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := functionService.Proxy(&function.ProxyRequest{
-		Id: "helloworld",
+	rsp, err := functionService.Call(&function.CallRequest{
+		Name: "helloworld",
+Request: map[string]interface{}{
+	"name": "Alice",
+},
 
 	})
 	fmt.Println(rsp, err)
@@ -87,12 +90,12 @@ func DeleteAfunction() {
 	
 }
 ```
-## Reserve
+## Describe
 
-Reserve function names and resources beyond free quota
+Get the info for a deployed function
 
 
-[https://m3o.com/function/api#Reserve](https://m3o.com/function/api#Reserve)
+[https://m3o.com/function/api#Describe](https://m3o.com/function/api#Describe)
 
 ```go
 package example
@@ -104,39 +107,12 @@ import(
 	"go.m3o.com/function"
 )
 
-// Reserve function names and resources beyond free quota
-func ReserveAfunction() {
+// Get the info for a deployed function
+func DescribeFunctionStatus() {
 	functionService := function.NewFunctionService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := functionService.Reserve(&function.ReserveRequest{
+	rsp, err := functionService.Describe(&function.DescribeRequest{
 		Name: "helloworld",
 
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
-## Runtimes
-
-Return a list of supported runtimes
-
-
-[https://m3o.com/function/api#Runtimes](https://m3o.com/function/api#Runtimes)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/function"
-)
-
-// Return a list of supported runtimes
-func ListRuntimes() {
-	functionService := function.NewFunctionService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := functionService.Runtimes(&function.RuntimesRequest{
-		
 	})
 	fmt.Println(rsp, err)
 	
@@ -164,6 +140,34 @@ func ListRegions() {
 	functionService := function.NewFunctionService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := functionService.Regions(&function.RegionsRequest{
 		
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
+## Reserve
+
+Reserve function names and resources beyond free quota
+
+
+[https://m3o.com/function/api#Reserve](https://m3o.com/function/api#Reserve)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/function"
+)
+
+// Reserve function names and resources beyond free quota
+func ReserveAfunction() {
+	functionService := function.NewFunctionService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := functionService.Reserve(&function.ReserveRequest{
+		Name: "helloworld",
+
 	})
 	fmt.Println(rsp, err)
 	
@@ -231,12 +235,12 @@ func UpdateAfunction() {
 	
 }
 ```
-## Call
+## Runtimes
 
-Call a function by name
+Return a list of supported runtimes
 
 
-[https://m3o.com/function/api#Call](https://m3o.com/function/api#Call)
+[https://m3o.com/function/api#Runtimes](https://m3o.com/function/api#Runtimes)
 
 ```go
 package example
@@ -248,26 +252,22 @@ import(
 	"go.m3o.com/function"
 )
 
-// Call a function by name
-func CallAfunction() {
+// Return a list of supported runtimes
+func ListRuntimes() {
 	functionService := function.NewFunctionService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := functionService.Call(&function.CallRequest{
-		Name: "helloworld",
-Request: map[string]interface{}{
-	"name": "Alice",
-},
-
+	rsp, err := functionService.Runtimes(&function.RuntimesRequest{
+		
 	})
 	fmt.Println(rsp, err)
 	
 }
 ```
-## Describe
+## Proxy
 
-Get the info for a deployed function
+Return the backend url for proxying
 
 
-[https://m3o.com/function/api#Describe](https://m3o.com/function/api#Describe)
+[https://m3o.com/function/api#Proxy](https://m3o.com/function/api#Proxy)
 
 ```go
 package example
@@ -279,11 +279,11 @@ import(
 	"go.m3o.com/function"
 )
 
-// Get the info for a deployed function
-func DescribeFunctionStatus() {
+// Return the backend url for proxying
+func ProxyUrl() {
 	functionService := function.NewFunctionService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := functionService.Describe(&function.DescribeRequest{
-		Name: "helloworld",
+	rsp, err := functionService.Proxy(&function.ProxyRequest{
+		Id: "helloworld",
 
 	})
 	fmt.Println(rsp, err)
