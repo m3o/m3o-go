@@ -74,7 +74,7 @@ type Result struct {
 	// open now
 	OpenNow bool `json:"open_now"`
 	// opening hours
-	OpeningHours string `json:"opening_hours"`
+	OpeningHours []interface{} `json:"opening_hours"`
 	// rating from 1.0 to 5.0
 	Rating float64 `json:"rating"`
 	// type of location
