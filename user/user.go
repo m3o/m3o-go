@@ -9,6 +9,7 @@ type User interface {
 	Delete(*DeleteRequest) (*DeleteResponse, error)
 	List(*ListRequest) (*ListResponse, error)
 	Login(*LoginRequest) (*LoginResponse, error)
+	LogoutAll(*LogoutAllRequest) (*LogoutAllResponse, error)
 	Logout(*LogoutRequest) (*LogoutResponse, error)
 	Read(*ReadRequest) (*ReadResponse, error)
 	ReadSession(*ReadSessionRequest) (*ReadSessionResponse, error)
@@ -64,6 +65,14 @@ func (t *UserService) Login(request *LoginRequest) (*LoginResponse, error) {
 
 	rsp := &LoginResponse{}
 	return rsp, t.client.Call("user", "Login", request, rsp)
+
+}
+
+// Logout of all user's sessions
+func (t *UserService) LogoutAll(request *LogoutAllRequest) (*LogoutAllResponse, error) {
+
+	rsp := &LogoutAllResponse{}
+	return rsp, t.client.Call("user", "LogoutAll", request, rsp)
 
 }
 
@@ -232,6 +241,14 @@ type LoginRequest struct {
 type LoginResponse struct {
 	// The session of the logged in  user
 	Session *Session `json:"session"`
+}
+
+type LogoutAllRequest struct {
+	// the user to logout
+	UserId string `json:"user_id"`
+}
+
+type LogoutAllResponse struct {
 }
 
 type LogoutRequest struct {
