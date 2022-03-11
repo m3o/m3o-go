@@ -4,6 +4,92 @@ An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/function/api](
 
 Endpoints:
 
+## Call
+
+Call a function by name
+
+
+[https://m3o.com/function/api#Call](https://m3o.com/function/api#Call)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/function"
+)
+
+// Call a function by name
+func CallAfunction() {
+	functionService := function.NewFunctionService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := functionService.Call(&function.CallRequest{
+		Name: "helloworld",
+Request: map[string]interface{}{
+	"name": "Alice",
+},
+
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
+## Runtimes
+
+Return a list of supported runtimes
+
+
+[https://m3o.com/function/api#Runtimes](https://m3o.com/function/api#Runtimes)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/function"
+)
+
+// Return a list of supported runtimes
+func ListRuntimes() {
+	functionService := function.NewFunctionService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := functionService.Runtimes(&function.RuntimesRequest{
+		
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
+## Proxy
+
+Return the backend url for proxying
+
+
+[https://m3o.com/function/api#Proxy](https://m3o.com/function/api#Proxy)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/function"
+)
+
+// Return the backend url for proxying
+func ProxyUrl() {
+	functionService := function.NewFunctionService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := functionService.Proxy(&function.ProxyRequest{
+		Id: "helloworld",
+
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
 ## Deploy
 
 Deploy a group of functions
@@ -121,39 +207,12 @@ func ListRegions() {
 	
 }
 ```
-## Runtimes
+## Reserve
 
-Return a list of supported runtimes
-
-
-[https://m3o.com/function/api#Runtimes](https://m3o.com/function/api#Runtimes)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/function"
-)
-
-// Return a list of supported runtimes
-func ListRuntimes() {
-	functionService := function.NewFunctionService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := functionService.Runtimes(&function.RuntimesRequest{
-		
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
-## Proxy
-
-Return the backend url for proxying
+Reserve function names and resources beyond free quota
 
 
-[https://m3o.com/function/api#Proxy](https://m3o.com/function/api#Proxy)
+[https://m3o.com/function/api#Reserve](https://m3o.com/function/api#Reserve)
 
 ```go
 package example
@@ -165,42 +224,11 @@ import(
 	"go.m3o.com/function"
 )
 
-// Return the backend url for proxying
-func ProxyUrl() {
+// Reserve function names and resources beyond free quota
+func ReserveAfunction() {
 	functionService := function.NewFunctionService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := functionService.Proxy(&function.ProxyRequest{
-		Id: "helloworld",
-
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
-## Call
-
-Call a function by name
-
-
-[https://m3o.com/function/api#Call](https://m3o.com/function/api#Call)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/function"
-)
-
-// Call a function by name
-func CallAfunction() {
-	functionService := function.NewFunctionService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := functionService.Call(&function.CallRequest{
+	rsp, err := functionService.Reserve(&function.ReserveRequest{
 		Name: "helloworld",
-Request: map[string]interface{}{
-	"name": "Alice",
-},
 
 	})
 	fmt.Println(rsp, err)
@@ -255,34 +283,6 @@ import(
 func DeleteAfunction() {
 	functionService := function.NewFunctionService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := functionService.Delete(&function.DeleteRequest{
-		Name: "helloworld",
-
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
-## Reserve
-
-Reserve function names and resources beyond free quota
-
-
-[https://m3o.com/function/api#Reserve](https://m3o.com/function/api#Reserve)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/function"
-)
-
-// Reserve function names and resources beyond free quota
-func ReserveAfunction() {
-	functionService := function.NewFunctionService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := functionService.Reserve(&function.ReserveRequest{
 		Name: "helloworld",
 
 	})
