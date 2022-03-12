@@ -4,6 +4,33 @@ An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/function/api](
 
 Endpoints:
 
+## Runtimes
+
+Return a list of supported runtimes
+
+
+[https://m3o.com/function/api#Runtimes](https://m3o.com/function/api#Runtimes)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/function"
+)
+
+// Return a list of supported runtimes
+func ListRuntimes() {
+	functionService := function.NewFunctionService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := functionService.Runtimes(&function.RuntimesRequest{
+		
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
 ## Update
 
 Update a function. Downloads the source, builds and redeploys
@@ -58,33 +85,6 @@ Request: map[string]interface{}{
 	"name": "Alice",
 },
 
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
-## List
-
-List all the deployed functions
-
-
-[https://m3o.com/function/api#List](https://m3o.com/function/api#List)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/function"
-)
-
-// List all the deployed functions
-func ListFunctions() {
-	functionService := function.NewFunctionService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := functionService.List(&function.ListRequest{
-		
 	})
 	fmt.Println(rsp, err)
 	
@@ -146,12 +146,12 @@ func DescribeFunctionStatus() {
 	
 }
 ```
-## Proxy
+## Regions
 
-Return the backend url for proxying
+Return a list of supported regions
 
 
-[https://m3o.com/function/api#Proxy](https://m3o.com/function/api#Proxy)
+[https://m3o.com/function/api#Regions](https://m3o.com/function/api#Regions)
 
 ```go
 package example
@@ -163,12 +163,11 @@ import(
 	"go.m3o.com/function"
 )
 
-// Return the backend url for proxying
-func ProxyUrl() {
+// Return a list of supported regions
+func ListRegions() {
 	functionService := function.NewFunctionService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := functionService.Proxy(&function.ProxyRequest{
-		Id: "helloworld",
-
+	rsp, err := functionService.Regions(&function.RegionsRequest{
+		
 	})
 	fmt.Println(rsp, err)
 	
@@ -208,12 +207,12 @@ Subfolder: "examples/go-function",
 	
 }
 ```
-## Regions
+## List
 
-Return a list of supported regions
+List all the deployed functions
 
 
-[https://m3o.com/function/api#Regions](https://m3o.com/function/api#Regions)
+[https://m3o.com/function/api#List](https://m3o.com/function/api#List)
 
 ```go
 package example
@@ -225,10 +224,10 @@ import(
 	"go.m3o.com/function"
 )
 
-// Return a list of supported regions
-func ListRegions() {
+// List all the deployed functions
+func ListFunctions() {
 	functionService := function.NewFunctionService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := functionService.Regions(&function.RegionsRequest{
+	rsp, err := functionService.List(&function.ListRequest{
 		
 	})
 	fmt.Println(rsp, err)
@@ -263,12 +262,12 @@ func ReserveAfunction() {
 	
 }
 ```
-## Runtimes
+## Proxy
 
-Return a list of supported runtimes
+Return the backend url for proxying
 
 
-[https://m3o.com/function/api#Runtimes](https://m3o.com/function/api#Runtimes)
+[https://m3o.com/function/api#Proxy](https://m3o.com/function/api#Proxy)
 
 ```go
 package example
@@ -280,11 +279,12 @@ import(
 	"go.m3o.com/function"
 )
 
-// Return a list of supported runtimes
-func ListRuntimes() {
+// Return the backend url for proxying
+func ProxyUrl() {
 	functionService := function.NewFunctionService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := functionService.Runtimes(&function.RuntimesRequest{
-		
+	rsp, err := functionService.Proxy(&function.ProxyRequest{
+		Id: "helloworld",
+
 	})
 	fmt.Println(rsp, err)
 	
