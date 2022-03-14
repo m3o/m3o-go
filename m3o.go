@@ -5,6 +5,7 @@ import (
 	"go.m3o.com/answer"
 	"go.m3o.com/app"
 	"go.m3o.com/avatar"
+	"go.m3o.com/bitcoin"
 	"go.m3o.com/cache"
 	"go.m3o.com/carbon"
 	"go.m3o.com/chat"
@@ -75,6 +76,7 @@ func NewClient(token string) *Client {
 		Answer:     answer.NewAnswerService(token),
 		App:        app.NewAppService(token),
 		Avatar:     avatar.NewAvatarService(token),
+		Bitcoin:    bitcoin.NewBitcoinService(token),
 		Cache:      cache.NewCacheService(token),
 		Carbon:     carbon.NewCarbonService(token),
 		Chat:       chat.NewChatService(token),
@@ -145,6 +147,7 @@ type Client struct {
 	Answer     answer.Answer
 	App        app.App
 	Avatar     avatar.Avatar
+	Bitcoin    bitcoin.Bitcoin
 	Cache      cache.Cache
 	Carbon     carbon.Carbon
 	Chat       chat.Chat
