@@ -34,6 +34,8 @@ type PriceRequest struct {
 }
 
 type PriceResponse struct {
-	Price  float64 `json:"price"`
-	Symbol string  `json:"symbol"`
+	// The price of bitcoin
+	Price float64 `json:"price"`
+	// The symbol of pricing e.g BTCUSD
+	Symbol string `json:"symbol"`
 }
