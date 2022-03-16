@@ -8,7 +8,6 @@ import (
 	"go.m3o.com/place"
 )
 
-// Find places nearby using a location
 func main() {
 	client := m3o.New(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := client.Place.Nearby(&place.NearbyRequest{

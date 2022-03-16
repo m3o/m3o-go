@@ -8,7 +8,6 @@ import (
 	"go.m3o.com/lists"
 )
 
-// Update a list
 func main() {
 	client := m3o.New(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := client.Lists.Update(&lists.UpdateRequest{

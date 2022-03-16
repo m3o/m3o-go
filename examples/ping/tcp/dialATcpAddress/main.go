@@ -8,7 +8,6 @@ import (
 	"go.m3o.com/ping"
 )
 
-// Ping a TCP port is open
 func main() {
 	client := m3o.New(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := client.Ping.Tcp(&ping.TcpRequest{

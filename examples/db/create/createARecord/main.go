@@ -8,7 +8,6 @@ import (
 	"go.m3o.com/db"
 )
 
-// Create a record in the database. Optionally include an "id" field otherwise it's set automatically.
 func main() {
 	client := m3o.New(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := client.Db.Create(&db.CreateRequest{

@@ -8,7 +8,6 @@ import (
 	"go.m3o.com/twitter"
 )
 
-// Search for tweets with a simple query
 func main() {
 	client := m3o.New(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := client.Twitter.Search(&twitter.SearchRequest{

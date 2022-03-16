@@ -8,7 +8,6 @@ import (
 	"go.m3o.com/db"
 )
 
-// Count records in a table
 func main() {
 	client := m3o.New(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := client.Db.Count(&db.CountRequest{

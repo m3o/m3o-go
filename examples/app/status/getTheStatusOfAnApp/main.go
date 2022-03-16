@@ -8,7 +8,6 @@ import (
 	"go.m3o.com/app"
 )
 
-// Get the status of an app
 func main() {
 	client := m3o.New(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := client.App.Status(&app.StatusRequest{

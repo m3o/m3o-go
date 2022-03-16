@@ -8,7 +8,6 @@ import (
 	"go.m3o.com/location"
 )
 
-// Search for entities in a given radius
 func main() {
 	client := m3o.New(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := client.Location.Search(&location.SearchRequest{

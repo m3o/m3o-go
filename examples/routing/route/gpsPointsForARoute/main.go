@@ -8,7 +8,6 @@ import (
 	"go.m3o.com/routing"
 )
 
-// Retrieve a route as a simple list of gps points along with total distance and estimated duration
 func main() {
 	client := m3o.New(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := client.Routing.Route(&routing.RouteRequest{

@@ -8,7 +8,6 @@ import (
 	"go.m3o.com/crypto"
 )
 
-// Returns the history for the previous close
 func main() {
 	client := m3o.New(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := client.Crypto.History(&crypto.HistoryRequest{

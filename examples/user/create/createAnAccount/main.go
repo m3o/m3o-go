@@ -8,7 +8,6 @@ import (
 	"go.m3o.com/user"
 )
 
-// Create a new user account. The email address and username for the account must be unique.
 func main() {
 	client := m3o.New(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := client.User.Create(&user.CreateRequest{

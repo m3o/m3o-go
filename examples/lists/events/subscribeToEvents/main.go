@@ -8,7 +8,6 @@ import (
 	"go.m3o.com/lists"
 )
 
-// Subscribe to lists events
 func main() {
 	client := m3o.New(os.Getenv("M3O_API_TOKEN"))
 	stream, err := client.Lists.Events(&lists.EventsRequest{

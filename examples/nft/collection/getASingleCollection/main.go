@@ -8,7 +8,6 @@ import (
 	"go.m3o.com/nft"
 )
 
-// Get a collection by its slug
 func main() {
 	client := m3o.New(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := client.Nft.Collection(&nft.CollectionRequest{

@@ -8,7 +8,6 @@ import (
 	"go.m3o.com/user"
 )
 
-// Update the account username or email
 func main() {
 	client := m3o.New(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := client.User.Update(&user.UpdateRequest{

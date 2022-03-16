@@ -8,7 +8,6 @@ import (
 	"go.m3o.com/youtube"
 )
 
-// Embed a YouTube video
 func main() {
 	client := m3o.New(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := client.Youtube.Embed(&youtube.EmbedRequest{

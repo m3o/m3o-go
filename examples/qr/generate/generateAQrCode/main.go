@@ -8,7 +8,6 @@ import (
 	"go.m3o.com/qr"
 )
 
-// Generate a QR code with a specific text and size
 func main() {
 	client := m3o.New(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := client.Qr.Generate(&qr.GenerateRequest{

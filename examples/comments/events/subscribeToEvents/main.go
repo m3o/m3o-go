@@ -8,7 +8,6 @@ import (
 	"go.m3o.com/comments"
 )
 
-// Subscribe to comments events
 func main() {
 	client := m3o.New(os.Getenv("M3O_API_TOKEN"))
 	stream, err := client.Comments.Events(&comments.EventsRequest{

@@ -8,7 +8,6 @@ import (
 	"go.m3o.com/bitcoin"
 )
 
-// Get the price of bitcoin
 func main() {
 	client := m3o.New(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := client.Bitcoin.Price(&bitcoin.PriceRequest{

@@ -8,7 +8,6 @@ import (
 	"go.m3o.com/currency"
 )
 
-// Returns the historic rates for a currency on a given date
 func main() {
 	client := m3o.New(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := client.Currency.History(&currency.HistoryRequest{

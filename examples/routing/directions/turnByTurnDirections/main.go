@@ -8,7 +8,6 @@ import (
 	"go.m3o.com/routing"
 )
 
-// Turn by turn directions from a start point to an end point including maneuvers and bearings
 func main() {
 	client := m3o.New(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := client.Routing.Directions(&routing.DirectionsRequest{

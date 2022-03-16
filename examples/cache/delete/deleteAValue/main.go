@@ -8,7 +8,6 @@ import (
 	"go.m3o.com/cache"
 )
 
-// Delete a value from the cache. If key not found a success response is returned.
 func main() {
 	client := m3o.New(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := client.Cache.Delete(&cache.DeleteRequest{

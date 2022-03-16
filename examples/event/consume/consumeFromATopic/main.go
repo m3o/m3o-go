@@ -8,7 +8,6 @@ import (
 	"go.m3o.com/event"
 )
 
-// Consume events from a given topic.
 func main() {
 	client := m3o.New(os.Getenv("M3O_API_TOKEN"))
 	stream, err := client.Event.Consume(&event.ConsumeRequest{

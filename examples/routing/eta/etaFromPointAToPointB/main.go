@@ -8,7 +8,6 @@ import (
 	"go.m3o.com/routing"
 )
 
-// Get the eta for a route from origin to destination. The eta is an estimated time based on car routes
 func main() {
 	client := m3o.New(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := client.Routing.Eta(&routing.EtaRequest{

@@ -8,8 +8,6 @@ import (
 	"go.m3o.com/user"
 )
 
-// Send an email with a verification code to reset password.
-// Call "ResetPassword" endpoint once user provides the code.
 func main() {
 	client := m3o.New(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := client.User.SendPasswordResetEmail(&user.SendPasswordResetEmailRequest{

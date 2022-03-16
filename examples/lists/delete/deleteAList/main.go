@@ -8,7 +8,6 @@ import (
 	"go.m3o.com/lists"
 )
 
-// Delete a list
 func main() {
 	client := m3o.New(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := client.Lists.Delete(&lists.DeleteRequest{

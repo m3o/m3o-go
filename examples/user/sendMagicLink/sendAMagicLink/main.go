@@ -8,7 +8,6 @@ import (
 	"go.m3o.com/user"
 )
 
-// Login using email only - Passwordless
 func main() {
 	client := m3o.New(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := client.User.SendMagicLink(&user.SendMagicLinkRequest{

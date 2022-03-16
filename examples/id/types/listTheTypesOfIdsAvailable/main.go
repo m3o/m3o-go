@@ -8,7 +8,6 @@ import (
 	"go.m3o.com/id"
 )
 
-// List the types of IDs available. No query params needed.
 func main() {
 	client := m3o.New(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := client.Id.Types(&id.TypesRequest{})

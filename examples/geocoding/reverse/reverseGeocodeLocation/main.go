@@ -8,7 +8,6 @@ import (
 	"go.m3o.com/geocoding"
 )
 
-// Reverse lookup an address from gps coordinates
 func main() {
 	client := m3o.New(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := client.Geocoding.Reverse(&geocoding.ReverseRequest{

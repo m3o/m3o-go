@@ -8,7 +8,6 @@ import (
 	"go.m3o.com/search"
 )
 
-// Delete a record given its ID
 func main() {
 	client := m3o.New(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := client.Search.Delete(&search.DeleteRequest{
