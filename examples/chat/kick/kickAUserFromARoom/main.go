@@ -4,12 +4,13 @@ import (
 	"fmt"
 	"os"
 
+	"go.m3o.com"
 	"go.m3o.com/chat"
 )
 
 // Kick a user from a chat room
 func main() {
-	chatService := chat.NewChatService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := chatService.Kick(&chat.KickRequest{})
+	client := m3o.New(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := client.Chat.Kick(&chat.KickRequest{})
 	fmt.Println(rsp, err)
 }

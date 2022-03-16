@@ -4,13 +4,14 @@ import (
 	"fmt"
 	"os"
 
+	"go.m3o.com"
 	"go.m3o.com/search"
 )
 
 // Search for records in a given in index
 func main() {
-	searchService := search.NewSearchService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := searchService.Search(&search.SearchRequest{
+	client := m3o.New(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := client.Search.Search(&search.SearchRequest{
 		Index: "customers",
 		Query: "name == 'John' OR name == 'Jane'",
 	})

@@ -4,13 +4,14 @@ import (
 	"fmt"
 	"os"
 
+	"go.m3o.com"
 	"go.m3o.com/space"
 )
 
 // Download an object via a presigned url
 func main() {
-	spaceService := space.NewSpaceService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := spaceService.Download(&space.DownloadRequest{
+	client := m3o.New(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := client.Space.Download(&space.DownloadRequest{
 		Name: "images/file.jpg",
 	})
 	fmt.Println(rsp, err)

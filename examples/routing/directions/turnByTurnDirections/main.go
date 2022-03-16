@@ -4,13 +4,14 @@ import (
 	"fmt"
 	"os"
 
+	"go.m3o.com"
 	"go.m3o.com/routing"
 )
 
 // Turn by turn directions from a start point to an end point including maneuvers and bearings
 func main() {
-	routingService := routing.NewRoutingService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := routingService.Directions(&routing.DirectionsRequest{
+	client := m3o.New(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := client.Routing.Directions(&routing.DirectionsRequest{
 		Destination: &routing.Point{
 			Latitude:  52.529407,
 			Longitude: 13.397634,

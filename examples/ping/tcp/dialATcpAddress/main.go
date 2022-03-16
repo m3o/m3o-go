@@ -4,13 +4,14 @@ import (
 	"fmt"
 	"os"
 
+	"go.m3o.com"
 	"go.m3o.com/ping"
 )
 
 // Ping a TCP port is open
 func main() {
-	pingService := ping.NewPingService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := pingService.Tcp(&ping.TcpRequest{
+	client := m3o.New(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := client.Ping.Tcp(&ping.TcpRequest{
 		Address: "google.com:80",
 	})
 	fmt.Println(rsp, err)

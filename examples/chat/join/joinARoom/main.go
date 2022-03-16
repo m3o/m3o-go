@@ -4,13 +4,14 @@ import (
 	"fmt"
 	"os"
 
+	"go.m3o.com"
 	"go.m3o.com/chat"
 )
 
 // Join a chat room
 func main() {
-	chatService := chat.NewChatService(os.Getenv("M3O_API_TOKEN"))
-	stream, err := chatService.Join(&chat.JoinRequest{})
+	client := m3o.New(os.Getenv("M3O_API_TOKEN"))
+	stream, err := client.Chat.Join(&chat.JoinRequest{})
 	if err != nil {
 		fmt.Println(err)
 		return

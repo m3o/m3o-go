@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"os"
 
+	"go.m3o.com"
 	"go.m3o.com/image"
 )
 
@@ -12,8 +13,8 @@ import (
 // To use the file parameter you need to send the request as a multipart/form-data rather than the usual application/json
 // with each parameter as a form field.
 func main() {
-	imageService := image.NewImageService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := imageService.Upload(&image.UploadRequest{
+	client := m3o.New(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := client.Image.Upload(&image.UploadRequest{
 		Name: "cat.jpeg",
 		Url:  "somewebsite.com/cat.png",
 	})

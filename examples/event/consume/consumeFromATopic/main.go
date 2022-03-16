@@ -4,13 +4,14 @@ import (
 	"fmt"
 	"os"
 
+	"go.m3o.com"
 	"go.m3o.com/event"
 )
 
 // Consume events from a given topic.
 func main() {
-	eventService := event.NewEventService(os.Getenv("M3O_API_TOKEN"))
-	stream, err := eventService.Consume(&event.ConsumeRequest{
+	client := m3o.New(os.Getenv("M3O_API_TOKEN"))
+	stream, err := client.Event.Consume(&event.ConsumeRequest{
 		Topic: "user",
 	})
 	if err != nil {

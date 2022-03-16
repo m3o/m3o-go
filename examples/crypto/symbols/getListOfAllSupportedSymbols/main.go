@@ -4,12 +4,13 @@ import (
 	"fmt"
 	"os"
 
+	"go.m3o.com"
 	"go.m3o.com/crypto"
 )
 
 // Returns the full list of supported symbols
 func main() {
-	cryptoService := crypto.NewCryptoService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := cryptoService.Symbols(&crypto.SymbolsRequest{})
+	client := m3o.New(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := client.Crypto.Symbols(&crypto.SymbolsRequest{})
 	fmt.Println(rsp, err)
 }

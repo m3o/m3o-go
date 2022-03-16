@@ -4,12 +4,13 @@ import (
 	"fmt"
 	"os"
 
+	"go.m3o.com"
 	"go.m3o.com/db"
 )
 
 // List tables in the DB
 func main() {
-	dbService := db.NewDbService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := dbService.ListTables(&db.ListTablesRequest{})
+	client := m3o.New(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := client.Db.ListTables(&db.ListTablesRequest{})
 	fmt.Println(rsp, err)
 }

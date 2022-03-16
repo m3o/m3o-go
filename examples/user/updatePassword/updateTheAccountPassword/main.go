@@ -4,13 +4,14 @@ import (
 	"fmt"
 	"os"
 
+	"go.m3o.com"
 	"go.m3o.com/user"
 )
 
 // Update the account password
 func main() {
-	userService := user.NewUserService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := userService.UpdatePassword(&user.UpdatePasswordRequest{
+	client := m3o.New(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := client.User.UpdatePassword(&user.UpdatePasswordRequest{
 		ConfirmPassword: "Password2",
 		NewPassword:     "Password2",
 		OldPassword:     "Password1",

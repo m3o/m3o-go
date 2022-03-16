@@ -4,13 +4,14 @@ import (
 	"fmt"
 	"os"
 
+	"go.m3o.com"
 	"go.m3o.com/contact"
 )
 
 // Create a contact
 func main() {
-	contactService := contact.NewContactService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := contactService.Create(&contact.CreateRequest{
+	client := m3o.New(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := client.Contact.Create(&contact.CreateRequest{
 		Addresses: []contact.Address{
 			contact.Address{
 				Label:    "company address",

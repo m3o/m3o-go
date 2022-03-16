@@ -4,13 +4,14 @@ import (
 	"fmt"
 	"os"
 
+	"go.m3o.com"
 	"go.m3o.com/app"
 )
 
 // Get the status of an app
 func main() {
-	appService := app.NewAppService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := appService.Status(&app.StatusRequest{
+	client := m3o.New(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := client.App.Status(&app.StatusRequest{
 		Name: "helloworld",
 	})
 	fmt.Println(rsp, err)

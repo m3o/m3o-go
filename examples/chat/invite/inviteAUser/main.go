@@ -4,12 +4,13 @@ import (
 	"fmt"
 	"os"
 
+	"go.m3o.com"
 	"go.m3o.com/chat"
 )
 
 // Invite a user to a chat room
 func main() {
-	chatService := chat.NewChatService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := chatService.Invite(&chat.InviteRequest{})
+	client := m3o.New(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := client.Chat.Invite(&chat.InviteRequest{})
 	fmt.Println(rsp, err)
 }

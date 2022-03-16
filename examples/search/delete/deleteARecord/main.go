@@ -4,13 +4,14 @@ import (
 	"fmt"
 	"os"
 
+	"go.m3o.com"
 	"go.m3o.com/search"
 )
 
 // Delete a record given its ID
 func main() {
-	searchService := search.NewSearchService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := searchService.Delete(&search.DeleteRequest{
+	client := m3o.New(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := client.Search.Delete(&search.DeleteRequest{
 		Id:    "1234",
 		Index: "customers",
 	})

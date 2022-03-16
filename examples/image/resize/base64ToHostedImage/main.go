@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"os"
 
+	"go.m3o.com"
 	"go.m3o.com/image"
 )
 
@@ -13,8 +14,8 @@ import (
 // To use the file parameter you need to send the request as a multipart/form-data rather than the usual application/json
 // with each parameter as a form field.
 func main() {
-	imageService := image.NewImageService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := imageService.Resize(&image.ResizeRequest{
+	client := m3o.New(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := client.Image.Resize(&image.ResizeRequest{
 		Base64: "data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg==",
 		Height: 100,
 		Name:   "cat.png",

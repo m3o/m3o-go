@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"os"
 
+	"go.m3o.com"
 	"go.m3o.com/user"
 )
 
@@ -15,8 +16,8 @@ import (
 // The variable will be replaced with a url similar to:
 // 'https://user.m3o.com/user/verify?token=a-verification-token&redirectUrl=your-redir-url'
 func main() {
-	userService := user.NewUserService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := userService.SendVerificationEmail(&user.SendVerificationEmailRequest{
+	client := m3o.New(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := client.User.SendVerificationEmail(&user.SendVerificationEmailRequest{
 		Email:              "joe@example.com",
 		FailureRedirectUrl: "https://m3o.com/verification-failed",
 		FromName:           "Awesome Dot Com",

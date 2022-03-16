@@ -4,13 +4,14 @@ import (
 	"fmt"
 	"os"
 
+	"go.m3o.com"
 	"go.m3o.com/movie"
 )
 
 // Search for movies by simple text search
 func main() {
-	movieService := movie.NewMovieService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := movieService.Search(&movie.SearchRequest{
+	client := m3o.New(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := client.Movie.Search(&movie.SearchRequest{
 		Language: "en-US",
 		Page:     1,
 		Query:    "inception",

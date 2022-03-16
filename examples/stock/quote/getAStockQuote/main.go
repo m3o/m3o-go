@@ -4,13 +4,14 @@ import (
 	"fmt"
 	"os"
 
+	"go.m3o.com"
 	"go.m3o.com/stock"
 )
 
 // Get the last quote for the stock
 func main() {
-	stockService := stock.NewStockService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := stockService.Quote(&stock.QuoteRequest{
+	client := m3o.New(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := client.Stock.Quote(&stock.QuoteRequest{
 		Symbol: "AAPL",
 	})
 	fmt.Println(rsp, err)

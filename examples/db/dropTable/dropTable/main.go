@@ -4,13 +4,14 @@ import (
 	"fmt"
 	"os"
 
+	"go.m3o.com"
 	"go.m3o.com/db"
 )
 
 // Drop a table in the DB
 func main() {
-	dbService := db.NewDbService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := dbService.DropTable(&db.DropTableRequest{
+	client := m3o.New(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := client.Db.DropTable(&db.DropTableRequest{
 		Table: "example",
 	})
 	fmt.Println(rsp, err)

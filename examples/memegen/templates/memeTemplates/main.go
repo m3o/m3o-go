@@ -4,12 +4,13 @@ import (
 	"fmt"
 	"os"
 
+	"go.m3o.com"
 	"go.m3o.com/memegen"
 )
 
 // List the available templates
 func main() {
-	memegenService := memegen.NewMemegenService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := memegenService.Templates(&memegen.TemplatesRequest{})
+	client := m3o.New(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := client.Memegen.Templates(&memegen.TemplatesRequest{})
 	fmt.Println(rsp, err)
 }

@@ -4,13 +4,14 @@ import (
 	"fmt"
 	"os"
 
+	"go.m3o.com"
 	"go.m3o.com/user"
 )
 
 // Login using email only - Passwordless
 func main() {
-	userService := user.NewUserService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := userService.SendMagicLink(&user.SendMagicLinkRequest{
+	client := m3o.New(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := client.User.SendMagicLink(&user.SendMagicLinkRequest{
 		Address:  "www.example.com",
 		Email:    "joe@example.com",
 		Endpoint: "verifytoken",

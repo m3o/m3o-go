@@ -4,13 +4,14 @@ import (
 	"fmt"
 	"os"
 
+	"go.m3o.com"
 	"go.m3o.com/helloworld"
 )
 
 // Stream returns a stream of "Hello $name" responses
 func main() {
-	helloworldService := helloworld.NewHelloworldService(os.Getenv("M3O_API_TOKEN"))
-	stream, err := helloworldService.Stream(&helloworld.StreamRequest{
+	client := m3o.New(os.Getenv("M3O_API_TOKEN"))
+	stream, err := client.Helloworld.Stream(&helloworld.StreamRequest{
 		Messages: 10,
 		Name:     "John",
 	})

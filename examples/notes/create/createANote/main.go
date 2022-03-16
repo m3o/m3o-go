@@ -4,13 +4,14 @@ import (
 	"fmt"
 	"os"
 
+	"go.m3o.com"
 	"go.m3o.com/notes"
 )
 
 // Create a new note
 func main() {
-	notesService := notes.NewNotesService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := notesService.Create(&notes.CreateRequest{
+	client := m3o.New(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := client.Notes.Create(&notes.CreateRequest{
 		Text:  "This is my note",
 		Title: "New Note",
 	})
