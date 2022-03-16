@@ -69,7 +69,7 @@ import (
 	"go.m3o.com/youtube"
 )
 
-func NewClient(token string) *Client {
+func New(token string) *Client {
 	return &Client{
 		token: token,
 
