@@ -21,7 +21,7 @@ type HelloworldService struct {
 	client *client.Client
 }
 
-// Call returns a personalised "Hello $name" response
+// Return a personalised Hello message
 func (t *HelloworldService) Call(request *CallRequest) (*CallResponse, error) {
 
 	rsp := &CallResponse{}
@@ -29,7 +29,7 @@ func (t *HelloworldService) Call(request *CallRequest) (*CallResponse, error) {
 
 }
 
-// Stream returns a stream of "Hello $name" responses
+// Stream a personalised Hello message
 func (t *HelloworldService) Stream(request *StreamRequest) (*StreamResponseStream, error) {
 	stream, err := t.client.Stream("helloworld", "Stream", request)
 	if err != nil {
@@ -54,19 +54,23 @@ func (t *StreamResponseStream) Recv() (*StreamResponse, error) {
 }
 
 type CallRequest struct {
+	// name to append to the message e.g Alice
 	Name string `json:"name"`
 }
 
 type CallResponse struct {
+	// message including name e.g Hello Alice
 	Message string `json:"message"`
 }
 
 type StreamRequest struct {
 	// the number of messages to send back
-	Messages int64  `json:"messages,string"`
-	Name     string `json:"name"`
+	Messages int64 `json:"messages,string"`
+	// name to append to the message e.g Alice
+	Name string `json:"name"`
 }
 
 type StreamResponse struct {
+	// message including name e.g Hello Alice
 	Message string `json:"message"`
 }

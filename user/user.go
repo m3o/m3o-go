@@ -126,12 +126,6 @@ func (t *UserService) SendPasswordResetEmail(request *SendPasswordResetEmailRequ
 }
 
 // Send a verification email to a user.
-// Email "from" will be 'noreply@email.m3ocontent.com'.
-// The verification link will be injected in the email
-// as a template variable, $micro_verification_link e.g
-// 'Welcome to M3O! Use the link below to verify your email: $micro_verification_link'
-// The variable will be replaced with a url similar to:
-// 'https://user.m3o.com/user/verify?token=a-verification-token&redirectUrl=your-redir-url'
 func (t *UserService) SendVerificationEmail(request *SendVerificationEmailRequest) (*SendVerificationEmailResponse, error) {
 
 	rsp := &SendVerificationEmailResponse{}
@@ -344,8 +338,7 @@ type SendVerificationEmailRequest struct {
 	RedirectUrl string `json:"redirect_url"`
 	// subject of the email
 	Subject string `json:"subject"`
-	// Text content of the email. Don't forget to include the string '$micro_verification_link' which will be replaced by the real verification link
-	// HTML emails are not available currently.
+	// Text content of the email. Include '$micro_verification_link' which will be replaced by a verification link
 	TextContent string `json:"text_content"`
 }
 
