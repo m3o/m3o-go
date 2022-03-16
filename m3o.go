@@ -2,6 +2,7 @@ package m3o
 
 import (
 	"go.m3o.com/address"
+	"go.m3o.com/analytics"
 	"go.m3o.com/answer"
 	"go.m3o.com/app"
 	"go.m3o.com/avatar"
@@ -73,6 +74,7 @@ func NewClient(token string) *Client {
 		token: token,
 
 		Address:    address.NewAddressService(token),
+		Analytics:  analytics.NewAnalyticsService(token),
 		Answer:     answer.NewAnswerService(token),
 		App:        app.NewAppService(token),
 		Avatar:     avatar.NewAvatarService(token),
@@ -144,6 +146,7 @@ type Client struct {
 	token string
 
 	Address    address.Address
+	Analytics  analytics.Analytics
 	Answer     answer.Answer
 	App        app.App
 	Avatar     avatar.Avatar
