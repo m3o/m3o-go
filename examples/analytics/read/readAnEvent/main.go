@@ -10,6 +10,8 @@ import (
 // Get a single event
 func main() {
 	analyticsService := analytics.NewAnalyticsService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := analyticsService.Read(&analytics.ReadRequest{})
+	rsp, err := analyticsService.Read(&analytics.ReadRequest{
+		Name: "click",
+	})
 	fmt.Println(rsp, err)
 }
