@@ -10,6 +10,7 @@ type Function interface {
 	Deploy(*DeployRequest) (*DeployResponse, error)
 	Describe(*DescribeRequest) (*DescribeResponse, error)
 	List(*ListRequest) (*ListResponse, error)
+	Logs(*LogsRequest) (*LogsResponse, error)
 	Proxy(*ProxyRequest) (*ProxyResponse, error)
 	Regions(*RegionsRequest) (*RegionsResponse, error)
 	Reserve(*ReserveRequest) (*ReserveResponse, error)
@@ -66,6 +67,14 @@ func (t *FunctionService) List(request *ListRequest) (*ListResponse, error) {
 
 	rsp := &ListResponse{}
 	return rsp, t.client.Call("function", "List", request, rsp)
+
+}
+
+// Get the logs for a function
+func (t *FunctionService) Logs(request *LogsRequest) (*LogsResponse, error) {
+
+	rsp := &LogsResponse{}
+	return rsp, t.client.Call("function", "Logs", request, rsp)
 
 }
 
@@ -209,6 +218,17 @@ type ListRequest struct {
 type ListResponse struct {
 	// List of functions deployed
 	Functions []Func `json:"functions"`
+}
+
+type LogsRequest struct {
+	// type of logs to retrieve, currently supported options - "build"
+	LogsType string `json:"logs_type"`
+	// the name of the function
+	Name string `json:"name"`
+}
+
+type LogsResponse struct {
+	Logs string `json:"logs"`
 }
 
 type ProxyRequest struct {
