@@ -7,6 +7,7 @@ import (
 type App interface {
 	Delete(*DeleteRequest) (*DeleteResponse, error)
 	List(*ListRequest) (*ListResponse, error)
+	Logs(*LogsRequest) (*LogsResponse, error)
 	Regions(*RegionsRequest) (*RegionsResponse, error)
 	Reserve(*ReserveRequest) (*ReserveResponse, error)
 	Resolve(*ResolveRequest) (*ResolveResponse, error)
@@ -40,6 +41,14 @@ func (t *AppService) List(request *ListRequest) (*ListResponse, error) {
 
 	rsp := &ListResponse{}
 	return rsp, t.client.Call("app", "List", request, rsp)
+
+}
+
+// Get the logs for an app
+func (t *AppService) Logs(request *LogsRequest) (*LogsResponse, error) {
+
+	rsp := &LogsResponse{}
+	return rsp, t.client.Call("app", "Logs", request, rsp)
 
 }
 
@@ -105,6 +114,17 @@ type ListRequest struct {
 type ListResponse struct {
 	// all the apps
 	Services []Service `json:"services"`
+}
+
+type LogsRequest struct {
+	// type of logs to retrieve, currently supported options - "build"
+	LogsType string `json:"logs_type"`
+	// name of the app
+	Name string `json:"name"`
+}
+
+type LogsResponse struct {
+	Logs string `json:"logs"`
 }
 
 type RegionsRequest struct {
