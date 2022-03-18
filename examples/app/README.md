@@ -31,40 +31,12 @@ func ListRegions() {
 	
 }
 ```
-## Status
+## Logs
 
-Get the status of an app
-
-
-[https://m3o.com/app/api#Status](https://m3o.com/app/api#Status)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/app"
-)
-
-// Get the status of an app
-func GetTheStatusOfAnApp() {
-	appService := app.NewAppService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := appService.Status(&app.StatusRequest{
-		Name: "helloworld",
-
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
-## Update
-
-Update the app. The latest source code will be downloaded, built and deployed.
+Get the logs for an app
 
 
-[https://m3o.com/app/api#Update](https://m3o.com/app/api#Update)
+[https://m3o.com/app/api#Logs](https://m3o.com/app/api#Logs)
 
 ```go
 package example
@@ -76,10 +48,10 @@ import(
 	"go.m3o.com/app"
 )
 
-// Update the app. The latest source code will be downloaded, built and deployed.
-func UpdateAnApp() {
+// Get the logs for an app
+func RetrieveBuildLogsForAnApp() {
 	appService := app.NewAppService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := appService.Update(&app.UpdateRequest{
+	rsp, err := appService.Logs(&app.LogsRequest{
 		Name: "helloworld",
 
 	})
@@ -174,34 +146,6 @@ Repo: "github.com/asim/helloworld",
 	
 }
 ```
-## Resolve
-
-Resolve an app by id to its raw backend endpoint
-
-
-[https://m3o.com/app/api#Resolve](https://m3o.com/app/api#Resolve)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/app"
-)
-
-// Resolve an app by id to its raw backend endpoint
-func ResolveAppById() {
-	appService := app.NewAppService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := appService.Resolve(&app.ResolveRequest{
-		Id: "helloworld",
-
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
 ## Delete
 
 Delete an app
@@ -230,12 +174,12 @@ func DeleteAnApp() {
 	
 }
 ```
-## Logs
+## Status
 
-Get the logs for an app
+Get the status of an app
 
 
-[https://m3o.com/app/api#Logs](https://m3o.com/app/api#Logs)
+[https://m3o.com/app/api#Status](https://m3o.com/app/api#Status)
 
 ```go
 package example
@@ -247,10 +191,66 @@ import(
 	"go.m3o.com/app"
 )
 
-// Get the logs for an app
-func RetrieveBuildLogsForAnApp() {
+// Get the status of an app
+func GetTheStatusOfAnApp() {
 	appService := app.NewAppService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := appService.Logs(&app.LogsRequest{
+	rsp, err := appService.Status(&app.StatusRequest{
+		Name: "helloworld",
+
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
+## Resolve
+
+Resolve an app by id to its raw backend endpoint
+
+
+[https://m3o.com/app/api#Resolve](https://m3o.com/app/api#Resolve)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/app"
+)
+
+// Resolve an app by id to its raw backend endpoint
+func ResolveAppById() {
+	appService := app.NewAppService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := appService.Resolve(&app.ResolveRequest{
+		Id: "helloworld",
+
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
+## Update
+
+Update the app. The latest source code will be downloaded, built and deployed.
+
+
+[https://m3o.com/app/api#Update](https://m3o.com/app/api#Update)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/app"
+)
+
+// Update the app. The latest source code will be downloaded, built and deployed.
+func UpdateAnApp() {
+	appService := app.NewAppService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := appService.Update(&app.UpdateRequest{
 		Name: "helloworld",
 
 	})
