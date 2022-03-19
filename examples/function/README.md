@@ -4,6 +4,40 @@ An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/function/api](
 
 Endpoints:
 
+## Deploy
+
+Deploy a group of functions
+
+
+[https://m3o.com/function/api#Deploy](https://m3o.com/function/api#Deploy)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/function"
+)
+
+// Deploy a group of functions
+func DeployAfunction() {
+	functionService := function.NewFunctionService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := functionService.Deploy(&function.DeployRequest{
+		Branch: "main",
+Entrypoint: "Helloworld",
+Name: "helloworld",
+Region: "europe-west1",
+Repo: "https://github.com/m3o/m3o",
+Runtime: "go116",
+Subfolder: "examples/go-function",
+
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
 ## Update
 
 Update a function. Downloads the source, builds and redeploys
@@ -63,33 +97,6 @@ Request: map[string]interface{}{
 	
 }
 ```
-## Regions
-
-Return a list of supported regions
-
-
-[https://m3o.com/function/api#Regions](https://m3o.com/function/api#Regions)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/function"
-)
-
-// Return a list of supported regions
-func ListRegions() {
-	functionService := function.NewFunctionService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := functionService.Regions(&function.RegionsRequest{
-		
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
 ## Reserve
 
 Reserve function names and resources beyond free quota
@@ -113,33 +120,6 @@ func ReserveAfunction() {
 	rsp, err := functionService.Reserve(&function.ReserveRequest{
 		Name: "helloworld",
 
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
-## Runtimes
-
-Return a list of supported runtimes
-
-
-[https://m3o.com/function/api#Runtimes](https://m3o.com/function/api#Runtimes)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/function"
-)
-
-// Return a list of supported runtimes
-func ListRuntimes() {
-	functionService := function.NewFunctionService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := functionService.Runtimes(&function.RuntimesRequest{
-		
 	})
 	fmt.Println(rsp, err)
 	
@@ -195,40 +175,6 @@ func RetrieveBuildLogsForAfunction() {
 	functionService := function.NewFunctionService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := functionService.Logs(&function.LogsRequest{
 		Name: "helloworld",
-
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
-## Deploy
-
-Deploy a group of functions
-
-
-[https://m3o.com/function/api#Deploy](https://m3o.com/function/api#Deploy)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/function"
-)
-
-// Deploy a group of functions
-func DeployAfunction() {
-	functionService := function.NewFunctionService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := functionService.Deploy(&function.DeployRequest{
-		Branch: "main",
-Entrypoint: "Helloworld",
-Name: "helloworld",
-Region: "europe-west1",
-Repo: "https://github.com/m3o/m3o",
-Runtime: "go116",
-Subfolder: "examples/go-function",
 
 	})
 	fmt.Println(rsp, err)
@@ -313,6 +259,60 @@ func DescribeFunctionStatus() {
 	rsp, err := functionService.Describe(&function.DescribeRequest{
 		Name: "helloworld",
 
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
+## Regions
+
+Return a list of supported regions
+
+
+[https://m3o.com/function/api#Regions](https://m3o.com/function/api#Regions)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/function"
+)
+
+// Return a list of supported regions
+func ListRegions() {
+	functionService := function.NewFunctionService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := functionService.Regions(&function.RegionsRequest{
+		
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
+## Runtimes
+
+Return a list of supported runtimes
+
+
+[https://m3o.com/function/api#Runtimes](https://m3o.com/function/api#Runtimes)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/function"
+)
+
+// Return a list of supported runtimes
+func ListRuntimes() {
+	functionService := function.NewFunctionService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := functionService.Runtimes(&function.RuntimesRequest{
+		
 	})
 	fmt.Println(rsp, err)
 	

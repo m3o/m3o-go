@@ -4,6 +4,34 @@ An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/location/api](
 
 Endpoints:
 
+## Read
+
+Read an entity by its ID
+
+
+[https://m3o.com/location/api#Read](https://m3o.com/location/api#Read)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/location"
+)
+
+// Read an entity by its ID
+func GetLocationById() {
+	locationService := location.NewLocationService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := locationService.Read(&location.ReadRequest{
+		Id: "1",
+
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
 ## Search
 
 Search for entities in a given radius
@@ -68,34 +96,6 @@ func SaveAnEntity() {
 },
 	Type: "bike",
 },
-
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
-## Read
-
-Read an entity by its ID
-
-
-[https://m3o.com/location/api#Read](https://m3o.com/location/api#Read)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/location"
-)
-
-// Read an entity by its ID
-func GetLocationById() {
-	locationService := location.NewLocationService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := locationService.Read(&location.ReadRequest{
-		Id: "1",
 
 	})
 	fmt.Println(rsp, err)
