@@ -61,6 +61,7 @@ import (
 	"go.m3o.com/thumbnail"
 	"go.m3o.com/time"
 	"go.m3o.com/translate"
+	"go.m3o.com/tunnel"
 	"go.m3o.com/twitter"
 	"go.m3o.com/url"
 	"go.m3o.com/user"
@@ -133,6 +134,7 @@ func New(token string) *Client {
 		Thumbnail:  thumbnail.NewThumbnailService(token),
 		Time:       time.NewTimeService(token),
 		Translate:  translate.NewTranslateService(token),
+		Tunnel:     tunnel.NewTunnelService(token),
 		Twitter:    twitter.NewTwitterService(token),
 		Url:        url.NewUrlService(token),
 		User:       user.NewUserService(token),
@@ -205,6 +207,7 @@ type Client struct {
 	Thumbnail  thumbnail.Thumbnail
 	Time       time.Time
 	Translate  translate.Translate
+	Tunnel     tunnel.Tunnel
 	Twitter    twitter.Twitter
 	Url        url.Url
 	User       user.User
