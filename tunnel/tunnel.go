@@ -41,14 +41,14 @@ type SendRequest struct {
 	Params map[string]string `json:"params"`
 	// path to request e.g /news
 	Path string `json:"path"`
-	// full url e.g https://www.google.com/news
+	// alternatively specify a full url e.g https://www.google.com/news
 	Url string `json:"url"`
 }
 
 type SendResponse struct {
 	// body of the response
 	Body string `json:"body"`
-	// headers to include e.g Content-Type: application/json
+	// headers included
 	Headers map[string]string `json:"headers"`
 	// the status
 	Status string `json:"status"`
