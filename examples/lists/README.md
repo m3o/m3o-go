@@ -4,6 +4,61 @@ An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/lists/api](htt
 
 Endpoints:
 
+## Read
+
+Read a list
+
+
+[https://m3o.com/lists/api#Read](https://m3o.com/lists/api#Read)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/lists"
+)
+
+// Read a list
+func ReadAlist() {
+	listsService := lists.NewListsService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := listsService.Read(&lists.ReadRequest{
+		Id: "63c0cdf8-2121-11ec-a881-0242e36f037a",
+
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
+## List
+
+List all the lists
+
+
+[https://m3o.com/lists/api#List](https://m3o.com/lists/api#List)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/lists"
+)
+
+// List all the lists
+func ListAllLists() {
+	listsService := lists.NewListsService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := listsService.List(&lists.ListRequest{
+		
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
 ## Update
 
 Update a list
@@ -124,61 +179,6 @@ import(
 func CreateAlist() {
 	listsService := lists.NewListsService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := listsService.Create(&lists.CreateRequest{
-		
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
-## Read
-
-Read a list
-
-
-[https://m3o.com/lists/api#Read](https://m3o.com/lists/api#Read)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/lists"
-)
-
-// Read a list
-func ReadAlist() {
-	listsService := lists.NewListsService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := listsService.Read(&lists.ReadRequest{
-		Id: "63c0cdf8-2121-11ec-a881-0242e36f037a",
-
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
-## List
-
-List all the lists
-
-
-[https://m3o.com/lists/api#List](https://m3o.com/lists/api#List)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/lists"
-)
-
-// List all the lists
-func ListAllLists() {
-	listsService := lists.NewListsService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := listsService.List(&lists.ListRequest{
 		
 	})
 	fmt.Println(rsp, err)
