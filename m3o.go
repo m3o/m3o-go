@@ -46,6 +46,7 @@ import (
 	"go.m3o.com/place"
 	"go.m3o.com/postcode"
 	"go.m3o.com/prayer"
+	"go.m3o.com/price"
 	"go.m3o.com/qr"
 	"go.m3o.com/quran"
 	"go.m3o.com/routing"
@@ -119,6 +120,7 @@ func New(token string) *Client {
 		Place:      place.NewPlaceService(token),
 		Postcode:   postcode.NewPostcodeService(token),
 		Prayer:     prayer.NewPrayerService(token),
+		Price:      price.NewPriceService(token),
 		Qr:         qr.NewQrService(token),
 		Quran:      quran.NewQuranService(token),
 		Routing:    routing.NewRoutingService(token),
@@ -192,6 +194,7 @@ type Client struct {
 	Place      place.Place
 	Postcode   postcode.Postcode
 	Prayer     prayer.Prayer
+	Price      price.Price
 	Qr         qr.Qr
 	Quran      quran.Quran
 	Routing    routing.Routing
