@@ -4,12 +4,12 @@ An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/app/api](https
 
 Endpoints:
 
-## Reserve
+## Delete
 
-Reserve apps beyond the free quota. Call Run after.
+Delete an app
 
 
-[https://m3o.com/app/api#Reserve](https://m3o.com/app/api#Reserve)
+[https://m3o.com/app/api#Delete](https://m3o.com/app/api#Delete)
 
 ```go
 package example
@@ -21,10 +21,10 @@ import(
 	"go.m3o.com/app"
 )
 
-// Reserve apps beyond the free quota. Call Run after.
-func ReserveAppName() {
+// Delete an app
+func DeleteAnApp() {
 	appService := app.NewAppService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := appService.Reserve(&app.ReserveRequest{
+	rsp, err := appService.Delete(&app.DeleteRequest{
 		Name: "helloworld",
 
 	})
@@ -32,12 +32,12 @@ func ReserveAppName() {
 	
 }
 ```
-## Status
+## Logs
 
-Get the status of an app
+Get the logs for an app
 
 
-[https://m3o.com/app/api#Status](https://m3o.com/app/api#Status)
+[https://m3o.com/app/api#Logs](https://m3o.com/app/api#Logs)
 
 ```go
 package example
@@ -49,10 +49,10 @@ import(
 	"go.m3o.com/app"
 )
 
-// Get the status of an app
-func GetTheStatusOfAnApp() {
+// Get the logs for an app
+func RetrieveBuildLogsForAnApp() {
 	appService := app.NewAppService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := appService.Status(&app.StatusRequest{
+	rsp, err := appService.Logs(&app.LogsRequest{
 		Name: "helloworld",
 
 	})
@@ -116,12 +116,12 @@ func UpdateAnApp() {
 	
 }
 ```
-## Delete
+## Reserve
 
-Delete an app
+Reserve apps beyond the free quota. Call Run after.
 
 
-[https://m3o.com/app/api#Delete](https://m3o.com/app/api#Delete)
+[https://m3o.com/app/api#Reserve](https://m3o.com/app/api#Reserve)
 
 ```go
 package example
@@ -133,10 +133,10 @@ import(
 	"go.m3o.com/app"
 )
 
-// Delete an app
-func DeleteAnApp() {
+// Reserve apps beyond the free quota. Call Run after.
+func ReserveAppName() {
 	appService := app.NewAppService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := appService.Delete(&app.DeleteRequest{
+	rsp, err := appService.Reserve(&app.ReserveRequest{
 		Name: "helloworld",
 
 	})
@@ -230,12 +230,12 @@ func ListRegions() {
 	
 }
 ```
-## Logs
+## Status
 
-Get the logs for an app
+Get the status of an app
 
 
-[https://m3o.com/app/api#Logs](https://m3o.com/app/api#Logs)
+[https://m3o.com/app/api#Status](https://m3o.com/app/api#Status)
 
 ```go
 package example
@@ -247,10 +247,10 @@ import(
 	"go.m3o.com/app"
 )
 
-// Get the logs for an app
-func RetrieveBuildLogsForAnApp() {
+// Get the status of an app
+func GetTheStatusOfAnApp() {
 	appService := app.NewAppService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := appService.Logs(&app.LogsRequest{
+	rsp, err := appService.Status(&app.StatusRequest{
 		Name: "helloworld",
 
 	})
