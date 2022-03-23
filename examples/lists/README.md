@@ -4,74 +4,6 @@ An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/lists/api](htt
 
 Endpoints:
 
-## Events
-
-Subscribe to lists events
-
-
-[https://m3o.com/lists/api#Events](https://m3o.com/lists/api#Events)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/lists"
-)
-
-// Subscribe to lists events
-func SubscribeToEvents() {
-	listsService := lists.NewListsService(os.Getenv("M3O_API_TOKEN"))
-	
-	stream, err := listsService.Events(&lists.EventsRequest{
-		Id: "63c0cdf8-2121-11ec-a881-0242e36f037a",
-
-	})
-	if err != nil {
-		fmt.Println(err)
-		return
-	}
-
-	for {
-			rsp, err := stream.Recv()
-			if err != nil {
-					fmt.Println(err)
-					return
-			}
-
-			fmt.Println(rsp)
-	}
-}
-```
-## Create
-
-Create a new list
-
-
-[https://m3o.com/lists/api#Create](https://m3o.com/lists/api#Create)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/lists"
-)
-
-// Create a new list
-func CreateAlist() {
-	listsService := lists.NewListsService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := listsService.Create(&lists.CreateRequest{
-		
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
 ## Read
 
 Read a list
@@ -180,6 +112,74 @@ func DeleteAlist() {
 	rsp, err := listsService.Delete(&lists.DeleteRequest{
 		Id: "63c0cdf8-2121-11ec-a881-0242e36f037a",
 
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
+## Events
+
+Subscribe to lists events
+
+
+[https://m3o.com/lists/api#Events](https://m3o.com/lists/api#Events)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/lists"
+)
+
+// Subscribe to lists events
+func SubscribeToEvents() {
+	listsService := lists.NewListsService(os.Getenv("M3O_API_TOKEN"))
+	
+	stream, err := listsService.Events(&lists.EventsRequest{
+		Id: "63c0cdf8-2121-11ec-a881-0242e36f037a",
+
+	})
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+
+	for {
+			rsp, err := stream.Recv()
+			if err != nil {
+					fmt.Println(err)
+					return
+			}
+
+			fmt.Println(rsp)
+	}
+}
+```
+## Create
+
+Create a new list
+
+
+[https://m3o.com/lists/api#Create](https://m3o.com/lists/api#Create)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/lists"
+)
+
+// Create a new list
+func CreateAlist() {
+	listsService := lists.NewListsService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := listsService.Create(&lists.CreateRequest{
+		
 	})
 	fmt.Println(rsp, err)
 	
