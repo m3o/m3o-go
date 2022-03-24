@@ -4,35 +4,6 @@ An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/search/api](ht
 
 Endpoints:
 
-## Delete
-
-Delete a record given its ID
-
-
-[https://m3o.com/search/api#Delete](https://m3o.com/search/api#Delete)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/search"
-)
-
-// Delete a record given its ID
-func DeleteArecord() {
-	searchService := search.NewSearchService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := searchService.Delete(&search.DeleteRequest{
-		Id: "1234",
-Index: "customers",
-
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
 ## CreateIndex
 
 Create an index by name
@@ -203,6 +174,35 @@ func SearchOnMultipleFieldsor() {
 	rsp, err := searchService.Search(&search.SearchRequest{
 		Index: "customers",
 Query: "name == 'John' OR name == 'Jane'",
+
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
+## Delete
+
+Delete a record given its ID
+
+
+[https://m3o.com/search/api#Delete](https://m3o.com/search/api#Delete)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/search"
+)
+
+// Delete a record given its ID
+func DeleteArecord() {
+	searchService := search.NewSearchService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := searchService.Delete(&search.DeleteRequest{
+		Id: "1234",
+Index: "customers",
 
 	})
 	fmt.Println(rsp, err)
