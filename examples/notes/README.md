@@ -4,34 +4,6 @@ An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/notes/api](htt
 
 Endpoints:
 
-## Delete
-
-Delete a note
-
-
-[https://m3o.com/notes/api#Delete](https://m3o.com/notes/api#Delete)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/notes"
-)
-
-// Delete a note
-func DeleteAnote() {
-	notesService := notes.NewNotesService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := notesService.Delete(&notes.DeleteRequest{
-		Id: "63c0cdf8-2121-11ec-a881-0242e36f037a",
-
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
 ## Events
 
 Subscribe to notes events
@@ -183,6 +155,34 @@ func UpdateAnote() {
 	Text: "Updated note text",
 	Title: "Update Note",
 	},
+
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
+## Delete
+
+Delete a note
+
+
+[https://m3o.com/notes/api#Delete](https://m3o.com/notes/api#Delete)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/notes"
+)
+
+// Delete a note
+func DeleteAnote() {
+	notesService := notes.NewNotesService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := notesService.Delete(&notes.DeleteRequest{
+		Id: "63c0cdf8-2121-11ec-a881-0242e36f037a",
 
 	})
 	fmt.Println(rsp, err)
