@@ -30,12 +30,12 @@ func (t *ThumbnailService) Screenshot(request *ScreenshotRequest) (*ScreenshotRe
 
 type ScreenshotRequest struct {
 	// height of the browser window, optional
-	Height int32  `json:"height"`
-	Url    string `json:"url"`
+	Height int32  `json:"height,omitempty"`
+	Url    string `json:"url,omitempty"`
 	// width of the browser window. optional
-	Width int32 `json:"width"`
+	Width int32 `json:"width,omitempty"`
 }
 
 type ScreenshotResponse struct {
-	ImageUrl string `json:"imageURL"`
+	ImageUrl string `json:"imageURL,omitempty"`
 }

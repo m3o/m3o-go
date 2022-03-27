@@ -55,22 +55,22 @@ func (t *StreamResponseStream) Recv() (*StreamResponse, error) {
 
 type CallRequest struct {
 	// name to append to the message e.g Alice
-	Name string `json:"name"`
+	Name string `json:"name,omitempty"`
 }
 
 type CallResponse struct {
 	// message including name e.g Hello Alice
-	Message string `json:"message"`
+	Message string `json:"message,omitempty"`
 }
 
 type StreamRequest struct {
 	// the number of messages to send back
-	Messages int64 `json:"messages,string"`
+	Messages int64 `json:"messages,string,omitempty"`
 	// name to append to the message e.g Alice
-	Name string `json:"name"`
+	Name string `json:"name,omitempty"`
 }
 
 type StreamResponse struct {
 	// message including name e.g Hello Alice
-	Message string `json:"message"`
+	Message string `json:"message,omitempty"`
 }

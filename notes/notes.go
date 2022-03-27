@@ -91,35 +91,35 @@ func (t *NotesService) Update(request *UpdateRequest) (*UpdateResponse, error) {
 
 type CreateRequest struct {
 	// note text
-	Text string `json:"text"`
+	Text string `json:"text,omitempty"`
 	// note title
-	Title string `json:"title"`
+	Title string `json:"title,omitempty"`
 }
 
 type CreateResponse struct {
 	// The created note
-	Note *Note `json:"note"`
+	Note *Note `json:"note,omitempty"`
 }
 
 type DeleteRequest struct {
 	// specify the id of the note
-	Id string `json:"id"`
+	Id string `json:"id,omitempty"`
 }
 
 type DeleteResponse struct {
-	Note *Note `json:"note"`
+	Note *Note `json:"note,omitempty"`
 }
 
 type EventsRequest struct {
 	// optionally specify a note id
-	Id string `json:"id"`
+	Id string `json:"id,omitempty"`
 }
 
 type EventsResponse struct {
 	// the event which occured; create, delete, update
-	Event string `json:"event"`
+	Event string `json:"event,omitempty"`
 	// the note which the operation occured on
-	Note *Note `json:"note"`
+	Note *Note `json:"note,omitempty"`
 }
 
 type ListRequest struct {
@@ -127,36 +127,36 @@ type ListRequest struct {
 
 type ListResponse struct {
 	// the list of notes
-	Notes []Note `json:"notes"`
+	Notes []Note `json:"notes,omitempty"`
 }
 
 type Note struct {
 	// time at which the note was created
-	Created string `json:"created"`
+	Created string `json:"created,omitempty"`
 	// unique id for the note, generated if not specified
-	Id string `json:"id"`
+	Id string `json:"id,omitempty"`
 	// text within the note
-	Text string `json:"text"`
+	Text string `json:"text,omitempty"`
 	// title of the note
-	Title string `json:"title"`
+	Title string `json:"title,omitempty"`
 	// time at which the note was updated
-	Updated string `json:"updated"`
+	Updated string `json:"updated,omitempty"`
 }
 
 type ReadRequest struct {
 	// the note id
-	Id string `json:"id"`
+	Id string `json:"id,omitempty"`
 }
 
 type ReadResponse struct {
 	// The note
-	Note *Note `json:"note"`
+	Note *Note `json:"note,omitempty"`
 }
 
 type UpdateRequest struct {
-	Note *Note `json:"note"`
+	Note *Note `json:"note,omitempty"`
 }
 
 type UpdateResponse struct {
-	Note *Note `json:"note"`
+	Note *Note `json:"note,omitempty"`
 }

@@ -91,48 +91,48 @@ func (t *ListsService) Update(request *UpdateRequest) (*UpdateResponse, error) {
 
 type CreateRequest struct {
 	// list items
-	Items []string `json:"items"`
+	Items []string `json:"items,omitempty"`
 	// list name
-	Name string `json:"name"`
+	Name string `json:"name,omitempty"`
 }
 
 type CreateResponse struct {
 	// The created list
-	List *List `json:"list"`
+	List *List `json:"list,omitempty"`
 }
 
 type DeleteRequest struct {
 	// specify the id of the list
-	Id string `json:"id"`
+	Id string `json:"id,omitempty"`
 }
 
 type DeleteResponse struct {
-	List *List `json:"list"`
+	List *List `json:"list,omitempty"`
 }
 
 type EventsRequest struct {
 	// optionally specify a list id
-	Id string `json:"id"`
+	Id string `json:"id,omitempty"`
 }
 
 type EventsResponse struct {
 	// the event which occured; create, delete, update
-	Event string `json:"event"`
+	Event string `json:"event,omitempty"`
 	// the list which the operation occured on
-	List *List `json:"list"`
+	List *List `json:"list,omitempty"`
 }
 
 type List struct {
 	// time at which the list was created
-	Created string `json:"created"`
+	Created string `json:"created,omitempty"`
 	// unique id for the list, generated if not specified
-	Id string `json:"id"`
+	Id string `json:"id,omitempty"`
 	// items within the list
-	Items []string `json:"items"`
+	Items []string `json:"items,omitempty"`
 	// name of the list
-	Name string `json:"name"`
+	Name string `json:"name,omitempty"`
 	// time at which the list was updated
-	Updated string `json:"updated"`
+	Updated string `json:"updated,omitempty"`
 }
 
 type ListRequest struct {
@@ -140,23 +140,23 @@ type ListRequest struct {
 
 type ListResponse struct {
 	// the list of lists
-	Lists []List `json:"lists"`
+	Lists []List `json:"lists,omitempty"`
 }
 
 type ReadRequest struct {
 	// the list id
-	Id string `json:"id"`
+	Id string `json:"id,omitempty"`
 }
 
 type ReadResponse struct {
 	// The list
-	List *List `json:"list"`
+	List *List `json:"list,omitempty"`
 }
 
 type UpdateRequest struct {
-	List *List `json:"list"`
+	List *List `json:"list,omitempty"`
 }
 
 type UpdateResponse struct {
-	List *List `json:"list"`
+	List *List `json:"list,omitempty"`
 }

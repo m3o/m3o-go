@@ -45,59 +45,59 @@ type AutocompleteResponse struct {
 
 type NearbyRequest struct {
 	// Keyword to include in the search
-	Keyword string `json:"keyword"`
+	Keyword string `json:"keyword,omitempty"`
 	// specify the location by lat,lng e.g -33.8670522,-151.1957362
-	Location string `json:"location"`
+	Location string `json:"location,omitempty"`
 	// Name of the place to search for
-	Name string `json:"name"`
+	Name string `json:"name,omitempty"`
 	// Whether the place is open now
-	OpenNow bool `json:"open_now"`
+	OpenNow bool `json:"open_now,omitempty"`
 	// radius in meters within which to search
-	Radius int32 `json:"radius"`
+	Radius int32 `json:"radius,omitempty"`
 	// Type of place. https://developers.google.com/maps/documentation/places/web-service/supported_types
-	Type string `json:"type"`
+	Type string `json:"type,omitempty"`
 }
 
 type NearbyResponse struct {
-	Results []Result `json:"results"`
+	Results []Result `json:"results,omitempty"`
 }
 
 type Result struct {
 	// address of place
-	Address string `json:"address"`
+	Address string `json:"address,omitempty"`
 	// url of an icon
-	IconUrl string `json:"icon_url"`
+	IconUrl string `json:"icon_url,omitempty"`
 	// lat/lng of place
-	Location string `json:"location"`
+	Location string `json:"location,omitempty"`
 	// name of the place
-	Name string `json:"name"`
+	Name string `json:"name,omitempty"`
 	// open now
-	OpenNow bool `json:"open_now"`
+	OpenNow bool `json:"open_now,omitempty"`
 	// opening hours
-	OpeningHours string `json:"opening_hours"`
+	OpeningHours string `json:"opening_hours,omitempty"`
 	// rating from 1.0 to 5.0
-	Rating float64 `json:"rating"`
+	Rating float64 `json:"rating,omitempty"`
 	// type of location
-	Type string `json:"type"`
+	Type string `json:"type,omitempty"`
 	// feature types
-	Types []string `json:"types"`
+	Types []string `json:"types,omitempty"`
 	// simplified address
-	Vicinity string `json:"vicinity"`
+	Vicinity string `json:"vicinity,omitempty"`
 }
 
 type SearchRequest struct {
 	// the location by lat,lng e.g -33.8670522,-151.1957362
-	Location string `json:"location"`
+	Location string `json:"location,omitempty"`
 	// Whether the place is open now
-	OpenNow bool `json:"open_now"`
+	OpenNow bool `json:"open_now,omitempty"`
 	// the text string on which to search, for example: "restaurant"
-	Query string `json:"query"`
+	Query string `json:"query,omitempty"`
 	// radius in meters within which to search
-	Radius int32 `json:"radius"`
+	Radius int32 `json:"radius,omitempty"`
 	// Type of place. https://developers.google.com/maps/documentation/places/web-service/supported_types
-	Type string `json:"type"`
+	Type string `json:"type,omitempty"`
 }
 
 type SearchResponse struct {
-	Results []Result `json:"results"`
+	Results []Result `json:"results,omitempty"`
 }

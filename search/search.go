@@ -66,7 +66,7 @@ func (t *SearchService) Search(request *SearchRequest) (*SearchResponse, error) 
 
 type CreateIndexRequest struct {
 	// The name of the index
-	Index string `json:"index"`
+	Index string `json:"index,omitempty"`
 }
 
 type CreateIndexResponse struct {
@@ -74,7 +74,7 @@ type CreateIndexResponse struct {
 
 type DeleteIndexRequest struct {
 	// The name of the index to delete
-	Index string `json:"index"`
+	Index string `json:"index,omitempty"`
 }
 
 type DeleteIndexResponse struct {
@@ -82,9 +82,9 @@ type DeleteIndexResponse struct {
 
 type DeleteRequest struct {
 	// The ID of the record to delete
-	Id string `json:"id"`
+	Id string `json:"id,omitempty"`
 	// The index the record belongs to
-	Index string `json:"index"`
+	Index string `json:"index,omitempty"`
 }
 
 type DeleteResponse struct {
@@ -92,40 +92,40 @@ type DeleteResponse struct {
 
 type Field struct {
 	// The name of the field. Use a `.` separator to define nested fields e.g. foo.bar
-	Name string `json:"name"`
+	Name string `json:"name,omitempty"`
 	// The type of the field - string, number
-	Type string `json:"type"`
+	Type string `json:"type,omitempty"`
 }
 
 type IndexRequest struct {
 	// The data to index
-	Data map[string]interface{} `json:"data"`
+	Data map[string]interface{} `json:"data,omitempty"`
 	// Optional ID for the record
-	Id string `json:"id"`
+	Id string `json:"id,omitempty"`
 	// The index this record belongs to
-	Index string `json:"index"`
+	Index string `json:"index,omitempty"`
 }
 
 type IndexResponse struct {
 	// the indexed record
-	Record *Record `json:"record"`
+	Record *Record `json:"record,omitempty"`
 }
 
 type Record struct {
 	// The JSON contents of the record
-	Data map[string]interface{} `json:"data"`
+	Data map[string]interface{} `json:"data,omitempty"`
 	// The ID for this record. If blank, one will be generated
-	Id string `json:"id"`
+	Id string `json:"id,omitempty"`
 }
 
 type SearchRequest struct {
 	// The index the record belongs to
-	Index string `json:"index"`
+	Index string `json:"index,omitempty"`
 	// The query. See docs for query language examples
-	Query string `json:"query"`
+	Query string `json:"query,omitempty"`
 }
 
 type SearchResponse struct {
 	// The matching records
-	Records []Record `json:"records"`
+	Records []Record `json:"records,omitempty"`
 }

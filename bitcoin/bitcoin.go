@@ -30,12 +30,12 @@ func (t *BitcoinService) Price(request *PriceRequest) (*PriceResponse, error) {
 
 type PriceRequest struct {
 	// symbol to use e.g BTCUSD
-	Symbol string `json:"symbol"`
+	Symbol string `json:"symbol,omitempty"`
 }
 
 type PriceResponse struct {
 	// The price of bitcoin
-	Price float64 `json:"price"`
+	Price float64 `json:"price,omitempty"`
 	// The symbol of pricing e.g BTCUSD
-	Symbol string `json:"symbol"`
+	Symbol string `json:"symbol,omitempty"`
 }

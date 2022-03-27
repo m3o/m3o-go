@@ -48,40 +48,40 @@ func (t *UrlService) Shorten(request *ShortenRequest) (*ShortenResponse, error) 
 
 type ListRequest struct {
 	// filter by short URL, optional
-	ShortUrl string `json:"shortURL"`
+	ShortUrl string `json:"shortURL,omitempty"`
 }
 
 type ListResponse struct {
-	UrlPairs *URLPair `json:"urlPairs"`
+	UrlPairs *URLPair `json:"urlPairs,omitempty"`
 }
 
 type ProxyRequest struct {
 	// short url ID, without the domain, eg. if your short URL is
 	// `m3o.one/u/someshorturlid` then pass in `someshorturlid`
-	ShortUrl string `json:"shortURL"`
+	ShortUrl string `json:"shortURL,omitempty"`
 }
 
 type ProxyResponse struct {
-	DestinationUrl string `json:"destinationURL"`
+	DestinationUrl string `json:"destinationURL,omitempty"`
 }
 
 type ShortenRequest struct {
 	// the url to shorten
-	DestinationUrl string `json:"destinationURL"`
+	DestinationUrl string `json:"destinationURL,omitempty"`
 }
 
 type ShortenResponse struct {
 	// the shortened url
-	ShortUrl string `json:"shortURL"`
+	ShortUrl string `json:"shortURL,omitempty"`
 }
 
 type URLPair struct {
 	// time of creation
-	Created string `json:"created"`
+	Created string `json:"created,omitempty"`
 	// destination url
-	DestinationUrl string `json:"destinationURL"`
+	DestinationUrl string `json:"destinationURL,omitempty"`
 	// The number of times the short URL has been resolved
-	HitCount int64 `json:"hitCount,string"`
+	HitCount int64 `json:"hitCount,string,omitempty"`
 	// shortened url
-	ShortUrl string `json:"shortURL"`
+	ShortUrl string `json:"shortURL,omitempty"`
 }

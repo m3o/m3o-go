@@ -66,62 +66,62 @@ func (t *ContactService) Update(request *UpdateRequest) (*UpdateResponse, error)
 
 type Address struct {
 	// the label of the address
-	Label string `json:"label"`
+	Label string `json:"label,omitempty"`
 	// the address location
-	Location string `json:"location"`
+	Location string `json:"location,omitempty"`
 }
 
 type ContactInfo struct {
 	// the address
-	Addresses []Address `json:"addresses"`
+	Addresses []Address `json:"addresses,omitempty"`
 	// the birthday
-	Birthday string `json:"birthday"`
+	Birthday string `json:"birthday,omitempty"`
 	// create date string in RFC3339
-	CreatedAt string `json:"created_at"`
+	CreatedAt string `json:"created_at,omitempty"`
 	// the emails
-	Emails []Email `json:"emails"`
+	Emails []Email `json:"emails,omitempty"`
 	// contact id
-	Id string `json:"id"`
+	Id string `json:"id,omitempty"`
 	// the contact links
-	Links []Link `json:"links"`
+	Links []Link `json:"links,omitempty"`
 	// the contact name
-	Name string `json:"name"`
+	Name string `json:"name,omitempty"`
 	// note of the contact
-	Note string `json:"note"`
+	Note string `json:"note,omitempty"`
 	// the phone numbers
-	Phones []Phone `json:"phones"`
+	Phones []Phone `json:"phones,omitempty"`
 	// the social media username
-	SocialMedias *SocialMedia `json:"social_medias"`
+	SocialMedias *SocialMedia `json:"social_medias,omitempty"`
 	// update date string in RFC3339
-	UpdatedAt string `json:"updated_at"`
+	UpdatedAt string `json:"updated_at,omitempty"`
 }
 
 type CreateRequest struct {
 	// optional, location
-	Addresses []Address `json:"addresses"`
+	Addresses []Address `json:"addresses,omitempty"`
 	// optional, birthday
-	Birthday string `json:"birthday"`
+	Birthday string `json:"birthday,omitempty"`
 	// optional, emails
-	Emails []Email `json:"emails"`
+	Emails []Email `json:"emails,omitempty"`
 	// optional, links
-	Links []Link `json:"links"`
+	Links []Link `json:"links,omitempty"`
 	// required, the name of the contact
-	Name string `json:"name"`
+	Name string `json:"name,omitempty"`
 	// optional, note of the contact
-	Note string `json:"note"`
+	Note string `json:"note,omitempty"`
 	// optional, phone numbers
-	Phones []Phone `json:"phones"`
+	Phones []Phone `json:"phones,omitempty"`
 	// optional, social media
-	SocialMedias *SocialMedia `json:"social_medias"`
+	SocialMedias *SocialMedia `json:"social_medias,omitempty"`
 }
 
 type CreateResponse struct {
-	Contact *ContactInfo `json:"contact"`
+	Contact *ContactInfo `json:"contact,omitempty"`
 }
 
 type DeleteRequest struct {
 	// the id of the contact
-	Id string `json:"id"`
+	Id string `json:"id,omitempty"`
 }
 
 type DeleteResponse struct {
@@ -129,72 +129,72 @@ type DeleteResponse struct {
 
 type Email struct {
 	// the email address
-	Address string `json:"address"`
+	Address string `json:"address,omitempty"`
 	// the label of the email
-	Label string `json:"label"`
+	Label string `json:"label,omitempty"`
 }
 
 type Link struct {
 	// the label of the link
-	Label string `json:"label"`
+	Label string `json:"label,omitempty"`
 	// the url of the contact
-	Url string `json:"url"`
+	Url string `json:"url,omitempty"`
 }
 
 type ListRequest struct {
 	// optional, default is 30
-	Limit int32 `json:"limit"`
+	Limit int32 `json:"limit,omitempty"`
 	// optional
-	Offset int32 `json:"offset"`
+	Offset int32 `json:"offset,omitempty"`
 }
 
 type ListResponse struct {
-	Contacts []ContactInfo `json:"contacts"`
+	Contacts []ContactInfo `json:"contacts,omitempty"`
 }
 
 type Phone struct {
 	// the label of the phone number
-	Label string `json:"label"`
+	Label string `json:"label,omitempty"`
 	// phone number
-	Number string `json:"number"`
+	Number string `json:"number,omitempty"`
 }
 
 type ReadRequest struct {
-	Id string `json:"id"`
+	Id string `json:"id,omitempty"`
 }
 
 type ReadResponse struct {
-	Contact *ContactInfo `json:"contact"`
+	Contact *ContactInfo `json:"contact,omitempty"`
 }
 
 type SocialMedia struct {
 	// the label of the social
-	Label string `json:"label"`
+	Label string `json:"label,omitempty"`
 	// the username of social media
-	Username string `json:"username"`
+	Username string `json:"username,omitempty"`
 }
 
 type UpdateRequest struct {
 	// optional, addresses
-	Addresses []Address `json:"addresses"`
+	Addresses []Address `json:"addresses,omitempty"`
 	// optional, birthday
-	Birthday string `json:"birthday"`
+	Birthday string `json:"birthday,omitempty"`
 	// optional, emails
-	Emails []Email `json:"emails"`
+	Emails []Email `json:"emails,omitempty"`
 	// required, the contact id
-	Id string `json:"id"`
+	Id string `json:"id,omitempty"`
 	// optional, links
-	Links []Link `json:"links"`
+	Links []Link `json:"links,omitempty"`
 	// required, the name
-	Name string `json:"name"`
+	Name string `json:"name,omitempty"`
 	// optional, note
-	Note string `json:"note"`
+	Note string `json:"note,omitempty"`
 	// optional, phone number
-	Phones []Phone `json:"phones"`
+	Phones []Phone `json:"phones,omitempty"`
 	// optional, social media
-	SocialMedias *SocialMedia `json:"social_medias"`
+	SocialMedias *SocialMedia `json:"social_medias,omitempty"`
 }
 
 type UpdateResponse struct {
-	Contact *ContactInfo `json:"contact"`
+	Contact *ContactInfo `json:"contact,omitempty"`
 }

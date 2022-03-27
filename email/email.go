@@ -48,38 +48,38 @@ func (t *EmailService) Validate(request *ValidateRequest) (*ValidateResponse, er
 
 type ParseRequest struct {
 	// The address to parse. Can be of the format "Joe Blogs <joe@example.com>" or "joe@example.com"
-	Address string `json:"address"`
+	Address string `json:"address,omitempty"`
 }
 
 type ParseResponse struct {
 	// the email address
-	Address string `json:"address"`
+	Address string `json:"address,omitempty"`
 	// associated name e.g Joe Blogs
-	Name string `json:"name"`
+	Name string `json:"name,omitempty"`
 }
 
 type SendRequest struct {
 	// the display name of the sender
-	From string `json:"from"`
+	From string `json:"from,omitempty"`
 	// the html body
-	HtmlBody string `json:"html_body"`
+	HtmlBody string `json:"html_body,omitempty"`
 	// an optional reply to email address
-	ReplyTo string `json:"reply_to"`
+	ReplyTo string `json:"reply_to,omitempty"`
 	// the email subject
-	Subject string `json:"subject"`
+	Subject string `json:"subject,omitempty"`
 	// the text body
-	TextBody string `json:"text_body"`
+	TextBody string `json:"text_body,omitempty"`
 	// the email address of the recipient
-	To string `json:"to"`
+	To string `json:"to,omitempty"`
 }
 
 type SendResponse struct {
 }
 
 type ValidateRequest struct {
-	Address string `json:"address"`
+	Address string `json:"address,omitempty"`
 }
 
 type ValidateResponse struct {
-	IsValid bool `json:"is_valid"`
+	IsValid bool `json:"is_valid,omitempty"`
 }

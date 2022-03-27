@@ -67,20 +67,20 @@ func (t *ImageService) Upload(request *UploadRequest) (*UploadResponse, error) {
 
 type ConvertRequest struct {
 	// base64 encoded image to resize,
-	Base64 string `json:"base64"`
+	Base64 string `json:"base64,omitempty"`
 	// The image file to convert
-	File string `json:"file"`
+	File string `json:"file,omitempty"`
 	// output name of the image including extension, ie. "cat.png"
-	Name string `json:"name"`
+	Name string `json:"name,omitempty"`
 	// make output a URL and not a base64 response
-	OutputUrl bool `json:"outputURL"`
+	OutputUrl bool `json:"outputURL,omitempty"`
 	// url of the image to resize
-	Url string `json:"url"`
+	Url string `json:"url,omitempty"`
 }
 
 type ConvertResponse struct {
-	Base64 string `json:"base64"`
-	Url    string `json:"url"`
+	Base64 string `json:"base64,omitempty"`
+	Url    string `json:"url,omitempty"`
 }
 
 type CropOptions struct {
@@ -88,66 +88,66 @@ type CropOptions struct {
 	// "left", "center", "right"
 	// "bottom left", "bottom", "bottom right".
 	// Optional. Defaults to center.
-	Anchor string `json:"anchor"`
+	Anchor string `json:"anchor,omitempty"`
 	// height to crop to
-	Height int32 `json:"height"`
+	Height int32 `json:"height,omitempty"`
 	// width to crop to
-	Width int32 `json:"width"`
+	Width int32 `json:"width,omitempty"`
 }
 
 type DeleteRequest struct {
 	// url of the image to delete e.g. https://cdn.m3ocontent.com/micro/images/micro/41e23b39-48dd-42b6-9738-79a313414bb8/cat.jpeg
-	Url string `json:"url"`
+	Url string `json:"url,omitempty"`
 }
 
 type DeleteResponse struct {
 }
 
 type Point struct {
-	X int32 `json:"x"`
-	Y int32 `json:"y"`
+	X int32 `json:"x,omitempty"`
+	Y int32 `json:"y,omitempty"`
 }
 
 type Rectangle struct {
-	Max *Point `json:"max"`
-	Min *Point `json:"min"`
+	Max *Point `json:"max,omitempty"`
+	Min *Point `json:"min,omitempty"`
 }
 
 type ResizeRequest struct {
 	// base64 encoded image to resize,
-	Base64 string `json:"base64"`
+	Base64 string `json:"base64,omitempty"`
 	// optional crop options
 	// if provided, after resize, the image
 	// will be cropped
-	CropOptions *CropOptions `json:"cropOptions"`
+	CropOptions *CropOptions `json:"cropOptions,omitempty"`
 	// The image file to resize
-	File   string `json:"file"`
-	Height int64  `json:"height,string"`
+	File   string `json:"file,omitempty"`
+	Height int64  `json:"height,string,omitempty"`
 	// output name of the image including extension, ie. "cat.png"
-	Name string `json:"name"`
+	Name string `json:"name,omitempty"`
 	// make output a URL and not a base64 response
-	OutputUrl bool `json:"outputURL"`
+	OutputUrl bool `json:"outputURL,omitempty"`
 	// url of the image to resize
-	Url   string `json:"url"`
-	Width int64  `json:"width,string"`
+	Url   string `json:"url,omitempty"`
+	Width int64  `json:"width,string,omitempty"`
 }
 
 type ResizeResponse struct {
-	Base64 string `json:"base64"`
-	Url    string `json:"url"`
+	Base64 string `json:"base64,omitempty"`
+	Url    string `json:"url,omitempty"`
 }
 
 type UploadRequest struct {
 	// Base64 encoded image to upload,
-	Base64 string `json:"base64"`
+	Base64 string `json:"base64,omitempty"`
 	// The image file to upload
-	File string `json:"file"`
+	File string `json:"file,omitempty"`
 	// Output name of the image including extension, ie. "cat.png"
-	Name string `json:"name"`
+	Name string `json:"name,omitempty"`
 	// URL of the image to upload
-	Url string `json:"url"`
+	Url string `json:"url,omitempty"`
 }
 
 type UploadResponse struct {
-	Url string `json:"url"`
+	Url string `json:"url,omitempty"`
 }

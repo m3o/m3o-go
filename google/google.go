@@ -30,25 +30,25 @@ func (t *GoogleService) Search(request *SearchRequest) (*SearchResponse, error) 
 
 type SearchRequest struct {
 	// Query to search for
-	Query string `json:"query"`
+	Query string `json:"query,omitempty"`
 }
 
 type SearchResponse struct {
 	// List of results for the query
-	Results []SearchResult `json:"results"`
+	Results []SearchResult `json:"results,omitempty"`
 }
 
 type SearchResult struct {
 	// abridged version of this search result’s URL, e.g. www.exampe.com
-	DisplayUrl string `json:"display_url"`
+	DisplayUrl string `json:"display_url,omitempty"`
 	// id of the result
-	Id string `json:"id"`
+	Id string `json:"id,omitempty"`
 	// kind of result; "search"
-	Kind string `json:"kind"`
+	Kind string `json:"kind,omitempty"`
 	// the result snippet
-	Snippet string `json:"snippet"`
+	Snippet string `json:"snippet,omitempty"`
 	// title of the result
-	Title string `json:"title"`
+	Title string `json:"title,omitempty"`
 	// the full url for the result
-	Url string `json:"url"`
+	Url string `json:"url,omitempty"`
 }

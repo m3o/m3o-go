@@ -66,91 +66,91 @@ func (t *CryptoService) Symbols(request *SymbolsRequest) (*SymbolsResponse, erro
 
 type Article struct {
 	// the date published
-	Date string `json:"date"`
+	Date string `json:"date,omitempty"`
 	// its description
-	Description string `json:"description"`
+	Description string `json:"description,omitempty"`
 	// the source
-	Source string `json:"source"`
+	Source string `json:"source,omitempty"`
 	// title of the article
-	Title string `json:"title"`
+	Title string `json:"title,omitempty"`
 	// the source url
-	Url string `json:"url"`
+	Url string `json:"url,omitempty"`
 }
 
 type HistoryRequest struct {
 	// the crypto symbol e.g BTCUSD
-	Symbol string `json:"symbol"`
+	Symbol string `json:"symbol,omitempty"`
 }
 
 type HistoryResponse struct {
 	// the close price
-	Close float64 `json:"close"`
+	Close float64 `json:"close,omitempty"`
 	// the date
-	Date string `json:"date"`
+	Date string `json:"date,omitempty"`
 	// the peak price
-	High float64 `json:"high"`
+	High float64 `json:"high,omitempty"`
 	// the low price
-	Low float64 `json:"low"`
+	Low float64 `json:"low,omitempty"`
 	// the open price
-	Open float64 `json:"open"`
+	Open float64 `json:"open,omitempty"`
 	// the crypto symbol
-	Symbol string `json:"symbol"`
+	Symbol string `json:"symbol,omitempty"`
 	// the volume
-	Volume float64 `json:"volume"`
+	Volume float64 `json:"volume,omitempty"`
 }
 
 type NewsRequest struct {
 	// cryptocurrency ticker to request news for e.g BTC
-	Symbol string `json:"symbol"`
+	Symbol string `json:"symbol,omitempty"`
 }
 
 type NewsResponse struct {
 	// list of articles
-	Articles []Article `json:"articles"`
+	Articles []Article `json:"articles,omitempty"`
 	// symbol requested for
-	Symbol string `json:"symbol"`
+	Symbol string `json:"symbol,omitempty"`
 }
 
 type PriceRequest struct {
 	// the crypto symbol e.g BTCUSD
-	Symbol string `json:"symbol"`
+	Symbol string `json:"symbol,omitempty"`
 }
 
 type PriceResponse struct {
 	// the last price
-	Price float64 `json:"price"`
+	Price float64 `json:"price,omitempty"`
 	// the crypto symbol e.g BTCUSD
-	Symbol string `json:"symbol"`
+	Symbol string `json:"symbol,omitempty"`
 }
 
 type QuoteRequest struct {
 	// the crypto symbol e.g BTCUSD
-	Symbol string `json:"symbol"`
+	Symbol string `json:"symbol,omitempty"`
 }
 
 type QuoteResponse struct {
 	// the asking price
-	AskPrice float64 `json:"ask_price"`
+	AskPrice float64 `json:"ask_price,omitempty"`
 	// the ask size
-	AskSize float64 `json:"ask_size"`
+	AskSize float64 `json:"ask_size,omitempty"`
 	// the bidding price
-	BidPrice float64 `json:"bid_price"`
+	BidPrice float64 `json:"bid_price,omitempty"`
 	// the bid size
-	BidSize float64 `json:"bid_size"`
+	BidSize float64 `json:"bid_size,omitempty"`
 	// the crypto symbol
-	Symbol string `json:"symbol"`
+	Symbol string `json:"symbol,omitempty"`
 	// the UTC timestamp of the quote
-	Timestamp string `json:"timestamp"`
+	Timestamp string `json:"timestamp,omitempty"`
 }
 
 type Symbol struct {
-	Name   string `json:"name"`
-	Symbol string `json:"symbol"`
+	Name   string `json:"name,omitempty"`
+	Symbol string `json:"symbol,omitempty"`
 }
 
 type SymbolsRequest struct {
 }
 
 type SymbolsResponse struct {
-	Symbols []Symbol `json:"symbols"`
+	Symbols []Symbol `json:"symbols,omitempty"`
 }

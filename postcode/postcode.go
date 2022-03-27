@@ -48,24 +48,24 @@ func (t *PostcodeService) Validate(request *ValidateRequest) (*ValidateResponse,
 
 type LookupRequest struct {
 	// UK postcode e.g SW1A 2AA
-	Postcode string `json:"postcode"`
+	Postcode string `json:"postcode,omitempty"`
 }
 
 type LookupResponse struct {
 	// country e.g United Kingdom
-	Country string `json:"country"`
+	Country string `json:"country,omitempty"`
 	// e.g Westminster
-	District string `json:"district"`
+	District string `json:"district,omitempty"`
 	// e.g 51.50354
-	Latitude float64 `json:"latitude"`
+	Latitude float64 `json:"latitude,omitempty"`
 	// e.g -0.127695
-	Longitude float64 `json:"longitude"`
+	Longitude float64 `json:"longitude,omitempty"`
 	// UK postcode e.g SW1A 2AA
-	Postcode string `json:"postcode"`
+	Postcode string `json:"postcode,omitempty"`
 	// related region e.g London
-	Region string `json:"region"`
+	Region string `json:"region,omitempty"`
 	// e.g St James's
-	Ward string `json:"ward"`
+	Ward string `json:"ward,omitempty"`
 }
 
 type RandomRequest struct {
@@ -73,27 +73,27 @@ type RandomRequest struct {
 
 type RandomResponse struct {
 	// country e.g United Kingdom
-	Country string `json:"country"`
+	Country string `json:"country,omitempty"`
 	// e.g Westminster
-	District string `json:"district"`
+	District string `json:"district,omitempty"`
 	// e.g 51.50354
-	Latitude float64 `json:"latitude"`
+	Latitude float64 `json:"latitude,omitempty"`
 	// e.g -0.127695
-	Longitude float64 `json:"longitude"`
+	Longitude float64 `json:"longitude,omitempty"`
 	// UK postcode e.g SW1A 2AA
-	Postcode string `json:"postcode"`
+	Postcode string `json:"postcode,omitempty"`
 	// related region e.g London
-	Region string `json:"region"`
+	Region string `json:"region,omitempty"`
 	// e.g St James's
-	Ward string `json:"ward"`
+	Ward string `json:"ward,omitempty"`
 }
 
 type ValidateRequest struct {
 	// UK postcode e.g SW1A 2AA
-	Postcode string `json:"postcode"`
+	Postcode string `json:"postcode,omitempty"`
 }
 
 type ValidateResponse struct {
 	// Is the postcode valid (true) or not (false)
-	Valid bool `json:"valid"`
+	Valid bool `json:"valid,omitempty"`
 }

@@ -41,38 +41,38 @@ type CountriesRequest struct {
 }
 
 type CountriesResponse struct {
-	Countries []Country `json:"countries"`
+	Countries []Country `json:"countries,omitempty"`
 }
 
 type Country struct {
 	// The 2 letter country code (as defined in ISO 3166-1 alpha-2)
-	Code string `json:"code"`
+	Code string `json:"code,omitempty"`
 	// The English name of the country
-	Name string `json:"name"`
+	Name string `json:"name,omitempty"`
 }
 
 type Holiday struct {
 	// the country this holiday occurs in
-	CountryCode string `json:"country_code"`
+	CountryCode string `json:"country_code,omitempty"`
 	// date of the holiday in yyyy-mm-dd format
-	Date string `json:"date"`
+	Date string `json:"date,omitempty"`
 	// the local name of the holiday
-	LocalName string `json:"local_name"`
+	LocalName string `json:"local_name,omitempty"`
 	// the name of the holiday in English
-	Name string `json:"name"`
+	Name string `json:"name,omitempty"`
 	// the regions within the country that observe this holiday (if not all of them)
-	Regions []string `json:"regions"`
+	Regions []string `json:"regions,omitempty"`
 	// the type of holiday Public, Bank, School, Authorities, Optional, Observance
-	Types []string `json:"types"`
+	Types []string `json:"types,omitempty"`
 }
 
 type ListRequest struct {
 	// The 2 letter country code (as defined in ISO 3166-1 alpha-2)
-	CountryCode string `json:"country_code"`
+	CountryCode string `json:"country_code,omitempty"`
 	// The year to list holidays for
-	Year int64 `json:"year,string"`
+	Year int64 `json:"year,string,omitempty"`
 }
 
 type ListResponse struct {
-	Holidays []Holiday `json:"holidays"`
+	Holidays []Holiday `json:"holidays,omitempty"`
 }

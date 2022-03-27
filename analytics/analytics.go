@@ -56,40 +56,40 @@ func (t *AnalyticsService) Track(request *TrackRequest) (*TrackResponse, error) 
 }
 
 type DeleteRequest struct {
-	Name string `json:"name"`
+	Name string `json:"name,omitempty"`
 }
 
 type DeleteResponse struct {
-	Event *Event `json:"event"`
+	Event *Event `json:"event,omitempty"`
 }
 
 type Event struct {
 	// time at which the event was created
-	Created string `json:"created"`
+	Created string `json:"created,omitempty"`
 	// event name
-	Name string `json:"name"`
+	Name string `json:"name,omitempty"`
 	// the amount of times the event was triggered
-	Value int64 `json:"value,string"`
+	Value int64 `json:"value,string,omitempty"`
 }
 
 type ListRequest struct {
 }
 
 type ListResponse struct {
-	Events []Event `json:"events"`
+	Events []Event `json:"events,omitempty"`
 }
 
 type ReadRequest struct {
-	Name string `json:"name"`
+	Name string `json:"name,omitempty"`
 }
 
 type ReadResponse struct {
-	Event *Event `json:"event"`
+	Event *Event `json:"event,omitempty"`
 }
 
 type TrackRequest struct {
 	// event name
-	Name string `json:"name"`
+	Name string `json:"name,omitempty"`
 }
 
 type TrackResponse struct {

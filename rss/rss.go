@@ -57,13 +57,13 @@ func (t *RssService) Remove(request *RemoveRequest) (*RemoveResponse, error) {
 
 type AddRequest struct {
 	// category to add e.g news
-	Category string `json:"category"`
+	Category string `json:"category,omitempty"`
 	// rss feed name
 	// eg. a16z
-	Name string `json:"name"`
+	Name string `json:"name,omitempty"`
 	// rss feed url
 	// eg. http://a16z.com/feed/
-	Url string `json:"url"`
+	Url string `json:"url,omitempty"`
 }
 
 type AddResponse struct {
@@ -71,58 +71,58 @@ type AddResponse struct {
 
 type Entry struct {
 	// article content
-	Content string `json:"content"`
+	Content string `json:"content,omitempty"`
 	// data of the entry
-	Date string `json:"date"`
+	Date string `json:"date,omitempty"`
 	// the rss feed where it came from
-	Feed string `json:"feed"`
+	Feed string `json:"feed,omitempty"`
 	// unique id of the entry
-	Id string `json:"id"`
+	Id string `json:"id,omitempty"`
 	// rss feed url of the entry
-	Link string `json:"link"`
+	Link string `json:"link,omitempty"`
 	// article summary
-	Summary string `json:"summary"`
+	Summary string `json:"summary,omitempty"`
 	// title of the entry
-	Title string `json:"title"`
+	Title string `json:"title,omitempty"`
 }
 
 type Feed struct {
 	// category of the feed e.g news
-	Category string `json:"category"`
+	Category string `json:"category,omitempty"`
 	// unique id
-	Id string `json:"id"`
+	Id string `json:"id,omitempty"`
 	// rss feed name
 	// eg. a16z
-	Name string `json:"name"`
+	Name string `json:"name,omitempty"`
 	// rss feed url
 	// eg. http://a16z.com/feed/
-	Url string `json:"url"`
+	Url string `json:"url,omitempty"`
 }
 
 type FeedRequest struct {
 	// limit entries returned
-	Limit int64 `json:"limit,string"`
+	Limit int64 `json:"limit,string,omitempty"`
 	// rss feed name
-	Name string `json:"name"`
+	Name string `json:"name,omitempty"`
 	// offset entries
-	Offset int64 `json:"offset,string"`
+	Offset int64 `json:"offset,string,omitempty"`
 }
 
 type FeedResponse struct {
-	Entries []Entry `json:"entries"`
+	Entries []Entry `json:"entries,omitempty"`
 }
 
 type ListRequest struct {
 }
 
 type ListResponse struct {
-	Feeds []Feed `json:"feeds"`
+	Feeds []Feed `json:"feeds,omitempty"`
 }
 
 type RemoveRequest struct {
 	// rss feed name
 	// eg. a16z
-	Name string `json:"name"`
+	Name string `json:"name,omitempty"`
 }
 
 type RemoveResponse struct {

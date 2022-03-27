@@ -49,30 +49,30 @@ func (t *EmojiService) Print(request *PrintRequest) (*PrintResponse, error) {
 
 type FindRequest struct {
 	// the alias code e.g :beer:
-	Alias string `json:"alias"`
+	Alias string `json:"alias,omitempty"`
 }
 
 type FindResponse struct {
 	// the unicode emoji 🍺
-	Emoji string `json:"emoji"`
+	Emoji string `json:"emoji,omitempty"`
 }
 
 type FlagRequest struct {
 	// country code e.g GB
-	Code string `json:"code"`
+	Code string `json:"code,omitempty"`
 }
 
 type FlagResponse struct {
 	// the emoji flag
-	Flag string `json:"flag"`
+	Flag string `json:"flag,omitempty"`
 }
 
 type PrintRequest struct {
 	// text including any alias e.g let's grab a :beer:
-	Text string `json:"text"`
+	Text string `json:"text,omitempty"`
 }
 
 type PrintResponse struct {
 	// text with rendered emojis
-	Text string `json:"text"`
+	Text string `json:"text,omitempty"`
 }

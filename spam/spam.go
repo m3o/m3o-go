@@ -30,24 +30,24 @@ func (t *SpamService) Classify(request *ClassifyRequest) (*ClassifyResponse, err
 
 type ClassifyRequest struct {
 	// The raw body of the email including headers etc per RFC 822. Alternatively, use the other parameters to correctly format the message
-	EmailBody string `json:"email_body"`
+	EmailBody string `json:"email_body,omitempty"`
 	// The email address it has been sent from
-	From string `json:"from"`
+	From string `json:"from,omitempty"`
 	// the HTML version of the email body
-	HtmlBody string `json:"html_body"`
+	HtmlBody string `json:"html_body,omitempty"`
 	// The subject of the email
-	Subject string `json:"subject"`
+	Subject string `json:"subject,omitempty"`
 	// the plain text version of the email body
-	TextBody string `json:"text_body"`
+	TextBody string `json:"text_body,omitempty"`
 	// The email address it is being sent to
-	To string `json:"to"`
+	To string `json:"to,omitempty"`
 }
 
 type ClassifyResponse struct {
 	// The rules that have contributed to this score
-	Details []string `json:"details"`
+	Details []string `json:"details,omitempty"`
 	// Is it spam? Returns true if its score is > 5
-	IsSpam bool `json:"is_spam"`
+	IsSpam bool `json:"is_spam,omitempty"`
 	// The score evaluated for this email. A higher number means it is more likely to be spam
-	Score float64 `json:"score"`
+	Score float64 `json:"score,omitempty"`
 }

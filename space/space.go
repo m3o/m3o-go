@@ -93,21 +93,21 @@ func (t *SpaceService) Upload(request *UploadRequest) (*UploadResponse, error) {
 
 type CreateRequest struct {
 	// The name of the object. Use forward slash delimiter to implement a nested directory-like structure e.g. images/foo.jpg
-	Name string `json:"name"`
+	Name string `json:"name,omitempty"`
 	// The contents of the object. Either base64 encoded if sending request as application/json or raw bytes if using multipart/form-data format
-	Object string `json:"object"`
+	Object string `json:"object,omitempty"`
 	// Who can see this object? "public" or "private", defaults to "private"
-	Visibility string `json:"visibility"`
+	Visibility string `json:"visibility,omitempty"`
 }
 
 type CreateResponse struct {
 	// A public URL to access the object if visibility is "public"
-	Url string `json:"url"`
+	Url string `json:"url,omitempty"`
 }
 
 type DeleteRequest struct {
 	// Name of the object
-	Name string `json:"name"`
+	Name string `json:"name,omitempty"`
 }
 
 type DeleteResponse struct {
@@ -115,99 +115,99 @@ type DeleteResponse struct {
 
 type DownloadRequest struct {
 	// name of object
-	Name string `json:"name"`
+	Name string `json:"name,omitempty"`
 }
 
 type DownloadResponse struct {
 	// presigned url
-	Url string `json:"url"`
+	Url string `json:"url,omitempty"`
 }
 
 type HeadObject struct {
 	// when was this created
-	Created string `json:"created"`
+	Created string `json:"created,omitempty"`
 	// when was this last modified
-	Modified string `json:"modified"`
-	Name     string `json:"name"`
+	Modified string `json:"modified,omitempty"`
+	Name     string `json:"name,omitempty"`
 	// URL to access the object if it is public
-	Url string `json:"url"`
+	Url string `json:"url,omitempty"`
 	// is this public or private
-	Visibility string `json:"visibility"`
+	Visibility string `json:"visibility,omitempty"`
 }
 
 type HeadRequest struct {
 	// name of the object
-	Name string `json:"name"`
+	Name string `json:"name,omitempty"`
 }
 
 type HeadResponse struct {
-	Object *HeadObject `json:"object"`
+	Object *HeadObject `json:"object,omitempty"`
 }
 
 type ListObject struct {
-	Created string `json:"created"`
+	Created string `json:"created,omitempty"`
 	// when was this last modified
-	Modified   string `json:"modified"`
-	Name       string `json:"name"`
-	Url        string `json:"url"`
-	Visibility string `json:"visibility"`
+	Modified   string `json:"modified,omitempty"`
+	Name       string `json:"name,omitempty"`
+	Url        string `json:"url,omitempty"`
+	Visibility string `json:"visibility,omitempty"`
 }
 
 type ListRequest struct {
 	// optional prefix for the name e.g. to return all the objects in the images directory pass images/
-	Prefix string `json:"prefix"`
+	Prefix string `json:"prefix,omitempty"`
 }
 
 type ListResponse struct {
-	Objects []ListObject `json:"objects"`
+	Objects []ListObject `json:"objects,omitempty"`
 }
 
 type ReadRequest struct {
 	// name of the object
-	Name string `json:"name"`
+	Name string `json:"name,omitempty"`
 }
 
 type ReadResponse struct {
 	// The object itself
-	Object *SpaceObject `json:"object"`
+	Object *SpaceObject `json:"object,omitempty"`
 }
 
 type SpaceObject struct {
 	// when was this created
-	Created string `json:"created"`
+	Created string `json:"created,omitempty"`
 	// the data within the object
-	Data string `json:"data"`
+	Data string `json:"data,omitempty"`
 	// when was this last modified
-	Modified string `json:"modified"`
+	Modified string `json:"modified,omitempty"`
 	// name of object
-	Name string `json:"name"`
+	Name string `json:"name,omitempty"`
 	// URL to access the object if it is public
-	Url string `json:"url"`
+	Url string `json:"url,omitempty"`
 	// is this public or private
-	Visibility string `json:"visibility"`
+	Visibility string `json:"visibility,omitempty"`
 }
 
 type UpdateRequest struct {
 	// The name of the object. Use forward slash delimiter to implement a nested directory-like structure e.g. images/foo.jpg
-	Name string `json:"name"`
+	Name string `json:"name,omitempty"`
 	// The contents of the object. Either base64 encoded if sending request as application/json or raw bytes if using multipart/form-data format
-	Object string `json:"object"`
+	Object string `json:"object,omitempty"`
 	// Who can see this object? "public" or "private", defaults to "private"
-	Visibility string `json:"visibility"`
+	Visibility string `json:"visibility,omitempty"`
 }
 
 type UpdateResponse struct {
 	// A public URL to access the object if visibility is "public"
-	Url string `json:"url"`
+	Url string `json:"url,omitempty"`
 }
 
 type UploadRequest struct {
-	Name string `json:"name"`
+	Name string `json:"name,omitempty"`
 	// is this object public or private
-	Visibility string `json:"visibility"`
+	Visibility string `json:"visibility,omitempty"`
 }
 
 type UploadResponse struct {
 	// a presigned url to be used for uploading. To use the URL call it with HTTP PUT and pass the object as the request data
-	Url string `json:"url"`
+	Url string `json:"url,omitempty"`
 }

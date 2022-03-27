@@ -30,24 +30,24 @@ func (t *IpService) Lookup(request *LookupRequest) (*LookupResponse, error) {
 
 type LookupRequest struct {
 	// IP to lookup
-	Ip string `json:"ip"`
+	Ip string `json:"ip,omitempty"`
 }
 
 type LookupResponse struct {
 	// Autonomous system number
-	Asn int32 `json:"asn"`
+	Asn int32 `json:"asn,omitempty"`
 	// Name of the city
-	City string `json:"city"`
+	City string `json:"city,omitempty"`
 	// Name of the continent
-	Continent string `json:"continent"`
+	Continent string `json:"continent,omitempty"`
 	// Name of the country
-	Country string `json:"country"`
+	Country string `json:"country,omitempty"`
 	// IP of the query
-	Ip string `json:"ip"`
+	Ip string `json:"ip,omitempty"`
 	// Latitude e.g 52.523219
-	Latitude float64 `json:"latitude"`
+	Latitude float64 `json:"latitude,omitempty"`
 	// Longitude e.g 13.428555
-	Longitude float64 `json:"longitude"`
+	Longitude float64 `json:"longitude,omitempty"`
 	// Timezone e.g Europe/Rome
-	Timezone string `json:"timezone"`
+	Timezone string `json:"timezone,omitempty"`
 }

@@ -30,40 +30,40 @@ func (t *VehicleService) Lookup(request *LookupRequest) (*LookupResponse, error)
 
 type LookupRequest struct {
 	// the vehicle registration number
-	Registration string `json:"registration"`
+	Registration string `json:"registration,omitempty"`
 }
 
 type LookupResponse struct {
 	// co2 emmissions
-	Co2Emissions float64 `json:"co2_emissions"`
+	Co2Emissions float64 `json:"co2_emissions,omitempty"`
 	// colour of vehicle
-	Colour string `json:"colour"`
+	Colour string `json:"colour,omitempty"`
 	// engine capacity
-	EngineCapacity int32 `json:"engine_capacity"`
+	EngineCapacity int32 `json:"engine_capacity,omitempty"`
 	// fuel type e.g petrol, diesel
-	FuelType string `json:"fuel_type"`
+	FuelType string `json:"fuel_type,omitempty"`
 	// date of last v5 issue
-	LastV5Issued string `json:"last_v5_issued"`
+	LastV5Issued string `json:"last_v5_issued,omitempty"`
 	// url of logo for the make
-	LogoUrl string `json:"logo_url"`
+	LogoUrl string `json:"logo_url,omitempty"`
 	// make of vehicle
-	Make string `json:"make"`
+	Make string `json:"make,omitempty"`
 	// month of first registration
-	MonthOfFirstRegistration string `json:"month_of_first_registration"`
+	MonthOfFirstRegistration string `json:"month_of_first_registration,omitempty"`
 	// mot expiry
-	MotExpiry string `json:"mot_expiry"`
+	MotExpiry string `json:"mot_expiry,omitempty"`
 	// mot status
-	MotStatus string `json:"mot_status"`
+	MotStatus string `json:"mot_status,omitempty"`
 	// registration number
-	Registration string `json:"registration"`
+	Registration string `json:"registration,omitempty"`
 	// tax due data
-	TaxDueDate string `json:"tax_due_date"`
+	TaxDueDate string `json:"tax_due_date,omitempty"`
 	// tax status
-	TaxStatus string `json:"tax_status"`
+	TaxStatus string `json:"tax_status,omitempty"`
 	// type approvale
-	TypeApproval string `json:"type_approval"`
+	TypeApproval string `json:"type_approval,omitempty"`
 	// wheel plan
-	Wheelplan string `json:"wheelplan"`
+	Wheelplan string `json:"wheelplan,omitempty"`
 	// year of manufacture
-	YearOfManufacture int32 `json:"year_of_manufacture"`
+	YearOfManufacture int32 `json:"year_of_manufacture,omitempty"`
 }

@@ -30,18 +30,18 @@ func (t *PasswordService) Generate(request *GenerateRequest) (*GenerateResponse,
 
 type GenerateRequest struct {
 	// password length; defaults to 8 chars
-	Length int32 `json:"length"`
+	Length int32 `json:"length,omitempty"`
 	// include lowercase letters
-	Lowercase bool `json:"lowercase"`
+	Lowercase bool `json:"lowercase,omitempty"`
 	// include numbers
-	Numbers bool `json:"numbers"`
+	Numbers bool `json:"numbers,omitempty"`
 	// include special characters (!@#$%&*)
-	Special bool `json:"special"`
+	Special bool `json:"special,omitempty"`
 	// include uppercase letters
-	Uppercase bool `json:"uppercase"`
+	Uppercase bool `json:"uppercase,omitempty"`
 }
 
 type GenerateResponse struct {
 	// The generated password
-	Password string `json:"password"`
+	Password string `json:"password,omitempty"`
 }

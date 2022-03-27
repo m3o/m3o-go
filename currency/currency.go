@@ -57,62 +57,62 @@ func (t *CurrencyService) Rates(request *RatesRequest) (*RatesResponse, error) {
 
 type Code struct {
 	// e.g United States Dollar
-	Currency string `json:"currency"`
+	Currency string `json:"currency,omitempty"`
 	// e.g USD
-	Name string `json:"name"`
+	Name string `json:"name,omitempty"`
 }
 
 type CodesRequest struct {
 }
 
 type CodesResponse struct {
-	Codes []Code `json:"codes"`
+	Codes []Code `json:"codes,omitempty"`
 }
 
 type ConvertRequest struct {
 	// optional amount to convert e.g 10.0
-	Amount float64 `json:"amount"`
+	Amount float64 `json:"amount,omitempty"`
 	// base code to convert from e.g USD
-	From string `json:"from"`
+	From string `json:"from,omitempty"`
 	// target code to convert to e.g GBP
-	To string `json:"to"`
+	To string `json:"to,omitempty"`
 }
 
 type ConvertResponse struct {
 	// converted amount e.g 7.10
-	Amount float64 `json:"amount"`
+	Amount float64 `json:"amount,omitempty"`
 	// the base code e.g USD
-	From string `json:"from"`
+	From string `json:"from,omitempty"`
 	// conversion rate e.g 0.71
-	Rate float64 `json:"rate"`
+	Rate float64 `json:"rate,omitempty"`
 	// the target code e.g GBP
-	To string `json:"to"`
+	To string `json:"to,omitempty"`
 }
 
 type HistoryRequest struct {
 	// currency code e.g USD
-	Code string `json:"code"`
+	Code string `json:"code,omitempty"`
 	// date formatted as YYYY-MM-DD
-	Date string `json:"date"`
+	Date string `json:"date,omitempty"`
 }
 
 type HistoryResponse struct {
 	// The code of the request
-	Code string `json:"code"`
+	Code string `json:"code,omitempty"`
 	// The date requested
-	Date string `json:"date"`
+	Date string `json:"date,omitempty"`
 	// The rate for the day as code:rate
-	Rates map[string]float64 `json:"rates"`
+	Rates map[string]float64 `json:"rates,omitempty"`
 }
 
 type RatesRequest struct {
 	// The currency code to get rates for e.g USD
-	Code string `json:"code"`
+	Code string `json:"code,omitempty"`
 }
 
 type RatesResponse struct {
 	// The code requested e.g USD
-	Code string `json:"code"`
+	Code string `json:"code,omitempty"`
 	// The rates for the given code as key-value pairs code:rate
-	Rates map[string]float64 `json:"rates"`
+	Rates map[string]float64 `json:"rates,omitempty"`
 }

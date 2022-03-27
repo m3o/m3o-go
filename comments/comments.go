@@ -91,48 +91,48 @@ func (t *CommentsService) Update(request *UpdateRequest) (*UpdateResponse, error
 
 type Comment struct {
 	// time at which the comment was created
-	Created string `json:"created"`
+	Created string `json:"created,omitempty"`
 	// unique id for the comment, generated if not specified
-	Id string `json:"id"`
+	Id string `json:"id,omitempty"`
 	// subject of the comment
-	Subject string `json:"subject"`
+	Subject string `json:"subject,omitempty"`
 	// text of the comment
-	Text string `json:"text"`
+	Text string `json:"text,omitempty"`
 	// time at which the comment was updated
-	Updated string `json:"updated"`
+	Updated string `json:"updated,omitempty"`
 }
 
 type CreateRequest struct {
 	// comment subject
-	Subject string `json:"subject"`
+	Subject string `json:"subject,omitempty"`
 	// comment items
-	Text string `json:"text"`
+	Text string `json:"text,omitempty"`
 }
 
 type CreateResponse struct {
 	// The created comment
-	Comment *Comment `json:"comment"`
+	Comment *Comment `json:"comment,omitempty"`
 }
 
 type DeleteRequest struct {
 	// specify the id of the comment
-	Id string `json:"id"`
+	Id string `json:"id,omitempty"`
 }
 
 type DeleteResponse struct {
-	Comment *Comment `json:"comment"`
+	Comment *Comment `json:"comment,omitempty"`
 }
 
 type EventsRequest struct {
 	// optionally specify a comment id
-	Id string `json:"id"`
+	Id string `json:"id,omitempty"`
 }
 
 type EventsResponse struct {
 	// the comment which the operation occured on
-	Comment *Comment `json:"comment"`
+	Comment *Comment `json:"comment,omitempty"`
 	// the event which occured; create, delete, update
-	Event string `json:"event"`
+	Event string `json:"event,omitempty"`
 }
 
 type ListRequest struct {
@@ -140,23 +140,23 @@ type ListRequest struct {
 
 type ListResponse struct {
 	// the comment of comments
-	Comments []Comment `json:"comments"`
+	Comments []Comment `json:"comments,omitempty"`
 }
 
 type ReadRequest struct {
 	// the comment id
-	Id string `json:"id"`
+	Id string `json:"id,omitempty"`
 }
 
 type ReadResponse struct {
 	// The comment
-	Comment *Comment `json:"comment"`
+	Comment *Comment `json:"comment,omitempty"`
 }
 
 type UpdateRequest struct {
-	Comment *Comment `json:"comment"`
+	Comment *Comment `json:"comment,omitempty"`
 }
 
 type UpdateResponse struct {
-	Comment *Comment `json:"comment"`
+	Comment *Comment `json:"comment,omitempty"`
 }

@@ -29,40 +29,40 @@ func (t *MovieService) Search(request *SearchRequest) (*SearchResponse, error) {
 }
 
 type MovieInfo struct {
-	Adult            bool    `json:"adult"`
-	BackdropPath     string  `json:"backdrop_path"`
-	GenreIds         int32   `json:"genre_ids"`
-	Id               int32   `json:"id"`
-	OriginalLanguage string  `json:"original_language"`
-	OriginalTitle    string  `json:"original_title"`
-	Overview         string  `json:"overview"`
-	Popularity       float64 `json:"popularity"`
-	PosterPath       string  `json:"poster_path"`
-	ReleaseDate      string  `json:"release_date"`
-	Title            string  `json:"title"`
-	Video            bool    `json:"video"`
-	VoteAverage      float64 `json:"vote_average"`
-	VoteCount        int32   `json:"vote_count"`
+	Adult            bool    `json:"adult,omitempty"`
+	BackdropPath     string  `json:"backdrop_path,omitempty"`
+	GenreIds         int32   `json:"genre_ids,omitempty"`
+	Id               int32   `json:"id,omitempty"`
+	OriginalLanguage string  `json:"original_language,omitempty"`
+	OriginalTitle    string  `json:"original_title,omitempty"`
+	Overview         string  `json:"overview,omitempty"`
+	Popularity       float64 `json:"popularity,omitempty"`
+	PosterPath       string  `json:"poster_path,omitempty"`
+	ReleaseDate      string  `json:"release_date,omitempty"`
+	Title            string  `json:"title,omitempty"`
+	Video            bool    `json:"video,omitempty"`
+	VoteAverage      float64 `json:"vote_average,omitempty"`
+	VoteCount        int32   `json:"vote_count,omitempty"`
 }
 
 type SearchRequest struct {
 	// a ISO 639-1 value to display translated data
-	Language string `json:"language"`
+	Language string `json:"language,omitempty"`
 	// page to query
-	Page int32 `json:"page"`
+	Page int32 `json:"page,omitempty"`
 	// year of release
-	PrimaryReleaseYear int32 `json:"primary_release_year"`
+	PrimaryReleaseYear int32 `json:"primary_release_year,omitempty"`
 	// a text query to search
-	Query string `json:"query"`
+	Query string `json:"query,omitempty"`
 	// a ISO 3166-1 code to filter release dates.
-	Region string `json:"region"`
+	Region string `json:"region,omitempty"`
 	// year of making
-	Year int32 `json:"year"`
+	Year int32 `json:"year,omitempty"`
 }
 
 type SearchResponse struct {
-	Page         int32       `json:"page"`
-	Results      []MovieInfo `json:"results"`
-	TotalPages   int32       `json:"total_pages"`
-	TotalResults int32       `json:"total_results"`
+	Page         int32       `json:"page,omitempty"`
+	Results      []MovieInfo `json:"results,omitempty"`
+	TotalPages   int32       `json:"total_pages,omitempty"`
+	TotalResults int32       `json:"total_results,omitempty"`
 }

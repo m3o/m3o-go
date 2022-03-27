@@ -64,38 +64,38 @@ func (t *EventService) Read(request *ReadRequest) (*ReadResponse, error) {
 
 type ConsumeRequest struct {
 	// Optional group for the subscription
-	Group string `json:"group"`
+	Group string `json:"group,omitempty"`
 	// Optional offset to read from e.g "2006-01-02T15:04:05.999Z07:00"
-	Offset string `json:"offset"`
+	Offset string `json:"offset,omitempty"`
 	// The topic to subscribe to
-	Topic string `json:"topic"`
+	Topic string `json:"topic,omitempty"`
 }
 
 type ConsumeResponse struct {
 	// Unique message id
-	Id string `json:"id"`
+	Id string `json:"id,omitempty"`
 	// The next json message on the topic
-	Message map[string]interface{} `json:"message"`
+	Message map[string]interface{} `json:"message,omitempty"`
 	// Timestamp of publishing
-	Timestamp string `json:"timestamp"`
+	Timestamp string `json:"timestamp,omitempty"`
 	// The topic subscribed to
-	Topic string `json:"topic"`
+	Topic string `json:"topic,omitempty"`
 }
 
 type Ev struct {
 	// event id
-	Id string `json:"id"`
+	Id string `json:"id,omitempty"`
 	// event message
-	Message map[string]interface{} `json:"message"`
+	Message map[string]interface{} `json:"message,omitempty"`
 	// event timestamp
-	Timestamp string `json:"timestamp"`
+	Timestamp string `json:"timestamp,omitempty"`
 }
 
 type PublishRequest struct {
 	// The json message to publish
-	Message map[string]interface{} `json:"message"`
+	Message map[string]interface{} `json:"message,omitempty"`
 	// The topic to publish to
-	Topic string `json:"topic"`
+	Topic string `json:"topic,omitempty"`
 }
 
 type PublishResponse struct {
@@ -103,14 +103,14 @@ type PublishResponse struct {
 
 type ReadRequest struct {
 	// number of events to read; default 25
-	Limit int32 `json:"limit"`
+	Limit int32 `json:"limit,omitempty"`
 	// offset for the events; default 0
-	Offset int32 `json:"offset"`
+	Offset int32 `json:"offset,omitempty"`
 	// topic to read from
-	Topic string `json:"topic"`
+	Topic string `json:"topic,omitempty"`
 }
 
 type ReadResponse struct {
 	// the events
-	Events []Ev `json:"events"`
+	Events []Ev `json:"events,omitempty"`
 }
