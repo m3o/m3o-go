@@ -146,11 +146,11 @@ type Collection struct {
 	// name of the collection
 	Name string `json:"name,omitempty"`
 	// the payment tokens accepted for this collection
-	PaymentTokens *Token `json:"payment_tokens,omitempty"`
+	PaymentTokens []Token `json:"payment_tokens,omitempty"`
 	// payout address for the collection's royalties
 	PayoutAddress string `json:"payout_address,omitempty"`
 	// a list of the contracts associated with this collection
-	PrimaryAssetContracts *Contract `json:"primary_asset_contracts,omitempty"`
+	PrimaryAssetContracts []Contract `json:"primary_asset_contracts,omitempty"`
 	// the collection's approval status on OpenSea
 	SafelistRequestStatus string `json:"safelist_request_status,omitempty"`
 	// the fees that get paid out when a sale is made

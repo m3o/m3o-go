@@ -91,7 +91,7 @@ type ContactInfo struct {
 	// the phone numbers
 	Phones []Phone `json:"phones,omitempty"`
 	// the social media username
-	SocialMedias *SocialMedia `json:"social_medias,omitempty"`
+	SocialMedias []SocialMedia `json:"social_medias,omitempty"`
 	// update date string in RFC3339
 	UpdatedAt string `json:"updated_at,omitempty"`
 }
@@ -112,7 +112,7 @@ type CreateRequest struct {
 	// optional, phone numbers
 	Phones []Phone `json:"phones,omitempty"`
 	// optional, social media
-	SocialMedias *SocialMedia `json:"social_medias,omitempty"`
+	SocialMedias []SocialMedia `json:"social_medias,omitempty"`
 }
 
 type CreateResponse struct {
@@ -192,7 +192,7 @@ type UpdateRequest struct {
 	// optional, phone number
 	Phones []Phone `json:"phones,omitempty"`
 	// optional, social media
-	SocialMedias *SocialMedia `json:"social_medias,omitempty"`
+	SocialMedias []SocialMedia `json:"social_medias,omitempty"`
 }
 
 type UpdateResponse struct {

@@ -193,7 +193,7 @@ type Service struct {
 	// time of creation
 	Created string `json:"created,omitempty"`
 	// custom domains
-	CustomDomains string `json:"custom_domains,omitempty"`
+	CustomDomains []string `json:"custom_domains,omitempty"`
 	// associated env vars
 	EnvVars map[string]string `json:"env_vars,omitempty"`
 	// unique id

@@ -173,34 +173,34 @@ type ReferenceDataRequest struct {
 
 type ReferenceDataResponse struct {
 	// The types of charger
-	ChargerTypes *ChargerType `json:"charger_types,omitempty"`
+	ChargerTypes []ChargerType `json:"charger_types,omitempty"`
 	// The types of checkin status
-	CheckinStatusTypes *CheckinStatusType `json:"checkin_status_types,omitempty"`
+	CheckinStatusTypes []CheckinStatusType `json:"checkin_status_types,omitempty"`
 	// The types of connection
-	ConnectionTypes *ConnectionType `json:"connection_types,omitempty"`
+	ConnectionTypes []ConnectionType `json:"connection_types,omitempty"`
 	// The countries
 	Countries []Country `json:"countries,omitempty"`
 	// The types of current
-	CurrentTypes *CurrentType `json:"current_types,omitempty"`
+	CurrentTypes []CurrentType `json:"current_types,omitempty"`
 	// The providers of the charger data
-	DataProviders *DataProvider `json:"data_providers,omitempty"`
+	DataProviders []DataProvider `json:"data_providers,omitempty"`
 	// The companies operating the chargers
 	Operators []Operator `json:"operators,omitempty"`
 	// The status of the charger
-	StatusTypes *StatusType `json:"status_types,omitempty"`
+	StatusTypes []StatusType `json:"status_types,omitempty"`
 	// The status of a submission
-	SubmissionStatusTypes *SubmissionStatusType `json:"submission_status_types,omitempty"`
+	SubmissionStatusTypes []SubmissionStatusType `json:"submission_status_types,omitempty"`
 	// The different types of usage
-	UsageTypes *UsageType `json:"usage_types,omitempty"`
+	UsageTypes []UsageType `json:"usage_types,omitempty"`
 	// The types of user comment
-	UserCommentTypes *UserCommentType `json:"user_comment_types,omitempty"`
+	UserCommentTypes []UserCommentType `json:"user_comment_types,omitempty"`
 }
 
 type SearchRequest struct {
 	// Bounding box to search within (top left and bottom right coordinates)
 	Box *BoundingBox `json:"box,omitempty"`
 	// IDs of the connection type
-	ConnectionTypes string `json:"connection_types,omitempty"`
+	ConnectionTypes []string `json:"connection_types,omitempty"`
 	// Country ID
 	CountryId string `json:"country_id,omitempty"`
 	// Search distance from point in metres, defaults to 5000m
@@ -216,7 +216,7 @@ type SearchRequest struct {
 	// IDs of the the EV charger operator
 	Operators []string `json:"operators,omitempty"`
 	// Usage of the charge point (is it public, membership required, etc)
-	UsageTypes string `json:"usage_types,omitempty"`
+	UsageTypes []string `json:"usage_types,omitempty"`
 }
 
 type SearchResponse struct {

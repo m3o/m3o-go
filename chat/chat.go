@@ -125,7 +125,7 @@ type CreateRequest struct {
 	// whether its a private room
 	Private bool `json:"private,omitempty"`
 	// optional list of user ids
-	UserIds string `json:"user_ids,omitempty"`
+	UserIds []string `json:"user_ids,omitempty"`
 }
 
 type CreateResponse struct {
@@ -234,7 +234,7 @@ type Room struct {
 	// whether its a private room
 	Private bool `json:"private,omitempty"`
 	// list of users
-	UserIds string `json:"user_ids,omitempty"`
+	UserIds []string `json:"user_ids,omitempty"`
 }
 
 type SendRequest struct {

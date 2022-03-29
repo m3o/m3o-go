@@ -31,7 +31,7 @@ func (t *MovieService) Search(request *SearchRequest) (*SearchResponse, error) {
 type MovieInfo struct {
 	Adult            bool    `json:"adult,omitempty"`
 	BackdropPath     string  `json:"backdrop_path,omitempty"`
-	GenreIds         int32   `json:"genre_ids,omitempty"`
+	GenreIds         []int32 `json:"genre_ids,omitempty"`
 	Id               int32   `json:"id,omitempty"`
 	OriginalLanguage string  `json:"original_language,omitempty"`
 	OriginalTitle    string  `json:"original_title,omitempty"`
