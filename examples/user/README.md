@@ -4,100 +4,6 @@ An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/user/api](http
 
 Endpoints:
 
-## ResetPassword
-
-Reset password with the code sent by the "SendPasswordResetEmail" endpoint.
-
-
-[https://m3o.com/user/api#ResetPassword](https://m3o.com/user/api#ResetPassword)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/user"
-)
-
-// Reset password with the code sent by the "SendPasswordResetEmail" endpoint.
-func ResetPassword() {
-	userService := user.NewUserService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := userService.ResetPassword(&user.ResetPasswordRequest{
-		Code: "012345",
-ConfirmPassword: "NewPassword1",
-Email: "joe@example.com",
-NewPassword: "NewPassword1",
-
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
-## Delete
-
-Delete an account by id
-
-
-[https://m3o.com/user/api#Delete](https://m3o.com/user/api#Delete)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/user"
-)
-
-// Delete an account by id
-func DeleteUserAccount() {
-	userService := user.NewUserService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := userService.Delete(&user.DeleteRequest{
-		Id: "8b98acbe-0b6a-4d66-a414-5ffbf666786f",
-
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
-## SendMagicLink
-
-Login using email only - Passwordless
-
-
-[https://m3o.com/user/api#SendMagicLink](https://m3o.com/user/api#SendMagicLink)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/user"
-)
-
-// Login using email only - Passwordless
-func SendAmagicLink() {
-	userService := user.NewUserService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := userService.SendMagicLink(&user.SendMagicLinkRequest{
-		Address: "www.example.com",
-Email: "joe@example.com",
-Endpoint: "verifytoken",
-FromName: "Awesome Dot Com",
-Subject: "MagicLink to access your account",
-TextContent: `Hi there,
-
-Click here to access your account $micro_verification_link`,
-
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
 ## Create
 
 Create a new user account. The email address and username for the account must be unique.
@@ -122,36 +28,6 @@ func CreateAnAccount() {
 		Email: "joe@example.com",
 Id: "user-1",
 Password: "Password1",
-Username: "joe",
-
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
-## Update
-
-Update the account username or email
-
-
-[https://m3o.com/user/api#Update](https://m3o.com/user/api#Update)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/user"
-)
-
-// Update the account username or email
-func UpdateAnAccount() {
-	userService := user.NewUserService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := userService.Update(&user.UpdateRequest{
-		Email: "joe+2@example.com",
-Id: "user-1",
 Username: "joe",
 
 	})
@@ -194,15 +70,12 @@ Please verify your email by clicking this link: $micro_verification_link`,
 	
 }
 ```
-## VerifyToken
+## Update
 
-Check whether the token attached to MagicLink is valid or not.
-Ideally, you need to call this endpoint from your http request
-handler that handles the endpoint which is specified in the
-SendMagicLink request.
+Update the account username or email
 
 
-[https://m3o.com/user/api#VerifyToken](https://m3o.com/user/api#VerifyToken)
+[https://m3o.com/user/api#Update](https://m3o.com/user/api#Update)
 
 ```go
 package example
@@ -214,14 +87,75 @@ import(
 	"go.m3o.com/user"
 )
 
-// Check whether the token attached to MagicLink is valid or not.
-// Ideally, you need to call this endpoint from your http request
-// handler that handles the endpoint which is specified in the
-// SendMagicLink request.
-func VerifyAtoken() {
+// Update the account username or email
+func UpdateAnAccount() {
 	userService := user.NewUserService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := userService.VerifyToken(&user.VerifyTokenRequest{
-		Token: "EdsUiidouJJJLldjlloofUiorkojflsWWdld",
+	rsp, err := userService.Update(&user.UpdateRequest{
+		Email: "joe+2@example.com",
+Id: "user-1",
+Username: "joe",
+
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
+## SendPasswordResetEmail
+
+Send an email with a verification code to reset password.
+Call "ResetPassword" endpoint once user provides the code.
+
+
+[https://m3o.com/user/api#SendPasswordResetEmail](https://m3o.com/user/api#SendPasswordResetEmail)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/user"
+)
+
+// Send an email with a verification code to reset password.
+// Call "ResetPassword" endpoint once user provides the code.
+func SendPasswordResetEmail() {
+	userService := user.NewUserService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := userService.SendPasswordResetEmail(&user.SendPasswordResetEmailRequest{
+		Email: "joe@example.com",
+FromName: "Awesome Dot Com",
+Subject: "Password reset",
+TextContent: `Hi there,
+ click here to reset your password: myapp.com/reset/code?=$code`,
+
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
+## Logout
+
+Logout a user account
+
+
+[https://m3o.com/user/api#Logout](https://m3o.com/user/api#Logout)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/user"
+)
+
+// Logout a user account
+func LogAuserOut() {
+	userService := user.NewUserService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := userService.Logout(&user.LogoutRequest{
+		SessionId: "df91a612-5b24-4634-99ff-240220ab8f55",
 
 	})
 	fmt.Println(rsp, err)
@@ -339,46 +273,12 @@ func ReadAccountByEmail() {
 	
 }
 ```
-## SendPasswordResetEmail
+## Delete
 
-Send an email with a verification code to reset password.
-Call "ResetPassword" endpoint once user provides the code.
-
-
-[https://m3o.com/user/api#SendPasswordResetEmail](https://m3o.com/user/api#SendPasswordResetEmail)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/user"
-)
-
-// Send an email with a verification code to reset password.
-// Call "ResetPassword" endpoint once user provides the code.
-func SendPasswordResetEmail() {
-	userService := user.NewUserService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := userService.SendPasswordResetEmail(&user.SendPasswordResetEmailRequest{
-		Email: "joe@example.com",
-FromName: "Awesome Dot Com",
-Subject: "Password reset",
-TextContent: `Hi there,
- click here to reset your password: myapp.com/reset/code?=$code`,
-
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
-## VerifyEmail
-
-Verify the email address of an account from a token sent in an email to the user.
+Delete an account by id
 
 
-[https://m3o.com/user/api#VerifyEmail](https://m3o.com/user/api#VerifyEmail)
+[https://m3o.com/user/api#Delete](https://m3o.com/user/api#Delete)
 
 ```go
 package example
@@ -390,11 +290,11 @@ import(
 	"go.m3o.com/user"
 )
 
-// Verify the email address of an account from a token sent in an email to the user.
-func VerifyEmail() {
+// Delete an account by id
+func DeleteUserAccount() {
 	userService := user.NewUserService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := userService.VerifyEmail(&user.VerifyEmailRequest{
-		Token: "012345",
+	rsp, err := userService.Delete(&user.DeleteRequest{
+		Id: "8b98acbe-0b6a-4d66-a414-5ffbf666786f",
 
 	})
 	fmt.Println(rsp, err)
@@ -460,6 +360,70 @@ func ReadAsessionByTheSessionId() {
 	
 }
 ```
+## List
+
+List all users. Returns a paged list of results
+
+
+[https://m3o.com/user/api#List](https://m3o.com/user/api#List)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/user"
+)
+
+// List all users. Returns a paged list of results
+func ListAllUsers() {
+	userService := user.NewUserService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := userService.List(&user.ListRequest{
+		Limit: 100,
+Offset: 0,
+
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
+## SendMagicLink
+
+Login using email only - Passwordless
+
+
+[https://m3o.com/user/api#SendMagicLink](https://m3o.com/user/api#SendMagicLink)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/user"
+)
+
+// Login using email only - Passwordless
+func SendAmagicLink() {
+	userService := user.NewUserService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := userService.SendMagicLink(&user.SendMagicLinkRequest{
+		Address: "www.example.com",
+Email: "joe@example.com",
+Endpoint: "verifytoken",
+FromName: "Awesome Dot Com",
+Subject: "MagicLink to access your account",
+TextContent: `Hi there,
+
+Click here to access your account $micro_verification_link`,
+
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
 ## UpdatePassword
 
 Update the account password
@@ -491,12 +455,12 @@ UserId: "user-1",
 	
 }
 ```
-## Logout
+## ResetPassword
 
-Logout a user account
+Reset password with the code sent by the "SendPasswordResetEmail" endpoint.
 
 
-[https://m3o.com/user/api#Logout](https://m3o.com/user/api#Logout)
+[https://m3o.com/user/api#ResetPassword](https://m3o.com/user/api#ResetPassword)
 
 ```go
 package example
@@ -508,23 +472,26 @@ import(
 	"go.m3o.com/user"
 )
 
-// Logout a user account
-func LogAuserOut() {
+// Reset password with the code sent by the "SendPasswordResetEmail" endpoint.
+func ResetPassword() {
 	userService := user.NewUserService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := userService.Logout(&user.LogoutRequest{
-		SessionId: "df91a612-5b24-4634-99ff-240220ab8f55",
+	rsp, err := userService.ResetPassword(&user.ResetPasswordRequest{
+		Code: "012345",
+ConfirmPassword: "NewPassword1",
+Email: "joe@example.com",
+NewPassword: "NewPassword1",
 
 	})
 	fmt.Println(rsp, err)
 	
 }
 ```
-## List
+## VerifyEmail
 
-List all users. Returns a paged list of results
+Verify the email address of an account from a token sent in an email to the user.
 
 
-[https://m3o.com/user/api#List](https://m3o.com/user/api#List)
+[https://m3o.com/user/api#VerifyEmail](https://m3o.com/user/api#VerifyEmail)
 
 ```go
 package example
@@ -536,12 +503,45 @@ import(
 	"go.m3o.com/user"
 )
 
-// List all users. Returns a paged list of results
-func ListAllUsers() {
+// Verify the email address of an account from a token sent in an email to the user.
+func VerifyEmail() {
 	userService := user.NewUserService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := userService.List(&user.ListRequest{
-		Limit: 100,
-Offset: 0,
+	rsp, err := userService.VerifyEmail(&user.VerifyEmailRequest{
+		Token: "012345",
+
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
+## VerifyToken
+
+Check whether the token attached to MagicLink is valid or not.
+Ideally, you need to call this endpoint from your http request
+handler that handles the endpoint which is specified in the
+SendMagicLink request.
+
+
+[https://m3o.com/user/api#VerifyToken](https://m3o.com/user/api#VerifyToken)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/user"
+)
+
+// Check whether the token attached to MagicLink is valid or not.
+// Ideally, you need to call this endpoint from your http request
+// handler that handles the endpoint which is specified in the
+// SendMagicLink request.
+func VerifyAtoken() {
+	userService := user.NewUserService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := userService.VerifyToken(&user.VerifyTokenRequest{
+		Token: "EdsUiidouJJJLldjlloofUiorkojflsWWdld",
 
 	})
 	fmt.Println(rsp, err)
