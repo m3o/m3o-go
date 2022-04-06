@@ -4,34 +4,6 @@ An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/comments/api](
 
 Endpoints:
 
-## Create
-
-Create a new comment
-
-
-[https://m3o.com/comments/api#Create](https://m3o.com/comments/api#Create)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/comments"
-)
-
-// Create a new comment
-func CreateAcomment() {
-	commentsService := comments.NewCommentsService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := commentsService.Create(&comments.CreateRequest{
-		Text: "This is my comment",
-
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
 ## Read
 
 Read a comment
@@ -186,5 +158,34 @@ func SubscribeToEvents() {
 
 			fmt.Println(rsp)
 	}
+}
+```
+## Create
+
+Create a new comment
+
+
+[https://m3o.com/comments/api#Create](https://m3o.com/comments/api#Create)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/comments"
+)
+
+// Create a new comment
+func CreateAcomment() {
+	commentsService := comments.NewCommentsService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := commentsService.Create(&comments.CreateRequest{
+		Subject: "New Comment",
+Text: "This is my comment",
+
+	})
+	fmt.Println(rsp, err)
+	
 }
 ```
