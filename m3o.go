@@ -15,6 +15,7 @@ import (
 	"go.m3o.com/crypto"
 	"go.m3o.com/currency"
 	"go.m3o.com/db"
+	"go.m3o.com/dns"
 	"go.m3o.com/email"
 	"go.m3o.com/emoji"
 	"go.m3o.com/evchargers"
@@ -89,6 +90,7 @@ func New(token string) *Client {
 		Crypto:     crypto.NewCryptoService(token),
 		Currency:   currency.NewCurrencyService(token),
 		Db:         db.NewDbService(token),
+		Dns:        dns.NewDnsService(token),
 		Email:      email.NewEmailService(token),
 		Emoji:      emoji.NewEmojiService(token),
 		Evchargers: evchargers.NewEvchargersService(token),
@@ -163,6 +165,7 @@ type Client struct {
 	Crypto     crypto.Crypto
 	Currency   currency.Currency
 	Db         db.Db
+	Dns        dns.Dns
 	Email      email.Email
 	Emoji      emoji.Emoji
 	Evchargers evchargers.Evchargers
