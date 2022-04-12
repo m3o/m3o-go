@@ -4,97 +4,6 @@ An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/db/api](https:
 
 Endpoints:
 
-## Truncate
-
-Truncate the records in a table
-
-
-[https://m3o.com/db/api#Truncate](https://m3o.com/db/api#Truncate)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/db"
-)
-
-// Truncate the records in a table
-func TruncateTable() {
-	dbService := db.NewDbService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := dbService.Truncate(&db.TruncateRequest{
-		Table: "example",
-
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
-## Create
-
-Create a record in the database. Optionally include an "id" field otherwise it's set automatically.
-
-
-[https://m3o.com/db/api#Create](https://m3o.com/db/api#Create)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/db"
-)
-
-// Create a record in the database. Optionally include an "id" field otherwise it's set automatically.
-func CreateArecord() {
-	dbService := db.NewDbService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := dbService.Create(&db.CreateRequest{
-		Record: map[string]interface{}{
-	"isActive": true,
-	"id": "1",
-	"name": "Jane",
-	"age": 42,
-},
-Table: "example",
-
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
-## Delete
-
-Delete a record in the database by id.
-
-
-[https://m3o.com/db/api#Delete](https://m3o.com/db/api#Delete)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/db"
-)
-
-// Delete a record in the database by id.
-func DeleteArecord() {
-	dbService := db.NewDbService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := dbService.Delete(&db.DeleteRequest{
-		Id: "1",
-Table: "example",
-
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
 ## DropTable
 
 Drop a table in the DB
@@ -178,6 +87,95 @@ func ListTables() {
 	
 }
 ```
+## Update
+
+Update a record in the database. Include an "id" in the record to update.
+
+
+[https://m3o.com/db/api#Update](https://m3o.com/db/api#Update)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/db"
+)
+
+// Update a record in the database. Include an "id" in the record to update.
+func UpdateArecord() {
+	dbService := db.NewDbService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := dbService.Update(&db.UpdateRequest{
+		Record: map[string]interface{}{
+	"age": 43,
+	"id": "1",
+},
+Table: "example",
+
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
+## Truncate
+
+Truncate the records in a table
+
+
+[https://m3o.com/db/api#Truncate](https://m3o.com/db/api#Truncate)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/db"
+)
+
+// Truncate the records in a table
+func TruncateTable() {
+	dbService := db.NewDbService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := dbService.Truncate(&db.TruncateRequest{
+		Table: "example",
+
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
+## Delete
+
+Delete a record in the database by id.
+
+
+[https://m3o.com/db/api#Delete](https://m3o.com/db/api#Delete)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/db"
+)
+
+// Delete a record in the database by id.
+func DeleteArecord() {
+	dbService := db.NewDbService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := dbService.Delete(&db.DeleteRequest{
+		Id: "1",
+Table: "example",
+
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
 ## RenameTable
 
 Rename a table
@@ -207,12 +205,12 @@ To: "examples3",
 	
 }
 ```
-## Update
+## Create
 
-Update a record in the database. Include an "id" in the record to update.
+Create a record in the database. Optionally include an "id" field otherwise it's set automatically.
 
 
-[https://m3o.com/db/api#Update](https://m3o.com/db/api#Update)
+[https://m3o.com/db/api#Create](https://m3o.com/db/api#Create)
 
 ```go
 package example
@@ -224,13 +222,15 @@ import(
 	"go.m3o.com/db"
 )
 
-// Update a record in the database. Include an "id" in the record to update.
-func UpdateArecord() {
+// Create a record in the database. Optionally include an "id" field otherwise it's set automatically.
+func CreateArecord() {
 	dbService := db.NewDbService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := dbService.Update(&db.UpdateRequest{
+	rsp, err := dbService.Create(&db.CreateRequest{
 		Record: map[string]interface{}{
+	"isActive": true,
 	"id": "1",
-	"age": 43,
+	"name": "Jane",
+	"age": 42,
 },
 Table: "example",
 
