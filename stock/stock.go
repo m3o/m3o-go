@@ -6,7 +6,6 @@ import (
 
 type Stock interface {
 	History(*HistoryRequest) (*HistoryResponse, error)
-	OrderBook(*OrderBookRequest) (*OrderBookResponse, error)
 	Price(*PriceRequest) (*PriceResponse, error)
 	Quote(*QuoteRequest) (*QuoteResponse, error)
 }
@@ -28,14 +27,6 @@ func (t *StockService) History(request *HistoryRequest) (*HistoryResponse, error
 
 	rsp := &HistoryResponse{}
 	return rsp, t.client.Call("stock", "History", request, rsp)
-
-}
-
-// Get the historic order book and each trade by timestamp
-func (t *StockService) OrderBook(request *OrderBookRequest) (*OrderBookResponse, error) {
-
-	rsp := &OrderBookResponse{}
-	return rsp, t.client.Call("stock", "OrderBook", request, rsp)
 
 }
 
@@ -77,41 +68,6 @@ type HistoryResponse struct {
 	Symbol string `json:"symbol,omitempty"`
 	// the volume
 	Volume int32 `json:"volume,omitempty"`
-}
-
-type Order struct {
-	// the asking price
-	AskPrice float64 `json:"ask_price,omitempty"`
-	// the ask size
-	AskSize int32 `json:"ask_size,omitempty"`
-	// the bidding price
-	BidPrice float64 `json:"bid_price,omitempty"`
-	// the bid size
-	BidSize int32 `json:"bid_size,omitempty"`
-	// the UTC timestamp of the quote
-	Timestamp string `json:"timestamp,omitempty"`
-}
-
-type OrderBookRequest struct {
-	// the date in format YYYY-MM-dd
-	Date string `json:"date,omitempty"`
-	// optional RFC3339Nano end time e.g 2006-01-02T15:04:05.999999999Z07:00
-	End string `json:"end,omitempty"`
-	// limit number of prices
-	Limit int32 `json:"limit,omitempty"`
-	// optional RFC3339Nano start time e.g 2006-01-02T15:04:05.999999999Z07:00
-	Start string `json:"start,omitempty"`
-	// stock to retrieve e.g AAPL
-	Stock string `json:"stock,omitempty"`
-}
-
-type OrderBookResponse struct {
-	// date of the request
-	Date string `json:"date,omitempty"`
-	// list of orders
-	Orders []Order `json:"orders,omitempty"`
-	// the stock symbol
-	Symbol string `json:"symbol,omitempty"`
 }
 
 type PriceRequest struct {
