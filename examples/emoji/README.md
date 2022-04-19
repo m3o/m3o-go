@@ -4,6 +4,34 @@ An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/emoji/api](htt
 
 Endpoints:
 
+## Find
+
+Find an emoji by its alias e.g :beer:
+
+
+[https://m3o.com/emoji/api#Find](https://m3o.com/emoji/api#Find)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/emoji"
+)
+
+// Find an emoji by its alias e.g :beer:
+func FindEmoji() {
+	emojiService := emoji.NewEmojiService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := emojiService.Find(&emoji.FindRequest{
+		Alias: ":beer:",
+
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
 ## Flag
 
 Get the flag for a country. Requires country code e.g GB for great britain
@@ -56,34 +84,6 @@ func PrintTextIncludingEmoji() {
 	emojiService := emoji.NewEmojiService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := emojiService.Print(&emoji.PrintRequest{
 		Text: "let's grab a :beer:",
-
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
-## Find
-
-Find an emoji by its alias e.g :beer:
-
-
-[https://m3o.com/emoji/api#Find](https://m3o.com/emoji/api#Find)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/emoji"
-)
-
-// Find an emoji by its alias e.g :beer:
-func FindEmoji() {
-	emojiService := emoji.NewEmojiService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := emojiService.Find(&emoji.FindRequest{
-		Alias: ":beer:",
 
 	})
 	fmt.Println(rsp, err)
