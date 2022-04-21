@@ -4,34 +4,6 @@ An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/comments/api](
 
 Endpoints:
 
-## Delete
-
-Delete a comment
-
-
-[https://m3o.com/comments/api#Delete](https://m3o.com/comments/api#Delete)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/comments"
-)
-
-// Delete a comment
-func DeleteAcomment() {
-	commentsService := comments.NewCommentsService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := commentsService.Delete(&comments.DeleteRequest{
-		Id: "63c0cdf8-2121-11ec-a881-0242e36f037a",
-
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
 ## Events
 
 Subscribe to comments events
@@ -183,6 +155,34 @@ func UpdateAcomment() {
 	Subject: "Update Comment",
 	Text: "Updated comment text",
 	},
+
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
+## Delete
+
+Delete a comment
+
+
+[https://m3o.com/comments/api#Delete](https://m3o.com/comments/api#Delete)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/comments"
+)
+
+// Delete a comment
+func DeleteAcomment() {
+	commentsService := comments.NewCommentsService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := commentsService.Delete(&comments.DeleteRequest{
+		Id: "63c0cdf8-2121-11ec-a881-0242e36f037a",
 
 	})
 	fmt.Println(rsp, err)
