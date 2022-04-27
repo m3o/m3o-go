@@ -4,6 +4,34 @@ An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/analytics/api]
 
 Endpoints:
 
+## Track
+
+Track an event, it will be created if it doesn't exist
+
+
+[https://m3o.com/analytics/api#Track](https://m3o.com/analytics/api#Track)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/analytics"
+)
+
+// Track an event, it will be created if it doesn't exist
+func TrackAnEvent() {
+	analyticsService := analytics.NewAnalyticsService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := analyticsService.Track(&analytics.TrackRequest{
+		Name: "click",
+
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
 ## Read
 
 Get a single event
@@ -80,34 +108,6 @@ import(
 func DeleteAnEvent() {
 	analyticsService := analytics.NewAnalyticsService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := analyticsService.Delete(&analytics.DeleteRequest{
-		Name: "click",
-
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
-## Track
-
-Track an event, it will be created if it doesn't exist
-
-
-[https://m3o.com/analytics/api#Track](https://m3o.com/analytics/api#Track)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/analytics"
-)
-
-// Track an event, it will be created if it doesn't exist
-func TrackAnEvent() {
-	analyticsService := analytics.NewAnalyticsService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := analyticsService.Track(&analytics.TrackRequest{
 		Name: "click",
 
 	})

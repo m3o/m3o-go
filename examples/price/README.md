@@ -4,6 +4,33 @@ An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/price/api](htt
 
 Endpoints:
 
+## Index
+
+Get the index for available prices
+
+
+[https://m3o.com/price/api#Index](https://m3o.com/price/api#Index)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/price"
+)
+
+// Get the index for available prices
+func GetTheIndex() {
+	priceService := price.NewPriceService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := priceService.Index(&price.IndexRequest{
+		
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
 ## Report
 
 Report an invalid price
@@ -116,33 +143,6 @@ func ListPrices() {
 	rsp, err := priceService.List(&price.ListRequest{
 		Currency: "GBP",
 
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
-## Index
-
-Get the index for available prices
-
-
-[https://m3o.com/price/api#Index](https://m3o.com/price/api#Index)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/price"
-)
-
-// Get the index for available prices
-func GetTheIndex() {
-	priceService := price.NewPriceService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := priceService.Index(&price.IndexRequest{
-		
 	})
 	fmt.Println(rsp, err)
 	
