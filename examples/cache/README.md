@@ -4,33 +4,6 @@ An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/cache/api](htt
 
 Endpoints:
 
-## ListKeys
-
-List all the available keys
-
-
-[https://m3o.com/cache/api#ListKeys](https://m3o.com/cache/api#ListKeys)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/cache"
-)
-
-// List all the available keys
-func ListTheKeys() {
-	cacheService := cache.NewCacheService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := cacheService.ListKeys(&cache.ListKeysRequest{
-		
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
 ## Set
 
 Set an item in the cache. Overwrites any existing value already set.
@@ -169,6 +142,33 @@ func DecrementAvalue() {
 		Key: "counter",
 Value: 2,
 
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
+## ListKeys
+
+List all the available keys
+
+
+[https://m3o.com/cache/api#ListKeys](https://m3o.com/cache/api#ListKeys)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/cache"
+)
+
+// List all the available keys
+func ListTheKeys() {
+	cacheService := cache.NewCacheService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := cacheService.ListKeys(&cache.ListKeysRequest{
+		
 	})
 	fmt.Println(rsp, err)
 	
