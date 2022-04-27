@@ -4,67 +4,6 @@ An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/chat/api](http
 
 Endpoints:
 
-## Send
-
-Connect to a chat to receive a stream of messages
-Send a message to a chat
-
-
-[https://m3o.com/chat/api#Send](https://m3o.com/chat/api#Send)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/chat"
-)
-
-// Connect to a chat to receive a stream of messages
-// Send a message to a chat
-func SendAmessage() {
-	chatService := chat.NewChatService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := chatService.Send(&chat.SendRequest{
-		Client: "web",
-Subject: "Random",
-Text: "Hey whats up?",
-
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
-## Create
-
-Create a new chat room
-
-
-[https://m3o.com/chat/api#Create](https://m3o.com/chat/api#Create)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/chat"
-)
-
-// Create a new chat room
-func CreateAnewChat() {
-	chatService := chat.NewChatService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := chatService.Create(&chat.CreateRequest{
-		Description: "The general chat room",
-Name: "general",
-
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
 ## Invite
 
 Invite a user to a chat room
@@ -186,6 +125,62 @@ func KickAuserFromAroom() {
 	
 }
 ```
+## Create
+
+Create a new chat room
+
+
+[https://m3o.com/chat/api#Create](https://m3o.com/chat/api#Create)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/chat"
+)
+
+// Create a new chat room
+func CreateAnewChat() {
+	chatService := chat.NewChatService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := chatService.Create(&chat.CreateRequest{
+		Description: "The general chat room",
+Name: "general",
+
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
+## Delete
+
+Delete a chat room
+
+
+[https://m3o.com/chat/api#Delete](https://m3o.com/chat/api#Delete)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/chat"
+)
+
+// Delete a chat room
+func DeleteAchat() {
+	chatService := chat.NewChatService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := chatService.Delete(&chat.DeleteRequest{
+		
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
 ## Leave
 
 Leave a chat room
@@ -240,12 +235,13 @@ func ListChatRooms() {
 	
 }
 ```
-## Delete
+## Send
 
-Delete a chat room
+Connect to a chat to receive a stream of messages
+Send a message to a chat
 
 
-[https://m3o.com/chat/api#Delete](https://m3o.com/chat/api#Delete)
+[https://m3o.com/chat/api#Send](https://m3o.com/chat/api#Send)
 
 ```go
 package example
@@ -257,11 +253,15 @@ import(
 	"go.m3o.com/chat"
 )
 
-// Delete a chat room
-func DeleteAchat() {
+// Connect to a chat to receive a stream of messages
+// Send a message to a chat
+func SendAmessage() {
 	chatService := chat.NewChatService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := chatService.Delete(&chat.DeleteRequest{
-		
+	rsp, err := chatService.Send(&chat.SendRequest{
+		Client: "web",
+Subject: "Random",
+Text: "Hey whats up?",
+
 	})
 	fmt.Println(rsp, err)
 	
