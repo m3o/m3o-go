@@ -69,6 +69,7 @@ import (
 	"go.m3o.com/user"
 	"go.m3o.com/vehicle"
 	"go.m3o.com/weather"
+	"go.m3o.com/wordle"
 	"go.m3o.com/youtube"
 )
 
@@ -144,6 +145,7 @@ func New(token string) *Client {
 		User:       user.NewUserService(token),
 		Vehicle:    vehicle.NewVehicleService(token),
 		Weather:    weather.NewWeatherService(token),
+		Wordle:     wordle.NewWordleService(token),
 		Youtube:    youtube.NewYoutubeService(token),
 	}
 }
@@ -219,5 +221,6 @@ type Client struct {
 	User       user.User
 	Vehicle    vehicle.Vehicle
 	Weather    weather.Weather
+	Wordle     wordle.Wordle
 	Youtube    youtube.Youtube
 }
