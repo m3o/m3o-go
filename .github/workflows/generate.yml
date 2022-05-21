@@ -1,31 +1,45 @@
-name: Test Clients
+name: Build Go Clients and Examples
 on:
-  push:
-    branches:
-      - main
-      - beta
-      - ci
+  repository_dispatch:
+    types: [build_publish_go]
 
 jobs:
   generate:
-    name: Test Clients
+    name: build Go clients and examples
     runs-on: ubuntu-latest
     steps:
-      - name: Check out repo
-        uses: actions/checkout@v2
+      - name: Check m3o-go repo
+        uses: actions/checkout@v3
         with:
-          path: clients
-          #ref: main
+          path: m3o-go
 
-      - name: Test
-        working-directory: clients
-        env:
-          M3O_API_TOKEN: ${{ secrets.M3O_API_TOKEN }}
+      - name: Check micro/services repo
+        uses: actions/checkout@v3
+        with:
+          repository: 'micro/services'
+          path: services
+
+      - name: Generate m3o-go clients
+        uses: m3o/m3o-generator-action@main
+        with:
+          target: 'go'
+          services_path: services
+
+      - name: Adjust generated things before pushing
+        working-directory: services
+        
         run: |
-          # stream is temporarily excluded as it hangs forever because test does not close connection
-          # @TODO remove "idempotent: true" from stream example
-          O=$(find . -name ".run" | grep -v stream | xargs -n1 dirname | xargs -n1 go run)
-          echo $O
-          if grep -q Detail "$O"; then
-            exit 1
-          fi
+          # sync the clients to m3o-go/
+          rsync -avz clients/go/ ../m3o-go/
+          # sync the examples to m3o-go/examples
+          rsync -avz examples/go/ ../m3o-go/examples/
+
+      - name: Add & Commit
+        uses: EndBug/add-and-commit@v9.0.0
+        with:
+          cwd: m3o-go
+          message: Push to M3O-Go repo
+          pathspec_error_handling: exitImmediately
+
+
+      
