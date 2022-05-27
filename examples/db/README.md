@@ -4,6 +4,94 @@ An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/db/api](https:
 
 Endpoints:
 
+## Update
+
+Update a record in the database. Include an "id" in the record to update.
+
+
+[https://m3o.com/db/api#Update](https://m3o.com/db/api#Update)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/db"
+)
+
+// Update a record in the database. Include an "id" in the record to update.
+func UpdateArecord() {
+	dbService := db.NewDbService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := dbService.Update(&db.UpdateRequest{
+		Record: map[string]interface{}{
+	"id": "1",
+	"age": 43,
+},
+Table: "example",
+
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
+## Delete
+
+Delete a record in the database by id.
+
+
+[https://m3o.com/db/api#Delete](https://m3o.com/db/api#Delete)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/db"
+)
+
+// Delete a record in the database by id.
+func DeleteArecord() {
+	dbService := db.NewDbService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := dbService.Delete(&db.DeleteRequest{
+		Id: "1",
+Table: "example",
+
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
+## ListTables
+
+List tables in the DB
+
+
+[https://m3o.com/db/api#ListTables](https://m3o.com/db/api#ListTables)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/db"
+)
+
+// List tables in the DB
+func ListTables() {
+	dbService := db.NewDbService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := dbService.ListTables(&db.ListTablesRequest{
+		
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
 ## RenameTable
 
 Rename a table
@@ -67,38 +155,6 @@ Table: "example",
 	
 }
 ```
-## Update
-
-Update a record in the database. Include an "id" in the record to update.
-
-
-[https://m3o.com/db/api#Update](https://m3o.com/db/api#Update)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/db"
-)
-
-// Update a record in the database. Include an "id" in the record to update.
-func UpdateArecord() {
-	dbService := db.NewDbService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := dbService.Update(&db.UpdateRequest{
-		Record: map[string]interface{}{
-	"id": "1",
-	"age": 43,
-},
-Table: "example",
-
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
 ## Read
 
 Read data from a table. Lookup can be by ID or via querying any field in the record.
@@ -128,12 +184,12 @@ Table: "example",
 	
 }
 ```
-## Delete
+## Truncate
 
-Delete a record in the database by id.
+Truncate the records in a table
 
 
-[https://m3o.com/db/api#Delete](https://m3o.com/db/api#Delete)
+[https://m3o.com/db/api#Truncate](https://m3o.com/db/api#Truncate)
 
 ```go
 package example
@@ -145,12 +201,11 @@ import(
 	"go.m3o.com/db"
 )
 
-// Delete a record in the database by id.
-func DeleteArecord() {
+// Truncate the records in a table
+func TruncateTable() {
 	dbService := db.NewDbService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := dbService.Delete(&db.DeleteRequest{
-		Id: "1",
-Table: "example",
+	rsp, err := dbService.Truncate(&db.TruncateRequest{
+		Table: "example",
 
 	})
 	fmt.Println(rsp, err)
@@ -208,61 +263,6 @@ func CountEntriesInAtable() {
 	rsp, err := dbService.Count(&db.CountRequest{
 		Table: "example",
 
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
-## Truncate
-
-Truncate the records in a table
-
-
-[https://m3o.com/db/api#Truncate](https://m3o.com/db/api#Truncate)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/db"
-)
-
-// Truncate the records in a table
-func TruncateTable() {
-	dbService := db.NewDbService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := dbService.Truncate(&db.TruncateRequest{
-		Table: "example",
-
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
-## ListTables
-
-List tables in the DB
-
-
-[https://m3o.com/db/api#ListTables](https://m3o.com/db/api#ListTables)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/db"
-)
-
-// List tables in the DB
-func ListTables() {
-	dbService := db.NewDbService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := dbService.ListTables(&db.ListTablesRequest{
-		
 	})
 	fmt.Println(rsp, err)
 	

@@ -4,6 +4,61 @@ An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/comments/api](
 
 Endpoints:
 
+## Read
+
+Read a comment
+
+
+[https://m3o.com/comments/api#Read](https://m3o.com/comments/api#Read)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/comments"
+)
+
+// Read a comment
+func ReadAcomment() {
+	commentsService := comments.NewCommentsService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := commentsService.Read(&comments.ReadRequest{
+		Id: "63c0cdf8-2121-11ec-a881-0242e36f037a",
+
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
+## List
+
+List all the comments
+
+
+[https://m3o.com/comments/api#List](https://m3o.com/comments/api#List)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/comments"
+)
+
+// List all the comments
+func ListAllComments() {
+	commentsService := comments.NewCommentsService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := commentsService.List(&comments.ListRequest{
+		
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
 ## Update
 
 Update a comment
@@ -129,61 +184,6 @@ func CreateAcomment() {
 		Subject: "New Comment",
 Text: "This is my comment",
 
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
-## Read
-
-Read a comment
-
-
-[https://m3o.com/comments/api#Read](https://m3o.com/comments/api#Read)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/comments"
-)
-
-// Read a comment
-func ReadAcomment() {
-	commentsService := comments.NewCommentsService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := commentsService.Read(&comments.ReadRequest{
-		Id: "63c0cdf8-2121-11ec-a881-0242e36f037a",
-
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
-## List
-
-List all the comments
-
-
-[https://m3o.com/comments/api#List](https://m3o.com/comments/api#List)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/comments"
-)
-
-// List all the comments
-func ListAllComments() {
-	commentsService := comments.NewCommentsService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := commentsService.List(&comments.ListRequest{
-		
 	})
 	fmt.Println(rsp, err)
 	
