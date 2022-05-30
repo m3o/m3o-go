@@ -10,6 +10,8 @@ import (
 
 func main() {
 	client := m3o.New(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := client.Lists.Create(&lists.CreateRequest{})
+	rsp, err := client.Lists.Create(&lists.CreateRequest{
+		Items: []string{"This is my list"},
+	})
 	fmt.Println(rsp, err)
 }
