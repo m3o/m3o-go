@@ -87,7 +87,7 @@ func ResolveAshortUrlToAlongDestinationUrl() {
 ```
 ## Delete
 
-
+Delete a URL
 
 
 [https://m3o.com/url/api#Delete](https://m3o.com/url/api#Delete)
@@ -102,7 +102,7 @@ import(
 	"go.m3o.com/url"
 )
 
-// 
+// Delete a URL
 func DeleteAshortenedUrl() {
 	urlService := url.NewUrlService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := urlService.Delete(&url.DeleteRequest{

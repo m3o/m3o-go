@@ -23,7 +23,7 @@ type UrlService struct {
 	client *client.Client
 }
 
-//
+// Delete a URL
 func (t *UrlService) Delete(request *DeleteRequest) (*DeleteResponse, error) {
 
 	rsp := &DeleteResponse{}
