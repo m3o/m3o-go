@@ -5,6 +5,7 @@ import (
 )
 
 type Url interface {
+	Delete(*DeleteRequest) (*DeleteResponse, error)
 	List(*ListRequest) (*ListResponse, error)
 	Proxy(*ProxyRequest) (*ProxyResponse, error)
 	Shorten(*ShortenRequest) (*ShortenResponse, error)
@@ -20,6 +21,14 @@ func NewUrlService(token string) *UrlService {
 
 type UrlService struct {
 	client *client.Client
+}
+
+//
+func (t *UrlService) Delete(request *DeleteRequest) (*DeleteResponse, error) {
+
+	rsp := &DeleteResponse{}
+	return rsp, t.client.Call("url", "Delete", request, rsp)
+
 }
 
 // List all the shortened URLs
@@ -44,6 +53,13 @@ func (t *UrlService) Shorten(request *ShortenRequest) (*ShortenResponse, error) 
 	rsp := &ShortenResponse{}
 	return rsp, t.client.Call("url", "Shorten", request, rsp)
 
+}
+
+type DeleteRequest struct {
+	ShortUrl string `json:"shortURL,omitempty"`
+}
+
+type DeleteResponse struct {
 }
 
 type ListRequest struct {
