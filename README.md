@@ -23,16 +23,19 @@ import(
         "fmt"
         "os"
 
-        "go.m3o.com/helloworld"
+	"go.m3o.com"
+        hw "go.m3o.com/helloworld"
 )
 
-// Call returns a personalised "Hello $name" response
 func main() {
-        helloworldService := helloworld.NewHelloworldService(os.Getenv("M3O_API_TOKEN"))
-        rsp, err := helloworldService.Call(&helloworld.CallRequest{
-                Name: "John",
+	token := os.Getenv("M3O_API_TOKEN")
+	client := m3o.New(token)
+
+	rsp, err := client.Helloworld.Call(&hw.CallRequest{
+                Name: "Alice",
 
         })
+	
         fmt.Println(rsp, err)
 }
 ```
