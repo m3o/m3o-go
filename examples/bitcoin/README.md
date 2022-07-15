@@ -32,3 +32,31 @@ func GetBitcoinPrice() {
 	
 }
 ```
+## Balance
+
+Get the BTC balance of an address
+
+
+[https://m3o.com/bitcoin/api#Balance](https://m3o.com/bitcoin/api#Balance)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/bitcoin"
+)
+
+// Get the BTC balance of an address
+func GetAbitcoinAddressBalance() {
+	bitcoinService := bitcoin.NewBitcoinService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := bitcoinService.Balance(&bitcoin.BalanceRequest{
+		Address: "1MDUoxL1bGvMxhuoDYx6i11ePytECAk9QK",
+
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
