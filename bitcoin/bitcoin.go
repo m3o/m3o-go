@@ -72,7 +72,6 @@ type Output struct {
 
 type Prev struct {
 	Address string `json:"address,omitempty"`
-	Hash    string `json:"hash,omitempty"`
 	N       string `json:"n,omitempty"`
 	Script  string `json:"script,omitempty"`
 	Spent   bool   `json:"spent,omitempty"`
