@@ -72,7 +72,7 @@ type Output struct {
 
 type Prev struct {
 	Address string `json:"address,omitempty"`
-	N       string `json:"n,omitempty"`
+	N       int64  `json:"n,string,omitempty"`
 	Script  string `json:"script,omitempty"`
 	Spent   bool   `json:"spent,omitempty"`
 	TxIndex int64  `json:"tx_index,string,omitempty"`
