@@ -119,6 +119,8 @@ type AssetsRequest struct {
 	Order string `json:"order,omitempty"`
 	// order by "sale_date", "sale_count", "sale_price", "total_price"
 	OrderBy string `json:"order_by,omitempty"`
+	// owner wallet address
+	Owner string `json:"owner,omitempty"`
 }
 
 type AssetsResponse struct {
@@ -174,6 +176,8 @@ type CollectionResponse struct {
 type CollectionsRequest struct {
 	Limit  int32 `json:"limit,omitempty"`
 	Offset int32 `json:"offset,omitempty"`
+	// owner wallet address
+	Owner string `json:"owner,omitempty"`
 }
 
 type CollectionsResponse struct {
