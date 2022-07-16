@@ -5,14 +5,13 @@ import (
 	"os"
 
 	"go.m3o.com"
-	"go.m3o.com/lists"
+	"go.m3o.com/id"
 )
 
 func main() {
 	client := m3o.New(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := client.Lists.Create(&lists.CreateRequest{
-		Items: []string{"This is my list"},
-		Name:  "New List",
+	rsp, err := client.Id.Generate(&id.GenerateRequest{
+		Type: "ksuid",
 	})
 	fmt.Println(rsp, err)
 }

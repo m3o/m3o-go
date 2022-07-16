@@ -29,7 +29,7 @@ func (t *IdService) Generate(request *GenerateRequest) (*GenerateResponse, error
 
 }
 
-// List the types of IDs available. No query params needed.
+// List the types of IDs available.
 func (t *IdService) Types(request *TypesRequest) (*TypesResponse, error) {
 
 	rsp := &TypesResponse{}
@@ -38,7 +38,7 @@ func (t *IdService) Types(request *TypesRequest) (*TypesResponse, error) {
 }
 
 type GenerateRequest struct {
-	// type of id e.g uuid, shortid, snowflake (64 bit), bigflake (128 bit)
+	// type of id; call 'Types' endpoint for available types
 	Type string `json:"type,omitempty"`
 }
 
