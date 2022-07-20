@@ -22,10 +22,38 @@ import(
 )
 
 // Get the current time
-func ReturnsCurrentTimeOptionallyWithLocation() {
+func ReturnsCurrentUtcTime() {
 	timeService := time.NewTimeService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := timeService.Now(&time.NowRequest{
 		
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
+## Now
+
+Get the current time
+
+
+[https://m3o.com/time/api#Now](https://m3o.com/time/api#Now)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/time"
+)
+
+// Get the current time
+func ReturnsCurrentTimeForGivenLocation() {
+	timeService := time.NewTimeService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := timeService.Now(&time.NowRequest{
+		Location: "London",
+
 	})
 	fmt.Println(rsp, err)
 	
