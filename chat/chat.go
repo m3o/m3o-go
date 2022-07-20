@@ -28,7 +28,7 @@ type ChatService struct {
 	client *client.Client
 }
 
-// Create a new chat room
+// Create a new chat group
 func (t *ChatService) Create(request *CreateRequest) (*CreateResponse, error) {
 
 	rsp := &CreateResponse{}
@@ -36,7 +36,7 @@ func (t *ChatService) Create(request *CreateRequest) (*CreateResponse, error) {
 
 }
 
-// Delete a chat room
+// Delete a chat group
 func (t *ChatService) Delete(request *DeleteRequest) (*DeleteResponse, error) {
 
 	rsp := &DeleteResponse{}
@@ -52,7 +52,7 @@ func (t *ChatService) History(request *HistoryRequest) (*HistoryResponse, error)
 
 }
 
-// Invite a user to a chat room
+// Invite a user to a chat group
 func (t *ChatService) Invite(request *InviteRequest) (*InviteResponse, error) {
 
 	rsp := &InviteResponse{}
@@ -60,7 +60,7 @@ func (t *ChatService) Invite(request *InviteRequest) (*InviteResponse, error) {
 
 }
 
-// Join a chat room
+// Join a chat group
 func (t *ChatService) Join(request *JoinRequest) (*JoinResponseStream, error) {
 	stream, err := t.client.Stream("chat", "Join", request)
 	if err != nil {
@@ -84,7 +84,7 @@ func (t *JoinResponseStream) Recv() (*JoinResponse, error) {
 	return &rsp, nil
 }
 
-// Kick a user from a chat room
+// Kick a user from a chat group
 func (t *ChatService) Kick(request *KickRequest) (*KickResponse, error) {
 
 	rsp := &KickResponse{}
@@ -92,7 +92,7 @@ func (t *ChatService) Kick(request *KickRequest) (*KickResponse, error) {
 
 }
 
-// Leave a chat room
+// Leave a chat group
 func (t *ChatService) Leave(request *LeaveRequest) (*LeaveResponse, error) {
 
 	rsp := &LeaveResponse{}
@@ -120,52 +120,67 @@ func (t *ChatService) Send(request *SendRequest) (*SendResponse, error) {
 type CreateRequest struct {
 	// chat description
 	Description string `json:"description,omitempty"`
-	// name of the room
+	// name of the group
 	Name string `json:"name,omitempty"`
-	// whether its a private room
+	// whether its a private group
 	Private bool `json:"private,omitempty"`
 	// optional list of user ids
 	UserIds []string `json:"user_ids,omitempty"`
 }
 
 type CreateResponse struct {
-	// the unique chat room
-	Room *Room `json:"room,omitempty"`
+	// the unique chat group
+	Group *Group `json:"group,omitempty"`
 }
 
 type DeleteRequest struct {
-	// the chat room id to delete
-	RoomId string `json:"room_id,omitempty"`
+	// the chat group id to delete
+	GroupId string `json:"group_id,omitempty"`
 }
 
 type DeleteResponse struct {
-	Room *Room `json:"room,omitempty"`
+	Group *Group `json:"group,omitempty"`
+}
+
+type Group struct {
+	// time of creation
+	CreatedAt string `json:"created_at,omitempty"`
+	// description of the that
+	Description string `json:"description,omitempty"`
+	// unique group id
+	Id string `json:"id,omitempty"`
+	// name of the chat
+	Name string `json:"name,omitempty"`
+	// whether its a private group
+	Private bool `json:"private,omitempty"`
+	// list of users
+	UserIds []string `json:"user_ids,omitempty"`
 }
 
 type HistoryRequest struct {
-	// the chat room id to get
-	RoomId string `json:"room_id,omitempty"`
+	// the chat group id to get
+	GroupId string `json:"group_id,omitempty"`
 }
 
 type HistoryResponse struct {
-	// messages in the chat room
+	// messages in the chat group
 	Messages []Message `json:"messages,omitempty"`
 }
 
 type InviteRequest struct {
-	// the room id
-	RoomId string `json:"room_id,omitempty"`
+	// the group id
+	GroupId string `json:"group_id,omitempty"`
 	// the user id
 	UserId string `json:"user_id,omitempty"`
 }
 
 type InviteResponse struct {
-	Room *Room `json:"room,omitempty"`
+	Group *Group `json:"group,omitempty"`
 }
 
 type JoinRequest struct {
-	// chat room to join
-	RoomId string `json:"room_id,omitempty"`
+	// chat group to join
+	GroupId string `json:"group_id,omitempty"`
 	// user id joining
 	UserId string `json:"user_id,omitempty"`
 }
@@ -175,25 +190,25 @@ type JoinResponse struct {
 }
 
 type KickRequest struct {
-	// the chat room id
-	RoomId string `json:"room_id,omitempty"`
+	// the chat group id
+	GroupId string `json:"group_id,omitempty"`
 	// the user id
 	UserId string `json:"user_id,omitempty"`
 }
 
 type KickResponse struct {
-	Room *Room `json:"room,omitempty"`
+	Group *Group `json:"group,omitempty"`
 }
 
 type LeaveRequest struct {
-	// the chat room id
-	RoomId string `json:"room_id,omitempty"`
+	// the chat group id
+	GroupId string `json:"group_id,omitempty"`
 	// the user id
 	UserId string `json:"user_id,omitempty"`
 }
 
 type LeaveResponse struct {
-	Room *Room `json:"room,omitempty"`
+	Group *Group `json:"group,omitempty"`
 }
 
 type ListRequest struct {
@@ -202,16 +217,16 @@ type ListRequest struct {
 }
 
 type ListResponse struct {
-	Rooms []Room `json:"rooms,omitempty"`
+	Groups []Group `json:"groups,omitempty"`
 }
 
 type Message struct {
 	// a client side id, should be validated by the server to make the request retry safe
 	Client string `json:"client,omitempty"`
+	// id of the chat the message is being sent to / from
+	GroupId string `json:"group_id,omitempty"`
 	// id of the message, allocated by the server
 	Id string `json:"id,omitempty"`
-	// id of the chat the message is being sent to / from
-	RoomId string `json:"room_id,omitempty"`
 	// time the message was sent in RFC3339 format
 	SentAt string `json:"sent_at,omitempty"`
 	// subject of the message
@@ -222,26 +237,11 @@ type Message struct {
 	UserId string `json:"user_id,omitempty"`
 }
 
-type Room struct {
-	// time of creation
-	CreatedAt string `json:"created_at,omitempty"`
-	// description of the that
-	Description string `json:"description,omitempty"`
-	// unique room id
-	Id string `json:"id,omitempty"`
-	// name of the chat
-	Name string `json:"name,omitempty"`
-	// whether its a private room
-	Private bool `json:"private,omitempty"`
-	// list of users
-	UserIds []string `json:"user_ids,omitempty"`
-}
-
 type SendRequest struct {
 	// a client side id, should be validated by the server to make the request retry safe
 	Client string `json:"client,omitempty"`
-	// id of the chat room the message is being sent to / from
-	RoomId string `json:"room_id,omitempty"`
+	// id of the chat group the message is being sent to / from
+	GroupId string `json:"group_id,omitempty"`
 	// subject of the message
 	Subject string `json:"subject,omitempty"`
 	// text of the message

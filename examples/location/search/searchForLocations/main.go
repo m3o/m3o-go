@@ -15,9 +15,9 @@ func main() {
 			Latitude:  51.511061,
 			Longitude: -0.120022,
 		},
-		NumEntities: 10,
-		Radius:      100,
-		Type:        "bike",
+		Limit:  10,
+		Radius: 100,
+		Type:   "bike",
 	})
 	fmt.Println(rsp, err)
 }

@@ -10,9 +10,6 @@ import (
 
 func main() {
 	client := m3o.New(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := client.Chat.Create(&chat.CreateRequest{
-		Description: "The general chat group",
-		Name:        "general",
-	})
+	rsp, err := client.Chat.Leave(&chat.LeaveRequest{})
 	fmt.Println(rsp, err)
 }

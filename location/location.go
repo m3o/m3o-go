@@ -78,7 +78,7 @@ type SearchRequest struct {
 	// Central position to search from
 	Center *Point `json:"center,omitempty"`
 	// Maximum number of entities to return
-	NumEntities int64 `json:"numEntities,string,omitempty"`
+	Limit int64 `json:"limit,string,omitempty"`
 	// radius in meters
 	Radius float64 `json:"radius,omitempty"`
 	// type of entities to filter
