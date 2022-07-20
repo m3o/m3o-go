@@ -28,7 +28,7 @@ type ChatService struct {
 	client *client.Client
 }
 
-// Create a new chat group
+// Create a new group
 func (t *ChatService) Create(request *CreateRequest) (*CreateResponse, error) {
 
 	rsp := &CreateResponse{}
@@ -36,7 +36,7 @@ func (t *ChatService) Create(request *CreateRequest) (*CreateResponse, error) {
 
 }
 
-// Delete a chat group
+// Delete a group
 func (t *ChatService) Delete(request *DeleteRequest) (*DeleteResponse, error) {
 
 	rsp := &DeleteResponse{}
@@ -52,7 +52,7 @@ func (t *ChatService) History(request *HistoryRequest) (*HistoryResponse, error)
 
 }
 
-// Invite a user to a chat group
+// Invite a user to a group
 func (t *ChatService) Invite(request *InviteRequest) (*InviteResponse, error) {
 
 	rsp := &InviteResponse{}
@@ -60,7 +60,7 @@ func (t *ChatService) Invite(request *InviteRequest) (*InviteResponse, error) {
 
 }
 
-// Join a chat group
+// Join a group
 func (t *ChatService) Join(request *JoinRequest) (*JoinResponseStream, error) {
 	stream, err := t.client.Stream("chat", "Join", request)
 	if err != nil {
@@ -84,7 +84,7 @@ func (t *JoinResponseStream) Recv() (*JoinResponse, error) {
 	return &rsp, nil
 }
 
-// Kick a user from a chat group
+// Kick a user from a group
 func (t *ChatService) Kick(request *KickRequest) (*KickResponse, error) {
 
 	rsp := &KickResponse{}
@@ -92,7 +92,7 @@ func (t *ChatService) Kick(request *KickRequest) (*KickResponse, error) {
 
 }
 
-// Leave a chat group
+// Leave a group
 func (t *ChatService) Leave(request *LeaveRequest) (*LeaveResponse, error) {
 
 	rsp := &LeaveResponse{}
@@ -129,12 +129,12 @@ type CreateRequest struct {
 }
 
 type CreateResponse struct {
-	// the unique chat group
+	// the unique group
 	Group *Group `json:"group,omitempty"`
 }
 
 type DeleteRequest struct {
-	// the chat group id to delete
+	// the group id to delete
 	GroupId string `json:"group_id,omitempty"`
 }
 
@@ -158,12 +158,12 @@ type Group struct {
 }
 
 type HistoryRequest struct {
-	// the chat group id to get
+	// the group id to get
 	GroupId string `json:"group_id,omitempty"`
 }
 
 type HistoryResponse struct {
-	// messages in the chat group
+	// messages in the group
 	Messages []Message `json:"messages,omitempty"`
 }
 
@@ -179,7 +179,7 @@ type InviteResponse struct {
 }
 
 type JoinRequest struct {
-	// chat group to join
+	// group to join
 	GroupId string `json:"group_id,omitempty"`
 	// user id joining
 	UserId string `json:"user_id,omitempty"`
@@ -190,7 +190,7 @@ type JoinResponse struct {
 }
 
 type KickRequest struct {
-	// the chat group id
+	// the group id
 	GroupId string `json:"group_id,omitempty"`
 	// the user id
 	UserId string `json:"user_id,omitempty"`
@@ -201,7 +201,7 @@ type KickResponse struct {
 }
 
 type LeaveRequest struct {
-	// the chat group id
+	// the group id
 	GroupId string `json:"group_id,omitempty"`
 	// the user id
 	UserId string `json:"user_id,omitempty"`
@@ -240,7 +240,7 @@ type Message struct {
 type SendRequest struct {
 	// a client side id, should be validated by the server to make the request retry safe
 	Client string `json:"client,omitempty"`
-	// id of the chat group the message is being sent to / from
+	// id of the group the message is being sent to / from
 	GroupId string `json:"group_id,omitempty"`
 	// subject of the message
 	Subject string `json:"subject,omitempty"`

@@ -32,12 +32,12 @@ func GetTheStatusOfAnApp() {
 	
 }
 ```
-## Resolve
+## Reserve
 
-Resolve an app by id to its raw backend endpoint
+Reserve apps beyond the free quota. Call Run after.
 
 
-[https://m3o.com/app/api#Resolve](https://m3o.com/app/api#Resolve)
+[https://m3o.com/app/api#Reserve](https://m3o.com/app/api#Reserve)
 
 ```go
 package example
@@ -49,23 +49,23 @@ import(
 	"go.m3o.com/app"
 )
 
-// Resolve an app by id to its raw backend endpoint
-func ResolveAppById() {
+// Reserve apps beyond the free quota. Call Run after.
+func ReserveAppName() {
 	appService := app.NewAppService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := appService.Resolve(&app.ResolveRequest{
-		Id: "helloworld",
+	rsp, err := appService.Reserve(&app.ReserveRequest{
+		Name: "helloworld",
 
 	})
 	fmt.Println(rsp, err)
 	
 }
 ```
-## Update
+## Run
 
-Update the app. The latest source code will be downloaded, built and deployed.
+Run an app from source
 
 
-[https://m3o.com/app/api#Update](https://m3o.com/app/api#Update)
+[https://m3o.com/app/api#Run](https://m3o.com/app/api#Run)
 
 ```go
 package example
@@ -77,12 +77,43 @@ import(
 	"go.m3o.com/app"
 )
 
-// Update the app. The latest source code will be downloaded, built and deployed.
-func UpdateAnApp() {
+// Run an app from source
+func RunAnApp() {
 	appService := app.NewAppService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := appService.Update(&app.UpdateRequest{
-		Name: "helloworld",
+	rsp, err := appService.Run(&app.RunRequest{
+		Branch: "master",
+Name: "helloworld",
+Port: 8080,
+Region: "europe-west1",
+Repo: "github.com/asim/helloworld",
 
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
+## Regions
+
+Return the support regions
+
+
+[https://m3o.com/app/api#Regions](https://m3o.com/app/api#Regions)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/app"
+)
+
+// Return the support regions
+func ListRegions() {
+	appService := app.NewAppService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := appService.Regions(&app.RegionsRequest{
+		
 	})
 	fmt.Println(rsp, err)
 	
@@ -171,12 +202,12 @@ func ListTheApps() {
 	
 }
 ```
-## Run
+## Resolve
 
-Run an app from source
+Resolve an app by id to its raw backend endpoint
 
 
-[https://m3o.com/app/api#Run](https://m3o.com/app/api#Run)
+[https://m3o.com/app/api#Resolve](https://m3o.com/app/api#Resolve)
 
 ```go
 package example
@@ -188,54 +219,23 @@ import(
 	"go.m3o.com/app"
 )
 
-// Run an app from source
-func RunAnApp() {
+// Resolve an app by id to its raw backend endpoint
+func ResolveAppById() {
 	appService := app.NewAppService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := appService.Run(&app.RunRequest{
-		Branch: "master",
-Name: "helloworld",
-Port: 8080,
-Region: "europe-west1",
-Repo: "github.com/asim/helloworld",
+	rsp, err := appService.Resolve(&app.ResolveRequest{
+		Id: "helloworld",
 
 	})
 	fmt.Println(rsp, err)
 	
 }
 ```
-## Regions
+## Update
 
-Return the support regions
-
-
-[https://m3o.com/app/api#Regions](https://m3o.com/app/api#Regions)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/app"
-)
-
-// Return the support regions
-func ListRegions() {
-	appService := app.NewAppService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := appService.Regions(&app.RegionsRequest{
-		
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
-## Reserve
-
-Reserve apps beyond the free quota. Call Run after.
+Update the app. The latest source code will be downloaded, built and deployed.
 
 
-[https://m3o.com/app/api#Reserve](https://m3o.com/app/api#Reserve)
+[https://m3o.com/app/api#Update](https://m3o.com/app/api#Update)
 
 ```go
 package example
@@ -247,10 +247,10 @@ import(
 	"go.m3o.com/app"
 )
 
-// Reserve apps beyond the free quota. Call Run after.
-func ReserveAppName() {
+// Update the app. The latest source code will be downloaded, built and deployed.
+func UpdateAnApp() {
 	appService := app.NewAppService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := appService.Reserve(&app.ReserveRequest{
+	rsp, err := appService.Update(&app.UpdateRequest{
 		Name: "helloworld",
 
 	})
