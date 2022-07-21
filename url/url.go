@@ -105,8 +105,6 @@ type URLPair struct {
 	Created string `json:"created,omitempty"`
 	// destination url
 	DestinationUrl string `json:"destinationURL,omitempty"`
-	// The number of times the short URL has been resolved
-	HitCount int64 `json:"hitCount,string,omitempty"`
 	// shortened url
 	ShortUrl string `json:"shortURL,omitempty"`
 }
