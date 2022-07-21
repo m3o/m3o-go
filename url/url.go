@@ -7,7 +7,7 @@ import (
 type Url interface {
 	Delete(*DeleteRequest) (*DeleteResponse, error)
 	List(*ListRequest) (*ListResponse, error)
-	Proxy(*ProxyRequest) (*ProxyResponse, error)
+	Resolve(*ResolveRequest) (*ResolveResponse, error)
 	Shorten(*ShortenRequest) (*ShortenResponse, error)
 	Update(*UpdateRequest) (*UpdateResponse, error)
 }
@@ -40,11 +40,11 @@ func (t *UrlService) List(request *ListRequest) (*ListResponse, error) {
 
 }
 
-// Proxy returns the destination URL of a short URL.
-func (t *UrlService) Proxy(request *ProxyRequest) (*ProxyResponse, error) {
+// Resolve returns the destination URL of a short URL.
+func (t *UrlService) Resolve(request *ResolveRequest) (*ResolveResponse, error) {
 
-	rsp := &ProxyResponse{}
-	return rsp, t.client.Call("url", "Proxy", request, rsp)
+	rsp := &ResolveResponse{}
+	return rsp, t.client.Call("url", "Resolve", request, rsp)
 
 }
 
@@ -56,7 +56,7 @@ func (t *UrlService) Shorten(request *ShortenRequest) (*ShortenResponse, error) 
 
 }
 
-// Update the destination for a short url
+// Update the destination for a short URL
 func (t *UrlService) Update(request *UpdateRequest) (*UpdateResponse, error) {
 
 	rsp := &UpdateResponse{}
@@ -80,13 +80,13 @@ type ListResponse struct {
 	UrlPairs *URLPair `json:"urlPairs,omitempty"`
 }
 
-type ProxyRequest struct {
+type ResolveRequest struct {
 	// short url ID, without the domain, eg. if your short URL is
 	// `m3o.one/u/someshorturlid` then pass in `someshorturlid`
 	ShortUrl string `json:"shortURL,omitempty"`
 }
 
-type ProxyResponse struct {
+type ResolveResponse struct {
 	DestinationUrl string `json:"destinationURL,omitempty"`
 }
 

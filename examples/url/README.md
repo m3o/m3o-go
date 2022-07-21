@@ -33,7 +33,7 @@ func ListYourShortenedUrls() {
 ```
 ## Update
 
-Update the destination for a short url
+Update the destination for a short URL
 
 
 [https://m3o.com/url/api#Update](https://m3o.com/url/api#Update)
@@ -48,7 +48,7 @@ import(
 	"go.m3o.com/url"
 )
 
-// Update the destination for a short url
+// Update the destination for a short URL
 func UpdateAshortUrl() {
 	urlService := url.NewUrlService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := urlService.Update(&url.UpdateRequest{
@@ -85,12 +85,12 @@ func ShortenAlongUrl() {
 	
 }
 ```
-## Proxy
+## Resolve
 
-Proxy returns the destination URL of a short URL.
+Resolve returns the destination URL of a short URL.
 
 
-[https://m3o.com/url/api#Proxy](https://m3o.com/url/api#Proxy)
+[https://m3o.com/url/api#Resolve](https://m3o.com/url/api#Resolve)
 
 ```go
 package example
@@ -102,10 +102,10 @@ import(
 	"go.m3o.com/url"
 )
 
-// Proxy returns the destination URL of a short URL.
+// Resolve returns the destination URL of a short URL.
 func ResolveAshortUrlToAlongDestinationUrl() {
 	urlService := url.NewUrlService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := urlService.Proxy(&url.ProxyRequest{
+	rsp, err := urlService.Resolve(&url.ResolveRequest{
 		
 	})
 	fmt.Println(rsp, err)
