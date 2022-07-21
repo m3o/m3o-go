@@ -85,6 +85,9 @@ type CreateResponse struct {
 }
 
 type DeleteRequest struct {
+	// specify id or shortURL
+	Id string `json:"id,omitempty"`
+	// optional shortURL
 	ShortUrl string `json:"shortURL,omitempty"`
 }
 
@@ -101,8 +104,7 @@ type ListResponse struct {
 }
 
 type ResolveRequest struct {
-	// short url ID, without the domain, eg. if your short URL is
-	// `m3o.one/u/someshorturlid` then pass in `someshorturlid`
+	// short url to resolve
 	ShortUrl string `json:"shortURL,omitempty"`
 }
 
@@ -136,7 +138,9 @@ type URLPair struct {
 type UpdateRequest struct {
 	// the destination to update to
 	DestinationUrl string `json:"destinationURL,omitempty"`
-	// the short url to update
+	// update by id
+	Id string `json:"id,omitempty"`
+	// update by short url
 	ShortUrl string `json:"shortURL,omitempty"`
 }
 

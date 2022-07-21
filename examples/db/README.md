@@ -38,12 +38,12 @@ Table: "example",
 	
 }
 ```
-## Delete
+## DropTable
 
-Delete a record in the database by id.
+Drop a table in the DB
 
 
-[https://m3o.com/db/api#Delete](https://m3o.com/db/api#Delete)
+[https://m3o.com/db/api#DropTable](https://m3o.com/db/api#DropTable)
 
 ```go
 package example
@@ -55,12 +55,11 @@ import(
 	"go.m3o.com/db"
 )
 
-// Delete a record in the database by id.
-func DeleteArecord() {
+// Drop a table in the DB
+func DropTable() {
 	dbService := db.NewDbService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := dbService.Delete(&db.DeleteRequest{
-		Id: "1",
-Table: "example",
+	rsp, err := dbService.DropTable(&db.DropTableRequest{
+		Table: "example",
 
 	})
 	fmt.Println(rsp, err)
@@ -184,6 +183,35 @@ Table: "example",
 	
 }
 ```
+## Delete
+
+Delete a record in the database by id.
+
+
+[https://m3o.com/db/api#Delete](https://m3o.com/db/api#Delete)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/db"
+)
+
+// Delete a record in the database by id.
+func DeleteArecord() {
+	dbService := db.NewDbService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := dbService.Delete(&db.DeleteRequest{
+		Id: "1",
+Table: "example",
+
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
 ## Truncate
 
 Truncate the records in a table
@@ -205,34 +233,6 @@ import(
 func TruncateTable() {
 	dbService := db.NewDbService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := dbService.Truncate(&db.TruncateRequest{
-		Table: "example",
-
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
-## DropTable
-
-Drop a table in the DB
-
-
-[https://m3o.com/db/api#DropTable](https://m3o.com/db/api#DropTable)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/db"
-)
-
-// Drop a table in the DB
-func DropTable() {
-	dbService := db.NewDbService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := dbService.DropTable(&db.DropTableRequest{
 		Table: "example",
 
 	})
