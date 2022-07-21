@@ -9,6 +9,7 @@ type Url interface {
 	List(*ListRequest) (*ListResponse, error)
 	Proxy(*ProxyRequest) (*ProxyResponse, error)
 	Shorten(*ShortenRequest) (*ShortenResponse, error)
+	Update(*UpdateRequest) (*UpdateResponse, error)
 }
 
 func NewUrlService(token string) *UrlService {
@@ -52,6 +53,14 @@ func (t *UrlService) Shorten(request *ShortenRequest) (*ShortenResponse, error) 
 
 	rsp := &ShortenResponse{}
 	return rsp, t.client.Call("url", "Shorten", request, rsp)
+
+}
+
+// Update the destination for a short url
+func (t *UrlService) Update(request *UpdateRequest) (*UpdateResponse, error) {
+
+	rsp := &UpdateResponse{}
+	return rsp, t.client.Call("url", "Update", request, rsp)
 
 }
 
@@ -100,4 +109,14 @@ type URLPair struct {
 	HitCount int64 `json:"hitCount,string,omitempty"`
 	// shortened url
 	ShortUrl string `json:"shortURL,omitempty"`
+}
+
+type UpdateRequest struct {
+	// the destination to update to
+	DestinationUrl string `json:"destinationURL,omitempty"`
+	// the short url to update
+	ShortUrl string `json:"shortURL,omitempty"`
+}
+
+type UpdateResponse struct {
 }

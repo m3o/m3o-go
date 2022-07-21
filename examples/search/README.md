@@ -4,6 +4,67 @@ An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/search/api](ht
 
 Endpoints:
 
+## DeleteIndex
+
+Delete an index by name
+
+
+[https://m3o.com/search/api#DeleteIndex](https://m3o.com/search/api#DeleteIndex)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/search"
+)
+
+// Delete an index by name
+func DeleteAnIndex() {
+	searchService := search.NewSearchService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := searchService.DeleteIndex(&search.DeleteIndexRequest{
+		Index: "customers",
+
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
+## Index
+
+Index a record i.e. insert a document to search for.
+
+
+[https://m3o.com/search/api#Index](https://m3o.com/search/api#Index)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/search"
+)
+
+// Index a record i.e. insert a document to search for.
+func IndexArecord() {
+	searchService := search.NewSearchService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := searchService.Index(&search.IndexRequest{
+		Data: map[string]interface{}{
+	"age": 37,
+	"starsign": "Leo",
+	"name": "John Doe",
+},
+Index: "customers",
+
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
 ## Search
 
 Search for records in a given in index
@@ -142,67 +203,6 @@ func CreateAnIndex() {
 	searchService := search.NewSearchService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := searchService.CreateIndex(&search.CreateIndexRequest{
 		Index: "customers",
-
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
-## DeleteIndex
-
-Delete an index by name
-
-
-[https://m3o.com/search/api#DeleteIndex](https://m3o.com/search/api#DeleteIndex)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/search"
-)
-
-// Delete an index by name
-func DeleteAnIndex() {
-	searchService := search.NewSearchService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := searchService.DeleteIndex(&search.DeleteIndexRequest{
-		Index: "customers",
-
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
-## Index
-
-Index a record i.e. insert a document to search for.
-
-
-[https://m3o.com/search/api#Index](https://m3o.com/search/api#Index)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/search"
-)
-
-// Index a record i.e. insert a document to search for.
-func IndexArecord() {
-	searchService := search.NewSearchService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := searchService.Index(&search.IndexRequest{
-		Data: map[string]interface{}{
-	"name": "John Doe",
-	"age": 37,
-	"starsign": "Leo",
-},
-Index: "customers",
 
 	})
 	fmt.Println(rsp, err)
