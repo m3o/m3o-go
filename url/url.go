@@ -5,6 +5,7 @@ import (
 )
 
 type Url interface {
+	Create(*CreateRequest) (*CreateResponse, error)
 	Delete(*DeleteRequest) (*DeleteResponse, error)
 	List(*ListRequest) (*ListResponse, error)
 	Resolve(*ResolveRequest) (*ResolveResponse, error)
@@ -22,6 +23,14 @@ func NewUrlService(token string) *UrlService {
 
 type UrlService struct {
 	client *client.Client
+}
+
+// Create a URL
+func (t *UrlService) Create(request *CreateRequest) (*CreateResponse, error) {
+
+	rsp := &CreateResponse{}
+	return rsp, t.client.Call("url", "Create", request, rsp)
+
 }
 
 // Delete a URL
@@ -62,6 +71,17 @@ func (t *UrlService) Update(request *UpdateRequest) (*UpdateResponse, error) {
 	rsp := &UpdateResponse{}
 	return rsp, t.client.Call("url", "Update", request, rsp)
 
+}
+
+type CreateRequest struct {
+	// destination url
+	DestinationUrl string `json:"destinationURL,omitempty"`
+	// a unique id e.g uuid or my-url
+	Id string `json:"id,omitempty"`
+}
+
+type CreateResponse struct {
+	Url *URLPair `json:"url,omitempty"`
 }
 
 type DeleteRequest struct {
@@ -105,6 +125,10 @@ type URLPair struct {
 	Created string `json:"created,omitempty"`
 	// destination url
 	DestinationUrl string `json:"destinationURL,omitempty"`
+	// The number of times the short URL has been resolved
+	HitCount int64 `json:"hitCount,string,omitempty"`
+	// url id
+	Id string `json:"id,omitempty"`
 	// shortened url
 	ShortUrl string `json:"shortURL,omitempty"`
 }
