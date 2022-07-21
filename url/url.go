@@ -48,7 +48,7 @@ func (t *UrlService) Proxy(request *ProxyRequest) (*ProxyResponse, error) {
 
 }
 
-// Shorten a long URL
+// Shorten a URL
 func (t *UrlService) Shorten(request *ShortenRequest) (*ShortenResponse, error) {
 
 	rsp := &ShortenResponse{}
