@@ -4,61 +4,6 @@ An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/nft/api](https
 
 Endpoints:
 
-## Collections
-
-Get a list of collections
-
-
-[https://m3o.com/nft/api#Collections](https://m3o.com/nft/api#Collections)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/nft"
-)
-
-// Get a list of collections
-func ListCollections() {
-	nftService := nft.NewNftService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := nftService.Collections(&nft.CollectionsRequest{
-		Limit: 1,
-
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
-## Asset
-
-Get a single asset by the contract
-
-
-[https://m3o.com/nft/api#Asset](https://m3o.com/nft/api#Asset)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/nft"
-)
-
-// Get a single asset by the contract
-func GetAsingleAsset() {
-	nftService := nft.NewNftService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := nftService.Asset(&nft.AssetRequest{
-		
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
 ## Collection
 
 Get a collection by its slug
@@ -139,6 +84,61 @@ func CreateAnNft() {
 		Description: "The epic monkey island character",
 Name: "Guybrush Threepwood",
 
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
+## Collections
+
+Get a list of collections
+
+
+[https://m3o.com/nft/api#Collections](https://m3o.com/nft/api#Collections)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/nft"
+)
+
+// Get a list of collections
+func ListCollections() {
+	nftService := nft.NewNftService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := nftService.Collections(&nft.CollectionsRequest{
+		Limit: 1,
+
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
+## Asset
+
+Get a single asset by the contract
+
+
+[https://m3o.com/nft/api#Asset](https://m3o.com/nft/api#Asset)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/nft"
+)
+
+// Get a single asset by the contract
+func GetAsingleAsset() {
+	nftService := nft.NewNftService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := nftService.Asset(&nft.AssetRequest{
+		
 	})
 	fmt.Println(rsp, err)
 	

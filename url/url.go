@@ -85,9 +85,9 @@ type CreateResponse struct {
 }
 
 type DeleteRequest struct {
-	// specify id or shortURL
+	// delete by id
 	Id string `json:"id,omitempty"`
-	// optional shortURL
+	// delete by shortURL
 	ShortUrl string `json:"shortURL,omitempty"`
 }
 
