@@ -23,8 +23,7 @@ type StreamService struct {
 	client *client.Client
 }
 
-// Create a channel with a given name and description. Channels are created automatically but
-// this allows you to specify a description that's persisted for the lifetime of the channel.
+// Create a channel by name
 func (t *StreamService) CreateChannel(request *CreateChannelRequest) (*CreateChannelResponse, error) {
 
 	rsp := &CreateChannelResponse{}
