@@ -4,6 +4,33 @@ An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/postcode/api](
 
 Endpoints:
 
+## Random
+
+Return a random postcode and its related info
+
+
+[https://m3o.com/postcode/api#Random](https://m3o.com/postcode/api#Random)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/postcode"
+)
+
+// Return a random postcode and its related info
+func ReturnArandomPostcodeAndItsInformation() {
+	postcodeService := postcode.NewPostcodeService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := postcodeService.Random(&postcode.RandomRequest{
+		
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
 ## Validate
 
 Validate a postcode.
@@ -55,33 +82,6 @@ func LookupPostcode() {
 	rsp, err := postcodeService.Lookup(&postcode.LookupRequest{
 		Postcode: "SW1A 2AA",
 
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
-## Random
-
-Return a random postcode and its related info
-
-
-[https://m3o.com/postcode/api#Random](https://m3o.com/postcode/api#Random)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/postcode"
-)
-
-// Return a random postcode and its related info
-func ReturnArandomPostcodeAndItsInformation() {
-	postcodeService := postcode.NewPostcodeService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := postcodeService.Random(&postcode.RandomRequest{
-		
 	})
 	fmt.Println(rsp, err)
 	
