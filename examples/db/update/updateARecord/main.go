@@ -12,8 +12,8 @@ func main() {
 	client := m3o.New(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := client.Db.Update(&db.UpdateRequest{
 		Record: map[string]interface{}{
-			"id":  "1",
 			"age": 43,
+			"id":  "1",
 		},
 		Table: "example",
 	})
