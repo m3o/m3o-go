@@ -11,6 +11,7 @@ type Wallet interface {
 	Debit(*DebitRequest) (*DebitResponse, error)
 	Delete(*DeleteRequest) (*DeleteResponse, error)
 	List(*ListRequest) (*ListResponse, error)
+	Read(*ReadRequest) (*ReadResponse, error)
 	Transactions(*TransactionsRequest) (*TransactionsResponse, error)
 	Transfer(*TransferRequest) (*TransferResponse, error)
 }
@@ -75,6 +76,14 @@ func (t *WalletService) List(request *ListRequest) (*ListResponse, error) {
 
 }
 
+// Get wallet by id
+func (t *WalletService) Read(request *ReadRequest) (*ReadResponse, error) {
+
+	rsp := &ReadResponse{}
+	return rsp, t.client.Call("wallet", "Read", request, rsp)
+
+}
+
 // List the transactions for a wallet
 func (t *WalletService) Transactions(request *TransactionsRequest) (*TransactionsResponse, error) {
 
@@ -94,6 +103,8 @@ func (t *WalletService) Transfer(request *TransferRequest) (*TransferResponse, e
 type Account struct {
 	// current balance
 	Balance int64 `json:"balance,string,omitempty"`
+	// currency of balance
+	Currency string `json:"currency,omitempty"`
 	// description of the wallet
 	Description string `json:"description,omitempty"`
 	// wallet id
@@ -113,6 +124,8 @@ type BalanceResponse struct {
 }
 
 type CreateRequest struct {
+	// specify a currency
+	Currency string `json:"currency,omitempty"`
 	// description for wallet
 	Description string `json:"description,omitempty"`
 	// optional id
@@ -174,6 +187,15 @@ type ListRequest struct {
 
 type ListResponse struct {
 	Accounts []Account `json:"accounts,omitempty"`
+}
+
+type ReadRequest struct {
+	// wallet id
+	Id string `json:"id,omitempty"`
+}
+
+type ReadResponse struct {
+	Account *Account `json:"account,omitempty"`
 }
 
 type Transaction struct {
