@@ -103,8 +103,6 @@ func (t *WalletService) Transfer(request *TransferRequest) (*TransferResponse, e
 type Account struct {
 	// current balance
 	Balance int64 `json:"balance,string,omitempty"`
-	// currency of balance
-	Currency string `json:"currency,omitempty"`
 	// description of the wallet
 	Description string `json:"description,omitempty"`
 	// wallet id
@@ -124,8 +122,6 @@ type BalanceResponse struct {
 }
 
 type CreateRequest struct {
-	// specify a currency
-	Currency string `json:"currency,omitempty"`
 	// description for wallet
 	Description string `json:"description,omitempty"`
 	// optional id
