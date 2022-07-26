@@ -202,11 +202,11 @@ type TransactionsResponse struct {
 type TransferRequest struct {
 	// amount to transfer
 	Amount int64 `json:"amount,string,omitempty"`
-	// from email
+	// from wallet id
 	FromId string `json:"from_id,omitempty"`
 	// reference
 	Reference string `json:"reference,omitempty"`
-	// to email
+	// to wallet id
 	ToId string `json:"to_id,omitempty"`
 	// visible?
 	Visible bool `json:"visible,omitempty"`
