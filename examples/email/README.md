@@ -4,6 +4,34 @@ An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/email/api](htt
 
 Endpoints:
 
+## Parse
+
+Parse an RFC5322 address e.g "Joe Blogs <joe@example.com>"
+
+
+[https://m3o.com/email/api#Parse](https://m3o.com/email/api#Parse)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/email"
+)
+
+// Parse an RFC5322 address e.g "Joe Blogs <joe@example.com>"
+func ParseEmail() {
+	emailService := email.NewEmailService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := emailService.Parse(&email.ParseRequest{
+		Address: "Joe Blogs <joe@example.com>",
+
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
 ## Validate
 
 Validate an email address format
@@ -58,34 +86,6 @@ Subject: "Email verification",
 TextBody: `Hi there,
 
 Please verify your email by clicking this link: $micro_verification_link`,
-
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
-## Parse
-
-Parse an RFC5322 address e.g "Joe Blogs <joe@example.com>"
-
-
-[https://m3o.com/email/api#Parse](https://m3o.com/email/api#Parse)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/email"
-)
-
-// Parse an RFC5322 address e.g "Joe Blogs <joe@example.com>"
-func ParseEmail() {
-	emailService := email.NewEmailService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := emailService.Parse(&email.ParseRequest{
-		Address: "Joe Blogs <joe@example.com>",
 
 	})
 	fmt.Println(rsp, err)

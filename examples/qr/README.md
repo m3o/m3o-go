@@ -33,3 +33,30 @@ Text: "https://m3o.com/qr",
 	
 }
 ```
+## Codes
+
+List your QR codes
+
+
+[https://m3o.com/qr/api#Codes](https://m3o.com/qr/api#Codes)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/qr"
+)
+
+// List your QR codes
+func ListCodes() {
+	qrService := qr.NewQrService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := qrService.Codes(&qr.CodesRequest{
+		
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
