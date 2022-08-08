@@ -5,6 +5,7 @@ import (
 )
 
 type Qr interface {
+	Codes(*CodesRequest) (*CodesResponse, error)
 	Generate(*GenerateRequest) (*GenerateResponse, error)
 }
 
@@ -20,12 +21,37 @@ type QrService struct {
 	client *client.Client
 }
 
+// List your QR codes
+func (t *QrService) Codes(request *CodesRequest) (*CodesResponse, error) {
+
+	rsp := &CodesResponse{}
+	return rsp, t.client.Call("qr", "Codes", request, rsp)
+
+}
+
 // Generate a QR code with a specific text and size
 func (t *QrService) Generate(request *GenerateRequest) (*GenerateResponse, error) {
 
 	rsp := &GenerateResponse{}
 	return rsp, t.client.Call("qr", "Generate", request, rsp)
 
+}
+
+type Code struct {
+	// time of creation
+	Created string `json:"created,omitempty"`
+	// file name
+	File string `json:"file,omitempty"`
+	Id   string `json:"id,omitempty"`
+	// text of the QR code
+	Text string `json:"text,omitempty"`
+}
+
+type CodesRequest struct {
+}
+
+type CodesResponse struct {
+	Codes []Code `json:"codes,omitempty"`
 }
 
 type GenerateRequest struct {
