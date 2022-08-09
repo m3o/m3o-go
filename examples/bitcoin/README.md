@@ -25,7 +25,7 @@ import(
 func GetBitcoinPrice() {
 	bitcoinService := bitcoin.NewBitcoinService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := bitcoinService.Price(&bitcoin.PriceRequest{
-		Symbol: "BTCUSD",
+		Symbol: "USD",
 
 	})
 	fmt.Println(rsp, err)

@@ -11,7 +11,7 @@ import (
 func main() {
 	client := m3o.New(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := client.Bitcoin.Price(&bitcoin.PriceRequest{
-		Symbol: "BTCUSD",
+		Symbol: "USD",
 	})
 	fmt.Println(rsp, err)
 }
