@@ -18,6 +18,7 @@ import (
 	"go.m3o.com/dns"
 	"go.m3o.com/email"
 	"go.m3o.com/emoji"
+	"go.m3o.com/ethereum"
 	"go.m3o.com/evchargers"
 	"go.m3o.com/event"
 	"go.m3o.com/file"
@@ -95,6 +96,7 @@ func New(token string) *Client {
 		Dns:        dns.NewDnsService(token),
 		Email:      email.NewEmailService(token),
 		Emoji:      emoji.NewEmojiService(token),
+		Ethereum:   ethereum.NewEthereumService(token),
 		Evchargers: evchargers.NewEvchargersService(token),
 		Event:      event.NewEventService(token),
 		File:       file.NewFileService(token),
@@ -172,6 +174,7 @@ type Client struct {
 	Dns        dns.Dns
 	Email      email.Email
 	Emoji      emoji.Emoji
+	Ethereum   ethereum.Ethereum
 	Evchargers evchargers.Evchargers
 	Event      event.Event
 	File       file.File
