@@ -32,6 +32,34 @@ func GetAethereumAddressBalance() {
 	
 }
 ```
+## Broadcast
+
+Broadcast presigned transaction to ethereum network
+
+
+[https://m3o.com/ethereum/api#Broadcast](https://m3o.com/ethereum/api#Broadcast)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/ethereum"
+)
+
+// Broadcast presigned transaction to ethereum network
+func BroadcastAtransaction() {
+	ethereumService := ethereum.NewEthereumService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := ethereumService.Broadcast(&ethereum.BroadcastRequest{
+		Hex: "0xf904808000831cfde080",
+
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
 ## Transaction
 
 Get transaction details by hash

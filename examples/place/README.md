@@ -4,6 +4,35 @@ An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/place/api](htt
 
 Endpoints:
 
+## Search
+
+Search for places by text query
+
+
+[https://m3o.com/place/api#Search](https://m3o.com/place/api#Search)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/place"
+)
+
+// Search for places by text query
+func SearchForPlaces() {
+	placeService := place.NewPlaceService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := placeService.Search(&place.SearchRequest{
+		Location: "51.5074577,-0.1297515",
+Query: "food",
+
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
 ## Nearby
 
 Find places nearby using a location
@@ -28,35 +57,6 @@ func FindPlacesNearby() {
 		Keyword: "tesco",
 Location: "51.5074577,-0.1297515",
 Type: "store",
-
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
-## Search
-
-Search for places by text query
-
-
-[https://m3o.com/place/api#Search](https://m3o.com/place/api#Search)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/place"
-)
-
-// Search for places by text query
-func SearchForPlaces() {
-	placeService := place.NewPlaceService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := placeService.Search(&place.SearchRequest{
-		Location: "51.5074577,-0.1297515",
-Query: "food",
 
 	})
 	fmt.Println(rsp, err)

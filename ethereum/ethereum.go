@@ -6,6 +6,7 @@ import (
 
 type Ethereum interface {
 	Balance(*BalanceRequest) (*BalanceResponse, error)
+	Broadcast(*BroadcastRequest) (*BroadcastResponse, error)
 	Transaction(*TransactionRequest) (*TransactionResponse, error)
 }
 
@@ -29,6 +30,14 @@ func (t *EthereumService) Balance(request *BalanceRequest) (*BalanceResponse, er
 
 }
 
+// Broadcast presigned transaction to ethereum network
+func (t *EthereumService) Broadcast(request *BroadcastRequest) (*BroadcastResponse, error) {
+
+	rsp := &BroadcastResponse{}
+	return rsp, t.client.Call("ethereum", "Broadcast", request, rsp)
+
+}
+
 // Get transaction details by hash
 func (t *EthereumService) Transaction(request *TransactionRequest) (*TransactionResponse, error) {
 
@@ -45,6 +54,16 @@ type BalanceRequest struct {
 type BalanceResponse struct {
 	// the account balance (in wei)
 	Balance int64 `json:"balance,string,omitempty"`
+}
+
+type BroadcastRequest struct {
+	// raw transaction data to broadcast
+	Hex string `json:"hex,omitempty"`
+}
+
+type BroadcastResponse struct {
+	// the transaction hash
+	Hash string `json:"hash,omitempty"`
 }
 
 type TransactionRequest struct {
