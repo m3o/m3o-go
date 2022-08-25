@@ -31,6 +31,38 @@ func InviteAuser() {
 	
 }
 ```
+## Send
+
+Connect to a chat to receive a stream of messages
+Send a message to a chat
+
+
+[https://m3o.com/chat/api#Send](https://m3o.com/chat/api#Send)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/chat"
+)
+
+// Connect to a chat to receive a stream of messages
+// Send a message to a chat
+func SendAmessage() {
+	chatService := chat.NewChatService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := chatService.Send(&chat.SendRequest{
+		Client: "web",
+Subject: "Random",
+Text: "Hey whats up?",
+
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
 ## History
 
 List the messages in a chat
@@ -96,33 +128,6 @@ func JoinAgroup() {
 
 			fmt.Println(rsp)
 	}
-}
-```
-## Kick
-
-Kick a user from a group
-
-
-[https://m3o.com/chat/api#Kick](https://m3o.com/chat/api#Kick)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/chat"
-)
-
-// Kick a user from a group
-func KickAuserFromAgroup() {
-	chatService := chat.NewChatService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := chatService.Kick(&chat.KickRequest{
-		
-	})
-	fmt.Println(rsp, err)
-	
 }
 ```
 ## Leave
@@ -235,13 +240,12 @@ func DeleteAchat() {
 	
 }
 ```
-## Send
+## Kick
 
-Connect to a chat to receive a stream of messages
-Send a message to a chat
+Kick a user from a group
 
 
-[https://m3o.com/chat/api#Send](https://m3o.com/chat/api#Send)
+[https://m3o.com/chat/api#Kick](https://m3o.com/chat/api#Kick)
 
 ```go
 package example
@@ -253,15 +257,11 @@ import(
 	"go.m3o.com/chat"
 )
 
-// Connect to a chat to receive a stream of messages
-// Send a message to a chat
-func SendAmessage() {
+// Kick a user from a group
+func KickAuserFromAgroup() {
 	chatService := chat.NewChatService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := chatService.Send(&chat.SendRequest{
-		Client: "web",
-Subject: "Random",
-Text: "Hey whats up?",
-
+	rsp, err := chatService.Kick(&chat.KickRequest{
+		
 	})
 	fmt.Println(rsp, err)
 	
