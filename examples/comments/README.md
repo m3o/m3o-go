@@ -4,6 +4,66 @@ An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/comments/api](
 
 Endpoints:
 
+## Update
+
+Update a comment
+
+
+[https://m3o.com/comments/api#Update](https://m3o.com/comments/api#Update)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/comments"
+)
+
+// Update a comment
+func UpdateAcomment() {
+	commentsService := comments.NewCommentsService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := commentsService.Update(&comments.UpdateRequest{
+		Comment: &comments.Comment{
+		Id: "63c0cdf8-2121-11ec-a881-0242e36f037a",
+	Subject: "Update Comment",
+	Text: "Updated comment text",
+	},
+
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
+## Delete
+
+Delete a comment
+
+
+[https://m3o.com/comments/api#Delete](https://m3o.com/comments/api#Delete)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/comments"
+)
+
+// Delete a comment
+func DeleteAcomment() {
+	commentsService := comments.NewCommentsService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := commentsService.Delete(&comments.DeleteRequest{
+		Id: "63c0cdf8-2121-11ec-a881-0242e36f037a",
+
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
 ## Events
 
 Subscribe to comments events
@@ -124,66 +184,6 @@ func ListAllComments() {
 	commentsService := comments.NewCommentsService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := commentsService.List(&comments.ListRequest{
 		
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
-## Update
-
-Update a comment
-
-
-[https://m3o.com/comments/api#Update](https://m3o.com/comments/api#Update)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/comments"
-)
-
-// Update a comment
-func UpdateAcomment() {
-	commentsService := comments.NewCommentsService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := commentsService.Update(&comments.UpdateRequest{
-		Comment: &comments.Comment{
-		Id: "63c0cdf8-2121-11ec-a881-0242e36f037a",
-	Subject: "Update Comment",
-	Text: "Updated comment text",
-	},
-
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
-## Delete
-
-Delete a comment
-
-
-[https://m3o.com/comments/api#Delete](https://m3o.com/comments/api#Delete)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/comments"
-)
-
-// Delete a comment
-func DeleteAcomment() {
-	commentsService := comments.NewCommentsService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := commentsService.Delete(&comments.DeleteRequest{
-		Id: "63c0cdf8-2121-11ec-a881-0242e36f037a",
-
 	})
 	fmt.Println(rsp, err)
 	
