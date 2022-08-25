@@ -60,7 +60,7 @@ func (t *AppService) Regions(request *RegionsRequest) (*RegionsResponse, error) 
 
 }
 
-// Reserve apps beyond the free quota. Call Run after.
+// Reserve app names
 func (t *AppService) Reserve(request *ReserveRequest) (*ReserveResponse, error) {
 
 	rsp := &ReserveResponse{}
