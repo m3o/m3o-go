@@ -4,34 +4,6 @@ An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/space/api](htt
 
 Endpoints:
 
-## Delete
-
-Delete an object from space
-
-
-[https://m3o.com/space/api#Delete](https://m3o.com/space/api#Delete)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/space"
-)
-
-// Delete an object from space
-func DeleteAnObject() {
-	spaceService := space.NewSpaceService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := spaceService.Delete(&space.DeleteRequest{
-		Name: "images/file.jpg",
-
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
 ## List
 
 List the objects in space
@@ -226,6 +198,34 @@ func UpdateAnObject() {
 		Name: "images/file.jpg",
 Object: "<file bytes>",
 Visibility: "public",
+
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
+## Delete
+
+Delete an object from space
+
+
+[https://m3o.com/space/api#Delete](https://m3o.com/space/api#Delete)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/space"
+)
+
+// Delete an object from space
+func DeleteAnObject() {
+	spaceService := space.NewSpaceService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := spaceService.Delete(&space.DeleteRequest{
+		Name: "images/file.jpg",
 
 	})
 	fmt.Println(rsp, err)
