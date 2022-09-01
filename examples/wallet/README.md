@@ -62,34 +62,6 @@ func ListTransactions() {
 	
 }
 ```
-## Delete
-
-Delete a wallet
-
-
-[https://m3o.com/wallet/api#Delete](https://m3o.com/wallet/api#Delete)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/wallet"
-)
-
-// Delete a wallet
-func DeleteAwallet() {
-	walletService := wallet.NewWalletService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := walletService.Delete(&wallet.DeleteRequest{
-		Id: "b6407edd-2e26-45c0-9e2c-343689bbe5f6",
-
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
 ## Create
 
 Create a new wallet
@@ -147,12 +119,12 @@ func ReadAwallet() {
 	
 }
 ```
-## Debit
+## Credit
 
-Debit a wallet
+Add credit to a wallet
 
 
-[https://m3o.com/wallet/api#Debit](https://m3o.com/wallet/api#Debit)
+[https://m3o.com/wallet/api#Credit](https://m3o.com/wallet/api#Credit)
 
 ```go
 package example
@@ -164,13 +136,13 @@ import(
 	"go.m3o.com/wallet"
 )
 
-// Debit a wallet
-func DebitWallet() {
+// Add credit to a wallet
+func CreditWallet() {
 	walletService := wallet.NewWalletService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := walletService.Debit(&wallet.DebitRequest{
-		Amount: 5,
+	rsp, err := walletService.Credit(&wallet.CreditRequest{
+		Amount: 10,
 Id: "b6407edd-2e26-45c0-9e2c-343689bbe5f6",
-Reference: "test debit",
+Reference: "test credit",
 Visible: true,
 
 	})
@@ -205,12 +177,12 @@ func ListWallets() {
 	
 }
 ```
-## Credit
+## Debit
 
-Add credit to a wallet
+Debit a wallet
 
 
-[https://m3o.com/wallet/api#Credit](https://m3o.com/wallet/api#Credit)
+[https://m3o.com/wallet/api#Debit](https://m3o.com/wallet/api#Debit)
 
 ```go
 package example
@@ -222,13 +194,13 @@ import(
 	"go.m3o.com/wallet"
 )
 
-// Add credit to a wallet
-func CreditWallet() {
+// Debit a wallet
+func DebitWallet() {
 	walletService := wallet.NewWalletService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := walletService.Credit(&wallet.CreditRequest{
-		Amount: 10,
+	rsp, err := walletService.Debit(&wallet.DebitRequest{
+		Amount: 5,
 Id: "b6407edd-2e26-45c0-9e2c-343689bbe5f6",
-Reference: "test credit",
+Reference: "test debit",
 Visible: true,
 
 	})
@@ -257,6 +229,34 @@ import(
 func GetBalance() {
 	walletService := wallet.NewWalletService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := walletService.Balance(&wallet.BalanceRequest{
+		Id: "b6407edd-2e26-45c0-9e2c-343689bbe5f6",
+
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
+## Delete
+
+Delete a wallet
+
+
+[https://m3o.com/wallet/api#Delete](https://m3o.com/wallet/api#Delete)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/wallet"
+)
+
+// Delete a wallet
+func DeleteAwallet() {
+	walletService := wallet.NewWalletService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := walletService.Delete(&wallet.DeleteRequest{
 		Id: "b6407edd-2e26-45c0-9e2c-343689bbe5f6",
 
 	})
