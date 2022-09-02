@@ -63,12 +63,12 @@ Request: map[string]interface{}{
 	
 }
 ```
-## List
+## Describe
 
-List all the deployed functions
+Get the info for a deployed function
 
 
-[https://m3o.com/function/api#List](https://m3o.com/function/api#List)
+[https://m3o.com/function/api#Describe](https://m3o.com/function/api#Describe)
 
 ```go
 package example
@@ -80,49 +80,23 @@ import(
 	"go.m3o.com/function"
 )
 
-// List all the deployed functions
-func ListFunctions() {
+// Get the info for a deployed function
+func DescribeFunctionStatus() {
 	functionService := function.NewFunctionService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := functionService.List(&function.ListRequest{
-		
+	rsp, err := functionService.Describe(&function.DescribeRequest{
+		Name: "helloworld",
+
 	})
 	fmt.Println(rsp, err)
 	
 }
 ```
-## Regions
+## Proxy
 
-Return a list of supported regions
-
-
-[https://m3o.com/function/api#Regions](https://m3o.com/function/api#Regions)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/function"
-)
-
-// Return a list of supported regions
-func ListRegions() {
-	functionService := function.NewFunctionService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := functionService.Regions(&function.RegionsRequest{
-		
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
-## Runtimes
-
-Return a list of supported runtimes
+Return the backend url for proxying
 
 
-[https://m3o.com/function/api#Runtimes](https://m3o.com/function/api#Runtimes)
+[https://m3o.com/function/api#Proxy](https://m3o.com/function/api#Proxy)
 
 ```go
 package example
@@ -134,11 +108,12 @@ import(
 	"go.m3o.com/function"
 )
 
-// Return a list of supported runtimes
-func ListRuntimes() {
+// Return the backend url for proxying
+func ProxyUrl() {
 	functionService := function.NewFunctionService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := functionService.Runtimes(&function.RuntimesRequest{
-		
+	rsp, err := functionService.Proxy(&function.ProxyRequest{
+		Id: "helloworld",
+
 	})
 	fmt.Println(rsp, err)
 	
@@ -206,6 +181,33 @@ Subfolder: "examples/go-function",
 	
 }
 ```
+## List
+
+List all the deployed functions
+
+
+[https://m3o.com/function/api#List](https://m3o.com/function/api#List)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/function"
+)
+
+// List all the deployed functions
+func ListFunctions() {
+	functionService := function.NewFunctionService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := functionService.List(&function.ListRequest{
+		
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
 ## Delete
 
 Delete a function by name
@@ -234,12 +236,12 @@ func DeleteAfunction() {
 	
 }
 ```
-## Describe
+## Regions
 
-Get the info for a deployed function
+Return a list of supported regions
 
 
-[https://m3o.com/function/api#Describe](https://m3o.com/function/api#Describe)
+[https://m3o.com/function/api#Regions](https://m3o.com/function/api#Regions)
 
 ```go
 package example
@@ -251,12 +253,11 @@ import(
 	"go.m3o.com/function"
 )
 
-// Get the info for a deployed function
-func DescribeFunctionStatus() {
+// Return a list of supported regions
+func ListRegions() {
 	functionService := function.NewFunctionService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := functionService.Describe(&function.DescribeRequest{
-		Name: "helloworld",
-
+	rsp, err := functionService.Regions(&function.RegionsRequest{
+		
 	})
 	fmt.Println(rsp, err)
 	
@@ -290,12 +291,12 @@ func ReserveAfunction() {
 	
 }
 ```
-## Proxy
+## Runtimes
 
-Return the backend url for proxying
+Return a list of supported runtimes
 
 
-[https://m3o.com/function/api#Proxy](https://m3o.com/function/api#Proxy)
+[https://m3o.com/function/api#Runtimes](https://m3o.com/function/api#Runtimes)
 
 ```go
 package example
@@ -307,12 +308,11 @@ import(
 	"go.m3o.com/function"
 )
 
-// Return the backend url for proxying
-func ProxyUrl() {
+// Return a list of supported runtimes
+func ListRuntimes() {
 	functionService := function.NewFunctionService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := functionService.Proxy(&function.ProxyRequest{
-		Id: "helloworld",
-
+	rsp, err := functionService.Runtimes(&function.RuntimesRequest{
+		
 	})
 	fmt.Println(rsp, err)
 	
