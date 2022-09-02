@@ -36,12 +36,12 @@ Text: "Hey whats up?",
 	
 }
 ```
-## Join
+## History
 
-Join a group
+List the messages in a chat
 
 
-[https://m3o.com/chat/api#Join](https://m3o.com/chat/api#Join)
+[https://m3o.com/chat/api#History](https://m3o.com/chat/api#History)
 
 ```go
 package example
@@ -53,27 +53,14 @@ import(
 	"go.m3o.com/chat"
 )
 
-// Join a group
-func JoinAgroup() {
+// List the messages in a chat
+func GetChatHistory() {
 	chatService := chat.NewChatService(os.Getenv("M3O_API_TOKEN"))
-	
-	stream, err := chatService.Join(&chat.JoinRequest{
+	rsp, err := chatService.History(&chat.HistoryRequest{
 		
 	})
-	if err != nil {
-		fmt.Println(err)
-		return
-	}
-
-	for {
-			rsp, err := stream.Recv()
-			if err != nil {
-					fmt.Println(err)
-					return
-			}
-
-			fmt.Println(rsp)
-	}
+	fmt.Println(rsp, err)
+	
 }
 ```
 ## Leave
@@ -103,12 +90,12 @@ func LeaveAgroup() {
 	
 }
 ```
-## Kick
+## Invite
 
-Kick a user from a group
+Invite a user to a group
 
 
-[https://m3o.com/chat/api#Kick](https://m3o.com/chat/api#Kick)
+[https://m3o.com/chat/api#Invite](https://m3o.com/chat/api#Invite)
 
 ```go
 package example
@@ -120,40 +107,11 @@ import(
 	"go.m3o.com/chat"
 )
 
-// Kick a user from a group
-func KickAuserFromAgroup() {
+// Invite a user to a group
+func InviteAuser() {
 	chatService := chat.NewChatService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := chatService.Kick(&chat.KickRequest{
+	rsp, err := chatService.Invite(&chat.InviteRequest{
 		
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
-## Create
-
-Create a new group
-
-
-[https://m3o.com/chat/api#Create](https://m3o.com/chat/api#Create)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/chat"
-)
-
-// Create a new group
-func CreateAnewChat() {
-	chatService := chat.NewChatService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := chatService.Create(&chat.CreateRequest{
-		Description: "The general group",
-Name: "general",
-
 	})
 	fmt.Println(rsp, err)
 	
@@ -213,12 +171,12 @@ func DeleteAchat() {
 	
 }
 ```
-## Invite
+## Join
 
-Invite a user to a group
+Join a group
 
 
-[https://m3o.com/chat/api#Invite](https://m3o.com/chat/api#Invite)
+[https://m3o.com/chat/api#Join](https://m3o.com/chat/api#Join)
 
 ```go
 package example
@@ -230,22 +188,62 @@ import(
 	"go.m3o.com/chat"
 )
 
-// Invite a user to a group
-func InviteAuser() {
+// Join a group
+func JoinAgroup() {
 	chatService := chat.NewChatService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := chatService.Invite(&chat.InviteRequest{
+	
+	stream, err := chatService.Join(&chat.JoinRequest{
+		
+	})
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+
+	for {
+			rsp, err := stream.Recv()
+			if err != nil {
+					fmt.Println(err)
+					return
+			}
+
+			fmt.Println(rsp)
+	}
+}
+```
+## Kick
+
+Kick a user from a group
+
+
+[https://m3o.com/chat/api#Kick](https://m3o.com/chat/api#Kick)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/chat"
+)
+
+// Kick a user from a group
+func KickAuserFromAgroup() {
+	chatService := chat.NewChatService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := chatService.Kick(&chat.KickRequest{
 		
 	})
 	fmt.Println(rsp, err)
 	
 }
 ```
-## History
+## Create
 
-List the messages in a chat
+Create a new group
 
 
-[https://m3o.com/chat/api#History](https://m3o.com/chat/api#History)
+[https://m3o.com/chat/api#Create](https://m3o.com/chat/api#Create)
 
 ```go
 package example
@@ -257,11 +255,13 @@ import(
 	"go.m3o.com/chat"
 )
 
-// List the messages in a chat
-func GetChatHistory() {
+// Create a new group
+func CreateAnewChat() {
 	chatService := chat.NewChatService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := chatService.History(&chat.HistoryRequest{
-		
+	rsp, err := chatService.Create(&chat.CreateRequest{
+		Description: "The general group",
+Name: "general",
+
 	})
 	fmt.Println(rsp, err)
 	
