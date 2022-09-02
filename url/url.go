@@ -104,6 +104,8 @@ type ListResponse struct {
 }
 
 type ResolveRequest struct {
+	// resolve by id
+	Id string `json:"id,omitempty"`
 	// short url to resolve
 	ShortUrl string `json:"shortURL,omitempty"`
 }
