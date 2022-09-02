@@ -4,12 +4,12 @@ An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/wallet/api](ht
 
 Endpoints:
 
-## Debit
+## Create
 
-Debit a wallet
+Create a new wallet
 
 
-[https://m3o.com/wallet/api#Debit](https://m3o.com/wallet/api#Debit)
+[https://m3o.com/wallet/api#Create](https://m3o.com/wallet/api#Create)
 
 ```go
 package example
@@ -21,14 +21,12 @@ import(
 	"go.m3o.com/wallet"
 )
 
-// Debit a wallet
-func DebitWallet() {
+// Create a new wallet
+func CreateAnewWallet() {
 	walletService := wallet.NewWalletService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := walletService.Debit(&wallet.DebitRequest{
-		Amount: 5,
-Id: "b6407edd-2e26-45c0-9e2c-343689bbe5f6",
-Reference: "test debit",
-Visible: true,
+	rsp, err := walletService.Create(&wallet.CreateRequest{
+		Description: "No explanation needed",
+Name: "Greatness",
 
 	})
 	fmt.Println(rsp, err)
@@ -65,12 +63,12 @@ Visible: true,
 	
 }
 ```
-## Create
+## Transactions
 
-Create a new wallet
+List the transactions for a wallet
 
 
-[https://m3o.com/wallet/api#Create](https://m3o.com/wallet/api#Create)
+[https://m3o.com/wallet/api#Transactions](https://m3o.com/wallet/api#Transactions)
 
 ```go
 package example
@@ -82,12 +80,39 @@ import(
 	"go.m3o.com/wallet"
 )
 
-// Create a new wallet
-func CreateAnewWallet() {
+// List the transactions for a wallet
+func ListTransactions() {
 	walletService := wallet.NewWalletService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := walletService.Create(&wallet.CreateRequest{
-		Description: "No explanation needed",
-Name: "Greatness",
+	rsp, err := walletService.Transactions(&wallet.TransactionsRequest{
+		Id: "b6407edd-2e26-45c0-9e2c-343689bbe5f6",
+
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
+## Delete
+
+Delete a wallet
+
+
+[https://m3o.com/wallet/api#Delete](https://m3o.com/wallet/api#Delete)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/wallet"
+)
+
+// Delete a wallet
+func DeleteAwallet() {
+	walletService := wallet.NewWalletService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := walletService.Delete(&wallet.DeleteRequest{
+		Id: "b6407edd-2e26-45c0-9e2c-343689bbe5f6",
 
 	})
 	fmt.Println(rsp, err)
@@ -153,12 +178,12 @@ Visible: true,
 	
 }
 ```
-## Delete
+## Debit
 
-Delete a wallet
+Debit a wallet
 
 
-[https://m3o.com/wallet/api#Delete](https://m3o.com/wallet/api#Delete)
+[https://m3o.com/wallet/api#Debit](https://m3o.com/wallet/api#Debit)
 
 ```go
 package example
@@ -170,11 +195,14 @@ import(
 	"go.m3o.com/wallet"
 )
 
-// Delete a wallet
-func DeleteAwallet() {
+// Debit a wallet
+func DebitWallet() {
 	walletService := wallet.NewWalletService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := walletService.Delete(&wallet.DeleteRequest{
-		Id: "b6407edd-2e26-45c0-9e2c-343689bbe5f6",
+	rsp, err := walletService.Debit(&wallet.DebitRequest{
+		Amount: 5,
+Id: "b6407edd-2e26-45c0-9e2c-343689bbe5f6",
+Reference: "test debit",
+Visible: true,
 
 	})
 	fmt.Println(rsp, err)
@@ -229,34 +257,6 @@ import(
 func GetBalance() {
 	walletService := wallet.NewWalletService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := walletService.Balance(&wallet.BalanceRequest{
-		Id: "b6407edd-2e26-45c0-9e2c-343689bbe5f6",
-
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
-## Transactions
-
-List the transactions for a wallet
-
-
-[https://m3o.com/wallet/api#Transactions](https://m3o.com/wallet/api#Transactions)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/wallet"
-)
-
-// List the transactions for a wallet
-func ListTransactions() {
-	walletService := wallet.NewWalletService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := walletService.Transactions(&wallet.TransactionsRequest{
 		Id: "b6407edd-2e26-45c0-9e2c-343689bbe5f6",
 
 	})
