@@ -4,12 +4,13 @@ An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/chat/api](http
 
 Endpoints:
 
-## Create
+## Send
 
-Create a new group
+Connect to a chat to receive a stream of messages
+Send a message to a chat
 
 
-[https://m3o.com/chat/api#Create](https://m3o.com/chat/api#Create)
+[https://m3o.com/chat/api#Send](https://m3o.com/chat/api#Send)
 
 ```go
 package example
@@ -21,12 +22,14 @@ import(
 	"go.m3o.com/chat"
 )
 
-// Create a new group
-func CreateAnewChat() {
+// Connect to a chat to receive a stream of messages
+// Send a message to a chat
+func SendAmessage() {
 	chatService := chat.NewChatService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := chatService.Create(&chat.CreateRequest{
-		Description: "The general group",
-Name: "general",
+	rsp, err := chatService.Send(&chat.SendRequest{
+		Client: "web",
+Subject: "Random",
+Text: "Hey whats up?",
 
 	})
 	fmt.Println(rsp, err)
@@ -55,6 +58,102 @@ func GetChatHistory() {
 	chatService := chat.NewChatService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := chatService.History(&chat.HistoryRequest{
 		
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
+## Join
+
+Join a group
+
+
+[https://m3o.com/chat/api#Join](https://m3o.com/chat/api#Join)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/chat"
+)
+
+// Join a group
+func JoinAgroup() {
+	chatService := chat.NewChatService(os.Getenv("M3O_API_TOKEN"))
+	
+	stream, err := chatService.Join(&chat.JoinRequest{
+		
+	})
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+
+	for {
+			rsp, err := stream.Recv()
+			if err != nil {
+					fmt.Println(err)
+					return
+			}
+
+			fmt.Println(rsp)
+	}
+}
+```
+## Leave
+
+Leave a group
+
+
+[https://m3o.com/chat/api#Leave](https://m3o.com/chat/api#Leave)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/chat"
+)
+
+// Leave a group
+func LeaveAgroup() {
+	chatService := chat.NewChatService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := chatService.Leave(&chat.LeaveRequest{
+		
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
+## Create
+
+Create a new group
+
+
+[https://m3o.com/chat/api#Create](https://m3o.com/chat/api#Create)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/chat"
+)
+
+// Create a new group
+func CreateAnewChat() {
+	chatService := chat.NewChatService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := chatService.Create(&chat.CreateRequest{
+		Description: "The general group",
+Name: "general",
+
 	})
 	fmt.Println(rsp, err)
 	
@@ -141,78 +240,6 @@ func InviteAuser() {
 	
 }
 ```
-## Send
-
-Connect to a chat to receive a stream of messages
-Send a message to a chat
-
-
-[https://m3o.com/chat/api#Send](https://m3o.com/chat/api#Send)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/chat"
-)
-
-// Connect to a chat to receive a stream of messages
-// Send a message to a chat
-func SendAmessage() {
-	chatService := chat.NewChatService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := chatService.Send(&chat.SendRequest{
-		Client: "web",
-Subject: "Random",
-Text: "Hey whats up?",
-
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
-## Join
-
-Join a group
-
-
-[https://m3o.com/chat/api#Join](https://m3o.com/chat/api#Join)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/chat"
-)
-
-// Join a group
-func JoinAgroup() {
-	chatService := chat.NewChatService(os.Getenv("M3O_API_TOKEN"))
-	
-	stream, err := chatService.Join(&chat.JoinRequest{
-		
-	})
-	if err != nil {
-		fmt.Println(err)
-		return
-	}
-
-	for {
-			rsp, err := stream.Recv()
-			if err != nil {
-					fmt.Println(err)
-					return
-			}
-
-			fmt.Println(rsp)
-	}
-}
-```
 ## Kick
 
 Kick a user from a group
@@ -234,33 +261,6 @@ import(
 func KickAuserFromAgroup() {
 	chatService := chat.NewChatService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := chatService.Kick(&chat.KickRequest{
-		
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
-## Leave
-
-Leave a group
-
-
-[https://m3o.com/chat/api#Leave](https://m3o.com/chat/api#Leave)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/chat"
-)
-
-// Leave a group
-func LeaveAgroup() {
-	chatService := chat.NewChatService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := chatService.Leave(&chat.LeaveRequest{
 		
 	})
 	fmt.Println(rsp, err)
