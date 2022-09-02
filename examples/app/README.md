@@ -4,61 +4,6 @@ An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/app/api](https
 
 Endpoints:
 
-## Reserve
-
-Reserve app names
-
-
-[https://m3o.com/app/api#Reserve](https://m3o.com/app/api#Reserve)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/app"
-)
-
-// Reserve app names
-func ReserveAppName() {
-	appService := app.NewAppService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := appService.Reserve(&app.ReserveRequest{
-		Name: "helloworld",
-
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
-## List
-
-List all the apps
-
-
-[https://m3o.com/app/api#List](https://m3o.com/app/api#List)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/app"
-)
-
-// List all the apps
-func ListTheApps() {
-	appService := app.NewAppService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := appService.List(&app.ListRequest{
-		
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
 ## Regions
 
 Return the support regions
@@ -86,12 +31,12 @@ func ListRegions() {
 	
 }
 ```
-## Resolve
+## Status
 
-Resolve an app by id to its raw backend endpoint
+Get the status of an app
 
 
-[https://m3o.com/app/api#Resolve](https://m3o.com/app/api#Resolve)
+[https://m3o.com/app/api#Status](https://m3o.com/app/api#Status)
 
 ```go
 package example
@@ -103,11 +48,11 @@ import(
 	"go.m3o.com/app"
 )
 
-// Resolve an app by id to its raw backend endpoint
-func ResolveAppById() {
+// Get the status of an app
+func GetTheStatusOfAnApp() {
 	appService := app.NewAppService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := appService.Resolve(&app.ResolveRequest{
-		Id: "helloworld",
+	rsp, err := appService.Status(&app.StatusRequest{
+		Name: "helloworld",
 
 	})
 	fmt.Println(rsp, err)
@@ -170,6 +115,61 @@ func DeleteAnApp() {
 	
 }
 ```
+## Reserve
+
+Reserve app names
+
+
+[https://m3o.com/app/api#Reserve](https://m3o.com/app/api#Reserve)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/app"
+)
+
+// Reserve app names
+func ReserveAppName() {
+	appService := app.NewAppService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := appService.Reserve(&app.ReserveRequest{
+		Name: "helloworld",
+
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
+## List
+
+List all the apps
+
+
+[https://m3o.com/app/api#List](https://m3o.com/app/api#List)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/app"
+)
+
+// List all the apps
+func ListTheApps() {
+	appService := app.NewAppService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := appService.List(&app.ListRequest{
+		
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
 ## Run
 
 Run an app from source
@@ -202,12 +202,12 @@ Repo: "github.com/asim/helloworld",
 	
 }
 ```
-## Status
+## Resolve
 
-Get the status of an app
+Resolve an app by id to its raw backend endpoint
 
 
-[https://m3o.com/app/api#Status](https://m3o.com/app/api#Status)
+[https://m3o.com/app/api#Resolve](https://m3o.com/app/api#Resolve)
 
 ```go
 package example
@@ -219,11 +219,11 @@ import(
 	"go.m3o.com/app"
 )
 
-// Get the status of an app
-func GetTheStatusOfAnApp() {
+// Resolve an app by id to its raw backend endpoint
+func ResolveAppById() {
 	appService := app.NewAppService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := appService.Status(&app.StatusRequest{
-		Name: "helloworld",
+	rsp, err := appService.Resolve(&app.ResolveRequest{
+		Id: "helloworld",
 
 	})
 	fmt.Println(rsp, err)
