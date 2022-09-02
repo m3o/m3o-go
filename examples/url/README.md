@@ -4,6 +4,33 @@ An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/url/api](https
 
 Endpoints:
 
+## Delete
+
+Delete a URL
+
+
+[https://m3o.com/url/api#Delete](https://m3o.com/url/api#Delete)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/url"
+)
+
+// Delete a URL
+func DeleteAshortenedUrl() {
+	urlService := url.NewUrlService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := urlService.Delete(&url.DeleteRequest{
+		
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
 ## Create
 
 Create a URL
@@ -134,33 +161,6 @@ import(
 func ResolveAshortUrlToAlongDestinationUrl() {
 	urlService := url.NewUrlService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := urlService.Resolve(&url.ResolveRequest{
-		
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
-## Delete
-
-Delete a URL
-
-
-[https://m3o.com/url/api#Delete](https://m3o.com/url/api#Delete)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/url"
-)
-
-// Delete a URL
-func DeleteAshortenedUrl() {
-	urlService := url.NewUrlService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := urlService.Delete(&url.DeleteRequest{
 		
 	})
 	fmt.Println(rsp, err)
