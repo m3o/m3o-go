@@ -32,6 +32,34 @@ func RetrieveBuildLogsForAnApp() {
 	
 }
 ```
+## Reserve
+
+Reserve app names
+
+
+[https://m3o.com/app/api#Reserve](https://m3o.com/app/api#Reserve)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/app"
+)
+
+// Reserve app names
+func ReserveAppName() {
+	appService := app.NewAppService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := appService.Reserve(&app.ReserveRequest{
+		Name: "helloworld",
+
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
 ## Regions
 
 Return the support regions
@@ -54,62 +82,6 @@ func ListRegions() {
 	appService := app.NewAppService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := appService.Regions(&app.RegionsRequest{
 		
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
-## Update
-
-Update the app. The latest source code will be downloaded, built and deployed.
-
-
-[https://m3o.com/app/api#Update](https://m3o.com/app/api#Update)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/app"
-)
-
-// Update the app. The latest source code will be downloaded, built and deployed.
-func UpdateAnApp() {
-	appService := app.NewAppService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := appService.Update(&app.UpdateRequest{
-		Name: "helloworld",
-
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
-## Delete
-
-Delete an app
-
-
-[https://m3o.com/app/api#Delete](https://m3o.com/app/api#Delete)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/app"
-)
-
-// Delete an app
-func DeleteAnApp() {
-	appService := app.NewAppService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := appService.Delete(&app.DeleteRequest{
-		Name: "helloworld",
-
 	})
 	fmt.Println(rsp, err)
 	
@@ -171,12 +143,12 @@ func ResolveAppById() {
 	
 }
 ```
-## Reserve
+## Update
 
-Reserve app names
+Update the app. The latest source code will be downloaded, built and deployed.
 
 
-[https://m3o.com/app/api#Reserve](https://m3o.com/app/api#Reserve)
+[https://m3o.com/app/api#Update](https://m3o.com/app/api#Update)
 
 ```go
 package example
@@ -188,10 +160,10 @@ import(
 	"go.m3o.com/app"
 )
 
-// Reserve app names
-func ReserveAppName() {
+// Update the app. The latest source code will be downloaded, built and deployed.
+func UpdateAnApp() {
 	appService := app.NewAppService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := appService.Reserve(&app.ReserveRequest{
+	rsp, err := appService.Update(&app.UpdateRequest{
 		Name: "helloworld",
 
 	})
@@ -252,6 +224,34 @@ Name: "helloworld",
 Port: 8080,
 Region: "europe-west1",
 Repo: "github.com/asim/helloworld",
+
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
+## Delete
+
+Delete an app
+
+
+[https://m3o.com/app/api#Delete](https://m3o.com/app/api#Delete)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/app"
+)
+
+// Delete an app
+func DeleteAnApp() {
+	appService := app.NewAppService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := appService.Delete(&app.DeleteRequest{
+		Name: "helloworld",
 
 	})
 	fmt.Println(rsp, err)
