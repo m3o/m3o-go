@@ -12,9 +12,9 @@ func main() {
 	client := m3o.New(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := client.Mq.Publish(&mq.PublishRequest{
 		Message: map[string]interface{}{
+			"id":   "1",
 			"type": "signup",
 			"user": "john",
-			"id":   "1",
 		},
 		Topic: "events",
 	})

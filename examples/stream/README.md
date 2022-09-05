@@ -4,35 +4,6 @@ An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/stream/api](ht
 
 Endpoints:
 
-## CreateChannel
-
-Create a channel by name
-
-
-[https://m3o.com/stream/api#CreateChannel](https://m3o.com/stream/api#CreateChannel)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/stream"
-)
-
-// Create a channel by name
-func CreateChannel() {
-	streamService := stream.NewStreamService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := streamService.CreateChannel(&stream.CreateChannelRequest{
-		Description: "The channel for all things",
-Name: "general",
-
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
 ## SendMessage
 
 Send a message to the stream.
@@ -112,6 +83,35 @@ func ListChannels() {
 	streamService := stream.NewStreamService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := streamService.ListChannels(&stream.ListChannelsRequest{
 		
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
+## CreateChannel
+
+Create a channel by name
+
+
+[https://m3o.com/stream/api#CreateChannel](https://m3o.com/stream/api#CreateChannel)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/stream"
+)
+
+// Create a channel by name
+func CreateChannel() {
+	streamService := stream.NewStreamService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := streamService.CreateChannel(&stream.CreateChannelRequest{
+		Description: "The channel for all things",
+Name: "general",
+
 	})
 	fmt.Println(rsp, err)
 	
