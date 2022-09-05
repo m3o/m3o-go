@@ -4,6 +4,62 @@ An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/wallet/api](ht
 
 Endpoints:
 
+## Balance
+
+Get the balance of a wallet
+
+
+[https://m3o.com/wallet/api#Balance](https://m3o.com/wallet/api#Balance)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/wallet"
+)
+
+// Get the balance of a wallet
+func GetBalance() {
+	walletService := wallet.NewWalletService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := walletService.Balance(&wallet.BalanceRequest{
+		Id: "b6407edd-2e26-45c0-9e2c-343689bbe5f6",
+
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
+## Read
+
+Get wallet by id
+
+
+[https://m3o.com/wallet/api#Read](https://m3o.com/wallet/api#Read)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/wallet"
+)
+
+// Get wallet by id
+func ReadAwallet() {
+	walletService := wallet.NewWalletService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := walletService.Read(&wallet.ReadRequest{
+		Id: "b6407edd-2e26-45c0-9e2c-343689bbe5f6",
+
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
 ## List
 
 List your wallets
@@ -26,68 +82,6 @@ func ListWallets() {
 	walletService := wallet.NewWalletService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := walletService.List(&wallet.ListRequest{
 		
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
-## Credit
-
-Add credit to a wallet
-
-
-[https://m3o.com/wallet/api#Credit](https://m3o.com/wallet/api#Credit)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/wallet"
-)
-
-// Add credit to a wallet
-func CreditWallet() {
-	walletService := wallet.NewWalletService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := walletService.Credit(&wallet.CreditRequest{
-		Amount: 10,
-Id: "b6407edd-2e26-45c0-9e2c-343689bbe5f6",
-Reference: "test credit",
-Visible: true,
-
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
-## Debit
-
-Debit a wallet
-
-
-[https://m3o.com/wallet/api#Debit](https://m3o.com/wallet/api#Debit)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/wallet"
-)
-
-// Debit a wallet
-func DebitWallet() {
-	walletService := wallet.NewWalletService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := walletService.Debit(&wallet.DebitRequest{
-		Amount: 5,
-Id: "b6407edd-2e26-45c0-9e2c-343689bbe5f6",
-Reference: "test debit",
-Visible: true,
-
 	})
 	fmt.Println(rsp, err)
 	
@@ -117,34 +111,6 @@ func TransferMoney() {
 		Amount: 5,
 Reference: "transfer money",
 Visible: true,
-
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
-## Balance
-
-Get the balance of a wallet
-
-
-[https://m3o.com/wallet/api#Balance](https://m3o.com/wallet/api#Balance)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/wallet"
-)
-
-// Get the balance of a wallet
-func GetBalance() {
-	walletService := wallet.NewWalletService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := walletService.Balance(&wallet.BalanceRequest{
-		Id: "b6407edd-2e26-45c0-9e2c-343689bbe5f6",
 
 	})
 	fmt.Println(rsp, err)
@@ -236,12 +202,12 @@ Name: "Greatness",
 	
 }
 ```
-## Read
+## Credit
 
-Get wallet by id
+Add credit to a wallet
 
 
-[https://m3o.com/wallet/api#Read](https://m3o.com/wallet/api#Read)
+[https://m3o.com/wallet/api#Credit](https://m3o.com/wallet/api#Credit)
 
 ```go
 package example
@@ -253,11 +219,45 @@ import(
 	"go.m3o.com/wallet"
 )
 
-// Get wallet by id
-func ReadAwallet() {
+// Add credit to a wallet
+func CreditWallet() {
 	walletService := wallet.NewWalletService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := walletService.Read(&wallet.ReadRequest{
-		Id: "b6407edd-2e26-45c0-9e2c-343689bbe5f6",
+	rsp, err := walletService.Credit(&wallet.CreditRequest{
+		Amount: 10,
+Id: "b6407edd-2e26-45c0-9e2c-343689bbe5f6",
+Reference: "test credit",
+Visible: true,
+
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
+## Debit
+
+Debit a wallet
+
+
+[https://m3o.com/wallet/api#Debit](https://m3o.com/wallet/api#Debit)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/wallet"
+)
+
+// Debit a wallet
+func DebitWallet() {
+	walletService := wallet.NewWalletService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := walletService.Debit(&wallet.DebitRequest{
+		Amount: 5,
+Id: "b6407edd-2e26-45c0-9e2c-343689bbe5f6",
+Reference: "test debit",
+Visible: true,
 
 	})
 	fmt.Println(rsp, err)

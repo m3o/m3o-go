@@ -246,14 +246,14 @@ type Token struct {
 }
 
 type Transaction struct {
-	BlockHash        string `json:"block_hash,omitempty"`
-	BlockNumber      string `json:"block_number,omitempty"`
-	FromAccount      *User  `json:"from_account,omitempty"`
-	Id               int32  `json:"id,omitempty"`
-	Timestamp        string `json:"timestamp,omitempty"`
-	ToAccount        *User  `json:"to_account,omitempty"`
-	TransactionHash  string `json:"transaction_hash,omitempty"`
-	TransactionIndex string `json:"transaction_index,omitempty"`
+	BlockHash        string  `json:"block_hash,omitempty"`
+	BlockNumber      float64 `json:"block_number,omitempty"`
+	FromAccount      *User   `json:"from_account,omitempty"`
+	Id               int32   `json:"id,omitempty"`
+	Timestamp        string  `json:"timestamp,omitempty"`
+	ToAccount        *User   `json:"to_account,omitempty"`
+	TransactionHash  string  `json:"transaction_hash,omitempty"`
+	TransactionIndex string  `json:"transaction_index,omitempty"`
 }
 
 type User struct {
