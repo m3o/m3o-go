@@ -156,7 +156,7 @@ type Collection struct {
 	// the collection's approval status on OpenSea
 	SafelistRequestStatus string `json:"safelist_request_status,omitempty"`
 	// the fees that get paid out when a sale is made
-	SellerFees float64 `json:"seller_fees,omitempty"`
+	SellerFees string `json:"seller_fees,omitempty"`
 	// collection slug
 	Slug string `json:"slug,omitempty"`
 	// sales statistics associated with the collection
@@ -200,7 +200,7 @@ type Contract struct {
 	// aka "ERC1155"
 	Schema string `json:"schema,omitempty"`
 	// seller fees
-	SellerFees float64 `json:"seller_fees,omitempty"`
+	SellerFees string `json:"seller_fees,omitempty"`
 	// related symbol
 	Symbol string `json:"symbol,omitempty"`
 	// type of contract e.g "semi-fungible"
@@ -246,14 +246,14 @@ type Token struct {
 }
 
 type Transaction struct {
-	BlockHash        string  `json:"block_hash,omitempty"`
-	BlockNumber      float64 `json:"block_number,omitempty"`
-	FromAccount      *User   `json:"from_account,omitempty"`
-	Id               int32   `json:"id,omitempty"`
-	Timestamp        string  `json:"timestamp,omitempty"`
-	ToAccount        *User   `json:"to_account,omitempty"`
-	TransactionHash  string  `json:"transaction_hash,omitempty"`
-	TransactionIndex float64 `json:"transaction_index,omitempty"`
+	BlockHash        string `json:"block_hash,omitempty"`
+	BlockNumber      string `json:"block_number,omitempty"`
+	FromAccount      *User  `json:"from_account,omitempty"`
+	Id               int32  `json:"id,omitempty"`
+	Timestamp        string `json:"timestamp,omitempty"`
+	ToAccount        *User  `json:"to_account,omitempty"`
+	TransactionHash  string `json:"transaction_hash,omitempty"`
+	TransactionIndex string `json:"transaction_index,omitempty"`
 }
 
 type User struct {
