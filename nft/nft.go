@@ -253,7 +253,7 @@ type Transaction struct {
 	Timestamp        string  `json:"timestamp,omitempty"`
 	ToAccount        *User   `json:"to_account,omitempty"`
 	TransactionHash  string  `json:"transaction_hash,omitempty"`
-	TransactionIndex string  `json:"transaction_index,omitempty"`
+	TransactionIndex float64 `json:"transaction_index,omitempty"`
 }
 
 type User struct {
