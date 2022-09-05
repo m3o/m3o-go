@@ -156,7 +156,7 @@ type Collection struct {
 	// the collection's approval status on OpenSea
 	SafelistRequestStatus string `json:"safelist_request_status,omitempty"`
 	// the fees that get paid out when a sale is made
-	SellerFees string `json:"seller_fees,omitempty"`
+	SellerFees float64 `json:"seller_fees,omitempty"`
 	// collection slug
 	Slug string `json:"slug,omitempty"`
 	// sales statistics associated with the collection
@@ -200,7 +200,7 @@ type Contract struct {
 	// aka "ERC1155"
 	Schema string `json:"schema,omitempty"`
 	// seller fees
-	SellerFees string `json:"seller_fees,omitempty"`
+	SellerFees float64 `json:"seller_fees,omitempty"`
 	// related symbol
 	Symbol string `json:"symbol,omitempty"`
 	// type of contract e.g "semi-fungible"
