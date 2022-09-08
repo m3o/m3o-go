@@ -33,6 +33,37 @@ Name: "Greatness",
 	
 }
 ```
+## Debit
+
+Debit a wallet
+
+
+[https://m3o.com/wallet/api#Debit](https://m3o.com/wallet/api#Debit)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/wallet"
+)
+
+// Debit a wallet
+func DebitWallet() {
+	walletService := wallet.NewWalletService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := walletService.Debit(&wallet.DebitRequest{
+		Amount: 5,
+Id: "b6407edd-2e26-45c0-9e2c-343689bbe5f6",
+Reference: "test debit",
+Visible: true,
+
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
 ## List
 
 List your wallets
@@ -60,12 +91,12 @@ func ListWallets() {
 	
 }
 ```
-## Transfer
+## Balance
 
-Make a transfer from one wallet to another
+Get the balance of a wallet
 
 
-[https://m3o.com/wallet/api#Transfer](https://m3o.com/wallet/api#Transfer)
+[https://m3o.com/wallet/api#Balance](https://m3o.com/wallet/api#Balance)
 
 ```go
 package example
@@ -77,25 +108,23 @@ import(
 	"go.m3o.com/wallet"
 )
 
-// Make a transfer from one wallet to another
-func TransferMoney() {
+// Get the balance of a wallet
+func GetBalance() {
 	walletService := wallet.NewWalletService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := walletService.Transfer(&wallet.TransferRequest{
-		Amount: 5,
-Reference: "transfer money",
-Visible: true,
+	rsp, err := walletService.Balance(&wallet.BalanceRequest{
+		Id: "b6407edd-2e26-45c0-9e2c-343689bbe5f6",
 
 	})
 	fmt.Println(rsp, err)
 	
 }
 ```
-## Delete
+## Transactions
 
-Delete a wallet
+List the transactions for a wallet
 
 
-[https://m3o.com/wallet/api#Delete](https://m3o.com/wallet/api#Delete)
+[https://m3o.com/wallet/api#Transactions](https://m3o.com/wallet/api#Transactions)
 
 ```go
 package example
@@ -107,10 +136,10 @@ import(
 	"go.m3o.com/wallet"
 )
 
-// Delete a wallet
-func DeleteAwallet() {
+// List the transactions for a wallet
+func ListTransactions() {
 	walletService := wallet.NewWalletService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := walletService.Delete(&wallet.DeleteRequest{
+	rsp, err := walletService.Transactions(&wallet.TransactionsRequest{
 		Id: "b6407edd-2e26-45c0-9e2c-343689bbe5f6",
 
 	})
@@ -177,12 +206,12 @@ Visible: true,
 	
 }
 ```
-## Debit
+## Transfer
 
-Debit a wallet
+Make a transfer from one wallet to another
 
 
-[https://m3o.com/wallet/api#Debit](https://m3o.com/wallet/api#Debit)
+[https://m3o.com/wallet/api#Transfer](https://m3o.com/wallet/api#Transfer)
 
 ```go
 package example
@@ -194,13 +223,12 @@ import(
 	"go.m3o.com/wallet"
 )
 
-// Debit a wallet
-func DebitWallet() {
+// Make a transfer from one wallet to another
+func TransferMoney() {
 	walletService := wallet.NewWalletService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := walletService.Debit(&wallet.DebitRequest{
+	rsp, err := walletService.Transfer(&wallet.TransferRequest{
 		Amount: 5,
-Id: "b6407edd-2e26-45c0-9e2c-343689bbe5f6",
-Reference: "test debit",
+Reference: "transfer money",
 Visible: true,
 
 	})
@@ -208,40 +236,12 @@ Visible: true,
 	
 }
 ```
-## Balance
+## Delete
 
-Get the balance of a wallet
-
-
-[https://m3o.com/wallet/api#Balance](https://m3o.com/wallet/api#Balance)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/wallet"
-)
-
-// Get the balance of a wallet
-func GetBalance() {
-	walletService := wallet.NewWalletService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := walletService.Balance(&wallet.BalanceRequest{
-		Id: "b6407edd-2e26-45c0-9e2c-343689bbe5f6",
-
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
-## Transactions
-
-List the transactions for a wallet
+Delete a wallet
 
 
-[https://m3o.com/wallet/api#Transactions](https://m3o.com/wallet/api#Transactions)
+[https://m3o.com/wallet/api#Delete](https://m3o.com/wallet/api#Delete)
 
 ```go
 package example
@@ -253,10 +253,10 @@ import(
 	"go.m3o.com/wallet"
 )
 
-// List the transactions for a wallet
-func ListTransactions() {
+// Delete a wallet
+func DeleteAwallet() {
 	walletService := wallet.NewWalletService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := walletService.Transactions(&wallet.TransactionsRequest{
+	rsp, err := walletService.Delete(&wallet.DeleteRequest{
 		Id: "b6407edd-2e26-45c0-9e2c-343689bbe5f6",
 
 	})
