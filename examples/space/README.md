@@ -4,118 +4,6 @@ An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/space/api](htt
 
 Endpoints:
 
-## List
-
-List the objects in space
-
-
-[https://m3o.com/space/api#List](https://m3o.com/space/api#List)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/space"
-)
-
-// List the objects in space
-func ListObjectsWithPrefix() {
-	spaceService := space.NewSpaceService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := spaceService.List(&space.ListRequest{
-		Prefix: "images/",
-
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
-## Head
-
-Retrieve meta information about an object
-
-
-[https://m3o.com/space/api#Head](https://m3o.com/space/api#Head)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/space"
-)
-
-// Retrieve meta information about an object
-func HeadAnObject() {
-	spaceService := space.NewSpaceService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := spaceService.Head(&space.HeadRequest{
-		Name: "images/file.jpg",
-
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
-## Read
-
-Read an object in space
-
-
-[https://m3o.com/space/api#Read](https://m3o.com/space/api#Read)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/space"
-)
-
-// Read an object in space
-func ReadAnObject() {
-	spaceService := space.NewSpaceService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := spaceService.Read(&space.ReadRequest{
-		Name: "images/file.jpg",
-
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
-## Download
-
-Download an object via a presigned url
-
-
-[https://m3o.com/space/api#Download](https://m3o.com/space/api#Download)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/space"
-)
-
-// Download an object via a presigned url
-func DownloadAnObject() {
-	spaceService := space.NewSpaceService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := spaceService.Download(&space.DownloadRequest{
-		Name: "images/file.jpg",
-
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
 ## Upload
 
 Upload a large object (> 10MB). Returns a time limited presigned URL to be used for uploading the object
@@ -225,6 +113,118 @@ import(
 func DeleteAnObject() {
 	spaceService := space.NewSpaceService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := spaceService.Delete(&space.DeleteRequest{
+		Name: "images/file.jpg",
+
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
+## List
+
+List the objects in space
+
+
+[https://m3o.com/space/api#List](https://m3o.com/space/api#List)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/space"
+)
+
+// List the objects in space
+func ListObjectsWithPrefix() {
+	spaceService := space.NewSpaceService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := spaceService.List(&space.ListRequest{
+		Prefix: "images/",
+
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
+## Head
+
+Retrieve meta information about an object
+
+
+[https://m3o.com/space/api#Head](https://m3o.com/space/api#Head)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/space"
+)
+
+// Retrieve meta information about an object
+func HeadAnObject() {
+	spaceService := space.NewSpaceService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := spaceService.Head(&space.HeadRequest{
+		Name: "images/file.jpg",
+
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
+## Read
+
+Read an object in space
+
+
+[https://m3o.com/space/api#Read](https://m3o.com/space/api#Read)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/space"
+)
+
+// Read an object in space
+func ReadAnObject() {
+	spaceService := space.NewSpaceService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := spaceService.Read(&space.ReadRequest{
+		Name: "images/file.jpg",
+
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
+## Download
+
+Download an object via a presigned url
+
+
+[https://m3o.com/space/api#Download](https://m3o.com/space/api#Download)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/space"
+)
+
+// Download an object via a presigned url
+func DownloadAnObject() {
+	spaceService := space.NewSpaceService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := spaceService.Download(&space.DownloadRequest{
 		Name: "images/file.jpg",
 
 	})
