@@ -4,61 +4,6 @@ An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/crypto/api](ht
 
 Endpoints:
 
-## History
-
-Returns the history for the previous close
-
-
-[https://m3o.com/crypto/api#History](https://m3o.com/crypto/api#History)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/crypto"
-)
-
-// Returns the history for the previous close
-func GetPreviousClose() {
-	cryptoService := crypto.NewCryptoService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := cryptoService.History(&crypto.HistoryRequest{
-		Symbol: "BTCUSD",
-
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
-## Symbols
-
-Returns the full list of supported symbols
-
-
-[https://m3o.com/crypto/api#Symbols](https://m3o.com/crypto/api#Symbols)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/crypto"
-)
-
-// Returns the full list of supported symbols
-func GetListOfAllSupportedSymbols() {
-	cryptoService := crypto.NewCryptoService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := cryptoService.Symbols(&crypto.SymbolsRequest{
-		
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
 ## News
 
 Get news related to a currency
@@ -138,6 +83,61 @@ func GetAcryptocurrencyQuote() {
 	rsp, err := cryptoService.Quote(&crypto.QuoteRequest{
 		Symbol: "BTCUSD",
 
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
+## History
+
+Returns the history for the previous close
+
+
+[https://m3o.com/crypto/api#History](https://m3o.com/crypto/api#History)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/crypto"
+)
+
+// Returns the history for the previous close
+func GetPreviousClose() {
+	cryptoService := crypto.NewCryptoService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := cryptoService.History(&crypto.HistoryRequest{
+		Symbol: "BTCUSD",
+
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
+## Symbols
+
+Returns the full list of supported symbols
+
+
+[https://m3o.com/crypto/api#Symbols](https://m3o.com/crypto/api#Symbols)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/crypto"
+)
+
+// Returns the full list of supported symbols
+func GetListOfAllSupportedSymbols() {
+	cryptoService := crypto.NewCryptoService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := cryptoService.Symbols(&crypto.SymbolsRequest{
+		
 	})
 	fmt.Println(rsp, err)
 	
