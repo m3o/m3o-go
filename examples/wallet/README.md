@@ -33,6 +33,34 @@ Name: "Greatness",
 	
 }
 ```
+## Read
+
+Get wallet by id
+
+
+[https://m3o.com/wallet/api#Read](https://m3o.com/wallet/api#Read)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/wallet"
+)
+
+// Get wallet by id
+func ReadAwallet() {
+	walletService := wallet.NewWalletService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := walletService.Read(&wallet.ReadRequest{
+		Id: "b6407edd-2e26-45c0-9e2c-343689bbe5f6",
+
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
 ## Credit
 
 Add credit to a wallet
@@ -95,6 +123,33 @@ Visible: true,
 	
 }
 ```
+## List
+
+List your wallets
+
+
+[https://m3o.com/wallet/api#List](https://m3o.com/wallet/api#List)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/wallet"
+)
+
+// List your wallets
+func ListWallets() {
+	walletService := wallet.NewWalletService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := walletService.List(&wallet.ListRequest{
+		
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
 ## Balance
 
 Get the balance of a wallet
@@ -146,61 +201,6 @@ func ListTransactions() {
 	rsp, err := walletService.Transactions(&wallet.TransactionsRequest{
 		Id: "b6407edd-2e26-45c0-9e2c-343689bbe5f6",
 
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
-## Read
-
-Get wallet by id
-
-
-[https://m3o.com/wallet/api#Read](https://m3o.com/wallet/api#Read)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/wallet"
-)
-
-// Get wallet by id
-func ReadAwallet() {
-	walletService := wallet.NewWalletService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := walletService.Read(&wallet.ReadRequest{
-		Id: "b6407edd-2e26-45c0-9e2c-343689bbe5f6",
-
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
-## List
-
-List your wallets
-
-
-[https://m3o.com/wallet/api#List](https://m3o.com/wallet/api#List)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/wallet"
-)
-
-// List your wallets
-func ListWallets() {
-	walletService := wallet.NewWalletService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := walletService.List(&wallet.ListRequest{
-		
 	})
 	fmt.Println(rsp, err)
 	
