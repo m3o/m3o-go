@@ -4,6 +4,34 @@ An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/wallet/api](ht
 
 Endpoints:
 
+## Balance
+
+Get the balance of a wallet
+
+
+[https://m3o.com/wallet/api#Balance](https://m3o.com/wallet/api#Balance)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/wallet"
+)
+
+// Get the balance of a wallet
+func GetBalance() {
+	walletService := wallet.NewWalletService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := walletService.Balance(&wallet.BalanceRequest{
+		Id: "b6407edd-2e26-45c0-9e2c-343689bbe5f6",
+
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
 ## List
 
 List your wallets
@@ -31,12 +59,12 @@ func ListWallets() {
 	
 }
 ```
-## Transfer
+## Read
 
-Make a transfer from one wallet to another
+Get wallet by id
 
 
-[https://m3o.com/wallet/api#Transfer](https://m3o.com/wallet/api#Transfer)
+[https://m3o.com/wallet/api#Read](https://m3o.com/wallet/api#Read)
 
 ```go
 package example
@@ -48,12 +76,41 @@ import(
 	"go.m3o.com/wallet"
 )
 
-// Make a transfer from one wallet to another
-func TransferMoney() {
+// Get wallet by id
+func ReadAwallet() {
 	walletService := wallet.NewWalletService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := walletService.Transfer(&wallet.TransferRequest{
-		Amount: 5,
-Reference: "transfer money",
+	rsp, err := walletService.Read(&wallet.ReadRequest{
+		Id: "b6407edd-2e26-45c0-9e2c-343689bbe5f6",
+
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
+## Credit
+
+Add credit to a wallet
+
+
+[https://m3o.com/wallet/api#Credit](https://m3o.com/wallet/api#Credit)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/wallet"
+)
+
+// Add credit to a wallet
+func CreditWallet() {
+	walletService := wallet.NewWalletService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := walletService.Credit(&wallet.CreditRequest{
+		Amount: 10,
+Id: "b6407edd-2e26-45c0-9e2c-343689bbe5f6",
+Reference: "test credit",
 Visible: true,
 
 	})
@@ -92,12 +149,12 @@ Visible: true,
 	
 }
 ```
-## Balance
+## Transfer
 
-Get the balance of a wallet
+Make a transfer from one wallet to another
 
 
-[https://m3o.com/wallet/api#Balance](https://m3o.com/wallet/api#Balance)
+[https://m3o.com/wallet/api#Transfer](https://m3o.com/wallet/api#Transfer)
 
 ```go
 package example
@@ -109,11 +166,13 @@ import(
 	"go.m3o.com/wallet"
 )
 
-// Get the balance of a wallet
-func GetBalance() {
+// Make a transfer from one wallet to another
+func TransferMoney() {
 	walletService := wallet.NewWalletService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := walletService.Balance(&wallet.BalanceRequest{
-		Id: "b6407edd-2e26-45c0-9e2c-343689bbe5f6",
+	rsp, err := walletService.Transfer(&wallet.TransferRequest{
+		Amount: 5,
+Reference: "transfer money",
+Visible: true,
 
 	})
 	fmt.Println(rsp, err)
@@ -199,65 +258,6 @@ func CreateAnewWallet() {
 	rsp, err := walletService.Create(&wallet.CreateRequest{
 		Description: "No explanation needed",
 Name: "Greatness",
-
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
-## Read
-
-Get wallet by id
-
-
-[https://m3o.com/wallet/api#Read](https://m3o.com/wallet/api#Read)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/wallet"
-)
-
-// Get wallet by id
-func ReadAwallet() {
-	walletService := wallet.NewWalletService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := walletService.Read(&wallet.ReadRequest{
-		Id: "b6407edd-2e26-45c0-9e2c-343689bbe5f6",
-
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
-## Credit
-
-Add credit to a wallet
-
-
-[https://m3o.com/wallet/api#Credit](https://m3o.com/wallet/api#Credit)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/wallet"
-)
-
-// Add credit to a wallet
-func CreditWallet() {
-	walletService := wallet.NewWalletService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := walletService.Credit(&wallet.CreditRequest{
-		Amount: 10,
-Id: "b6407edd-2e26-45c0-9e2c-343689bbe5f6",
-Reference: "test credit",
-Visible: true,
 
 	})
 	fmt.Println(rsp, err)
