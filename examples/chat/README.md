@@ -71,33 +71,6 @@ func KickAuserFromAgroup() {
 	
 }
 ```
-## Leave
-
-Leave a group
-
-
-[https://m3o.com/chat/api#Leave](https://m3o.com/chat/api#Leave)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/chat"
-)
-
-// Leave a group
-func LeaveAgroup() {
-	chatService := chat.NewChatService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := chatService.Leave(&chat.LeaveRequest{
-		
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
 ## Create
 
 Create a new group
@@ -127,6 +100,33 @@ Name: "general",
 	
 }
 ```
+## List
+
+List available chats
+
+
+[https://m3o.com/chat/api#List](https://m3o.com/chat/api#List)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/chat"
+)
+
+// List available chats
+func ListGroups() {
+	chatService := chat.NewChatService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := chatService.List(&chat.ListRequest{
+		
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
 ## Delete
 
 Delete a group
@@ -148,6 +148,33 @@ import(
 func DeleteAchat() {
 	chatService := chat.NewChatService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := chatService.Delete(&chat.DeleteRequest{
+		
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
+## Invite
+
+Invite a user to a group
+
+
+[https://m3o.com/chat/api#Invite](https://m3o.com/chat/api#Invite)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/chat"
+)
+
+// Invite a user to a group
+func InviteAuser() {
+	chatService := chat.NewChatService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := chatService.Invite(&chat.InviteRequest{
 		
 	})
 	fmt.Println(rsp, err)
@@ -213,39 +240,12 @@ func GetChatHistory() {
 	
 }
 ```
-## List
+## Leave
 
-List available chats
-
-
-[https://m3o.com/chat/api#List](https://m3o.com/chat/api#List)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/chat"
-)
-
-// List available chats
-func ListGroups() {
-	chatService := chat.NewChatService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := chatService.List(&chat.ListRequest{
-		
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
-## Invite
-
-Invite a user to a group
+Leave a group
 
 
-[https://m3o.com/chat/api#Invite](https://m3o.com/chat/api#Invite)
+[https://m3o.com/chat/api#Leave](https://m3o.com/chat/api#Leave)
 
 ```go
 package example
@@ -257,10 +257,10 @@ import(
 	"go.m3o.com/chat"
 )
 
-// Invite a user to a group
-func InviteAuser() {
+// Leave a group
+func LeaveAgroup() {
 	chatService := chat.NewChatService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := chatService.Invite(&chat.InviteRequest{
+	rsp, err := chatService.Leave(&chat.LeaveRequest{
 		
 	})
 	fmt.Println(rsp, err)

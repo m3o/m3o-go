@@ -86,6 +86,8 @@ type Connection struct {
 	// The power in KW
 	Power     float64 `json:"power,omitempty"`
 	Reference string  `json:"reference,omitempty"`
+	// status of the connection
+	Status *StatusType `json:"status,omitempty"`
 	// The voltage offered
 	Voltage float64 `json:"voltage,omitempty"`
 }
