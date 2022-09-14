@@ -60,6 +60,34 @@ func GetAbitcoinAddressBalance() {
 	
 }
 ```
+## Lookup
+
+Get details for a bitcoin address
+
+
+[https://m3o.com/bitcoin/api#Lookup](https://m3o.com/bitcoin/api#Lookup)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/bitcoin"
+)
+
+// Get details for a bitcoin address
+func LookupTransactionsByAddress() {
+	bitcoinService := bitcoin.NewBitcoinService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := bitcoinService.Lookup(&bitcoin.LookupRequest{
+		Address: "1MDUoxL1bGvMxhuoDYx6i11ePytECAk9QK",
+
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
 ## Transaction
 
 Get transaction details by hash
