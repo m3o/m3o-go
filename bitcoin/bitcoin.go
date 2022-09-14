@@ -6,6 +6,7 @@ import (
 
 type Bitcoin interface {
 	Balance(*BalanceRequest) (*BalanceResponse, error)
+	Lookup(*LookupRequest) (*LookupResponse, error)
 	Price(*PriceRequest) (*PriceResponse, error)
 	Transaction(*TransactionRequest) (*TransactionResponse, error)
 }
@@ -30,6 +31,14 @@ func (t *BitcoinService) Balance(request *BalanceRequest) (*BalanceResponse, err
 
 }
 
+// Get details for a bitcoin address
+func (t *BitcoinService) Lookup(request *LookupRequest) (*LookupResponse, error) {
+
+	rsp := &LookupResponse{}
+	return rsp, t.client.Call("bitcoin", "Lookup", request, rsp)
+
+}
+
 // Get the price of bitcoin
 func (t *BitcoinService) Price(request *PriceRequest) (*PriceResponse, error) {
 
@@ -38,7 +47,7 @@ func (t *BitcoinService) Price(request *PriceRequest) (*PriceResponse, error) {
 
 }
 
-// Get the details of a transaction
+// Get transaction details by hash
 func (t *BitcoinService) Transaction(request *TransactionRequest) (*TransactionResponse, error) {
 
 	rsp := &TransactionResponse{}
@@ -59,6 +68,34 @@ type BalanceResponse struct {
 type Input struct {
 	PrevOut *Prev  `json:"prev_out,omitempty"`
 	Script  string `json:"script,omitempty"`
+}
+
+type LookupRequest struct {
+	// bitcoin address
+	Address string `json:"address,omitempty"`
+	// limit num transactions (max: 50)
+	Limit int32 `json:"limit,omitempty"`
+	// offset transactions
+	Offset int32 `json:"offset,omitempty"`
+}
+
+type LookupResponse struct {
+	// address requested
+	Address string `json:"address,omitempty"`
+	// final balanace
+	FinalBalance int64 `json:"final_balance,string,omitempty"`
+	// hash160
+	Hash string `json:"hash,omitempty"`
+	// number of transactions
+	NumTx int64 `json:"num_tx,string,omitempty"`
+	// number of unredeemed
+	NumUnredeemed int64 `json:"num_unredeemed,string,omitempty"`
+	// total received
+	TotalReceived int64 `json:"total_received,string,omitempty"`
+	// total sent
+	TotalSent int64 `json:"total_sent,string,omitempty"`
+	// list of transactions
+	Transactions []Transaction `json:"transactions,omitempty"`
 }
 
 type Output struct {
@@ -89,6 +126,43 @@ type PriceResponse struct {
 	Price float64 `json:"price,omitempty"`
 	// The symbol of pricing e.g BTCUSD
 	Symbol string `json:"symbol,omitempty"`
+}
+
+type Transaction struct {
+	// balance after transaction
+	Balance int64 `json:"balance,string,omitempty"`
+	// block height
+	BlockHeight int64 `json:"block_height,string,omitempty"`
+	// blck index
+	BlockIndex int64 `json:"block_index,string,omitempty"`
+	// double spend
+	DoubleSpend bool `json:"double_spend,omitempty"`
+	// fees
+	Fee int64 `json:"fee,string,omitempty"`
+	// transaction hash
+	Hash string `json:"hash,omitempty"`
+	// inputs
+	Inputs []Input `json:"inputs,omitempty"`
+	// lock time
+	LockTime int64 `json:"lock_time,string,omitempty"`
+	// outputs
+	Outputs []Output `json:"outputs,omitempty"`
+	// relay
+	Relay string `json:"relay,omitempty"`
+	// result of transaction
+	Result int64 `json:"result,string,omitempty"`
+	// transaction size
+	Size int64 `json:"size,string,omitempty"`
+	// tx index
+	TxIndex int64 `json:"tx_index,string,omitempty"`
+	// the version
+	Version int64 `json:"version,string,omitempty"`
+	// vin
+	VinSz int64 `json:"vin_sz,string,omitempty"`
+	// vout
+	VoutSz int64 `json:"vout_sz,string,omitempty"`
+	// weight
+	Weight int64 `json:"weight,string,omitempty"`
 }
 
 type TransactionRequest struct {
