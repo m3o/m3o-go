@@ -4,34 +4,6 @@ An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/search/api](ht
 
 Endpoints:
 
-## CreateIndex
-
-Create an index by name
-
-
-[https://m3o.com/search/api#CreateIndex](https://m3o.com/search/api#CreateIndex)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/search"
-)
-
-// Create an index by name
-func CreateAnIndex() {
-	searchService := search.NewSearchService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := searchService.CreateIndex(&search.CreateIndexRequest{
-		Index: "customers",
-
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
 ## DeleteIndex
 
 Delete an index by name
@@ -82,9 +54,9 @@ func IndexArecord() {
 	searchService := search.NewSearchService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := searchService.Index(&search.IndexRequest{
 		Data: map[string]interface{}{
+	"name": "John Doe",
 	"age": 37,
 	"starsign": "Leo",
-	"name": "John Doe",
 },
 Index: "customers",
 
@@ -203,6 +175,34 @@ func DeleteArecord() {
 	rsp, err := searchService.Delete(&search.DeleteRequest{
 		Id: "1234",
 Index: "customers",
+
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
+## CreateIndex
+
+Create an index by name
+
+
+[https://m3o.com/search/api#CreateIndex](https://m3o.com/search/api#CreateIndex)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/search"
+)
+
+// Create an index by name
+func CreateAnIndex() {
+	searchService := search.NewSearchService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := searchService.CreateIndex(&search.CreateIndexRequest{
+		Index: "customers",
 
 	})
 	fmt.Println(rsp, err)
