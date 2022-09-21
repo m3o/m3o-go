@@ -63,6 +63,64 @@ Visible: true,
 	
 }
 ```
+## Transfer
+
+Make a transfer from one wallet to another
+
+
+[https://m3o.com/wallet/api#Transfer](https://m3o.com/wallet/api#Transfer)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/wallet"
+)
+
+// Make a transfer from one wallet to another
+func TransferMoney() {
+	walletService := wallet.NewWalletService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := walletService.Transfer(&wallet.TransferRequest{
+		Amount: 5,
+Reference: "transfer money",
+Visible: true,
+
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
+## Delete
+
+Delete a wallet
+
+
+[https://m3o.com/wallet/api#Delete](https://m3o.com/wallet/api#Delete)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/wallet"
+)
+
+// Delete a wallet
+func DeleteAwallet() {
+	walletService := wallet.NewWalletService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := walletService.Delete(&wallet.DeleteRequest{
+		Id: "b6407edd-2e26-45c0-9e2c-343689bbe5f6",
+
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
 ## Create
 
 Create a new wallet
@@ -150,36 +208,6 @@ func ListWallets() {
 	
 }
 ```
-## Transfer
-
-Make a transfer from one wallet to another
-
-
-[https://m3o.com/wallet/api#Transfer](https://m3o.com/wallet/api#Transfer)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/wallet"
-)
-
-// Make a transfer from one wallet to another
-func TransferMoney() {
-	walletService := wallet.NewWalletService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := walletService.Transfer(&wallet.TransferRequest{
-		Amount: 5,
-Reference: "transfer money",
-Visible: true,
-
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
 ## Balance
 
 Get the balance of a wallet
@@ -229,34 +257,6 @@ import(
 func ListTransactions() {
 	walletService := wallet.NewWalletService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := walletService.Transactions(&wallet.TransactionsRequest{
-		Id: "b6407edd-2e26-45c0-9e2c-343689bbe5f6",
-
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
-## Delete
-
-Delete a wallet
-
-
-[https://m3o.com/wallet/api#Delete](https://m3o.com/wallet/api#Delete)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/wallet"
-)
-
-// Delete a wallet
-func DeleteAwallet() {
-	walletService := wallet.NewWalletService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := walletService.Delete(&wallet.DeleteRequest{
 		Id: "b6407edd-2e26-45c0-9e2c-343689bbe5f6",
 
 	})
