@@ -188,6 +188,8 @@ type RunResponse struct {
 }
 
 type Service struct {
+	// raw backend endpoint
+	Backend string `json:"backend,omitempty"`
 	// branch of code
 	Branch string `json:"branch,omitempty"`
 	// time of creation
