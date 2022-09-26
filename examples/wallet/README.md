@@ -64,121 +64,6 @@ Visible: true,
 	
 }
 ```
-## Balance
-
-Get the balance of a wallet
-
-
-[https://m3o.com/wallet/api#Balance](https://m3o.com/wallet/api#Balance)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/wallet"
-)
-
-// Get the balance of a wallet
-func GetBalance() {
-	walletService := wallet.NewWalletService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := walletService.Balance(&wallet.BalanceRequest{
-		Id: "b6407edd-2e26-45c0-9e2c-343689bbe5f6",
-
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
-## Transactions
-
-List the transactions for a wallet
-
-
-[https://m3o.com/wallet/api#Transactions](https://m3o.com/wallet/api#Transactions)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/wallet"
-)
-
-// List the transactions for a wallet
-func ListTransactions() {
-	walletService := wallet.NewWalletService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := walletService.Transactions(&wallet.TransactionsRequest{
-		Id: "b6407edd-2e26-45c0-9e2c-343689bbe5f6",
-
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
-## Read
-
-Get wallet by id
-
-
-[https://m3o.com/wallet/api#Read](https://m3o.com/wallet/api#Read)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/wallet"
-)
-
-// Get wallet by id
-func ReadAwallet() {
-	walletService := wallet.NewWalletService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := walletService.Read(&wallet.ReadRequest{
-		Id: "b6407edd-2e26-45c0-9e2c-343689bbe5f6",
-
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
-## Debit
-
-Debit a wallet
-
-
-[https://m3o.com/wallet/api#Debit](https://m3o.com/wallet/api#Debit)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/wallet"
-)
-
-// Debit a wallet
-func DebitWallet() {
-	walletService := wallet.NewWalletService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := walletService.Debit(&wallet.DebitRequest{
-		Amount: 5,
-Id: "b6407edd-2e26-45c0-9e2c-343689bbe5f6",
-Reference: "test debit",
-Visible: true,
-
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
 ## List
 
 List your wallets
@@ -257,6 +142,121 @@ import(
 func DeleteAwallet() {
 	walletService := wallet.NewWalletService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := walletService.Delete(&wallet.DeleteRequest{
+		Id: "b6407edd-2e26-45c0-9e2c-343689bbe5f6",
+
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
+## Read
+
+Get wallet by id
+
+
+[https://m3o.com/wallet/api#Read](https://m3o.com/wallet/api#Read)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/wallet"
+)
+
+// Get wallet by id
+func ReadAwallet() {
+	walletService := wallet.NewWalletService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := walletService.Read(&wallet.ReadRequest{
+		Id: "b6407edd-2e26-45c0-9e2c-343689bbe5f6",
+
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
+## Debit
+
+Debit a wallet
+
+
+[https://m3o.com/wallet/api#Debit](https://m3o.com/wallet/api#Debit)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/wallet"
+)
+
+// Debit a wallet
+func DebitWallet() {
+	walletService := wallet.NewWalletService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := walletService.Debit(&wallet.DebitRequest{
+		Amount: 5,
+Id: "b6407edd-2e26-45c0-9e2c-343689bbe5f6",
+Reference: "test debit",
+Visible: true,
+
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
+## Balance
+
+Get the balance of a wallet
+
+
+[https://m3o.com/wallet/api#Balance](https://m3o.com/wallet/api#Balance)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/wallet"
+)
+
+// Get the balance of a wallet
+func GetBalance() {
+	walletService := wallet.NewWalletService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := walletService.Balance(&wallet.BalanceRequest{
+		Id: "b6407edd-2e26-45c0-9e2c-343689bbe5f6",
+
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
+## Transactions
+
+List the transactions for a wallet
+
+
+[https://m3o.com/wallet/api#Transactions](https://m3o.com/wallet/api#Transactions)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/wallet"
+)
+
+// List the transactions for a wallet
+func ListTransactions() {
+	walletService := wallet.NewWalletService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := walletService.Transactions(&wallet.TransactionsRequest{
 		Id: "b6407edd-2e26-45c0-9e2c-343689bbe5f6",
 
 	})
