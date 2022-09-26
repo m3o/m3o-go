@@ -22,10 +22,14 @@ import(
 )
 
 // Schedule a cron job
-func ListJobs() {
+func ScheduleAjob() {
 	cronService := cron.NewCronService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := cronService.Schedule(&cron.ScheduleRequest{
-		
+		Callback: "https://google.com",
+Description: "testing",
+Interval: "* * * * *",
+Name: "test",
+
 	})
 	fmt.Println(rsp, err)
 	
@@ -54,6 +58,33 @@ func DeleteAjob() {
 	rsp, err := cronService.Delete(&cron.DeleteRequest{
 		Id: "0c8cf9f7-3a61-4e91-b249-00a970044c95",
 
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
+## Jobs
+
+List all cron jobs
+
+
+[https://m3o.com/cron/api#Jobs](https://m3o.com/cron/api#Jobs)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/cron"
+)
+
+// List all cron jobs
+func ListJobs() {
+	cronService := cron.NewCronService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := cronService.Jobs(&cron.JobsRequest{
+		
 	})
 	fmt.Println(rsp, err)
 	
