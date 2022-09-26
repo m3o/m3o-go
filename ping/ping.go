@@ -30,7 +30,7 @@ func (t *PingService) Ip(request *IpRequest) (*IpResponse, error) {
 
 }
 
-// Ping a TCP port is open
+// Ping a TCP port to check if it's open
 func (t *PingService) Tcp(request *TcpRequest) (*TcpResponse, error) {
 
 	rsp := &TcpResponse{}
