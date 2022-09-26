@@ -12,6 +12,7 @@ import (
 	"go.m3o.com/chat"
 	"go.m3o.com/comments"
 	"go.m3o.com/contact"
+	"go.m3o.com/cron"
 	"go.m3o.com/crypto"
 	"go.m3o.com/currency"
 	"go.m3o.com/db"
@@ -90,6 +91,7 @@ func New(token string) *Client {
 		Chat:       chat.NewChatService(token),
 		Comments:   comments.NewCommentsService(token),
 		Contact:    contact.NewContactService(token),
+		Cron:       cron.NewCronService(token),
 		Crypto:     crypto.NewCryptoService(token),
 		Currency:   currency.NewCurrencyService(token),
 		Db:         db.NewDbService(token),
@@ -168,6 +170,7 @@ type Client struct {
 	Chat       chat.Chat
 	Comments   comments.Comments
 	Contact    contact.Contact
+	Cron       cron.Cron
 	Crypto     crypto.Crypto
 	Currency   currency.Currency
 	Db         db.Db
