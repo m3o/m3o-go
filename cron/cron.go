@@ -55,7 +55,7 @@ type DeleteResponse struct {
 }
 
 type Job struct {
-	// callback url
+	// callback url e.g https://google.com
 	Callback string `json:"callback,omitempty"`
 	// description
 	Description string `json:"description,omitempty"`
@@ -75,18 +75,19 @@ type JobsResponse struct {
 }
 
 type ScheduleRequest struct {
-	// callback url
+	// callback url e.g https://google.com
 	Callback string `json:"callback,omitempty"`
 	// description
 	Description string `json:"description,omitempty"`
-	// unique id of job
+	// unique id of job (optional)
 	Id string `json:"id,omitempty"`
-	// interval e.g * * * *
+	// interval e.g * * * * *
 	Interval string `json:"interval,omitempty"`
 	// name of cron
 	Name string `json:"name,omitempty"`
 }
 
 type ScheduleResponse struct {
+	// the scheduled job
 	Job *Job `json:"job,omitempty"`
 }
