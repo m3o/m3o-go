@@ -71,6 +71,7 @@ type JobsRequest struct {
 }
 
 type JobsResponse struct {
+	// the list of scheduled jobs
 	Jobs []Job `json:"jobs,omitempty"`
 }
 
