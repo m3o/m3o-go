@@ -4,6 +4,38 @@ An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/email/api](htt
 
 Endpoints:
 
+## Send
+
+Send an email by passing in from, to, subject, and a text or html body
+
+
+[https://m3o.com/email/api#Send](https://m3o.com/email/api#Send)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/email"
+)
+
+// Send an email by passing in from, to, subject, and a text or html body
+func SendEmail() {
+	emailService := email.NewEmailService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := emailService.Send(&email.SendRequest{
+		From: "Awesome Dot Com",
+Subject: "Email verification",
+TextBody: `Hi there,
+
+Please verify your email by clicking this link: $micro_verification_link`,
+
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
 ## Parse
 
 Parse an RFC5322 address e.g "Joe Blogs <joe@example.com>"
@@ -54,38 +86,6 @@ func ValidateEmail() {
 	emailService := email.NewEmailService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := emailService.Validate(&email.ValidateRequest{
 		Address: "joe@example.com",
-
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
-## Send
-
-Send an email by passing in from, to, subject, and a text or html body
-
-
-[https://m3o.com/email/api#Send](https://m3o.com/email/api#Send)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/email"
-)
-
-// Send an email by passing in from, to, subject, and a text or html body
-func SendEmail() {
-	emailService := email.NewEmailService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := emailService.Send(&email.SendRequest{
-		From: "Awesome Dot Com",
-Subject: "Email verification",
-TextBody: `Hi there,
-
-Please verify your email by clicking this link: $micro_verification_link`,
 
 	})
 	fmt.Println(rsp, err)
