@@ -4,34 +4,6 @@ An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/wallet/api](ht
 
 Endpoints:
 
-## Balance
-
-Get the balance of a wallet
-
-
-[https://m3o.com/wallet/api#Balance](https://m3o.com/wallet/api#Balance)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/wallet"
-)
-
-// Get the balance of a wallet
-func GetBalance() {
-	walletService := wallet.NewWalletService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := walletService.Balance(&wallet.BalanceRequest{
-		Id: "b6407edd-2e26-45c0-9e2c-343689bbe5f6",
-
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
 ## Create
 
 Create a new wallet
@@ -92,37 +64,6 @@ Visible: true,
 	
 }
 ```
-## Debit
-
-Debit a wallet
-
-
-[https://m3o.com/wallet/api#Debit](https://m3o.com/wallet/api#Debit)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/wallet"
-)
-
-// Debit a wallet
-func DebitWallet() {
-	walletService := wallet.NewWalletService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := walletService.Debit(&wallet.DebitRequest{
-		Amount: 5,
-Id: "b6407edd-2e26-45c0-9e2c-343689bbe5f6",
-Reference: "test debit",
-Visible: true,
-
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
 ## List
 
 List your wallets
@@ -150,6 +91,34 @@ func ListWallets() {
 	
 }
 ```
+## Balance
+
+Get the balance of a wallet
+
+
+[https://m3o.com/wallet/api#Balance](https://m3o.com/wallet/api#Balance)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/wallet"
+)
+
+// Get the balance of a wallet
+func GetBalance() {
+	walletService := wallet.NewWalletService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := walletService.Balance(&wallet.BalanceRequest{
+		Id: "b6407edd-2e26-45c0-9e2c-343689bbe5f6",
+
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
 ## Read
 
 Get wallet by id
@@ -172,6 +141,37 @@ func ReadAwallet() {
 	walletService := wallet.NewWalletService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := walletService.Read(&wallet.ReadRequest{
 		Id: "b6407edd-2e26-45c0-9e2c-343689bbe5f6",
+
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
+## Debit
+
+Debit a wallet
+
+
+[https://m3o.com/wallet/api#Debit](https://m3o.com/wallet/api#Debit)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/wallet"
+)
+
+// Debit a wallet
+func DebitWallet() {
+	walletService := wallet.NewWalletService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := walletService.Debit(&wallet.DebitRequest{
+		Amount: 5,
+Id: "b6407edd-2e26-45c0-9e2c-343689bbe5f6",
+Reference: "test debit",
+Visible: true,
 
 	})
 	fmt.Println(rsp, err)
