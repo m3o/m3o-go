@@ -32,12 +32,12 @@ func ResolveAppById() {
 	
 }
 ```
-## Logs
+## Update
 
-Get the logs for an app
+Update the app. The latest source code will be downloaded, built and deployed.
 
 
-[https://m3o.com/app/api#Logs](https://m3o.com/app/api#Logs)
+[https://m3o.com/app/api#Update](https://m3o.com/app/api#Update)
 
 ```go
 package example
@@ -49,10 +49,10 @@ import(
 	"go.m3o.com/app"
 )
 
-// Get the logs for an app
-func RetrieveBuildLogsForAnApp() {
+// Update the app. The latest source code will be downloaded, built and deployed.
+func UpdateAnApp() {
 	appService := app.NewAppService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := appService.Logs(&app.LogsRequest{
+	rsp, err := appService.Update(&app.UpdateRequest{
 		Name: "helloworld",
 
 	})
@@ -60,12 +60,12 @@ func RetrieveBuildLogsForAnApp() {
 	
 }
 ```
-## Run
+## List
 
-Run an app from source
+List all the apps
 
 
-[https://m3o.com/app/api#Run](https://m3o.com/app/api#Run)
+[https://m3o.com/app/api#List](https://m3o.com/app/api#List)
 
 ```go
 package example
@@ -77,16 +77,11 @@ import(
 	"go.m3o.com/app"
 )
 
-// Run an app from source
-func RunAnApp() {
+// List all the apps
+func ListTheApps() {
 	appService := app.NewAppService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := appService.Run(&app.RunRequest{
-		Branch: "master",
-Name: "helloworld",
-Port: 8080,
-Region: "europe-west1",
-Repo: "github.com/asim/helloworld",
-
+	rsp, err := appService.List(&app.ListRequest{
+		
 	})
 	fmt.Println(rsp, err)
 	
@@ -147,34 +142,6 @@ func GetTheStatusOfAnApp() {
 	
 }
 ```
-## Update
-
-Update the app. The latest source code will be downloaded, built and deployed.
-
-
-[https://m3o.com/app/api#Update](https://m3o.com/app/api#Update)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/app"
-)
-
-// Update the app. The latest source code will be downloaded, built and deployed.
-func UpdateAnApp() {
-	appService := app.NewAppService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := appService.Update(&app.UpdateRequest{
-		Name: "helloworld",
-
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
 ## Delete
 
 Delete an app
@@ -196,6 +163,34 @@ import(
 func DeleteAnApp() {
 	appService := app.NewAppService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := appService.Delete(&app.DeleteRequest{
+		Name: "helloworld",
+
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
+## Logs
+
+Get the logs for an app
+
+
+[https://m3o.com/app/api#Logs](https://m3o.com/app/api#Logs)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/app"
+)
+
+// Get the logs for an app
+func RetrieveBuildLogsForAnApp() {
+	appService := app.NewAppService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := appService.Logs(&app.LogsRequest{
 		Name: "helloworld",
 
 	})
@@ -231,12 +226,12 @@ func ReserveAppName() {
 	
 }
 ```
-## List
+## Run
 
-List all the apps
+Run an app from source
 
 
-[https://m3o.com/app/api#List](https://m3o.com/app/api#List)
+[https://m3o.com/app/api#Run](https://m3o.com/app/api#Run)
 
 ```go
 package example
@@ -248,11 +243,16 @@ import(
 	"go.m3o.com/app"
 )
 
-// List all the apps
-func ListTheApps() {
+// Run an app from source
+func RunAnApp() {
 	appService := app.NewAppService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := appService.List(&app.ListRequest{
-		
+	rsp, err := appService.Run(&app.RunRequest{
+		Branch: "master",
+Name: "helloworld",
+Port: 8080,
+Region: "europe-west1",
+Repo: "github.com/asim/helloworld",
+
 	})
 	fmt.Println(rsp, err)
 	
