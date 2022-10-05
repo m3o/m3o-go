@@ -4,6 +4,34 @@ An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/ping/api](http
 
 Endpoints:
 
+## Url
+
+Ping a HTTP URL
+
+
+[https://m3o.com/ping/api#Url](https://m3o.com/ping/api#Url)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/ping"
+)
+
+// Ping a HTTP URL
+func CheckAurl() {
+	pingService := ping.NewPingService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := pingService.Url(&ping.UrlRequest{
+		Address: "google.com",
+
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
 ## Ip
 
 Ping an IP address
@@ -54,34 +82,6 @@ func DialAtcpAddress() {
 	pingService := ping.NewPingService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := pingService.Tcp(&ping.TcpRequest{
 		Address: "google.com:80",
-
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
-## Url
-
-Ping a HTTP URL
-
-
-[https://m3o.com/ping/api#Url](https://m3o.com/ping/api#Url)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/ping"
-)
-
-// Ping a HTTP URL
-func CheckAurl() {
-	pingService := ping.NewPingService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := pingService.Url(&ping.UrlRequest{
-		Address: "google.com",
 
 	})
 	fmt.Println(rsp, err)
