@@ -90,65 +90,6 @@ func DeleteAwallet() {
 	
 }
 ```
-## Read
-
-Get wallet by id
-
-
-[https://m3o.com/wallet/api#Read](https://m3o.com/wallet/api#Read)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/wallet"
-)
-
-// Get wallet by id
-func ReadAwallet() {
-	walletService := wallet.NewWalletService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := walletService.Read(&wallet.ReadRequest{
-		Id: "b6407edd-2e26-45c0-9e2c-343689bbe5f6",
-
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
-## Debit
-
-Debit a wallet
-
-
-[https://m3o.com/wallet/api#Debit](https://m3o.com/wallet/api#Debit)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/wallet"
-)
-
-// Debit a wallet
-func DebitWallet() {
-	walletService := wallet.NewWalletService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := walletService.Debit(&wallet.DebitRequest{
-		Amount: 5,
-Id: "b6407edd-2e26-45c0-9e2c-343689bbe5f6",
-Reference: "test debit",
-Visible: true,
-
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
 ## List
 
 List your wallets
@@ -233,6 +174,34 @@ Name: "Greatness",
 	
 }
 ```
+## Read
+
+Get wallet by id
+
+
+[https://m3o.com/wallet/api#Read](https://m3o.com/wallet/api#Read)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/wallet"
+)
+
+// Get wallet by id
+func ReadAwallet() {
+	walletService := wallet.NewWalletService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := walletService.Read(&wallet.ReadRequest{
+		Id: "b6407edd-2e26-45c0-9e2c-343689bbe5f6",
+
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
 ## Credit
 
 Add credit to a wallet
@@ -257,6 +226,37 @@ func CreditWallet() {
 		Amount: 10,
 Id: "b6407edd-2e26-45c0-9e2c-343689bbe5f6",
 Reference: "test credit",
+Visible: true,
+
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
+## Debit
+
+Debit a wallet
+
+
+[https://m3o.com/wallet/api#Debit](https://m3o.com/wallet/api#Debit)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/wallet"
+)
+
+// Debit a wallet
+func DebitWallet() {
+	walletService := wallet.NewWalletService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := walletService.Debit(&wallet.DebitRequest{
+		Amount: 5,
+Id: "b6407edd-2e26-45c0-9e2c-343689bbe5f6",
+Reference: "test debit",
 Visible: true,
 
 	})
