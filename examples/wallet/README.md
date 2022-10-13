@@ -4,6 +4,34 @@ An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/wallet/api](ht
 
 Endpoints:
 
+## Balance
+
+Get the balance of a wallet
+
+
+[https://m3o.com/wallet/api#Balance](https://m3o.com/wallet/api#Balance)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/wallet"
+)
+
+// Get the balance of a wallet
+func GetBalance() {
+	walletService := wallet.NewWalletService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := walletService.Balance(&wallet.BalanceRequest{
+		Id: "b6407edd-2e26-45c0-9e2c-343689bbe5f6",
+
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
 ## Delete
 
 Delete a wallet
@@ -118,34 +146,6 @@ func TransferMoney() {
 		Amount: 5,
 Reference: "transfer money",
 Visible: true,
-
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
-## Balance
-
-Get the balance of a wallet
-
-
-[https://m3o.com/wallet/api#Balance](https://m3o.com/wallet/api#Balance)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/wallet"
-)
-
-// Get the balance of a wallet
-func GetBalance() {
-	walletService := wallet.NewWalletService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := walletService.Balance(&wallet.BalanceRequest{
-		Id: "b6407edd-2e26-45c0-9e2c-343689bbe5f6",
 
 	})
 	fmt.Println(rsp, err)
