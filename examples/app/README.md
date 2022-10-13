@@ -31,12 +31,12 @@ func ListTheApps() {
 	
 }
 ```
-## Regions
+## Run
 
-Return the support regions
+Run an app from source
 
 
-[https://m3o.com/app/api#Regions](https://m3o.com/app/api#Regions)
+[https://m3o.com/app/api#Run](https://m3o.com/app/api#Run)
 
 ```go
 package example
@@ -48,11 +48,16 @@ import(
 	"go.m3o.com/app"
 )
 
-// Return the support regions
-func ListRegions() {
+// Run an app from source
+func RunAnApp() {
 	appService := app.NewAppService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := appService.Regions(&app.RegionsRequest{
-		
+	rsp, err := appService.Run(&app.RunRequest{
+		Branch: "master",
+Name: "helloworld",
+Port: 8080,
+Region: "europe-west1",
+Repo: "github.com/asim/helloworld",
+
 	})
 	fmt.Println(rsp, err)
 	
@@ -114,34 +119,6 @@ func DeleteAnApp() {
 	
 }
 ```
-## Logs
-
-Get the logs for an app
-
-
-[https://m3o.com/app/api#Logs](https://m3o.com/app/api#Logs)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/app"
-)
-
-// Get the logs for an app
-func RetrieveBuildLogsForAnApp() {
-	appService := app.NewAppService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := appService.Logs(&app.LogsRequest{
-		Name: "helloworld",
-
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
 ## Reserve
 
 Reserve app names
@@ -164,38 +141,6 @@ func ReserveAppName() {
 	appService := app.NewAppService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := appService.Reserve(&app.ReserveRequest{
 		Name: "helloworld",
-
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
-## Run
-
-Run an app from source
-
-
-[https://m3o.com/app/api#Run](https://m3o.com/app/api#Run)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/app"
-)
-
-// Run an app from source
-func RunAnApp() {
-	appService := app.NewAppService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := appService.Run(&app.RunRequest{
-		Branch: "master",
-Name: "helloworld",
-Port: 8080,
-Region: "europe-west1",
-Repo: "github.com/asim/helloworld",
 
 	})
 	fmt.Println(rsp, err)
@@ -253,6 +198,61 @@ func UpdateAnApp() {
 	rsp, err := appService.Update(&app.UpdateRequest{
 		Name: "helloworld",
 
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
+## Logs
+
+Get the logs for an app
+
+
+[https://m3o.com/app/api#Logs](https://m3o.com/app/api#Logs)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/app"
+)
+
+// Get the logs for an app
+func RetrieveBuildLogsForAnApp() {
+	appService := app.NewAppService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := appService.Logs(&app.LogsRequest{
+		Name: "helloworld",
+
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
+## Regions
+
+Return the support regions
+
+
+[https://m3o.com/app/api#Regions](https://m3o.com/app/api#Regions)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/app"
+)
+
+// Return the support regions
+func ListRegions() {
+	appService := app.NewAppService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := appService.Regions(&app.RegionsRequest{
+		
 	})
 	fmt.Println(rsp, err)
 	
