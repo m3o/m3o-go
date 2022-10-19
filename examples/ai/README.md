@@ -32,6 +32,34 @@ func CallTheAi() {
 	
 }
 ```
+## Check
+
+Check or edit text/code
+
+
+[https://m3o.com/ai/api#Check](https://m3o.com/ai/api#Check)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/ai"
+)
+
+// Check or edit text/code
+func CheckText() {
+	aiService := ai.NewAiService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := aiService.Check(&ai.CheckRequest{
+		Text: "What day of the wek is it?",
+
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
 ## Moderate
 
 Moderate hate speech

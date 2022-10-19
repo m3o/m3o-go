@@ -6,6 +6,7 @@ import (
 
 type Ai interface {
 	Call(*CallRequest) (*CallResponse, error)
+	Check(*CheckRequest) (*CheckResponse, error)
 	Moderate(*ModerateRequest) (*ModerateResponse, error)
 }
 
@@ -29,6 +30,14 @@ func (t *AiService) Call(request *CallRequest) (*CallResponse, error) {
 
 }
 
+// Check or edit text/code
+func (t *AiService) Check(request *CheckRequest) (*CheckResponse, error) {
+
+	rsp := &CheckResponse{}
+	return rsp, t.client.Call("ai", "Check", request, rsp)
+
+}
+
 // Moderate hate speech
 func (t *AiService) Moderate(request *ModerateRequest) (*ModerateResponse, error) {
 
@@ -44,6 +53,18 @@ type CallRequest struct {
 
 type CallResponse struct {
 	// text returned
+	Text string `json:"text,omitempty"`
+}
+
+type CheckRequest struct {
+	// instruction hint e.g check the grammar
+	Instruction string `json:"instruction,omitempty"`
+	// text/code to check
+	Text string `json:"text,omitempty"`
+}
+
+type CheckResponse struct {
+	// response output
 	Text string `json:"text,omitempty"`
 }
 
