@@ -6,6 +6,7 @@ import (
 
 type News interface {
 	Headlines(*HeadlinesRequest) (*HeadlinesResponse, error)
+	TopStories(*TopStoriesRequest) (*TopStoriesResponse, error)
 }
 
 func NewNewsService(token string) *NewsService {
@@ -25,6 +26,14 @@ func (t *NewsService) Headlines(request *HeadlinesRequest) (*HeadlinesResponse, 
 
 	rsp := &HeadlinesResponse{}
 	return rsp, t.client.Call("news", "Headlines", request, rsp)
+
+}
+
+// Get the top stories
+func (t *NewsService) TopStories(request *TopStoriesRequest) (*TopStoriesResponse, error) {
+
+	rsp := &TopStoriesResponse{}
+	return rsp, t.client.Call("news", "TopStories", request, rsp)
 
 }
 
@@ -65,5 +74,18 @@ type HeadlinesRequest struct {
 }
 
 type HeadlinesResponse struct {
+	Articles []Article `json:"articles,omitempty"`
+}
+
+type TopStoriesRequest struct {
+	// date published on in YYYY-MM-DD format
+	Date string `json:"date,omitempty"`
+	// comma separated list of languages to retrieve in e.g en,es
+	Language string `json:"language,omitempty"`
+	// comma separated list of countries to include e.g us,ca
+	Locale string `json:"locale,omitempty"`
+}
+
+type TopStoriesResponse struct {
 	Articles []Article `json:"articles,omitempty"`
 }
