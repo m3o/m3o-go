@@ -4,6 +4,34 @@ An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/ai/api](https:
 
 Endpoints:
 
+## Check
+
+Check or edit text/code
+
+
+[https://m3o.com/ai/api#Check](https://m3o.com/ai/api#Check)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/ai"
+)
+
+// Check or edit text/code
+func CheckText() {
+	aiService := ai.NewAiService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := aiService.Check(&ai.CheckRequest{
+		Text: "What day of the wek is it?",
+
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
 ## Moderate
 
 Moderate hate speech
@@ -54,34 +82,6 @@ func CallTheAi() {
 	aiService := ai.NewAiService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := aiService.Call(&ai.CallRequest{
 		Text: "who is leonardo davinci",
-
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
-## Check
-
-Check or edit text/code
-
-
-[https://m3o.com/ai/api#Check](https://m3o.com/ai/api#Check)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/ai"
-)
-
-// Check or edit text/code
-func CheckText() {
-	aiService := ai.NewAiService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := aiService.Check(&ai.CheckRequest{
-		Text: "What day of the wek is it?",
 
 	})
 	fmt.Println(rsp, err)

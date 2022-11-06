@@ -4,33 +4,6 @@ An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/url/api](https
 
 Endpoints:
 
-## Update
-
-Update the destination for a short URL
-
-
-[https://m3o.com/url/api#Update](https://m3o.com/url/api#Update)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/url"
-)
-
-// Update the destination for a short URL
-func UpdateAshortUrl() {
-	urlService := url.NewUrlService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := urlService.Update(&url.UpdateRequest{
-		
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
 ## Shorten
 
 Shorten a URL
@@ -161,6 +134,33 @@ import(
 func ListYourShortenedUrls() {
 	urlService := url.NewUrlService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := urlService.List(&url.ListRequest{
+		
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
+## Update
+
+Update the destination for a short URL
+
+
+[https://m3o.com/url/api#Update](https://m3o.com/url/api#Update)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/url"
+)
+
+// Update the destination for a short URL
+func UpdateAshortUrl() {
+	urlService := url.NewUrlService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := urlService.Update(&url.UpdateRequest{
 		
 	})
 	fmt.Println(rsp, err)
