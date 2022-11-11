@@ -4,35 +4,6 @@ An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/lists/api](htt
 
 Endpoints:
 
-## Create
-
-Create a new list
-
-
-[https://m3o.com/lists/api#Create](https://m3o.com/lists/api#Create)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/lists"
-)
-
-// Create a new list
-func CreateAlist() {
-	listsService := lists.NewListsService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := listsService.Create(&lists.CreateRequest{
-		Items: []string{"This is my list"},
-Name: "New List",
-
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
 ## Read
 
 Read a list
@@ -187,5 +158,34 @@ func SubscribeToEvents() {
 
 			fmt.Println(rsp)
 	}
+}
+```
+## Create
+
+Create a new list
+
+
+[https://m3o.com/lists/api#Create](https://m3o.com/lists/api#Create)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/lists"
+)
+
+// Create a new list
+func CreateAlist() {
+	listsService := lists.NewListsService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := listsService.Create(&lists.CreateRequest{
+		Items: []string{"This is my list"},
+Name: "New List",
+
+	})
+	fmt.Println(rsp, err)
+	
 }
 ```
