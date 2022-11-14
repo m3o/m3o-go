@@ -53,7 +53,8 @@ import(
 func WhoisQuery() {
 	dnsService := dns.NewDnsService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := dnsService.Whois(&dns.WhoisRequest{
-		
+		Domain: "x.com",
+
 	})
 	fmt.Println(rsp, err)
 	
