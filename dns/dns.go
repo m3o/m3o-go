@@ -6,6 +6,7 @@ import (
 
 type Dns interface {
 	Query(*QueryRequest) (*QueryResponse, error)
+	Whois(*WhoisRequest) (*WhoisResponse, error)
 }
 
 func NewDnsService(token string) *DnsService {
@@ -28,6 +29,14 @@ func (t *DnsService) Query(request *QueryRequest) (*QueryResponse, error) {
 
 }
 
+// Check who owns a domain
+func (t *DnsService) Whois(request *WhoisRequest) (*WhoisResponse, error) {
+
+	rsp := &WhoisResponse{}
+	return rsp, t.client.Call("dns", "Whois", request, rsp)
+
+}
+
 type Answer struct {
 	// time to live
 	Ttl int32 `json:"TTL,omitempty"`
@@ -37,6 +46,11 @@ type Answer struct {
 	Name string `json:"name,omitempty"`
 	// type of record
 	Type int32 `json:"type,omitempty"`
+}
+
+type Domain struct {
+	// domain id
+	Id string `json:"id,omitempty"`
 }
 
 type QueryRequest struct {
@@ -63,4 +77,37 @@ type Question struct {
 	Name string `json:"name,omitempty"`
 	// type of record
 	Type int32 `json:"type,omitempty"`
+}
+
+type WhoisRequest struct {
+	Domain string `json:"domain,omitempty"`
+}
+
+type WhoisResponse struct {
+	// abuse email
+	AbuseEmail string `json:"abuse_email,omitempty"`
+	// abuse phone
+	AbusePhone string `json:"abuse_phone,omitempty"`
+	// time of creation
+	Created string `json:"created,omitempty"`
+	// domain name
+	Domain string `json:"domain,omitempty"`
+	// time of expiry
+	Expiry string `json:"expiry,omitempty"`
+	// domain id
+	Id string `json:"id,omitempty"`
+	// nameservers
+	Nameservers []string `json:"nameservers,omitempty"`
+	// the registrar
+	Registrar string `json:"registrar,omitempty"`
+	// the registrar iana id
+	RegistrarId string `json:"registrar_id,omitempty"`
+	// registrar
+	RegistrarUrl string `json:"registrar_url,omitempty"`
+	// status of domain
+	Status []string `json:"status,omitempty"`
+	// time of update
+	Updated string `json:"updated,omitempty"`
+	// whois server
+	WhoisServer string `json:"whois_server,omitempty"`
 }

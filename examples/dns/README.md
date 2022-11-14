@@ -32,3 +32,30 @@ func MakeAdnsQuery() {
 	
 }
 ```
+## Whois
+
+Check who owns a domain
+
+
+[https://m3o.com/dns/api#Whois](https://m3o.com/dns/api#Whois)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/dns"
+)
+
+// Check who owns a domain
+func WhoisQuery() {
+	dnsService := dns.NewDnsService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := dnsService.Whois(&dns.WhoisRequest{
+		
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
