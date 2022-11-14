@@ -33,34 +33,6 @@ Name: "Greatness",
 	
 }
 ```
-## Read
-
-Get wallet by id
-
-
-[https://m3o.com/wallet/api#Read](https://m3o.com/wallet/api#Read)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/wallet"
-)
-
-// Get wallet by id
-func ReadAwallet() {
-	walletService := wallet.NewWalletService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := walletService.Read(&wallet.ReadRequest{
-		Id: "b6407edd-2e26-45c0-9e2c-343689bbe5f6",
-
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
 ## Debit
 
 Debit a wallet
@@ -87,6 +59,33 @@ Id: "b6407edd-2e26-45c0-9e2c-343689bbe5f6",
 Reference: "test debit",
 Visible: true,
 
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
+## List
+
+List your wallets
+
+
+[https://m3o.com/wallet/api#List](https://m3o.com/wallet/api#List)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/wallet"
+)
+
+// List your wallets
+func ListWallets() {
+	walletService := wallet.NewWalletService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := walletService.List(&wallet.ListRequest{
+		
 	})
 	fmt.Println(rsp, err)
 	
@@ -150,12 +149,12 @@ func GetBalance() {
 	
 }
 ```
-## Transactions
+## Read
 
-List the transactions for a wallet
+Get wallet by id
 
 
-[https://m3o.com/wallet/api#Transactions](https://m3o.com/wallet/api#Transactions)
+[https://m3o.com/wallet/api#Read](https://m3o.com/wallet/api#Read)
 
 ```go
 package example
@@ -167,10 +166,10 @@ import(
 	"go.m3o.com/wallet"
 )
 
-// List the transactions for a wallet
-func ListTransactions() {
+// Get wallet by id
+func ReadAwallet() {
 	walletService := wallet.NewWalletService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := walletService.Transactions(&wallet.TransactionsRequest{
+	rsp, err := walletService.Read(&wallet.ReadRequest{
 		Id: "b6407edd-2e26-45c0-9e2c-343689bbe5f6",
 
 	})
@@ -209,12 +208,12 @@ Visible: true,
 	
 }
 ```
-## List
+## Transactions
 
-List your wallets
+List the transactions for a wallet
 
 
-[https://m3o.com/wallet/api#List](https://m3o.com/wallet/api#List)
+[https://m3o.com/wallet/api#Transactions](https://m3o.com/wallet/api#Transactions)
 
 ```go
 package example
@@ -226,11 +225,12 @@ import(
 	"go.m3o.com/wallet"
 )
 
-// List your wallets
-func ListWallets() {
+// List the transactions for a wallet
+func ListTransactions() {
 	walletService := wallet.NewWalletService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := walletService.List(&wallet.ListRequest{
-		
+	rsp, err := walletService.Transactions(&wallet.TransactionsRequest{
+		Id: "b6407edd-2e26-45c0-9e2c-343689bbe5f6",
+
 	})
 	fmt.Println(rsp, err)
 	
