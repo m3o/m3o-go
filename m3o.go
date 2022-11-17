@@ -56,6 +56,7 @@ import (
 	"go.m3o.com/routing"
 	"go.m3o.com/rss"
 	"go.m3o.com/search"
+	"go.m3o.com/secret"
 	"go.m3o.com/sentiment"
 	"go.m3o.com/sms"
 	"go.m3o.com/space"
@@ -136,6 +137,7 @@ func New(token string) *Client {
 		Routing:    routing.NewRoutingService(token),
 		Rss:        rss.NewRssService(token),
 		Search:     search.NewSearchService(token),
+		Secret:     secret.NewSecretService(token),
 		Sentiment:  sentiment.NewSentimentService(token),
 		Sms:        sms.NewSmsService(token),
 		Space:      space.NewSpaceService(token),
@@ -216,6 +218,7 @@ type Client struct {
 	Routing    routing.Routing
 	Rss        rss.Rss
 	Search     search.Search
+	Secret     secret.Secret
 	Sentiment  sentiment.Sentiment
 	Sms        sms.Sms
 	Space      space.Space
