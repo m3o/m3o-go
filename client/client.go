@@ -78,6 +78,10 @@ func NewClient(options *Options) *Client {
 		return ret
 	}
 
+	if options.Address != "" {
+		ret.options.Address = options.Address
+	}
+
 	if options.Token != "" {
 		ret.options.Token = options.Token
 	}
@@ -92,6 +96,11 @@ func NewClient(options *Options) *Client {
 	}
 
 	return ret
+}
+
+// SetAddress sets the api address
+func (client *Client) SetAddress(a string) {
+	client.options.Address = a
 }
 
 // SetToken sets the api auth token
