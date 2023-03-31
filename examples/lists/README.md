@@ -4,6 +4,38 @@ An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/lists/api](htt
 
 Endpoints:
 
+## Update
+
+Update a list
+
+
+[https://m3o.com/lists/api#Update](https://m3o.com/lists/api#Update)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/lists"
+)
+
+// Update a list
+func UpdateAlist() {
+	listsService := lists.NewListsService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := listsService.Update(&lists.UpdateRequest{
+		List: &lists.List{
+		Id: "63c0cdf8-2121-11ec-a881-0242e36f037a",
+	Items: []string{"Updated list text"},
+	Name: "Update List",
+	},
+
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
 ## Delete
 
 Delete a list
@@ -152,38 +184,6 @@ func ListAllLists() {
 	listsService := lists.NewListsService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := listsService.List(&lists.ListRequest{
 		
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
-## Update
-
-Update a list
-
-
-[https://m3o.com/lists/api#Update](https://m3o.com/lists/api#Update)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/lists"
-)
-
-// Update a list
-func UpdateAlist() {
-	listsService := lists.NewListsService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := listsService.Update(&lists.UpdateRequest{
-		List: &lists.List{
-		Id: "63c0cdf8-2121-11ec-a881-0242e36f037a",
-	Items: []string{"Updated list text"},
-	Name: "Update List",
-	},
-
 	})
 	fmt.Println(rsp, err)
 	

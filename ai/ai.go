@@ -7,7 +7,7 @@ import (
 type Ai interface {
 	Complete(*CompleteRequest) (*CompleteResponse, error)
 	Edit(*EditRequest) (*EditResponse, error)
-	Image(*ImageRequest) (*ImageResponse, error)
+	Generate(*GenerateRequest) (*GenerateResponse, error)
 	Moderate(*ModerateRequest) (*ModerateResponse, error)
 }
 
@@ -40,10 +40,10 @@ func (t *AiService) Edit(request *EditRequest) (*EditResponse, error) {
 }
 
 // Generage an image from prompt
-func (t *AiService) Image(request *ImageRequest) (*ImageResponse, error) {
+func (t *AiService) Generate(request *GenerateRequest) (*GenerateResponse, error) {
 
-	rsp := &ImageResponse{}
-	return rsp, t.client.Call("ai", "Image", request, rsp)
+	rsp := &GenerateResponse{}
+	return rsp, t.client.Call("ai", "Generate", request, rsp)
 
 }
 
@@ -77,14 +77,7 @@ type EditResponse struct {
 	Text string `json:"text,omitempty"`
 }
 
-type Image struct {
-	// base64 encoded
-	Base64 string `json:"base64,omitempty"`
-	// image url
-	Url string `json:"url,omitempty"`
-}
-
-type ImageRequest struct {
+type GenerateRequest struct {
 	// number of images to generate (max 10)
 	Limit int32 `json:"limit,omitempty"`
 	// size of image 256x256, 512x512, 1024x1024
@@ -93,9 +86,16 @@ type ImageRequest struct {
 	Text string `json:"text,omitempty"`
 }
 
-type ImageResponse struct {
+type GenerateResponse struct {
 	// image urls
 	Images []Image `json:"images,omitempty"`
+}
+
+type Image struct {
+	// base64 encoded
+	Base64 string `json:"base64,omitempty"`
+	// image url
+	Url string `json:"url,omitempty"`
 }
 
 type ModerateRequest struct {
