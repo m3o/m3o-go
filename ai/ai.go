@@ -5,8 +5,9 @@ import (
 )
 
 type Ai interface {
-	Call(*CallRequest) (*CallResponse, error)
-	Check(*CheckRequest) (*CheckResponse, error)
+	Complete(*CompleteRequest) (*CompleteResponse, error)
+	Edit(*EditRequest) (*EditResponse, error)
+	Image(*ImageRequest) (*ImageResponse, error)
 	Moderate(*ModerateRequest) (*ModerateResponse, error)
 }
 
@@ -23,18 +24,26 @@ type AiService struct {
 }
 
 // Make a request to the AI
-func (t *AiService) Call(request *CallRequest) (*CallResponse, error) {
+func (t *AiService) Complete(request *CompleteRequest) (*CompleteResponse, error) {
 
-	rsp := &CallResponse{}
-	return rsp, t.client.Call("ai", "Call", request, rsp)
+	rsp := &CompleteResponse{}
+	return rsp, t.client.Call("ai", "Complete", request, rsp)
 
 }
 
-// Check or edit text/code
-func (t *AiService) Check(request *CheckRequest) (*CheckResponse, error) {
+// Edit or edit prompt/code
+func (t *AiService) Edit(request *EditRequest) (*EditResponse, error) {
 
-	rsp := &CheckResponse{}
-	return rsp, t.client.Call("ai", "Check", request, rsp)
+	rsp := &EditResponse{}
+	return rsp, t.client.Call("ai", "Edit", request, rsp)
+
+}
+
+// Generage an image from prompt
+func (t *AiService) Image(request *ImageRequest) (*ImageResponse, error) {
+
+	rsp := &ImageResponse{}
+	return rsp, t.client.Call("ai", "Image", request, rsp)
 
 }
 
@@ -46,26 +55,47 @@ func (t *AiService) Moderate(request *ModerateRequest) (*ModerateResponse, error
 
 }
 
-type CallRequest struct {
-	// text to pass in
+type CompleteRequest struct {
+	// input to pass in
 	Text string `json:"text,omitempty"`
 }
 
-type CallResponse struct {
+type CompleteResponse struct {
 	// text returned
 	Text string `json:"text,omitempty"`
 }
 
-type CheckRequest struct {
+type EditRequest struct {
 	// instruction hint e.g check the grammar
 	Instruction string `json:"instruction,omitempty"`
 	// text/code to check
 	Text string `json:"text,omitempty"`
 }
 
-type CheckResponse struct {
+type EditResponse struct {
 	// response output
 	Text string `json:"text,omitempty"`
+}
+
+type Image struct {
+	// base64 encoded
+	Base64 string `json:"base64,omitempty"`
+	// image url
+	Url string `json:"url,omitempty"`
+}
+
+type ImageRequest struct {
+	// number of images to generate (max 10)
+	Limit int32 `json:"limit,omitempty"`
+	// size of image 256x256, 512x512, 1024x1024
+	Size string `json:"size,omitempty"`
+	// text description of image
+	Text string `json:"text,omitempty"`
+}
+
+type ImageResponse struct {
+	// image urls
+	Images []Image `json:"images,omitempty"`
 }
 
 type ModerateRequest struct {
