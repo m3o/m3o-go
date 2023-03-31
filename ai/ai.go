@@ -39,7 +39,7 @@ func (t *AiService) Edit(request *EditRequest) (*EditResponse, error) {
 
 }
 
-// Generage an image from prompt
+// Generate an image from prompt
 func (t *AiService) Generate(request *GenerateRequest) (*GenerateResponse, error) {
 
 	rsp := &GenerateResponse{}
