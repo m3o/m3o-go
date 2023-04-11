@@ -6,6 +6,7 @@ import (
 
 type App interface {
 	Delete(*DeleteRequest) (*DeleteResponse, error)
+	Get(*GetRequest) (*GetResponse, error)
 	List(*ListRequest) (*ListResponse, error)
 	Logs(*LogsRequest) (*LogsResponse, error)
 	Regions(*RegionsRequest) (*RegionsResponse, error)
@@ -33,6 +34,14 @@ func (t *AppService) Delete(request *DeleteRequest) (*DeleteResponse, error) {
 
 	rsp := &DeleteResponse{}
 	return rsp, t.client.Call("app", "Delete", request, rsp)
+
+}
+
+// Get an app by name
+func (t *AppService) Get(request *GetRequest) (*GetResponse, error) {
+
+	rsp := &GetResponse{}
+	return rsp, t.client.Call("app", "Get", request, rsp)
 
 }
 
@@ -106,6 +115,14 @@ type DeleteRequest struct {
 }
 
 type DeleteResponse struct {
+}
+
+type GetRequest struct {
+	Name string `json:"name,omitempty"`
+}
+
+type GetResponse struct {
+	Service *Service `json:"service,omitempty"`
 }
 
 type ListRequest struct {
