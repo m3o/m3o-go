@@ -4,12 +4,12 @@ An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/wallet/api](ht
 
 Endpoints:
 
-## Transfer
+## Debit
 
-Make a transfer from one wallet to another
+Debit a wallet
 
 
-[https://m3o.com/wallet/api#Transfer](https://m3o.com/wallet/api#Transfer)
+[https://m3o.com/wallet/api#Debit](https://m3o.com/wallet/api#Debit)
 
 ```go
 package example
@@ -21,12 +21,13 @@ import(
 	"go.m3o.com/wallet"
 )
 
-// Make a transfer from one wallet to another
-func TransferMoney() {
+// Debit a wallet
+func DebitWallet() {
 	walletService := wallet.NewWalletService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := walletService.Transfer(&wallet.TransferRequest{
+	rsp, err := walletService.Debit(&wallet.DebitRequest{
 		Amount: 5,
-Reference: "transfer money",
+Id: "b6407edd-2e26-45c0-9e2c-343689bbe5f6",
+Reference: "test debit",
 Visible: true,
 
 	})
@@ -93,37 +94,6 @@ Visible: true,
 	
 }
 ```
-## Debit
-
-Debit a wallet
-
-
-[https://m3o.com/wallet/api#Debit](https://m3o.com/wallet/api#Debit)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/wallet"
-)
-
-// Debit a wallet
-func DebitWallet() {
-	walletService := wallet.NewWalletService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := walletService.Debit(&wallet.DebitRequest{
-		Amount: 5,
-Id: "b6407edd-2e26-45c0-9e2c-343689bbe5f6",
-Reference: "test debit",
-Visible: true,
-
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
 ## List
 
 List your wallets
@@ -146,6 +116,36 @@ func ListWallets() {
 	walletService := wallet.NewWalletService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := walletService.List(&wallet.ListRequest{
 		
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
+## Transfer
+
+Make a transfer from one wallet to another
+
+
+[https://m3o.com/wallet/api#Transfer](https://m3o.com/wallet/api#Transfer)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/wallet"
+)
+
+// Make a transfer from one wallet to another
+func TransferMoney() {
+	walletService := wallet.NewWalletService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := walletService.Transfer(&wallet.TransferRequest{
+		Amount: 5,
+Reference: "transfer money",
+Visible: true,
+
 	})
 	fmt.Println(rsp, err)
 	
