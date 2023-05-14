@@ -191,6 +191,8 @@ type RunRequest struct {
 	EnvVars map[string]string `json:"env_vars,omitempty"`
 	// name of the app
 	Name string `json:"name,omitempty"`
+	// path to code
+	Path string `json:"path,omitempty"`
 	// port to run on
 	Port int32 `json:"port,omitempty"`
 	// region to run in
@@ -219,6 +221,8 @@ type Service struct {
 	Id string `json:"id,omitempty"`
 	// name of the app
 	Name string `json:"name,omitempty"`
+	// path for the app
+	Path string `json:"path,omitempty"`
 	// port running on
 	Port int32 `json:"port,omitempty"`
 	// region running in
