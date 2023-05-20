@@ -3,8 +3,6 @@ package m3o
 import (
 	"go.m3o.com/address"
 	"go.m3o.com/ai"
-	"go.m3o.com/analytics"
-	"go.m3o.com/answer"
 	"go.m3o.com/app"
 	"go.m3o.com/avatar"
 	"go.m3o.com/bitcoin"
@@ -19,7 +17,6 @@ import (
 	"go.m3o.com/db"
 	"go.m3o.com/dns"
 	"go.m3o.com/email"
-	"go.m3o.com/emoji"
 	"go.m3o.com/ethereum"
 	"go.m3o.com/evchargers"
 	"go.m3o.com/event"
@@ -34,7 +31,6 @@ import (
 	"go.m3o.com/id"
 	"go.m3o.com/image"
 	"go.m3o.com/ip"
-	"go.m3o.com/joke"
 	"go.m3o.com/lists"
 	"go.m3o.com/location"
 	"go.m3o.com/memegen"
@@ -74,7 +70,6 @@ import (
 	"go.m3o.com/vehicle"
 	"go.m3o.com/wallet"
 	"go.m3o.com/weather"
-	"go.m3o.com/wordle"
 	"go.m3o.com/youtube"
 )
 
@@ -84,8 +79,6 @@ func New(token string) *Client {
 
 		Address:    address.NewAddressService(token),
 		Ai:         ai.NewAiService(token),
-		Analytics:  analytics.NewAnalyticsService(token),
-		Answer:     answer.NewAnswerService(token),
 		App:        app.NewAppService(token),
 		Avatar:     avatar.NewAvatarService(token),
 		Bitcoin:    bitcoin.NewBitcoinService(token),
@@ -100,7 +93,6 @@ func New(token string) *Client {
 		Db:         db.NewDbService(token),
 		Dns:        dns.NewDnsService(token),
 		Email:      email.NewEmailService(token),
-		Emoji:      emoji.NewEmojiService(token),
 		Ethereum:   ethereum.NewEthereumService(token),
 		Evchargers: evchargers.NewEvchargersService(token),
 		Event:      event.NewEventService(token),
@@ -115,7 +107,6 @@ func New(token string) *Client {
 		Id:         id.NewIdService(token),
 		Image:      image.NewImageService(token),
 		Ip:         ip.NewIpService(token),
-		Joke:       joke.NewJokeService(token),
 		Lists:      lists.NewListsService(token),
 		Location:   location.NewLocationService(token),
 		Memegen:    memegen.NewMemegenService(token),
@@ -155,7 +146,6 @@ func New(token string) *Client {
 		Vehicle:    vehicle.NewVehicleService(token),
 		Wallet:     wallet.NewWalletService(token),
 		Weather:    weather.NewWeatherService(token),
-		Wordle:     wordle.NewWordleService(token),
 		Youtube:    youtube.NewYoutubeService(token),
 	}
 }
@@ -165,8 +155,6 @@ type Client struct {
 
 	Address    address.Address
 	Ai         ai.Ai
-	Analytics  analytics.Analytics
-	Answer     answer.Answer
 	App        app.App
 	Avatar     avatar.Avatar
 	Bitcoin    bitcoin.Bitcoin
@@ -181,7 +169,6 @@ type Client struct {
 	Db         db.Db
 	Dns        dns.Dns
 	Email      email.Email
-	Emoji      emoji.Emoji
 	Ethereum   ethereum.Ethereum
 	Evchargers evchargers.Evchargers
 	Event      event.Event
@@ -196,7 +183,6 @@ type Client struct {
 	Id         id.Id
 	Image      image.Image
 	Ip         ip.Ip
-	Joke       joke.Joke
 	Lists      lists.Lists
 	Location   location.Location
 	Memegen    memegen.Memegen
@@ -236,6 +222,5 @@ type Client struct {
 	Vehicle    vehicle.Vehicle
 	Wallet     wallet.Wallet
 	Weather    weather.Weather
-	Wordle     wordle.Wordle
 	Youtube    youtube.Youtube
 }
