@@ -5,6 +5,7 @@ import (
 )
 
 type Ai interface {
+	Chat(*ChatRequest) (*ChatResponse, error)
 	Complete(*CompleteRequest) (*CompleteResponse, error)
 	Edit(*EditRequest) (*EditResponse, error)
 	Generate(*GenerateRequest) (*GenerateResponse, error)
@@ -21,6 +22,14 @@ func NewAiService(token string) *AiService {
 
 type AiService struct {
 	client *client.Client
+}
+
+// Make a request to ChatGPT
+func (t *AiService) Chat(request *ChatRequest) (*ChatResponse, error) {
+
+	rsp := &ChatResponse{}
+	return rsp, t.client.Call("ai", "Chat", request, rsp)
+
 }
 
 // Make a request to the AI
@@ -55,6 +64,22 @@ func (t *AiService) Moderate(request *ModerateRequest) (*ModerateResponse, error
 
 }
 
+type ChatRequest struct {
+	// context for the call
+	Context []Context `json:"context,omitempty"`
+	// the model e.g gpt-3.5-turbo-16k
+	Model string `json:"model,omitempty"`
+	// the prompt
+	Prompt string `json:"prompt,omitempty"`
+	// role e.g system or user
+	Role string `json:"role,omitempty"`
+}
+
+type ChatResponse struct {
+	// the response
+	Reply string `json:"reply,omitempty"`
+}
+
 type CompleteRequest struct {
 	// input to pass in
 	Text string `json:"text,omitempty"`
@@ -63,6 +88,13 @@ type CompleteRequest struct {
 type CompleteResponse struct {
 	// text returned
 	Text string `json:"text,omitempty"`
+}
+
+type Context struct {
+	// prompt used
+	Prompt string `json:"prompt,omitempty"`
+	// response for prompt
+	Reply string `json:"reply,omitempty"`
 }
 
 type EditRequest struct {

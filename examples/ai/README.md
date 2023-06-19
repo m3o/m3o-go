@@ -116,3 +116,32 @@ func ModerateHateSpeech() {
 	
 }
 ```
+## Chat
+
+Make a request to ChatGPT
+
+
+[https://m3o.com/ai/api#Chat](https://m3o.com/ai/api#Chat)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/ai"
+)
+
+// Make a request to ChatGPT
+func ChatWithChatGpt() {
+	aiService := ai.NewAiService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := aiService.Chat(&ai.ChatRequest{
+		Model: "gpt-3.5-turbo",
+Prompt: "who is leonardo davinci",
+
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
