@@ -4,34 +4,6 @@ An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/ai/api](https:
 
 Endpoints:
 
-## Complete
-
-Make a request to the AI
-
-
-[https://m3o.com/ai/api#Complete](https://m3o.com/ai/api#Complete)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/ai"
-)
-
-// Make a request to the AI
-func CompleteTheText() {
-	aiService := ai.NewAiService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := aiService.Complete(&ai.CompleteRequest{
-		Text: "who is leonardo davinci",
-
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
 ## Edit
 
 Edit or edit prompt/code
@@ -139,6 +111,34 @@ func ChatWithChatGpt() {
 	rsp, err := aiService.Chat(&ai.ChatRequest{
 		Model: "gpt-3.5-turbo",
 Prompt: "who is leonardo davinci",
+
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
+## Complete
+
+Make a request to the AI
+
+
+[https://m3o.com/ai/api#Complete](https://m3o.com/ai/api#Complete)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/ai"
+)
+
+// Make a request to the AI
+func CompleteTheText() {
+	aiService := ai.NewAiService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := aiService.Complete(&ai.CompleteRequest{
+		Text: "who is leonardo davinci",
 
 	})
 	fmt.Println(rsp, err)

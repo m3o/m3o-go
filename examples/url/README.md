@@ -4,6 +4,33 @@ An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/url/api](https
 
 Endpoints:
 
+## Resolve
+
+Resolve returns the destination URL of a short URL.
+
+
+[https://m3o.com/url/api#Resolve](https://m3o.com/url/api#Resolve)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/url"
+)
+
+// Resolve returns the destination URL of a short URL.
+func ResolveAshortUrlToAlongDestinationUrl() {
+	urlService := url.NewUrlService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := urlService.Resolve(&url.ResolveRequest{
+		
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
 ## Delete
 
 Delete a URL
@@ -134,33 +161,6 @@ import(
 func ShortenAlongUrl() {
 	urlService := url.NewUrlService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := urlService.Shorten(&url.ShortenRequest{
-		
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
-## Resolve
-
-Resolve returns the destination URL of a short URL.
-
-
-[https://m3o.com/url/api#Resolve](https://m3o.com/url/api#Resolve)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/url"
-)
-
-// Resolve returns the destination URL of a short URL.
-func ResolveAshortUrlToAlongDestinationUrl() {
-	urlService := url.NewUrlService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := urlService.Resolve(&url.ResolveRequest{
 		
 	})
 	fmt.Println(rsp, err)
