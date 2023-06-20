@@ -4,6 +4,35 @@ An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/ai/api](https:
 
 Endpoints:
 
+## Chat
+
+Make a request to ChatGPT
+
+
+[https://m3o.com/ai/api#Chat](https://m3o.com/ai/api#Chat)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/ai"
+)
+
+// Make a request to ChatGPT
+func ChatWithChatGpt() {
+	aiService := ai.NewAiService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := aiService.Chat(&ai.ChatRequest{
+		Model: "gpt-3.5-turbo",
+Prompt: "who is leonardo davinci",
+
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
 ## Complete
 
 Make a request to the AI
@@ -110,35 +139,6 @@ func ModerateHateSpeech() {
 	aiService := ai.NewAiService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := aiService.Moderate(&ai.ModerateRequest{
 		Text: "I want to kill him",
-
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
-## Chat
-
-Make a request to ChatGPT
-
-
-[https://m3o.com/ai/api#Chat](https://m3o.com/ai/api#Chat)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/ai"
-)
-
-// Make a request to ChatGPT
-func ChatWithChatGpt() {
-	aiService := ai.NewAiService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := aiService.Chat(&ai.ChatRequest{
-		Model: "gpt-3.5-turbo",
-Prompt: "who is leonardo davinci",
 
 	})
 	fmt.Println(rsp, err)
