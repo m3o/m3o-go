@@ -4,35 +4,6 @@ An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/price/api](htt
 
 Endpoints:
 
-## Get
-
-Get the price of anything
-
-
-[https://m3o.com/price/api#Get](https://m3o.com/price/api#Get)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/price"
-)
-
-// Get the price of anything
-func GetThePrice() {
-	priceService := price.NewPriceService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := priceService.Get(&price.GetRequest{
-		Currency: "USD",
-Name: "bitcoin",
-
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
 ## List
 
 List prices for a given currency
@@ -142,6 +113,35 @@ func AddAprice() {
 		Currency: "USD",
 Name: "bitcoin",
 Price: 39037.97,
+
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
+## Get
+
+Get the price of anything
+
+
+[https://m3o.com/price/api#Get](https://m3o.com/price/api#Get)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/price"
+)
+
+// Get the price of anything
+func GetThePrice() {
+	priceService := price.NewPriceService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := priceService.Get(&price.GetRequest{
+		Currency: "USD",
+Name: "bitcoin",
 
 	})
 	fmt.Println(rsp, err)
