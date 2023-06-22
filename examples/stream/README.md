@@ -4,33 +4,6 @@ An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/stream/api](ht
 
 Endpoints:
 
-## ListChannels
-
-List all the active channels
-
-
-[https://m3o.com/stream/api#ListChannels](https://m3o.com/stream/api#ListChannels)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/stream"
-)
-
-// List all the active channels
-func ListChannels() {
-	streamService := stream.NewStreamService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := streamService.ListChannels(&stream.ListChannelsRequest{
-		
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
 ## CreateChannel
 
 Create a channel by name
@@ -112,6 +85,33 @@ func ListMessages() {
 	rsp, err := streamService.ListMessages(&stream.ListMessagesRequest{
 		Channel: "general",
 
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
+## ListChannels
+
+List all the active channels
+
+
+[https://m3o.com/stream/api#ListChannels](https://m3o.com/stream/api#ListChannels)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/stream"
+)
+
+// List all the active channels
+func ListChannels() {
+	streamService := stream.NewStreamService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := streamService.ListChannels(&stream.ListChannelsRequest{
+		
 	})
 	fmt.Println(rsp, err)
 	
