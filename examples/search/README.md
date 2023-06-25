@@ -198,9 +198,9 @@ func IndexArecord() {
 	searchService := search.NewSearchService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := searchService.Index(&search.IndexRequest{
 		Data: map[string]interface{}{
+	"age": 37,
 	"starsign": "Leo",
 	"name": "John Doe",
-	"age": 37,
 },
 Index: "customers",
 
