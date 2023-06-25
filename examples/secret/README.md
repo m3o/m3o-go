@@ -4,35 +4,6 @@ An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/secret/api](ht
 
 Endpoints:
 
-## Set
-
-Set a secret. Overwrites any existing value already set.
-
-
-[https://m3o.com/secret/api#Set](https://m3o.com/secret/api#Set)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/secret"
-)
-
-// Set a secret. Overwrites any existing value already set.
-func SetAvalue() {
-	secretService := secret.NewSecretService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := secretService.Set(&secret.SetRequest{
-		Key: "foo",
-Value: "bar",
-
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
 ## Get
 
 Get a secret by key.
@@ -111,6 +82,35 @@ func ListAllSecrets() {
 	secretService := secret.NewSecretService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := secretService.List(&secret.ListRequest{
 		
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
+## Set
+
+Set a secret. Overwrites any existing value already set.
+
+
+[https://m3o.com/secret/api#Set](https://m3o.com/secret/api#Set)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/secret"
+)
+
+// Set a secret. Overwrites any existing value already set.
+func SetAvalue() {
+	secretService := secret.NewSecretService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := secretService.Set(&secret.SetRequest{
+		Key: "foo",
+Value: "bar",
+
 	})
 	fmt.Println(rsp, err)
 	
