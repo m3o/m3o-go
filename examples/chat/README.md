@@ -31,6 +31,65 @@ func ListGroups() {
 	
 }
 ```
+## Delete
+
+Delete a group
+
+
+[https://m3o.com/chat/api#Delete](https://m3o.com/chat/api#Delete)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/chat"
+)
+
+// Delete a group
+func DeleteAchat() {
+	chatService := chat.NewChatService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := chatService.Delete(&chat.DeleteRequest{
+		
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
+## Send
+
+Connect to a chat to receive a stream of messages
+Send a message to a chat
+
+
+[https://m3o.com/chat/api#Send](https://m3o.com/chat/api#Send)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/chat"
+)
+
+// Connect to a chat to receive a stream of messages
+// Send a message to a chat
+func SendAmessage() {
+	chatService := chat.NewChatService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := chatService.Send(&chat.SendRequest{
+		Client: "web",
+Subject: "Random",
+Text: "Hey whats up?",
+
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
 ## History
 
 List the messages in a chat
@@ -98,33 +157,6 @@ func JoinAgroup() {
 	}
 }
 ```
-## Kick
-
-Kick a user from a group
-
-
-[https://m3o.com/chat/api#Kick](https://m3o.com/chat/api#Kick)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/chat"
-)
-
-// Kick a user from a group
-func KickAuserFromAgroup() {
-	chatService := chat.NewChatService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := chatService.Kick(&chat.KickRequest{
-		
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
 ## Leave
 
 Leave a group
@@ -181,12 +213,12 @@ Name: "general",
 	
 }
 ```
-## Delete
+## Kick
 
-Delete a group
+Kick a user from a group
 
 
-[https://m3o.com/chat/api#Delete](https://m3o.com/chat/api#Delete)
+[https://m3o.com/chat/api#Kick](https://m3o.com/chat/api#Kick)
 
 ```go
 package example
@@ -198,10 +230,10 @@ import(
 	"go.m3o.com/chat"
 )
 
-// Delete a group
-func DeleteAchat() {
+// Kick a user from a group
+func KickAuserFromAgroup() {
 	chatService := chat.NewChatService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := chatService.Delete(&chat.DeleteRequest{
+	rsp, err := chatService.Kick(&chat.KickRequest{
 		
 	})
 	fmt.Println(rsp, err)
@@ -230,38 +262,6 @@ func InviteAuser() {
 	chatService := chat.NewChatService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := chatService.Invite(&chat.InviteRequest{
 		
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
-## Send
-
-Connect to a chat to receive a stream of messages
-Send a message to a chat
-
-
-[https://m3o.com/chat/api#Send](https://m3o.com/chat/api#Send)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/chat"
-)
-
-// Connect to a chat to receive a stream of messages
-// Send a message to a chat
-func SendAmessage() {
-	chatService := chat.NewChatService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := chatService.Send(&chat.SendRequest{
-		Client: "web",
-Subject: "Random",
-Text: "Hey whats up?",
-
 	})
 	fmt.Println(rsp, err)
 	
