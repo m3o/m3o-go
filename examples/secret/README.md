@@ -4,6 +4,61 @@ An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/secret/api](ht
 
 Endpoints:
 
+## Delete
+
+Delete a secret. If key not found a success response is returned.
+
+
+[https://m3o.com/secret/api#Delete](https://m3o.com/secret/api#Delete)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/secret"
+)
+
+// Delete a secret. If key not found a success response is returned.
+func DeleteAvalue() {
+	secretService := secret.NewSecretService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := secretService.Delete(&secret.DeleteRequest{
+		Key: "foo",
+
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
+## List
+
+List all the available secrets
+
+
+[https://m3o.com/secret/api#List](https://m3o.com/secret/api#List)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/secret"
+)
+
+// List all the available secrets
+func ListAllSecrets() {
+	secretService := secret.NewSecretService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := secretService.List(&secret.ListRequest{
+		
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
 ## Set
 
 Set a secret. Overwrites any existing value already set.
@@ -56,61 +111,6 @@ func GetAvalue() {
 	rsp, err := secretService.Get(&secret.GetRequest{
 		Key: "foo",
 
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
-## Delete
-
-Delete a secret. If key not found a success response is returned.
-
-
-[https://m3o.com/secret/api#Delete](https://m3o.com/secret/api#Delete)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/secret"
-)
-
-// Delete a secret. If key not found a success response is returned.
-func DeleteAvalue() {
-	secretService := secret.NewSecretService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := secretService.Delete(&secret.DeleteRequest{
-		Key: "foo",
-
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
-## List
-
-List all the available secrets
-
-
-[https://m3o.com/secret/api#List](https://m3o.com/secret/api#List)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/secret"
-)
-
-// List all the available secrets
-func ListAllSecrets() {
-	secretService := secret.NewSecretService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := secretService.List(&secret.ListRequest{
-		
 	})
 	fmt.Println(rsp, err)
 	
