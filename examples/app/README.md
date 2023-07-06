@@ -4,6 +4,34 @@ An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/app/api](https
 
 Endpoints:
 
+## Logs
+
+Get the logs for an app
+
+
+[https://m3o.com/app/api#Logs](https://m3o.com/app/api#Logs)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/app"
+)
+
+// Get the logs for an app
+func RetrieveBuildLogsForAnApp() {
+	appService := app.NewAppService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := appService.Logs(&app.LogsRequest{
+		Name: "helloworld",
+
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
 ## Reserve
 
 Reserve app names
@@ -32,12 +60,12 @@ func ReserveAppName() {
 	
 }
 ```
-## List
+## Get
 
-List all the apps
+Get an app by name
 
 
-[https://m3o.com/app/api#List](https://m3o.com/app/api#List)
+[https://m3o.com/app/api#Get](https://m3o.com/app/api#Get)
 
 ```go
 package example
@@ -49,11 +77,12 @@ import(
 	"go.m3o.com/app"
 )
 
-// List all the apps
-func ListTheApps() {
+// Get an app by name
+func GetAnApp() {
 	appService := app.NewAppService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := appService.List(&app.ListRequest{
-		
+	rsp, err := appService.Get(&app.GetRequest{
+		Name: "helloworld",
+
 	})
 	fmt.Println(rsp, err)
 	
@@ -81,34 +110,6 @@ func GetTheStatusOfAnApp() {
 	appService := app.NewAppService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := appService.Status(&app.StatusRequest{
 		Name: "helloworld",
-
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
-## Resolve
-
-Resolve an app by id to its raw backend endpoint
-
-
-[https://m3o.com/app/api#Resolve](https://m3o.com/app/api#Resolve)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/app"
-)
-
-// Resolve an app by id to its raw backend endpoint
-func ResolveAppById() {
-	appService := app.NewAppService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := appService.Resolve(&app.ResolveRequest{
-		Id: "helloworld",
 
 	})
 	fmt.Println(rsp, err)
@@ -171,12 +172,12 @@ func DeleteAnApp() {
 	
 }
 ```
-## Get
+## List
 
-Get an app by name
+List all the apps
 
 
-[https://m3o.com/app/api#Get](https://m3o.com/app/api#Get)
+[https://m3o.com/app/api#List](https://m3o.com/app/api#List)
 
 ```go
 package example
@@ -188,12 +189,11 @@ import(
 	"go.m3o.com/app"
 )
 
-// Get an app by name
-func GetAnApp() {
+// List all the apps
+func ListTheApps() {
 	appService := app.NewAppService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := appService.Get(&app.GetRequest{
-		Name: "helloworld",
-
+	rsp, err := appService.List(&app.ListRequest{
+		
 	})
 	fmt.Println(rsp, err)
 	
@@ -258,12 +258,12 @@ func ListRegions() {
 	
 }
 ```
-## Logs
+## Resolve
 
-Get the logs for an app
+Resolve an app by id to its raw backend endpoint
 
 
-[https://m3o.com/app/api#Logs](https://m3o.com/app/api#Logs)
+[https://m3o.com/app/api#Resolve](https://m3o.com/app/api#Resolve)
 
 ```go
 package example
@@ -275,11 +275,11 @@ import(
 	"go.m3o.com/app"
 )
 
-// Get the logs for an app
-func RetrieveBuildLogsForAnApp() {
+// Resolve an app by id to its raw backend endpoint
+func ResolveAppById() {
 	appService := app.NewAppService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := appService.Logs(&app.LogsRequest{
-		Name: "helloworld",
+	rsp, err := appService.Resolve(&app.ResolveRequest{
+		Id: "helloworld",
 
 	})
 	fmt.Println(rsp, err)
