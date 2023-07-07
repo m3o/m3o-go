@@ -194,7 +194,7 @@ type Contract struct {
 	// name of contract
 	Name string `json:"name,omitempty"`
 	// owner id
-	Owner int32 `json:"owner,omitempty"`
+	Owner string `json:"owner,omitempty"`
 	// payout address
 	PayoutAddress string `json:"payout_address,omitempty"`
 	// aka "ERC1155"
