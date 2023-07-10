@@ -4,61 +4,6 @@ An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/url/api](https
 
 Endpoints:
 
-## Create
-
-Create a URL
-
-
-[https://m3o.com/url/api#Create](https://m3o.com/url/api#Create)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/url"
-)
-
-// Create a URL
-func CreateAurl() {
-	urlService := url.NewUrlService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := urlService.Create(&url.CreateRequest{
-		Id: "my-site",
-
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
-## List
-
-List all the shortened URLs
-
-
-[https://m3o.com/url/api#List](https://m3o.com/url/api#List)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/url"
-)
-
-// List all the shortened URLs
-func ListYourShortenedUrls() {
-	urlService := url.NewUrlService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := urlService.List(&url.ListRequest{
-		
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
 ## Update
 
 Update the destination for a short URL
@@ -161,6 +106,61 @@ import(
 func DeleteAshortenedUrl() {
 	urlService := url.NewUrlService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := urlService.Delete(&url.DeleteRequest{
+		
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
+## Create
+
+Create a URL
+
+
+[https://m3o.com/url/api#Create](https://m3o.com/url/api#Create)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/url"
+)
+
+// Create a URL
+func CreateAurl() {
+	urlService := url.NewUrlService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := urlService.Create(&url.CreateRequest{
+		Id: "my-site",
+
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
+## List
+
+List all the shortened URLs
+
+
+[https://m3o.com/url/api#List](https://m3o.com/url/api#List)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/url"
+)
+
+// List all the shortened URLs
+func ListYourShortenedUrls() {
+	urlService := url.NewUrlService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := urlService.List(&url.ListRequest{
 		
 	})
 	fmt.Println(rsp, err)
