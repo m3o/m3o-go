@@ -66,12 +66,12 @@ func UpdateAfunction() {
 	
 }
 ```
-## Call
+## List
 
-Call a function by name
+List all the deployed functions
 
 
-[https://m3o.com/function/api#Call](https://m3o.com/function/api#Call)
+[https://m3o.com/function/api#List](https://m3o.com/function/api#List)
 
 ```go
 package example
@@ -83,15 +83,11 @@ import(
 	"go.m3o.com/function"
 )
 
-// Call a function by name
-func CallAfunction() {
+// List all the deployed functions
+func ListFunctions() {
 	functionService := function.NewFunctionService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := functionService.Call(&function.CallRequest{
-		Name: "helloworld",
-Request: map[string]interface{}{
-	"name": "Alice",
-},
-
+	rsp, err := functionService.List(&function.ListRequest{
+		
 	})
 	fmt.Println(rsp, err)
 	
@@ -153,12 +149,12 @@ func ReserveAfunction() {
 	
 }
 ```
-## Proxy
+## Runtimes
 
-Return the backend url for proxying
+Return a list of supported runtimes
 
 
-[https://m3o.com/function/api#Proxy](https://m3o.com/function/api#Proxy)
+[https://m3o.com/function/api#Runtimes](https://m3o.com/function/api#Runtimes)
 
 ```go
 package example
@@ -170,23 +166,50 @@ import(
 	"go.m3o.com/function"
 )
 
-// Return the backend url for proxying
-func ProxyUrl() {
+// Return a list of supported runtimes
+func ListRuntimes() {
 	functionService := function.NewFunctionService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := functionService.Proxy(&function.ProxyRequest{
-		Id: "helloworld",
+	rsp, err := functionService.Runtimes(&function.RuntimesRequest{
+		
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
+## Logs
+
+Get the logs for a function
+
+
+[https://m3o.com/function/api#Logs](https://m3o.com/function/api#Logs)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/function"
+)
+
+// Get the logs for a function
+func RetrieveBuildLogsForAfunction() {
+	functionService := function.NewFunctionService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := functionService.Logs(&function.LogsRequest{
+		Name: "helloworld",
 
 	})
 	fmt.Println(rsp, err)
 	
 }
 ```
-## List
+## Call
 
-List all the deployed functions
+Call a function by name
 
 
-[https://m3o.com/function/api#List](https://m3o.com/function/api#List)
+[https://m3o.com/function/api#Call](https://m3o.com/function/api#Call)
 
 ```go
 package example
@@ -198,11 +221,15 @@ import(
 	"go.m3o.com/function"
 )
 
-// List all the deployed functions
-func ListFunctions() {
+// Call a function by name
+func CallAfunction() {
 	functionService := function.NewFunctionService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := functionService.List(&function.ListRequest{
-		
+	rsp, err := functionService.Call(&function.CallRequest{
+		Name: "helloworld",
+Request: map[string]interface{}{
+	"name": "Alice",
+},
+
 	})
 	fmt.Println(rsp, err)
 	
@@ -263,39 +290,12 @@ func ListRegions() {
 	
 }
 ```
-## Runtimes
+## Proxy
 
-Return a list of supported runtimes
-
-
-[https://m3o.com/function/api#Runtimes](https://m3o.com/function/api#Runtimes)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/function"
-)
-
-// Return a list of supported runtimes
-func ListRuntimes() {
-	functionService := function.NewFunctionService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := functionService.Runtimes(&function.RuntimesRequest{
-		
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
-## Logs
-
-Get the logs for a function
+Return the backend url for proxying
 
 
-[https://m3o.com/function/api#Logs](https://m3o.com/function/api#Logs)
+[https://m3o.com/function/api#Proxy](https://m3o.com/function/api#Proxy)
 
 ```go
 package example
@@ -307,11 +307,11 @@ import(
 	"go.m3o.com/function"
 )
 
-// Get the logs for a function
-func RetrieveBuildLogsForAfunction() {
+// Return the backend url for proxying
+func ProxyUrl() {
 	functionService := function.NewFunctionService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := functionService.Logs(&function.LogsRequest{
-		Name: "helloworld",
+	rsp, err := functionService.Proxy(&function.ProxyRequest{
+		Id: "helloworld",
 
 	})
 	fmt.Println(rsp, err)

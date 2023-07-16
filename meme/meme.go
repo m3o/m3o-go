@@ -21,7 +21,6 @@ type MemeService struct {
 	client *client.Client
 }
 
-//
 func (t *MemeService) Generate(request *GenerateRequest) (*GenerateResponse, error) {
 
 	rsp := &GenerateResponse{}
