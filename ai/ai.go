@@ -10,6 +10,7 @@ type Ai interface {
 	Edit(*EditRequest) (*EditResponse, error)
 	Generate(*GenerateRequest) (*GenerateResponse, error)
 	Moderate(*ModerateRequest) (*ModerateResponse, error)
+	Stream(*StreamRequest) (*StreamResponseStream, error)
 }
 
 func NewAiService(token string) *AiService {
@@ -62,6 +63,30 @@ func (t *AiService) Moderate(request *ModerateRequest) (*ModerateResponse, error
 	rsp := &ModerateResponse{}
 	return rsp, t.client.Call("ai", "Moderate", request, rsp)
 
+}
+
+// Stream a response from chatgpt
+func (t *AiService) Stream(request *StreamRequest) (*StreamResponseStream, error) {
+	stream, err := t.client.Stream("ai", "Stream", request)
+	if err != nil {
+		return nil, err
+	}
+	return &StreamResponseStream{
+		stream: stream,
+	}, nil
+
+}
+
+type StreamResponseStream struct {
+	stream *client.Stream
+}
+
+func (t *StreamResponseStream) Recv() (*StreamResponse, error) {
+	var rsp StreamResponse
+	if err := t.stream.Recv(&rsp); err != nil {
+		return nil, err
+	}
+	return &rsp, nil
 }
 
 type ChatRequest struct {
@@ -142,4 +167,18 @@ type ModerateResponse struct {
 	Flagged bool `json:"flagged,omitempty"`
 	// related scores
 	Scores map[string]float64 `json:"scores,omitempty"`
+}
+
+type StreamRequest struct {
+	// the potential model e.g gpt-4
+	Model string `json:"model,omitempty"`
+	// the prompt to provide
+	Prompt string `json:"prompt,omitempty"`
+}
+
+type StreamResponse struct {
+	// whether its a complete or partial response
+	Partial bool `json:"partial,omitempty"`
+	// a set of words in the response
+	Words []string `json:"words,omitempty"`
 }
