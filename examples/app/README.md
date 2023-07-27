@@ -32,6 +32,33 @@ func GetAnApp() {
 	
 }
 ```
+## List
+
+List all the apps
+
+
+[https://m3o.com/app/api#List](https://m3o.com/app/api#List)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/app"
+)
+
+// List all the apps
+func ListTheApps() {
+	appService := app.NewAppService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := appService.List(&app.ListRequest{
+		
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
 ## Regions
 
 Return the support regions
@@ -138,33 +165,6 @@ func ReserveAppName() {
 	rsp, err := appService.Reserve(&app.ReserveRequest{
 		Name: "helloworld",
 
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
-## List
-
-List all the apps
-
-
-[https://m3o.com/app/api#List](https://m3o.com/app/api#List)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/app"
-)
-
-// List all the apps
-func ListTheApps() {
-	appService := app.NewAppService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := appService.List(&app.ListRequest{
-		
 	})
 	fmt.Println(rsp, err)
 	
