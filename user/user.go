@@ -272,6 +272,8 @@ type ReadSessionRequest struct {
 }
 
 type ReadSessionResponse struct {
+	// the user for the session
+	Account *Account `json:"account,omitempty"`
 	// the session for the user
 	Session *Session `json:"session,omitempty"`
 }
