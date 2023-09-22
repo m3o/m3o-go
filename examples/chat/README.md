@@ -71,6 +71,33 @@ func JoinAgroup() {
 	}
 }
 ```
+## Leave
+
+Leave a group
+
+
+[https://m3o.com/chat/api#Leave](https://m3o.com/chat/api#Leave)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/chat"
+)
+
+// Leave a group
+func LeaveAgroup() {
+	chatService := chat.NewChatService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := chatService.Leave(&chat.LeaveRequest{
+		
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
 ## Create
 
 Create a new group
@@ -95,33 +122,6 @@ func CreateAnewChat() {
 		Description: "The general group",
 Name: "general",
 
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
-## Invite
-
-Invite a user to a group
-
-
-[https://m3o.com/chat/api#Invite](https://m3o.com/chat/api#Invite)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/chat"
-)
-
-// Invite a user to a group
-func InviteAuser() {
-	chatService := chat.NewChatService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := chatService.Invite(&chat.InviteRequest{
-		
 	})
 	fmt.Println(rsp, err)
 	
@@ -159,6 +159,33 @@ Text: "Hey whats up?",
 	
 }
 ```
+## Invite
+
+Invite a user to a group
+
+
+[https://m3o.com/chat/api#Invite](https://m3o.com/chat/api#Invite)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/chat"
+)
+
+// Invite a user to a group
+func InviteAuser() {
+	chatService := chat.NewChatService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := chatService.Invite(&chat.InviteRequest{
+		
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
 ## Kick
 
 Kick a user from a group
@@ -180,33 +207,6 @@ import(
 func KickAuserFromAgroup() {
 	chatService := chat.NewChatService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := chatService.Kick(&chat.KickRequest{
-		
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
-## Leave
-
-Leave a group
-
-
-[https://m3o.com/chat/api#Leave](https://m3o.com/chat/api#Leave)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/chat"
-)
-
-// Leave a group
-func LeaveAgroup() {
-	chatService := chat.NewChatService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := chatService.Leave(&chat.LeaveRequest{
 		
 	})
 	fmt.Println(rsp, err)
